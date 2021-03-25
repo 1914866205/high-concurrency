@@ -177,3 +177,32 @@
 2021-03-25 11:42:52.418  INFO 7196 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2021-03-25 11:42:52.418  INFO 7196 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2021-03-25 11:42:52.420  INFO 7196 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-03-25 12:01:35.347  INFO 10800 --- [main] c.soft.usercenter.UserCenterApplication  : Starting UserCenterApplication using Java 1.8.0_41 on DESKTOP-MSQL8V0 with PID 10800 (D:\CompcuteApplication\projectTest\high-concurrency\usercenter\target\classes started by nitaotao in D:\CompcuteApplication\projectTest\high-concurrency)
+2021-03-25 12:01:35.351  INFO 10800 --- [main] c.soft.usercenter.UserCenterApplication  : No active profile set, falling back to default profiles: default
+2021-03-25 12:01:36.249  INFO 10800 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-25 12:01:36.249  INFO 10800 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-25 12:01:36.265  INFO 10800 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 JPA repository interfaces.
+2021-03-25 12:01:36.282  INFO 10800 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-25 12:01:36.283  INFO 10800 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-03-25 12:01:36.294  INFO 10800 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2021-03-25 12:01:36.798  INFO 10800 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2021-03-25 12:01:36.806  INFO 10800 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-25 12:01:36.807  INFO 10800 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-03-25 12:01:36.941  INFO 10800 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-25 12:01:36.942  INFO 10800 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1518 ms
+2021-03-25 12:01:37.126  INFO 10800 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-25 12:01:37.170  INFO 10800 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.29.Final
+2021-03-25 12:01:37.279  INFO 10800 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-25 12:01:37.368  INFO 10800 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-25 12:01:37.813  INFO 10800 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-25 12:01:37.823  INFO 10800 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-03-25 12:01:38.176  INFO 10800 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-25 12:01:38.186  INFO 10800 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-25 12:01:38.359  WARN 10800 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-25 12:01:38.702  INFO 10800 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-25 12:01:38.820  INFO 10800 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-25 12:01:39.012  INFO 10800 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2021-03-25 12:01:39.013  INFO 10800 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-03-25 12:01:39.029  INFO 10800 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-03-25 12:01:39.061  INFO 10800 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-03-25 12:01:39.079  INFO 10800 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 4.253 seconds (JVM running for 5.844)
