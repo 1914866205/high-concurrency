@@ -45,7 +45,7 @@ public class HbUser {
     /**
      * 手机号
      */
-    @Column(nullable = false, length = 21, unique = true)
+    @Column(nullable = true, length = 21, unique = true)
     private String phone;
 
     /**
@@ -53,7 +53,7 @@ public class HbUser {
      * 1 男
      * 2 女
      */
-    @Column(nullable = false, length = 2)
+    @Column(nullable = true, length = 2)
     private int sex;
 
     /**
@@ -66,13 +66,13 @@ public class HbUser {
     /**
      * 用户地址
      */
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String address;
 
     /**
      * 用户邮箱
      */
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String email;
 
 
@@ -99,7 +99,7 @@ public class HbUser {
     /**
      * 生日
      */
-    @Column(nullable = false)
+    @Column(nullable = true)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Timestamp birthday;
 

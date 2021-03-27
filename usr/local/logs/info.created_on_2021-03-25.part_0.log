@@ -206,3 +206,6 @@
 2021-03-25 12:01:39.029  INFO 10800 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
 2021-03-25 12:01:39.061  INFO 10800 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
 2021-03-25 12:01:39.079  INFO 10800 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 4.253 seconds (JVM running for 5.844)
+2021-03-25 13:38:32.051  WARN 10800 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=47m23s301ms956µs300ns).
+2021-03-25 17:08:26.299  WARN 10800 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h23s748ms396µs500ns).
+2021-03-25 22:48:06.113  WARN 10800 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5h39m49s677ms69µs300ns).
