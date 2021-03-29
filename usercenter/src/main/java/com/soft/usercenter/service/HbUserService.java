@@ -1,6 +1,7 @@
 package com.soft.usercenter.service;
 
 import com.soft.usercenter.common.ResponseResult;
+import com.soft.usercenter.model.dto.EditUserDto;
 import com.soft.usercenter.model.dto.LoginDto;
 import com.soft.usercenter.model.dto.RegisterUserDto;
 import com.soft.usercenter.model.dto.VerifyPhoneDto;
@@ -38,4 +39,11 @@ public interface HbUserService {
      * @return
      */
     ResponseResult register(RegisterUserDto registerUserDto) throws UnsupportedEncodingException;
+
+    /**
+     * 传来新的用户资料，编辑用户信息
+     * @param editUserDto
+     * @return
+     */
+    ResponseResult edit(EditUserDto editUserDto) throws UnsupportedEncodingException;
 }

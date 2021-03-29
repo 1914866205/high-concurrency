@@ -2,6 +2,7 @@ package com.soft.usercenter.controller;
 
 import com.soft.usercenter.annotation.ControllerWebLog;
 import com.soft.usercenter.common.ResponseResult;
+import com.soft.usercenter.model.dto.EditUserDto;
 import com.soft.usercenter.model.dto.LoginDto;
 import com.soft.usercenter.model.dto.RegisterUserDto;
 import com.soft.usercenter.model.dto.VerifyPhoneDto;
@@ -63,4 +64,15 @@ public class HbUserController {
         System.out.println(registerUserDto.toString());
         return hbUserService.register(registerUserDto);
     }
+
+
+    @ControllerWebLog(name = "userEdit", isSaved = true)
+    @ApiOperation(value = "用户信息修改", notes = "用户信息修改")//birthday时间传的形式为  2021-03-29 形式
+    @PostMapping("edit")
+    public ResponseResult editUser(@RequestBody EditUserDto editUserDto) throws UnsupportedEncodingException {
+        System.out.println(editUserDto.toString());
+        return hbUserService.edit(editUserDto);
+    }
+
+
 }
