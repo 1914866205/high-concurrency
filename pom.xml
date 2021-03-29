@@ -66,6 +66,14 @@
                 <artifactId>lombok</artifactId>
                 <version>1.18.12</version>
             </dependency>
+
+
+            <!--数据校验-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-validation</artifactId>
+                <version>2.3.0.RELEASE</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

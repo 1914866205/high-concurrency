@@ -2,6 +2,7 @@ package com.soft.usercenter.service;
 
 import com.soft.usercenter.common.ResponseResult;
 import com.soft.usercenter.model.dto.LoginDto;
+import com.soft.usercenter.model.dto.VerifyPhoneDto;
 
 import java.io.UnsupportedEncodingException;
 
@@ -22,4 +23,11 @@ public interface HbUserService {
      * @return
      */
     ResponseResult login(LoginDto loginDto) throws UnsupportedEncodingException;
+
+    /**
+     * 手机号验证码登录
+     * @param verifyPhone
+     * @return
+     */
+    ResponseResult loginByPhone(VerifyPhoneDto verifyPhone) throws UnsupportedEncodingException;
 }

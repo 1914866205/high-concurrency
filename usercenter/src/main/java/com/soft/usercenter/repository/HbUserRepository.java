@@ -18,4 +18,12 @@ public interface HbUserRepository extends JpaRepository<HbUser, String> {
      * @return
      */
     HbUser findHbUserByUsername(String username);
+
+
+    /**
+     * 根据手机号查询用户
+     * @param phone
+     * @return
+     */
+    HbUser findHbUserByPhone(String phone);
 }

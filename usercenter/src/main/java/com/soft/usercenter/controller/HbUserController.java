@@ -1,7 +1,9 @@
 package com.soft.usercenter.controller;
 
+import com.soft.usercenter.annotation.ControllerWebLog;
 import com.soft.usercenter.common.ResponseResult;
 import com.soft.usercenter.model.dto.LoginDto;
+import com.soft.usercenter.model.dto.VerifyPhoneDto;
 import com.soft.usercenter.service.HbUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -41,5 +43,18 @@ public class HbUserController {
         log.info("访问login接口");
         log.info("loginDto{}", loginDto);
         return hbUserService.login(loginDto);
+    }
+
+
+
+
+    @ControllerWebLog(name = "loginByPhone", isSaved = true)
+    @ApiOperation(value = "手机验证码登录", notes = "请求参数为手机号 和  手机验证码 phoneNumber   verifyCode   ")
+    @PostMapping("code/login")
+    public ResponseResult loginByPhone(@RequestBody VerifyPhoneDto verifyPhone) throws UnsupportedEncodingException {
+        log.info("访问code/login接口");
+        log.info("-----code/login-----请求参数：" + verifyPhone + "**1**");
+        return hbUserService.loginByPhone(verifyPhone);
+
     }
 }
