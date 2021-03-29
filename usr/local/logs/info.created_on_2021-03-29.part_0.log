@@ -550,3 +550,450 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2021-03-29 13:02:12.608  INFO 16724 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
 2021-03-29 13:02:12.670  INFO 16724 --- [http-nio-8088-exec-1] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
 2021-03-29 13:02:12.670  INFO 16724 --- [http-nio-8088-exec-1] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851855106)**1**
+2021-03-29 13:05:36.504  INFO 3128 --- [main] c.soft.usercenter.UserCenterApplication  : Starting UserCenterApplication using Java 1.8.0_41 on DESKTOP-MSQL8V0 with PID 3128 (D:\CompcuteApplication\projectTest\high-concurrency\usercenter\target\classes started by nitaotao in D:\CompcuteApplication\projectTest\high-concurrency)
+2021-03-29 13:05:36.506  INFO 3128 --- [main] c.soft.usercenter.UserCenterApplication  : No active profile set, falling back to default profiles: default
+2021-03-29 13:05:37.373  INFO 3128 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-29 13:05:37.373  INFO 3128 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-29 13:05:37.472  INFO 3128 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 91 ms. Found 5 JPA repository interfaces.
+2021-03-29 13:05:37.508  INFO 3128 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-29 13:05:37.509  INFO 3128 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-03-29 13:05:37.536  INFO 3128 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbCommentRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:05:37.536  INFO 3128 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbGoodRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:05:37.537  INFO 3128 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbOrderRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:05:37.537  INFO 3128 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbStrategyRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:05:37.538  INFO 3128 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbUserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:05:37.538  INFO 3128 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 0 Redis repository interfaces.
+2021-03-29 13:05:37.979  INFO 3128 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2021-03-29 13:05:37.986  INFO 3128 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-29 13:05:37.987  INFO 3128 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-03-29 13:05:38.125  INFO 3128 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-29 13:05:38.125  INFO 3128 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1562 ms
+2021-03-29 13:05:38.315  INFO 3128 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-29 13:05:38.357  INFO 3128 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.29.Final
+2021-03-29 13:05:38.467  INFO 3128 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-29 13:05:38.559  INFO 3128 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-29 13:05:39.131  INFO 3128 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-29 13:05:39.142  INFO 3128 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-03-29 13:05:40.003  INFO 3128 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-29 13:05:40.011  INFO 3128 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-29 13:05:40.625  WARN 3128 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-29 13:05:40.737  INFO 3128 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-29 13:05:40.847  INFO 3128 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-29 13:05:41.133  INFO 3128 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2021-03-29 13:05:41.134  INFO 3128 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-03-29 13:05:41.149  INFO 3128 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-03-29 13:05:41.179  INFO 3128 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-03-29 13:05:41.295  INFO 3128 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 5.216 seconds (JVM running for 6.897)
+2021-03-29 13:05:46.679  INFO 3128 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-03-29 13:05:46.679  INFO 3128 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-03-29 13:05:46.681  INFO 3128 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2021-03-29 13:05:46.750  INFO 3128 --- [http-nio-8088-exec-1] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-03-29 13:05:46.750  INFO 3128 --- [http-nio-8088-exec-1] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851855106)**1**
+2021-03-29 13:06:27.137  INFO 3128 --- [http-nio-8088-exec-2] c.s.u.controller.SmsApiController        : -----/verifyCode-----请求参数：VerifyPhoneDto(phoneNumber=18851855106, verifyCode=4e3d)**1**
+2021-03-29 13:06:27.137  INFO 3128 --- [http-nio-8088-exec-2] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851855106, verifyCode=4e3d)**1**
+2021-03-29 13:06:27.156  INFO 3128 --- [http-nio-8088-exec-2] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,4e3d**1**
+2021-03-29 13:06:27.241  INFO 3128 --- [http-nio-8088-exec-2] c.s.u.controller.SmsApiController        : 验证码通过
+2021-03-29 13:06:42.409  INFO 3128 --- [http-nio-8088-exec-5] c.s.u.controller.HbUserController        : 访问code/login接口
+2021-03-29 13:06:42.409  INFO 3128 --- [http-nio-8088-exec-5] c.s.u.controller.HbUserController        : -----code/login-----请求参数：VerifyPhoneDto(phoneNumber=18851855106, verifyCode=4e3d)**1**
+2021-03-29 13:06:42.409  INFO 3128 --- [http-nio-8088-exec-5] c.s.u.service.impl.HbUserServiceImpl     : verifyPhone:18851855106*********4e3d
+2021-03-29 13:06:42.616  INFO 3128 --- [http-nio-8088-exec-5] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851855106, verifyCode=4e3d)**1**
+2021-03-29 13:06:42.648  INFO 3128 --- [http-nio-8088-exec-5] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,4e3d**1**
+2021-03-29 13:06:42.665  INFO 3128 --- [http-nio-8088-exec-5] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-03-29 13:06:42.687  INFO 3128 --- [http-nio-8088-exec-5] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTgyOTA0MDIsInVzZXJuYW1lIjoibnR0In0.3xykxf0w9EqRCVRbJKbrvrvHReTkvabiP45F787J8Rw
+2021-03-29 13:31:32.121  INFO 15300 --- [main] c.soft.usercenter.UserCenterApplication  : Starting UserCenterApplication using Java 1.8.0_41 on DESKTOP-MSQL8V0 with PID 15300 (D:\CompcuteApplication\projectTest\high-concurrency\usercenter\target\classes started by nitaotao in D:\CompcuteApplication\projectTest\high-concurrency)
+2021-03-29 13:31:32.125  INFO 15300 --- [main] c.soft.usercenter.UserCenterApplication  : No active profile set, falling back to default profiles: default
+2021-03-29 13:31:33.037  INFO 15300 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-29 13:31:33.038  INFO 15300 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-29 13:31:33.162  INFO 15300 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 116 ms. Found 5 JPA repository interfaces.
+2021-03-29 13:31:33.179  INFO 15300 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-29 13:31:33.180  INFO 15300 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-03-29 13:31:33.214  INFO 15300 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbCommentRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:31:33.215  INFO 15300 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbGoodRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:31:33.215  INFO 15300 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbOrderRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:31:33.216  INFO 15300 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbStrategyRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:31:33.216  INFO 15300 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbUserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:31:33.216  INFO 15300 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 0 Redis repository interfaces.
+2021-03-29 13:31:33.955  INFO 15300 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2021-03-29 13:31:33.964  INFO 15300 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-29 13:31:33.964  INFO 15300 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-03-29 13:31:34.140  INFO 15300 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-29 13:31:34.142  INFO 15300 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1960 ms
+2021-03-29 13:31:34.346  INFO 15300 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-29 13:31:34.404  INFO 15300 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.29.Final
+2021-03-29 13:31:34.526  INFO 15300 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-29 13:31:34.614  INFO 15300 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-29 13:31:35.745  INFO 15300 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-29 13:31:35.755  INFO 15300 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-03-29 13:31:36.752  INFO 15300 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-29 13:31:36.761  INFO 15300 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-29 13:31:37.392  WARN 15300 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-29 13:31:37.503  INFO 15300 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-29 13:31:37.618  INFO 15300 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-29 13:31:37.908  INFO 15300 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2021-03-29 13:31:37.908  INFO 15300 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-03-29 13:31:37.924  INFO 15300 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-03-29 13:31:37.953  INFO 15300 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-03-29 13:31:38.115  INFO 15300 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 6.428 seconds (JVM running for 8.155)
+2021-03-29 13:32:55.012  INFO 1676 --- [main] c.soft.usercenter.UserCenterApplication  : Starting UserCenterApplication using Java 1.8.0_41 on DESKTOP-MSQL8V0 with PID 1676 (D:\CompcuteApplication\projectTest\high-concurrency\usercenter\target\classes started by nitaotao in D:\CompcuteApplication\projectTest\high-concurrency)
+2021-03-29 13:32:55.015  INFO 1676 --- [main] c.soft.usercenter.UserCenterApplication  : No active profile set, falling back to default profiles: default
+2021-03-29 13:32:55.882  INFO 1676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-29 13:32:55.883  INFO 1676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-29 13:32:56.003  INFO 1676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 112 ms. Found 5 JPA repository interfaces.
+2021-03-29 13:32:56.018  INFO 1676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-29 13:32:56.019  INFO 1676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-03-29 13:32:56.051  INFO 1676 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbCommentRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:32:56.052  INFO 1676 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbGoodRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:32:56.052  INFO 1676 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbOrderRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:32:56.053  INFO 1676 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbStrategyRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:32:56.053  INFO 1676 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbUserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:32:56.053  INFO 1676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 0 Redis repository interfaces.
+2021-03-29 13:32:56.494  INFO 1676 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2021-03-29 13:32:56.502  INFO 1676 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-29 13:32:56.502  INFO 1676 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-03-29 13:32:56.644  INFO 1676 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-29 13:32:56.644  INFO 1676 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1574 ms
+2021-03-29 13:32:56.828  INFO 1676 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-29 13:32:56.868  INFO 1676 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.29.Final
+2021-03-29 13:32:56.973  INFO 1676 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-29 13:32:57.058  INFO 1676 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-29 13:32:57.853  INFO 1676 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-29 13:32:57.897  INFO 1676 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-03-29 13:32:58.651  INFO 1676 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-29 13:32:58.659  INFO 1676 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-29 13:32:59.279  WARN 1676 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-29 13:32:59.393  INFO 1676 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-29 13:32:59.517  INFO 1676 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-29 13:32:59.801  INFO 1676 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2021-03-29 13:32:59.802  INFO 1676 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-03-29 13:32:59.818  INFO 1676 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-03-29 13:32:59.849  INFO 1676 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-03-29 13:32:59.981  INFO 1676 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 5.4 seconds (JVM running for 7.018)
+2021-03-29 13:35:37.069  INFO 1676 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-03-29 13:35:37.069  INFO 1676 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-03-29 13:35:37.071  INFO 1676 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-03-29 13:35:37.126  INFO 1676 --- [http-nio-8088-exec-1] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-03-29 13:35:37.126  INFO 1676 --- [http-nio-8088-exec-1] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851855106)**1**
+2021-03-29 13:37:10.118  WARN 1676 --- [http-nio-8088-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Illegal unquoted character ((CTRL-CHAR, code 10)): has to be escaped using backslash to be included in string value; nested exception is com.fasterxml.jackson.databind.JsonMappingException: Illegal unquoted character ((CTRL-CHAR, code 10)): has to be escaped using backslash to be included in string value
+ at [Source: (PushbackInputStream); line: 5, column: 23] (through reference chain: com.soft.usercenter.model.dto.RegisterUserDto["code"])]
+2021-03-29 13:37:34.557  WARN 1676 --- [http-nio-8088-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Illegal unquoted character ((CTRL-CHAR, code 10)): has to be escaped using backslash to be included in string value; nested exception is com.fasterxml.jackson.databind.JsonMappingException: Illegal unquoted character ((CTRL-CHAR, code 10)): has to be escaped using backslash to be included in string value
+ at [Source: (PushbackInputStream); line: 5, column: 23] (through reference chain: com.soft.usercenter.model.dto.RegisterUserDto["code"])]
+2021-03-29 13:38:24.093  INFO 15316 --- [main] c.soft.usercenter.UserCenterApplication  : Starting UserCenterApplication using Java 1.8.0_41 on DESKTOP-MSQL8V0 with PID 15316 (D:\CompcuteApplication\projectTest\high-concurrency\usercenter\target\classes started by nitaotao in D:\CompcuteApplication\projectTest\high-concurrency)
+2021-03-29 13:38:24.097  INFO 15316 --- [main] c.soft.usercenter.UserCenterApplication  : No active profile set, falling back to default profiles: default
+2021-03-29 13:38:24.994  INFO 15316 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-29 13:38:24.995  INFO 15316 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-29 13:38:25.117  INFO 15316 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 114 ms. Found 5 JPA repository interfaces.
+2021-03-29 13:38:25.135  INFO 15316 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-29 13:38:25.136  INFO 15316 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-03-29 13:38:25.165  INFO 15316 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbCommentRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:38:25.166  INFO 15316 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbGoodRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:38:25.166  INFO 15316 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbOrderRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:38:25.166  INFO 15316 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbStrategyRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:38:25.166  INFO 15316 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbUserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:38:25.167  INFO 15316 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23 ms. Found 0 Redis repository interfaces.
+2021-03-29 13:38:25.619  INFO 15316 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2021-03-29 13:38:25.627  INFO 15316 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-29 13:38:25.627  INFO 15316 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-03-29 13:38:25.779  INFO 15316 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-29 13:38:25.780  INFO 15316 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1619 ms
+2021-03-29 13:38:25.975  INFO 15316 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-29 13:38:26.019  INFO 15316 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.29.Final
+2021-03-29 13:38:26.127  INFO 15316 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-29 13:38:26.215  INFO 15316 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-29 13:38:27.009  INFO 15316 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-29 13:38:27.020  INFO 15316 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-03-29 13:38:27.911  INFO 15316 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-29 13:38:27.919  INFO 15316 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-29 13:38:28.545  WARN 15316 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-29 13:38:28.656  INFO 15316 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-29 13:38:28.770  INFO 15316 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-29 13:38:29.051  INFO 15316 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2021-03-29 13:38:29.052  INFO 15316 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-03-29 13:38:29.068  INFO 15316 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-03-29 13:38:29.098  INFO 15316 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-03-29 13:38:29.229  INFO 15316 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 5.576 seconds (JVM running for 7.222)
+2021-03-29 13:38:30.183  INFO 15316 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-03-29 13:38:30.184  INFO 15316 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-03-29 13:38:30.185  INFO 15316 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-03-29 13:38:30.250  WARN 15316 --- [http-nio-8088-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Illegal unquoted character ((CTRL-CHAR, code 10)): has to be escaped using backslash to be included in string value; nested exception is com.fasterxml.jackson.databind.JsonMappingException: Illegal unquoted character ((CTRL-CHAR, code 10)): has to be escaped using backslash to be included in string value
+ at [Source: (PushbackInputStream); line: 5, column: 23] (through reference chain: com.soft.usercenter.model.dto.RegisterUserDto["code"])]
+2021-03-29 13:39:11.381  WARN 15316 --- [http-nio-8088-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Illegal unquoted character ((CTRL-CHAR, code 10)): has to be escaped using backslash to be included in string value; nested exception is com.fasterxml.jackson.databind.JsonMappingException: Illegal unquoted character ((CTRL-CHAR, code 10)): has to be escaped using backslash to be included in string value
+ at [Source: (PushbackInputStream); line: 5, column: 23] (through reference chain: com.soft.usercenter.model.dto.RegisterUserDto["code"])]
+2021-03-29 13:41:09.517  WARN 15316 --- [http-nio-8088-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `java.sql.Timestamp` from String "1999-05-27 00:00:00": not a valid representation (error: Failed to parse Date value '1999-05-27 00:00:00': Cannot parse date "1999-05-27 00:00:00": while it seems to fit format 'yyyy-MM-dd'T'HH:mm:ss.SSSX', parsing fails (leniency? null)); nested exception is com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot deserialize value of type `java.sql.Timestamp` from String "1999-05-27 00:00:00": not a valid representation (error: Failed to parse Date value '1999-05-27 00:00:00': Cannot parse date "1999-05-27 00:00:00": while it seems to fit format 'yyyy-MM-dd'T'HH:mm:ss.SSSX', parsing fails (leniency? null))
+ at [Source: (PushbackInputStream); line: 11, column: 21] (through reference chain: com.soft.usercenter.model.dto.RegisterUserDto["birthday"])]
+2021-03-29 13:41:37.277  INFO 16644 --- [main] c.soft.usercenter.UserCenterApplication  : Starting UserCenterApplication using Java 1.8.0_41 on DESKTOP-MSQL8V0 with PID 16644 (D:\CompcuteApplication\projectTest\high-concurrency\usercenter\target\classes started by nitaotao in D:\CompcuteApplication\projectTest\high-concurrency)
+2021-03-29 13:41:37.280  INFO 16644 --- [main] c.soft.usercenter.UserCenterApplication  : No active profile set, falling back to default profiles: default
+2021-03-29 13:41:38.152  INFO 16644 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-29 13:41:38.152  INFO 16644 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-29 13:41:38.275  INFO 16644 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 115 ms. Found 5 JPA repository interfaces.
+2021-03-29 13:41:38.293  INFO 16644 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-29 13:41:38.294  INFO 16644 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-03-29 13:41:38.322  INFO 16644 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbCommentRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:41:38.323  INFO 16644 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbGoodRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:41:38.323  INFO 16644 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbOrderRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:41:38.323  INFO 16644 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbStrategyRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:41:38.324  INFO 16644 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbUserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 13:41:38.324  INFO 16644 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 0 Redis repository interfaces.
+2021-03-29 13:41:38.774  INFO 16644 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2021-03-29 13:41:38.784  INFO 16644 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-29 13:41:38.784  INFO 16644 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-03-29 13:41:38.922  INFO 16644 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-29 13:41:38.923  INFO 16644 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1585 ms
+2021-03-29 13:41:39.127  INFO 16644 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-29 13:41:39.168  INFO 16644 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.29.Final
+2021-03-29 13:41:39.272  INFO 16644 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-29 13:41:39.364  INFO 16644 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-29 13:41:39.996  INFO 16644 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-29 13:41:40.006  INFO 16644 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-03-29 13:41:40.817  INFO 16644 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-29 13:41:40.829  INFO 16644 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-29 13:41:41.453  WARN 16644 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-29 13:41:41.569  INFO 16644 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-29 13:41:41.682  INFO 16644 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-29 13:41:41.970  INFO 16644 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2021-03-29 13:41:41.971  INFO 16644 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-03-29 13:41:41.986  INFO 16644 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-03-29 13:41:42.012  INFO 16644 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-03-29 13:41:42.146  INFO 16644 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 5.295 seconds (JVM running for 6.901)
+2021-03-29 13:42:00.021  INFO 16644 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-03-29 13:42:00.021  INFO 16644 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-03-29 13:42:00.022  INFO 16644 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-03-29 13:42:00.088  WARN 16644 --- [http-nio-8088-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `java.sql.Timestamp` from String "1999-05-27 00:00:00": not a valid representation (error: Failed to parse Date value '1999-05-27 00:00:00': Cannot parse date "1999-05-27 00:00:00": while it seems to fit format 'yyyy-MM-dd'T'HH:mm:ss.SSSX', parsing fails (leniency? null)); nested exception is com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot deserialize value of type `java.sql.Timestamp` from String "1999-05-27 00:00:00": not a valid representation (error: Failed to parse Date value '1999-05-27 00:00:00': Cannot parse date "1999-05-27 00:00:00": while it seems to fit format 'yyyy-MM-dd'T'HH:mm:ss.SSSX', parsing fails (leniency? null))
+ at [Source: (PushbackInputStream); line: 11, column: 21] (through reference chain: com.soft.usercenter.model.dto.RegisterUserDto["birthday"])]
+2021-03-29 13:42:00.335  WARN 16644 --- [http-nio-8088-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `java.sql.Timestamp` from String "1999-05-27 00:00:00": not a valid representation (error: Failed to parse Date value '1999-05-27 00:00:00': Cannot parse date "1999-05-27 00:00:00": while it seems to fit format 'yyyy-MM-dd'T'HH:mm:ss.SSSX', parsing fails (leniency? null)); nested exception is com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot deserialize value of type `java.sql.Timestamp` from String "1999-05-27 00:00:00": not a valid representation (error: Failed to parse Date value '1999-05-27 00:00:00': Cannot parse date "1999-05-27 00:00:00": while it seems to fit format 'yyyy-MM-dd'T'HH:mm:ss.SSSX', parsing fails (leniency? null))
+ at [Source: (PushbackInputStream); line: 11, column: 21] (through reference chain: com.soft.usercenter.model.dto.RegisterUserDto["birthday"])]
+2021-03-29 13:42:17.910  WARN 16644 --- [http-nio-8088-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('}' (code 125)): was expecting double-quote to start field name; nested exception is com.fasterxml.jackson.core.JsonParseException: Unexpected character ('}' (code 125)): was expecting double-quote to start field name
+ at [Source: (PushbackInputStream); line: 12, column: 5]]
+2021-03-29 13:43:49.581  INFO 16644 --- [http-nio-8088-exec-7] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851855106, verifyCode=066f)**1**
+2021-03-29 13:43:51.854  INFO 16644 --- [http-nio-8088-exec-7] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,null**1**
+2021-03-29 13:44:58.390  INFO 16644 --- [http-nio-8088-exec-10] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-03-29 13:44:58.390  INFO 16644 --- [http-nio-8088-exec-10] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851855106)**1**
+2021-03-29 13:45:24.788  INFO 16644 --- [http-nio-8088-exec-5] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851855106, verifyCode=ea17)**1**
+2021-03-29 13:45:24.820  INFO 16644 --- [http-nio-8088-exec-5] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,ea17**1**
+2021-03-29 13:45:24.885  INFO 16644 --- [http-nio-8088-exec-5] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTgyOTI3MjQsInVzZXJuYW1lIjoiZGVtb0RhdGEifQ.8VNRdoxKTBD4W030EwJdZx1jVhACOCgZJloMCi-Huak
+2021-03-29 15:07:06.985  INFO 16644 --- [lettuce-nioEventLoop-4-1] io.lettuce.core.protocol.CommandHandler  : null Unexpected exception during request: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:253)
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132)
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:719)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:655)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:581)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:745)
+
+2021-03-29 15:07:07.031  INFO 16644 --- [lettuce-eventExecutorLoop-1-7] i.l.core.protocol.ConnectionWatchdog     : Reconnecting, last destination was /120.26.177.51:6379
+2021-03-29 15:07:07.227  WARN 16644 --- [lettuce-nioEventLoop-4-2] i.l.core.protocol.ConnectionWatchdog     : Cannot reconnect to [120.26.177.51:6379]: Network is unreachable: no further information: /120.26.177.51:6379
+
+io.netty.channel.AbstractChannel$AnnotatedSocketException: Network is unreachable: no further information: /120.26.177.51:6379
+Caused by: java.net.SocketException: Network is unreachable: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:330)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:707)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:655)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:581)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:745)
+
+2021-03-29 15:07:12.131  INFO 16644 --- [lettuce-eventExecutorLoop-1-2] i.l.core.protocol.ConnectionWatchdog     : Reconnecting, last destination was 120.26.177.51:6379
+2021-03-29 15:07:12.134  WARN 16644 --- [lettuce-nioEventLoop-4-5] i.l.core.protocol.ConnectionWatchdog     : Cannot reconnect to [120.26.177.51:6379]: Network is unreachable: no further information: /120.26.177.51:6379
+
+io.netty.channel.AbstractChannel$AnnotatedSocketException: Network is unreachable: no further information: /120.26.177.51:6379
+Caused by: java.net.SocketException: Network is unreachable: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:330)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:707)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:655)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:581)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:745)
+
+2021-03-29 15:07:24.538  INFO 16644 --- [lettuce-eventExecutorLoop-1-1] i.l.core.protocol.ConnectionWatchdog     : Reconnecting, last destination was 120.26.177.51:6379
+2021-03-29 15:07:24.540  WARN 16644 --- [lettuce-nioEventLoop-4-7] i.l.core.protocol.ConnectionWatchdog     : Cannot reconnect to [120.26.177.51:6379]: Network is unreachable: no further information: /120.26.177.51:6379
+
+io.netty.channel.AbstractChannel$AnnotatedSocketException: Network is unreachable: no further information: /120.26.177.51:6379
+Caused by: java.net.SocketException: Network is unreachable: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:330)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:707)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:655)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:581)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:745)
+
+2021-03-29 15:07:28.106  WARN 16644 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h13m48s989ms536µs500ns).
+2021-03-29 15:07:40.926  INFO 16644 --- [lettuce-eventExecutorLoop-1-3] i.l.core.protocol.ConnectionWatchdog     : Reconnecting, last destination was 120.26.177.51:6379
+2021-03-29 15:07:40.928  WARN 16644 --- [lettuce-nioEventLoop-4-8] i.l.core.protocol.ConnectionWatchdog     : Cannot reconnect to [120.26.177.51:6379]: Network is unreachable: no further information: /120.26.177.51:6379
+
+io.netty.channel.AbstractChannel$AnnotatedSocketException: Network is unreachable: no further information: /120.26.177.51:6379
+Caused by: java.net.SocketException: Network is unreachable: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:330)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:707)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:655)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:581)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:745)
+
+2021-03-29 15:08:11.030  INFO 16644 --- [lettuce-eventExecutorLoop-1-5] i.l.core.protocol.ConnectionWatchdog     : Reconnecting, last destination was 120.26.177.51:6379
+2021-03-29 15:08:11.101  INFO 16644 --- [lettuce-nioEventLoop-4-1] i.l.core.protocol.ReconnectionHandler    : Reconnected to 120.26.177.51:6379
+2021-03-29 15:10:02.434  INFO 16644 --- [http-nio-8088-exec-6] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-03-29 15:10:02.435  INFO 16644 --- [http-nio-8088-exec-6] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851855106)**1**
+2021-03-29 15:10:04.384  INFO 16644 --- [http-nio-8088-exec-2] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-03-29 15:10:04.384  INFO 16644 --- [http-nio-8088-exec-2] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851855106)**1**
+2021-03-29 15:11:21.813  WARN 16644 --- [http-nio-8088-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `java.sql.Timestamp` from String "1999-05-27 00:00:00": not a valid representation (error: Failed to parse Date value '1999-05-27 00:00:00': Cannot parse date "1999-05-27 00:00:00": while it seems to fit format 'yyyy-MM-dd'T'HH:mm:ss.SSSX', parsing fails (leniency? null)); nested exception is com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot deserialize value of type `java.sql.Timestamp` from String "1999-05-27 00:00:00": not a valid representation (error: Failed to parse Date value '1999-05-27 00:00:00': Cannot parse date "1999-05-27 00:00:00": while it seems to fit format 'yyyy-MM-dd'T'HH:mm:ss.SSSX', parsing fails (leniency? null))
+ at [Source: (PushbackInputStream); line: 11, column: 21] (through reference chain: com.soft.usercenter.model.dto.RegisterUserDto["birthday"])]
+2021-03-29 15:11:34.879  WARN 16644 --- [http-nio-8088-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `java.sql.Timestamp` from String "1999-05-27 00:00:00": not a valid representation (error: Failed to parse Date value '1999-05-27 00:00:00': Cannot parse date "1999-05-27 00:00:00": while it seems to fit format 'yyyy-MM-dd'T'HH:mm:ss.SSSX', parsing fails (leniency? null)); nested exception is com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot deserialize value of type `java.sql.Timestamp` from String "1999-05-27 00:00:00": not a valid representation (error: Failed to parse Date value '1999-05-27 00:00:00': Cannot parse date "1999-05-27 00:00:00": while it seems to fit format 'yyyy-MM-dd'T'HH:mm:ss.SSSX', parsing fails (leniency? null))
+ at [Source: (PushbackInputStream); line: 11, column: 21] (through reference chain: com.soft.usercenter.model.dto.RegisterUserDto["birthday"])]
+2021-03-29 15:15:44.595  WARN 16644 --- [http-nio-8088-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('}' (code 125)): was expecting double-quote to start field name; nested exception is com.fasterxml.jackson.core.JsonParseException: Unexpected character ('}' (code 125)): was expecting double-quote to start field name
+ at [Source: (PushbackInputStream); line: 12, column: 3]]
+2021-03-29 15:16:52.571  INFO 16644 --- [http-nio-8088-exec-4] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851855106, verifyCode=1ccc)**1**
+2021-03-29 15:16:52.667  INFO 16644 --- [http-nio-8088-exec-4] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,null**1**
+2021-03-29 15:17:12.914  INFO 16644 --- [http-nio-8088-exec-9] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-03-29 15:17:12.914  INFO 16644 --- [http-nio-8088-exec-9] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851855106)**1**
+2021-03-29 15:17:32.874  INFO 16644 --- [http-nio-8088-exec-1] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851855106, verifyCode=55e4)**1**
+2021-03-29 15:17:33.132  INFO 16644 --- [http-nio-8088-exec-1] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,55e4**1**
+2021-03-29 15:17:33.154  INFO 16644 --- [http-nio-8088-exec-1] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTgyOTgyNTMsInVzZXJuYW1lIjoiZGVtb0RhdGEifQ.tsAvsGTBXC7wli_bYhsVzl6G5ewokpFx4rhCyWRApRs
+2021-03-29 15:20:28.597  INFO 20984 --- [main] c.soft.usercenter.UserCenterApplication  : Starting UserCenterApplication using Java 1.8.0_41 on DESKTOP-MSQL8V0 with PID 20984 (D:\CompcuteApplication\projectTest\high-concurrency\usercenter\target\classes started by nitaotao in D:\CompcuteApplication\projectTest\high-concurrency)
+2021-03-29 15:20:28.600  INFO 20984 --- [main] c.soft.usercenter.UserCenterApplication  : No active profile set, falling back to default profiles: default
+2021-03-29 15:20:29.532  INFO 20984 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-29 15:20:29.533  INFO 20984 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-29 15:20:29.656  INFO 20984 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 116 ms. Found 5 JPA repository interfaces.
+2021-03-29 15:20:29.671  INFO 20984 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-29 15:20:29.672  INFO 20984 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-03-29 15:20:29.702  INFO 20984 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbCommentRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 15:20:29.702  INFO 20984 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbGoodRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 15:20:29.703  INFO 20984 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbOrderRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 15:20:29.703  INFO 20984 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbStrategyRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 15:20:29.703  INFO 20984 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbUserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 15:20:29.704  INFO 20984 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 0 Redis repository interfaces.
+2021-03-29 15:20:30.171  INFO 20984 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2021-03-29 15:20:30.179  INFO 20984 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-29 15:20:30.179  INFO 20984 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-03-29 15:20:30.327  INFO 20984 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-29 15:20:30.327  INFO 20984 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1671 ms
+2021-03-29 15:20:30.518  INFO 20984 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-29 15:20:30.562  INFO 20984 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.29.Final
+2021-03-29 15:20:30.671  INFO 20984 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-29 15:20:30.759  INFO 20984 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-29 15:20:32.303  INFO 20984 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-29 15:20:32.316  INFO 20984 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-03-29 15:20:33.332  INFO 20984 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-29 15:20:33.340  INFO 20984 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-29 15:20:33.602  WARN 20984 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'hbUserController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'hbUserServiceImpl': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'hbUserRepository' defined in com.soft.usercenter.repository.HbUserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Failed to create query for method public abstract com.soft.usercenter.model.entity.HbUser com.soft.usercenter.repository.HbUserRepository.saveHbUser(com.soft.usercenter.model.entity.HbUser)! No property saveHbUser found for type HbUser!
+2021-03-29 15:20:33.603  INFO 20984 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-29 15:20:33.605  INFO 20984 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-03-29 15:20:33.608  INFO 20984 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-03-29 15:20:33.610  INFO 20984 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2021-03-29 15:20:33.618  INFO 20984 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-03-29 15:21:22.567  INFO 20164 --- [main] c.soft.usercenter.UserCenterApplication  : Starting UserCenterApplication using Java 1.8.0_41 on DESKTOP-MSQL8V0 with PID 20164 (D:\CompcuteApplication\projectTest\high-concurrency\usercenter\target\classes started by nitaotao in D:\CompcuteApplication\projectTest\high-concurrency)
+2021-03-29 15:21:22.569  INFO 20164 --- [main] c.soft.usercenter.UserCenterApplication  : No active profile set, falling back to default profiles: default
+2021-03-29 15:21:23.476  INFO 20164 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-29 15:21:23.477  INFO 20164 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-29 15:21:23.577  INFO 20164 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 92 ms. Found 5 JPA repository interfaces.
+2021-03-29 15:21:23.593  INFO 20164 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-29 15:21:23.594  INFO 20164 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-03-29 15:21:23.623  INFO 20164 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbCommentRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 15:21:23.623  INFO 20164 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbGoodRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 15:21:23.623  INFO 20164 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbOrderRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 15:21:23.624  INFO 20164 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbStrategyRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 15:21:23.624  INFO 20164 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbUserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 15:21:23.624  INFO 20164 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 0 Redis repository interfaces.
+2021-03-29 15:21:24.081  INFO 20164 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2021-03-29 15:21:24.089  INFO 20164 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-29 15:21:24.090  INFO 20164 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-03-29 15:21:24.234  INFO 20164 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-29 15:21:24.234  INFO 20164 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1609 ms
+2021-03-29 15:21:24.428  INFO 20164 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-29 15:21:24.470  INFO 20164 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.29.Final
+2021-03-29 15:21:24.576  INFO 20164 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-29 15:21:24.667  INFO 20164 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-29 15:21:25.905  INFO 20164 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-29 15:21:25.914  INFO 20164 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-03-29 15:21:29.765  INFO 20164 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-29 15:21:29.773  INFO 20164 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-29 15:21:30.413  WARN 20164 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-29 15:21:30.533  INFO 20164 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-29 15:21:30.650  INFO 20164 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-29 15:21:30.939  INFO 20164 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2021-03-29 15:21:30.940  INFO 20164 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-03-29 15:21:30.955  INFO 20164 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-03-29 15:21:30.985  INFO 20164 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-03-29 15:21:31.121  INFO 20164 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 8.993 seconds (JVM running for 10.623)
+2021-03-29 15:21:57.053  INFO 20164 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-03-29 15:21:57.053  INFO 20164 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-03-29 15:21:57.054  INFO 20164 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2021-03-29 15:21:57.171  INFO 20164 --- [http-nio-8088-exec-1] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-03-29 15:21:57.171  INFO 20164 --- [http-nio-8088-exec-1] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851855106)**1**
+2021-03-29 15:22:28.993  INFO 20164 --- [http-nio-8088-exec-3] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851855106, verifyCode=55e4)**1**
+2021-03-29 15:22:29.050  INFO 20164 --- [http-nio-8088-exec-3] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,null**1**
+2021-03-29 15:22:37.539  INFO 20164 --- [http-nio-8088-exec-4] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-03-29 15:22:37.540  INFO 20164 --- [http-nio-8088-exec-4] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851855106)**1**
+2021-03-29 15:23:06.043  INFO 20164 --- [http-nio-8088-exec-5] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851855106, verifyCode=c4bc)**1**
+2021-03-29 15:23:06.065  INFO 20164 --- [http-nio-8088-exec-5] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,c4bc**1**
+2021-03-29 15:23:06.775  INFO 20164 --- [http-nio-8088-exec-5] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTgyOTg1ODYsInVzZXJuYW1lIjoiZGVtb0RhdGEifQ.kGwaCQIKU75m3mYJ_mJ0u2moBrvIFDicdG931_StgN4
+2021-03-29 15:34:25.242  INFO 6472 --- [main] c.soft.usercenter.UserCenterApplication  : Starting UserCenterApplication using Java 1.8.0_41 on DESKTOP-MSQL8V0 with PID 6472 (D:\CompcuteApplication\projectTest\high-concurrency\usercenter\target\classes started by nitaotao in D:\CompcuteApplication\projectTest\high-concurrency)
+2021-03-29 15:34:25.245  INFO 6472 --- [main] c.soft.usercenter.UserCenterApplication  : No active profile set, falling back to default profiles: default
+2021-03-29 15:34:26.154  INFO 6472 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-29 15:34:26.155  INFO 6472 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-29 15:34:26.276  INFO 6472 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 113 ms. Found 5 JPA repository interfaces.
+2021-03-29 15:34:26.292  INFO 6472 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-29 15:34:26.293  INFO 6472 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-03-29 15:34:26.320  INFO 6472 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbCommentRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 15:34:26.321  INFO 6472 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbGoodRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 15:34:26.321  INFO 6472 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbOrderRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 15:34:26.321  INFO 6472 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbStrategyRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 15:34:26.322  INFO 6472 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbUserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-03-29 15:34:26.322  INFO 6472 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 0 Redis repository interfaces.
+2021-03-29 15:34:26.778  INFO 6472 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2021-03-29 15:34:26.786  INFO 6472 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-29 15:34:26.786  INFO 6472 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-03-29 15:34:26.929  INFO 6472 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-29 15:34:26.929  INFO 6472 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1607 ms
+2021-03-29 15:34:27.124  INFO 6472 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-29 15:34:27.171  INFO 6472 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.29.Final
+2021-03-29 15:34:27.279  INFO 6472 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-29 15:34:27.366  INFO 6472 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-29 15:34:33.453  INFO 6472 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-29 15:34:33.463  INFO 6472 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-03-29 15:34:42.358  INFO 6472 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-29 15:34:42.366  INFO 6472 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-29 15:34:43.021  WARN 6472 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-29 15:34:43.140  INFO 6472 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-29 15:34:43.262  INFO 6472 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-29 15:34:43.601  INFO 6472 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2021-03-29 15:34:43.602  INFO 6472 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-03-29 15:34:43.618  INFO 6472 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-03-29 15:34:43.643  INFO 6472 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-03-29 15:34:43.775  INFO 6472 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 18.977 seconds (JVM running for 20.66)

@@ -3,6 +3,7 @@ package com.soft.usercenter.service.impl;
 import com.soft.usercenter.common.ResponseResult;
 import com.soft.usercenter.common.ResultCode;
 import com.soft.usercenter.model.dto.LoginDto;
+import com.soft.usercenter.model.dto.RegisterUserDto;
 import com.soft.usercenter.model.dto.VerifyPhoneDto;
 import com.soft.usercenter.model.entity.HbUser;
 import com.soft.usercenter.repository.HbUserRepository;
@@ -14,8 +15,11 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.UnsupportedEncodingException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * @author 倪涛涛
@@ -78,6 +82,40 @@ public class HbUserServiceImpl implements HbUserService {
             }
         } else {
             return ResponseResult.failure(ResultCode.USER_NOT_FOUND);
+        }
+    }
+
+    @Override
+    public ResponseResult register(RegisterUserDto registerUserDto) throws UnsupportedEncodingException {
+        //判断验证码
+        if (sendSmsService.verify(VerifyPhoneDto.builder().phoneNumber(registerUserDto.getPhone()).verifyCode(registerUserDto.getCode()).build())) {
+            HbUser hbUser = HbUser.builder()
+                    .pkUserId(UUID.randomUUID().toString().substring(0, 19))
+                    .money(0.0)
+                    .address(registerUserDto.getAddress())
+                    .avatar(registerUserDto.getAvatar())
+                    .birthday(registerUserDto.getBirthday())
+                    .nickname(registerUserDto.getNickname())
+                    .email(registerUserDto.getEmail())
+                    .username(registerUserDto.getUsername())
+                    .password(registerUserDto.getPassword())
+                    .phone(registerUserDto.getPhone())
+                    .sex(registerUserDto.getSex())
+                    .status(1)
+                    .createdTime(Timestamp.valueOf(LocalDateTime.now()))
+                    .updatedTime(Timestamp.valueOf(LocalDateTime.now()))
+                    .build();
+            //保存用户信息
+            hbUserRepository.save(hbUser);
+            //创建返回的数据
+            Map map = new HashMap();
+            map.put("user", hbUser);
+            map.put("token", JwtUtil.sign(hbUser.getUsername(), hbUser.getPassword()));
+            log.info("生成的token{}", map.get("token"));
+            return ResponseResult.success(map);
+        } else {
+            //验证码失效或错误
+            return ResponseResult.failure(ResultCode.USER_VERIFY_CODE_ERROR_TIMEOUT);
         }
     }
 }

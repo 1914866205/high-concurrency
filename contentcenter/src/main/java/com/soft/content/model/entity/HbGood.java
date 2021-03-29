@@ -78,14 +78,14 @@ public class HbGood {
      */
     @Column(nullable = false)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Timestamp createTime;
+    private Timestamp createdTime;
 
     /**
      * 更新时间
      */
     @Column(nullable = false)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Timestamp updateTime;
+    private Timestamp updatedTime;
 
 
 }

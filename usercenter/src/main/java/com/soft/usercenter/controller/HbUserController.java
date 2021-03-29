@@ -3,6 +3,7 @@ package com.soft.usercenter.controller;
 import com.soft.usercenter.annotation.ControllerWebLog;
 import com.soft.usercenter.common.ResponseResult;
 import com.soft.usercenter.model.dto.LoginDto;
+import com.soft.usercenter.model.dto.RegisterUserDto;
 import com.soft.usercenter.model.dto.VerifyPhoneDto;
 import com.soft.usercenter.service.HbUserService;
 import io.swagger.annotations.Api;
@@ -23,7 +24,7 @@ import java.io.UnsupportedEncodingException;
 @RestController
 @Slf4j
 @ResponseBody
-@RequestMapping(value="/user")
+@RequestMapping(value = "/user")
 @Api(value = "HbUserController", tags = {"用户模块接口"})
 public class HbUserController {
 
@@ -46,8 +47,6 @@ public class HbUserController {
     }
 
 
-
-
     @ControllerWebLog(name = "loginByPhone", isSaved = true)
     @ApiOperation(value = "手机验证码登录", notes = "请求参数为手机号 和  手机验证码 phoneNumber   verifyCode   ")
     @PostMapping("code/login")
@@ -55,6 +54,13 @@ public class HbUserController {
         log.info("访问code/login接口");
         log.info("-----code/login-----请求参数：" + verifyPhone + "**1**");
         return hbUserService.loginByPhone(verifyPhone);
+    }
 
+    @ControllerWebLog(name = "userRegister", isSaved = true)
+    @ApiOperation(value = "用户注册", notes = "用户注册")//birthday时间传的形式为  2021-03-29 形式
+    @PostMapping("register")
+    public ResponseResult registerUser(@RequestBody RegisterUserDto registerUserDto) throws UnsupportedEncodingException {
+        System.out.println(registerUserDto.toString());
+        return hbUserService.register(registerUserDto);
     }
 }
