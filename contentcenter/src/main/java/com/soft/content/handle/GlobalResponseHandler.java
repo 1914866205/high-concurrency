@@ -7,7 +7,7 @@ package com.soft.content.handle;
  * @Version 1.0
  **/
 
-import com.niit.soft.client.api.common.ResponseResult;
+import com.soft.content.common.ResponseResult;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;

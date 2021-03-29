@@ -1,13 +1,19 @@
 package com.soft.content.controller;
 
+import com.soft.content.annotation.ControllerWebLog;
+import com.soft.content.common.ResponseResult;
+import com.soft.content.model.dto.SearchDto;
+import com.soft.content.model.entity.HbGood;
 import com.soft.content.service.HbGoodService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -20,12 +26,47 @@ import javax.annotation.Resource;
 @RestController
 @Slf4j
 @ResponseBody
-@RequestMapping
+@RequestMapping(value = "/goods/")
 @Api(value = "HbGoodController", tags = {"商品模块接口"})
 public class HbGoodController {
 
     @Resource
     private HbGoodService hbGoodService;
+
+    /**
+     * 根据商品名称模糊搜索
+     *
+     * @param searchDto
+     * @return
+     */
+    @ApiOperation(value = "模糊搜索", notes = "根据商品名称模糊查询")
+    @PostMapping("search")
+    @ControllerWebLog(name = "searchByContent", isSaved = true)
+    ResponseResult search(@RequestBody SearchDto searchDto) {
+        log.info("-----search-----请求参数：" + searchDto + "**1**");
+        Map<String, Object> map = new HashMap<String, Object>();
+        //查询符合的商品
+        final Page<HbGood> hbGoods = hbGoodService.findGoodsByContent(searchDto);
+        map.put("Goods", hbGoods);
+        return ResponseResult.success(map);
+    }
+
+    /**
+     * 查询指定用户的所有商品
+     *
+     * @param
+     * @return
+     */
+    @ApiOperation(value = "查询指定用户的所有商品", notes = "查询指定用户的所有商品")
+    @PostMapping("findGoodsByUserId")
+    @ControllerWebLog(name = "findGoodsByUserId", isSaved = true)
+    ResponseResult findGoodsByUserId(String userId) {
+        log.info("-----userId-----请求参数：" + userId + "**1**");
+        Map<String, Object> map = new HashMap<String, Object>();
+        //查询符合的商品
+        map.put("Goods", hbGoodService.findGoodsByUserId(userId));
+        return ResponseResult.success(map);
+    }
 
 
 }

@@ -1,6 +1,7 @@
 package com.soft.content.service.impl;
 
-import com.soft.usercenter.service.HbUserService;
+
+import com.soft.content.service.HbUserService;
 import org.springframework.stereotype.Service;
 
 /**

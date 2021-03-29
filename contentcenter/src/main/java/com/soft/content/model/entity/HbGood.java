@@ -33,6 +33,14 @@ public class HbGood {
     @Column(nullable = false)
     private String goodName;
 
+
+    /**
+     * 发布人id
+     */
+    @Column(nullable = false)
+    private String userId;
+
+
     /**
      * 商品描述
      */

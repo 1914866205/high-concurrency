@@ -1,6 +1,6 @@
 package com.soft.content.service.impl;
 
-import com.soft.usercenter.service.HbCommentService;
+import com.soft.content.service.HbCommentService;
 import org.springframework.stereotype.Service;
 
 /**

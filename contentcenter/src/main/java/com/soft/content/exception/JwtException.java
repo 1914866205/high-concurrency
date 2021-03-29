@@ -1,7 +1,6 @@
 package com.soft.content.exception;
 
 
-import com.niit.soft.client.api.common.ResultCode;
 import com.soft.content.common.ResultCode;
 
 /**
