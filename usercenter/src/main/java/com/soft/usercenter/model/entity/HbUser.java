@@ -77,12 +77,6 @@ public class HbUser {
 
 
     /**
-     * 用户加密盐
-     */
-    @Column(nullable = false)
-    private String sale;
-
-    /**
      * 用户昵称
      */
     @Column(nullable = false, length = 50)

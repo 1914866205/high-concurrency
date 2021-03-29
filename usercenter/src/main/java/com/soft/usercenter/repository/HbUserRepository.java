@@ -12,4 +12,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface HbUserRepository extends JpaRepository<HbUser, String> {
 
+    /**
+     * 根据账号查询用户
+     * @param username
+     * @return
+     */
+    HbUser findHbUserByUsername(String username);
 }

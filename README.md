@@ -45,7 +45,7 @@
 |:----|:----|:----|:----|:----|:----|:----|
 |pk_good_id|varchar|20|Y|Y|    |    |
 |goodname|varchar|255|    |    |    |    |
-|describe|varchar|255|    |    |    |    |
+|describtion|varchar|255|    |    |    |    |
 |price|double|16,2|    |    |    |    |
 |image|varchar|255|    |    |    |    |
 |status|int|2|    |    |    |未激活:0<br>已激活:1|

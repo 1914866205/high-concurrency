@@ -1,5 +1,6 @@
 package com.soft.usercenter.service.impl;
 
+import com.soft.usercenter.service.HbOrderService;
 import com.soft.usercenter.service.HbStrategyService;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,6 @@ import org.springframework.stereotype.Service;
  * @createTime 2021年03月27日 09:50:00
  */
 @Service
-public class HbOrderServiceImpl implements HbStrategyService {
+public class HbOrderServiceImpl implements HbOrderService {
 
 }

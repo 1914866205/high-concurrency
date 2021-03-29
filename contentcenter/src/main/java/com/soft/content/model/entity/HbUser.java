@@ -75,13 +75,6 @@ public class HbUser {
     @Column(nullable = true)
     private String email;
 
-
-    /**
-     * 用户加密盐
-     */
-    @Column(nullable = false)
-    private String sale;
-
     /**
      * 用户昵称
      */

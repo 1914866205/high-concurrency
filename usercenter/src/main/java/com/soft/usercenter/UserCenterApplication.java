@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * @author nitaotao
  */
+
 @SpringBootApplication
 public class UserCenterApplication {
 
