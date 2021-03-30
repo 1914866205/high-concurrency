@@ -48,7 +48,7 @@ public class HbComment {
 
 
     /**
-     * 评论者Id
+     * 星级评论 1-5星
      */
     @Column(nullable = false,length = 20)
     private int type;

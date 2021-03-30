@@ -1,11 +1,11 @@
 package com.soft.content.service;
 
-import com.soft.content.common.ResponseResult;
 import com.soft.content.model.dto.SearchDto;
 import com.soft.content.model.entity.HbGood;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 倪涛涛
@@ -20,4 +20,6 @@ public interface HbGoodService {
     List<HbGood> findGoodsByUserId(String userId);
 
     Page<HbGood> findAllGoods(SearchDto searchDto);
+
+    Map<String, List<HbGood>> findGoodsByType();
 }

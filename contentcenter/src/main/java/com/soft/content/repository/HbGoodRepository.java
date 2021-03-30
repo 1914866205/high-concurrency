@@ -1,9 +1,13 @@
 package com.soft.content.repository;
 
 import com.soft.content.model.entity.HbGood;
+import org.aspectj.weaver.ast.Var;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 倪涛涛
@@ -30,4 +34,19 @@ public interface HbGoodRepository extends JpaRepository<HbGood, String> {
      * @return
      */
     List<HbGood> findHbGoodsByUserId(String userId);
+
+    /**
+     * 查询所有商品类型
+     *
+     * @return
+     */
+    @Query(value = "select distinct  type from  HbGood ")
+    List<String> findAllTypes();
+
+    /**
+     * 根据商品类型查询商品
+     * @param type
+     * @return
+     */
+    List<HbGood> findHbGoodsByType(String type);
 }

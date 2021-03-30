@@ -84,4 +84,18 @@ public class HbGoodController {
     }
 
 
+    /**
+     * 根据类型给商品分类
+     */
+    @ApiOperation(value = "根据类型给商品分类", notes = "根据类型给商品分类")
+    @PostMapping("findGoodsByType")
+    @ControllerWebLog(name = "findGoodsByType", isSaved = true)
+    ResponseResult findGoodsByType() {
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("Goods", hbGoodService.findGoodsByType());
+        return ResponseResult.success(map);
+    }
+
+
+
 }

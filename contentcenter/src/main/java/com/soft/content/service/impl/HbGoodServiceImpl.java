@@ -1,6 +1,5 @@
 package com.soft.content.service.impl;
 
-import com.soft.content.common.ResponseResult;
 import com.soft.content.model.dto.SearchDto;
 import com.soft.content.model.entity.HbGood;
 import com.soft.content.repository.HbGoodRepository;
@@ -9,7 +8,9 @@ import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 倪涛涛
@@ -45,6 +46,16 @@ public class HbGoodServiceImpl implements HbGoodService {
         List<HbGood> result = hbGoodRepository.findAll();
         Page<HbGood> goodPage = new PageImpl<>(result, pageable, result.size());
         return goodPage;
+    }
+
+    @Override
+    public Map<String, List<HbGood>> findGoodsByType() {
+        List<String> allTypes = hbGoodRepository.findAllTypes();
+        Map<String, List<HbGood>> listMap = new HashMap();
+        for (String type : allTypes) {
+            listMap.put(type, hbGoodRepository.findHbGoodsByType(type));
+        }
+        return listMap;
     }
 
 }

@@ -1,5 +1,6 @@
 package com.soft.content.repository;
 
+import com.soft.content.service.HbGoodService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -18,15 +19,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class HbGoodRepositoryTest {
     @Resource
     private HbGoodRepository hbGoodRepository;
+    @Resource
+    private HbGoodService hbGoodService;
 
     @Test
     void findHbGoodsByGoodNameOrDescriptionLike() {
-        System.out.println(hbGoodRepository.findHbGoodsByGoodNameLikeOrDescriptionLike("%天线%", "%治%"));
-        System.out.println(hbGoodRepository.findHbGoodsByGoodNameLikeOrDescriptionLike("%天线%", "%治%"));
+//        System.out.println(hbGoodRepository.findHbGoodsByGoodNameLikeOrDescriptionLike("%天线%", "%治%"));
+//        System.out.println(hbGoodRepository.findHbGoodsByGoodNameLikeOrDescriptionLike("%天线%", "%治%"));
 //        System.out.println("111111111111111");
 //        System.out.println(hbGoodRepository.findHbGoodsByGoodNameLike("%天线%"));
 //        System.out.println("111111111111111");
 //        System.out.println(hbGoodRepository.findHbGoodsByDescriptionLike("%治%"));
-//        System.out.println("111111111111111");
+        System.out.println(hbGoodService.findGoodsByType());
     }
 }
