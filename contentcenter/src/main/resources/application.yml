@@ -1,8 +1,15 @@
+server:
+  port: 8081
 spring:
   application:
-    name: contentApplication
-
-
+    name: content-center
+  zipkin:
+    base-url: http://localhost:9411/
+    discoveryClientEnabled: false
+  sleuth:
+    sampler:
+      # 抽样率，默认是0.1（10%）
+      probability: 1.0
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
@@ -17,6 +24,25 @@ spring:
       max-lifetime: 1800000
       connection-timeout: 30000
       connection-test-query: SELECT 1
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+#        server-addr: 120.26.177.51:8848
+    #        server-addr: 120.26.177.51:8848
+    #        namespace: ef32c1be-c63c-4db4-8b07-b3b84a7c27ef
+    sentinel:
+      transport:
+        dashboard: 120.26.177.51:8081
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
   jpa:
     database: mysql
     show-sql: true
@@ -37,6 +63,27 @@ spring:
         min-idle: 0
     timeout: 1000
 
+#user-center:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 
-server:
-  port: 8081
+#ribbon:
+#  eager-load:
+#    enabled: true
+#    clients: user-center
+
+logging:
+  level:
+    com.soft.content.feignclient.UserCenterFeignClient: debug
+    #feign细粒度配置
+feign:
+  client:
+    config:
+      default:
+        #想要调用的微服务的名称
+        user-center:
+          loggerLevel: full
+  httpclient:
+    enabled: true
+    max-connections: 200
+    max-connections-per-route: 50

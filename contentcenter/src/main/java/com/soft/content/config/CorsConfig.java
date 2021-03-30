@@ -27,7 +27,7 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         //放行所有跨域的客户端domain
-        config.addAllowedOriginPattern("*");
+//        config.addAllowedOriginPattern("*");
         //允许的请求方法列表
         String[] requestMethods = {"GET", "POST", "PUT", "DELETE", "OPTIONS"};
         List<String> allowedRequestMethods = Arrays.asList(requestMethods);

@@ -1,6 +1,8 @@
 package com.soft.content.feignclient;
 
 import com.soft.content.common.ResponseResult;
+//import com.soft.content.config.UserCenterFeignConfiguration;
+import com.soft.content.config.UserCenterFeignConfiguration;
 import com.soft.content.model.entity.HbUser;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
