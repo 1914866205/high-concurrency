@@ -18,4 +18,6 @@ public interface HbGoodService {
     Page<HbGood> findGoodsByContent(SearchDto searchDto);
 
     List<HbGood> findGoodsByUserId(String userId);
+
+    Page<HbGood> findAllGoods(SearchDto searchDto);
 }

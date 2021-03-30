@@ -68,5 +68,20 @@ public class HbGoodController {
         return ResponseResult.success(map);
     }
 
+    /**
+     * 查询所有商品
+     *
+     * @param
+     * @return
+     */
+    @ApiOperation(value = "查询所有商品", notes = "查询所有商品")
+    @PostMapping("findAllGoods")
+    @ControllerWebLog(name = "findAllGoods", isSaved = true)
+    ResponseResult findAllGoods(SearchDto searchDto) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("Goods", hbGoodService.findAllGoods(searchDto));
+        return ResponseResult.success(map);
+    }
+
 
 }

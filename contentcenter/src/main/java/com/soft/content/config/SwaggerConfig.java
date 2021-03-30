@@ -1,4 +1,4 @@
-package com.soft.content.config;
+package com.soft.usercenter.config;
 
 import com.github.xiaoymin.swaggerbootstrapui.annotations.EnableSwaggerBootstrapUI;
 import io.swagger.annotations.ApiOperation;
@@ -40,7 +40,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("骸冰项目在线接口文档。")
                 .description("swagger-bootstrap-ui")
-                .contact(new Contact("骸冰", "https://github.com/1914866205", "1836686674@qq.com"))
+                .contact(new Contact("骸冰", "https://github.com/1914866205", "1914866205@qq.com"))
                 .termsOfServiceUrl("http://localhost:8088/")
                 .version("1.0")
                 .build();

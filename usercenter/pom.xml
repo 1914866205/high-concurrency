@@ -76,7 +76,7 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
-<!--        测试redis是否连接-->
+        <!--        测试redis是否连接-->
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
@@ -111,6 +111,7 @@
             <artifactId>swagger-bootstrap-ui</artifactId>
             <version>1.9.2</version>
         </dependency>
+
 
         <!--        日志-->
         <dependency>

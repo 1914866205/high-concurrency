@@ -5,10 +5,13 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Arrays;
 import java.util.List;
+
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 /**
  * @author 倪涛涛
@@ -19,7 +22,7 @@ import org.springframework.web.filter.CorsFilter;
  */
 
 
-@Configuration
+//@Configuration
 public class CorsConfig {
     @Bean
     public FilterRegistrationBean<CorsFilter> corsFilter() {
@@ -33,7 +36,7 @@ public class CorsConfig {
         List<String> allowedRequestMethods = Arrays.asList(requestMethods);
         config.setAllowedMethods(allowedRequestMethods);
         //允许的客户端请求头列表
-        String[] requestHeaders = {"x-requested-with", "Content-Type", "Access-Token", "Authorization", "id","Token"};
+        String[] requestHeaders = {"x-requested-with", "Content-Type", "Access-Token", "Authorization", "id", "Token", "swagger-ui.html"};
         List<String> allowedHeaders = Arrays.asList(requestHeaders);
         config.setAllowedHeaders(allowedHeaders);
         //允许的响应头列表
