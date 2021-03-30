@@ -21,7 +21,7 @@ import javax.annotation.Resource;
 @RestController
 @Slf4j
 @ResponseBody
-@RequestMapping
+@RequestMapping(value = "/comment/")
 @Api(value = "HbCommentController", tags = {"评论模块接口"})
 public class HbCommentController {
 

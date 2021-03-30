@@ -28,10 +28,10 @@ public class HbOrder {
     private String pkOrderId;
 
     /**
-     * 订单名称
+     * 商品Id
      */
     @Column(nullable = false)
-    private String orderName;
+    private String pkGoodId;
 
     /**
      * 订单排名

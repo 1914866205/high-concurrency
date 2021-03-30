@@ -146,3 +146,10 @@
 2021-03-30 11:18:03.834  INFO 16100 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2021-03-30 11:18:03.834  INFO 16100 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2021-03-30 11:18:03.836  INFO 16100 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-03-30 12:46:58.701  INFO 16100 --- [http-nio-8088-exec-10] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-03-30 12:46:58.702  INFO 16100 --- [http-nio-8088-exec-10] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851855106)**1**
+2021-03-30 12:47:00.509  INFO 16100 --- [http-nio-8088-exec-3] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-03-30 12:47:00.509  INFO 16100 --- [http-nio-8088-exec-3] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851855106)**1**
+2021-03-30 12:47:23.453  INFO 16100 --- [http-nio-8088-exec-8] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851855106, verifyCode=dd79)**1**
+2021-03-30 12:47:23.494  INFO 16100 --- [http-nio-8088-exec-8] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,dd79**1**
+2021-03-30 12:47:24.013  INFO 16100 --- [http-nio-8088-exec-8] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTgzNzU2NDMsInVzZXJuYW1lIjoiZGVtb0RhdGEifQ.YtTm1jlh3mUY_g5HldH1qao_OFIDtd7SW9VjVYYgGtY
