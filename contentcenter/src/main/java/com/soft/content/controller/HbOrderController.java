@@ -1,11 +1,14 @@
 package com.soft.content.controller;
 
+import com.soft.content.annotation.ControllerWebLog;
+import com.soft.content.common.ResponseResult;
+import com.soft.content.model.dto.CommentDto;
+import com.soft.content.model.dto.OrderDto;
 import com.soft.content.service.HbOrderService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -19,12 +22,48 @@ import javax.annotation.Resource;
 @RestController
 @Slf4j
 @ResponseBody
-@RequestMapping
+@RequestMapping(value = "/order/")
 @Api(value = "HbOrderController", tags = {"订单模块接口"})
 public class HbOrderController {
 
     @Resource
     private HbOrderService hbOrderService;
+
+    /**
+     * 创建订单
+     * @param OrderDto
+     * @return
+     */
+    @ApiOperation(value = "添加订单", notes = "添加订单")
+    @PostMapping("addOrder")
+    @ControllerWebLog(name = "addOrder", isSaved = true)
+    public ResponseResult addOrder(@RequestBody OrderDto OrderDto) {
+        return ResponseResult.success(hbOrderService.addOrder(OrderDto));
+    }
+
+    /**
+     * 根据订单Id取消订单
+     * @param hBorderId
+     * @return
+     */
+    @ApiOperation(value = "取消订单", notes = "celOrder")
+    @PostMapping("celOrder")
+    @ControllerWebLog(name = "celOrder", isSaved = true)
+    public ResponseResult celOrder(String hBorderId) {
+        return ResponseResult.success(hbOrderService.celOrder(hBorderId));
+    }
+
+    /**
+     * 支付订单
+     * @param orderId
+     * @return
+     */
+    @ApiOperation(value = "支付订单", notes = "payOrder")
+    @PostMapping("payOrder")
+    @ControllerWebLog(name = "payOrder", isSaved = true)
+    public ResponseResult payOrder(String orderId) {
+        return ResponseResult.success(hbOrderService.payOrder(orderId));
+    }
 
 
 }

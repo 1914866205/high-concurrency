@@ -1,13 +1,11 @@
-package com.soft.usercenter.model.dto;
+package com.soft.content.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
-import java.sql.Timestamp;
 
 /**
  * @author 倪涛涛
@@ -20,7 +18,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class HbOrderDto {
+public class OrderDto {
     /**
      * 商品Id
      */
@@ -39,4 +37,8 @@ public class HbOrderDto {
      */
     private String phone;
 
+    /**
+     * 购买数量
+     */
+    private int number;
 }

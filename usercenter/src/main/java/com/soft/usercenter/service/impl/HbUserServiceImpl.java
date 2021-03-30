@@ -185,4 +185,9 @@ public class HbUserServiceImpl implements HbUserService {
 
         }
     }
+
+    @Override
+    public ResponseResult getInfoById(String userId) {
+        return ResponseResult.success(hbUserRepository.findById(userId));
+    }
 }

@@ -1,5 +1,6 @@
 package com.soft.usercenter.service;
 
+
 /**
  * @author 倪涛涛
  * @version 1.0.0
@@ -8,4 +9,5 @@ package com.soft.usercenter.service;
  * @createTime 2021年03月27日 09:49:00
  */
 public interface HbOrderService {
+
 }

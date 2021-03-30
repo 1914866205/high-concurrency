@@ -51,7 +51,20 @@ public class HbOrder {
     @Column(nullable = true, length = 21, unique = true)
     private String phone;
 
+    /**
+     * 状态
+     * 0 未支付
+     * 1 已支付
+     * 2 已取消
+     */
+    @Column(nullable = false, length = 11)
+    private int state;
 
+    /**
+     * 购买数量
+     */
+    @Column(nullable = false, length = 8)
+    private int number;
     /**
      * 创建时间
      */

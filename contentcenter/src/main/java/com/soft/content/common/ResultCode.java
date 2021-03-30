@@ -74,9 +74,10 @@ public enum ResultCode {
     PERMISSION_NO_ACCESS(70001, "无访问权限"),
 
 
-    /*跑腿模块：80001-89999*/
-    ORDER_NOT_CANCLE(80001,"订单正在配送无法取消"),
-    ERRENDS_NOT_HAVA_ROOT(80002,"您还不是跑腿");
+    /*订单模块：80001-89999*/
+    ORDER_CANCLE(80001, "订单已取消，无法支付"),
+    ORDER_PAY(80002, "订单已支付，请不要重复支付"),
+    Order_OVER(8003, "库存不足"), Order_CREDIT_LOW(8004, "余额不足");
 
 
     /*校友圈模块：90001-99999*/

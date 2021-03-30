@@ -46,4 +46,11 @@ public interface HbUserService {
      * @return
      */
     ResponseResult edit(EditUserDto editUserDto) throws UnsupportedEncodingException;
+
+    /**
+     * 根据用户id得到用户信息
+     * @param userId
+     * @return
+     */
+    ResponseResult getInfoById(String userId);
 }

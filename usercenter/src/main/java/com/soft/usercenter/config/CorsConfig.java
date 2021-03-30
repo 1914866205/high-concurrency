@@ -1,17 +1,14 @@
 package com.soft.usercenter.config;
 
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.Arrays;
-import java.util.List;
-
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author 倪涛涛
@@ -22,7 +19,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
  */
 
 
-//@Configuration
+@Configuration
 public class CorsConfig {
     @Bean
     public FilterRegistrationBean<CorsFilter> corsFilter() {
@@ -30,13 +27,13 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         //放行所有跨域的客户端domain
-        config.addAllowedOrigin("*");
+        config.addAllowedOriginPattern("*");
         //允许的请求方法列表
         String[] requestMethods = {"GET", "POST", "PUT", "DELETE", "OPTIONS"};
         List<String> allowedRequestMethods = Arrays.asList(requestMethods);
         config.setAllowedMethods(allowedRequestMethods);
         //允许的客户端请求头列表
-        String[] requestHeaders = {"x-requested-with", "Content-Type", "Access-Token", "Authorization", "id", "Token", "swagger-ui.html"};
+        String[] requestHeaders = {"x-requested-with", "Content-Type", "Access-Token", "Authorization", "id","Token"};
         List<String> allowedHeaders = Arrays.asList(requestHeaders);
         config.setAllowedHeaders(allowedHeaders);
         //允许的响应头列表

@@ -1,14 +1,14 @@
-package com.soft.usercenter.config;
+package com.soft.content.config;
 
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.Arrays;
-import java.util.List;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author 倪涛涛
@@ -27,7 +27,7 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         //放行所有跨域的客户端domain
-        config.addAllowedOrigin("*");
+        config.addAllowedOriginPattern("*");
         //允许的请求方法列表
         String[] requestMethods = {"GET", "POST", "PUT", "DELETE", "OPTIONS"};
         List<String> allowedRequestMethods = Arrays.asList(requestMethods);
@@ -47,3 +47,4 @@ public class CorsConfig {
         return bean;
     }
 }
+

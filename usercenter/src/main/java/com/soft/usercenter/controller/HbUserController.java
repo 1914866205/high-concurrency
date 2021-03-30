@@ -47,6 +47,20 @@ public class HbUserController {
         return hbUserService.login(loginDto);
     }
 
+    /**
+     * 根据用户ID得到用户信息
+     * @param userId
+     * @return
+     */
+    @ApiOperation(value = "根据用户ID得到用户信息", notes = "根据用户ID得到用户信息")
+    @GetMapping("getInfoById")
+    public ResponseResult getInfoById(@PathVariable String userId) {
+        log.info("访问getInfoById接口");
+        log.info("userId{}", userId);
+        return hbUserService.getInfoById(userId);
+    }
+
+
 
     @ControllerWebLog(name = "loginByPhone", isSaved = true)
     @ApiOperation(value = "手机验证码登录", notes = "请求参数为手机号 和  手机验证码 phoneNumber   verifyCode   ")
