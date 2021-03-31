@@ -27,13 +27,13 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         //放行所有跨域的客户端domain
-//        config.addAllowedOriginPattern("*");
+        config.addAllowedOrigin("*");
         //允许的请求方法列表
         String[] requestMethods = {"GET", "POST", "PUT", "DELETE", "OPTIONS"};
         List<String> allowedRequestMethods = Arrays.asList(requestMethods);
         config.setAllowedMethods(allowedRequestMethods);
         //允许的客户端请求头列表
-        String[] requestHeaders = {"x-requested-with", "Content-Type", "Access-Token", "Authorization", "id","Token"};
+        String[] requestHeaders = {"x-requested-with", "Content-Type", "Access-Token", "Authorization", "id", "Token"};
         List<String> allowedHeaders = Arrays.asList(requestHeaders);
         config.setAllowedHeaders(allowedHeaders);
         //允许的响应头列表

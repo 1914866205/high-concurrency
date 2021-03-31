@@ -49,4 +49,11 @@ public interface HbGoodRepository extends JpaRepository<HbGood, String> {
      * @return
      */
     List<HbGood> findHbGoodsByType(String type);
+
+    /**
+     * 根据商品ID查商品
+     * @param pkGoodId
+     * @return
+     */
+    HbGood findHbGoodByPkGoodIdEquals(String pkGoodId);
 }

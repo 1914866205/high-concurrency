@@ -32,4 +32,11 @@ public interface HbOrderService {
      * @return
      */
     ResponseResult payOrder(String hBorderId);
+
+    /**
+     * 查询该用户所有订单
+     * @param pkUserId
+     * @return
+     */
+    ResponseResult findUserAllOrder(String pkUserId);
 }

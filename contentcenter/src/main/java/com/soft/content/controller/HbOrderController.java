@@ -68,4 +68,16 @@ public class HbOrderController {
     }
 
 
+    /**
+     * 查看该用户所有订单
+     * @param pkUserId
+     * @return
+     */
+    @ApiOperation(value = "查看该用户所有订单", notes = "findUserAllOrder")
+    @PostMapping("findUserAllOrder")
+    @ControllerWebLog(name = "findUserAllOrder", isSaved = true)
+    public ResponseResult findUserAllOrder(String pkUserId) {
+        return ResponseResult.success(hbOrderService.findUserAllOrder(pkUserId));
+    }
+
 }

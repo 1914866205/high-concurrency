@@ -9,8 +9,10 @@ import com.soft.content.model.dto.OrderDto;
 import com.soft.content.model.entity.HbGood;
 import com.soft.content.model.entity.HbOrder;
 import com.soft.content.model.entity.HbUser;
+import com.soft.content.model.vo.HbOrderView;
 import com.soft.content.repository.HbGoodRepository;
 import com.soft.content.repository.HbOrderRepository;
+import com.soft.content.repository.HbUserRepository;
 import com.soft.content.service.HbOrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,9 +25,7 @@ import org.springframework.util.StringUtils;
 import javax.annotation.Resource;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @author 倪涛涛
@@ -165,14 +165,52 @@ public class HbOrderServiceImpl implements HbOrderService {
                 //订单状态改变
                 hbOrder.setState(2);
                 hbOrderRepository.save(hbOrder);
-//                System.out.println("*******变化后***************");
+//                System.out.println("*******变化后********");
 //                System.out.println(hbUserConsumer + "----" + hbUserConsumer);
 //                System.out.println(hbUserProduce + "----" + hbUserProduce);
 //                System.out.println(hbOrder + "----" + hbOrder);
 //                System.out.println(hbGood + "----" + hbGood);
-//                System.out.println("*******************************");
+//                System.out.println("********************");
                 return ResponseResult.success();
             }
         }
+    }
+
+    @Override
+    public ResponseResult findUserAllOrder(String pkUserId) {
+        List list = new ArrayList();
+        HbGood hbGood = null;
+        HbUser hbUser = null;
+        List<HbOrder> orderList = hbOrderRepository.findHbOrdersByUserIdEquals(pkUserId);
+        for (HbOrder order : orderList) {
+            hbGood = hbGoodRepository.findHbGoodByPkGoodIdEquals(order.getPkGoodId());
+            hbUser = JSONObject.parseObject(userCenterFeignClient.findInfoById(order.getUserId()).getData().toString(), HbUser.class);
+            HbOrderView.builder()
+                    .pkOrderId(order.getPkOrderId())
+                    .createTime(order.getCreatedTime())
+                    .status(order.getState())
+                    .count(order.getNumber())
+                    .description(hbGood.getDescription())
+                    .goodName(hbGood.getGoodName())
+                    .goodImage(hbGood.getImage())
+                    .userName(hbUser.getNickname())
+                    .money(order.getNumber() * hbGood.getPrice())
+                    .build();
+
+            list.add(HbOrderView.builder()
+                    .pkOrderId(order.getPkOrderId())
+                    .createTime(order.getCreatedTime())
+                    .status(order.getState())
+                    .count(order.getNumber())
+                    .description(hbGood.getDescription())
+                    .goodName(hbGood.getGoodName())
+                    .goodImage(hbGood.getImage())
+                    .userName(hbUser.getNickname())
+                    .money(order.getNumber() * hbGood.getPrice())
+                    .build());
+        }
+            hbUser = null;
+            hbGood = null;
+        return ResponseResult.success(list);
     }
 }
