@@ -53,7 +53,7 @@ public class HbUserController {
      * @return
      */
     @ApiOperation(value = "根据用户ID得到用户信息", notes = "根据用户ID得到用户信息")
-    @GetMapping("getInfoById")
+    @GetMapping("getInfoById/{userId}")
     public ResponseResult getInfoById(@PathVariable String userId) {
         log.info("访问getInfoById接口");
         log.info("userId{}", userId);

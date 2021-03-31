@@ -11,6 +11,7 @@ import com.soft.content.repository.HbGoodRepository;
 import com.soft.content.repository.HbOrderRepository;
 import com.soft.content.service.HbOrderService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,7 @@ import java.util.UUID;
  * @Description TODO
  * @createTime 2021年03月27日 09:50:00
  */
+@Slf4j
 @Service
 @RequiredArgsConstructor(onConstructor = @_(@Autowired))
 public class HbOrderServiceImpl implements HbOrderService {
@@ -48,16 +50,18 @@ public class HbOrderServiceImpl implements HbOrderService {
      */
     @Override
     public ResponseResult addOrder(OrderDto hbOrderDto) {
+        log.info("进入添加订单服务层");
         HbOrder hbOrder = HbOrder.builder()
                 .pkOrderId(UUID.randomUUID().toString().substring(0, 19))
                 .state(0)
                 .phone(hbOrderDto.getPhone())
                 .pkGoodId(hbOrderDto.getPkGoodId())
                 .userId(hbOrderDto.getUserId())
+                .number(hbOrderDto.getNumber())
                 .createdTime(Timestamp.valueOf(LocalDateTime.now()))
                 .updatedTime(Timestamp.valueOf(LocalDateTime.now()))
                 .build();
-
+        log.info("订单创建" + hbOrder);
         /**
          * 从redis中取该商品的订单排名
          * 1.从redis中取数据
@@ -65,10 +69,10 @@ public class HbOrderServiceImpl implements HbOrderService {
          * 3.如果键存在，取键值对，值+1
          * 4.如果键不存在，添加键值对
          */
-        StringBuffer key = new StringBuffer(Objects.requireNonNull(redisTemplate.opsForValue().get("ORDER_" + hbOrderDto.getPkGoodId())));
-        if (!StringUtils.isEmpty(key)) {
-            StringBuilder value = new StringBuilder(redisTemplate.opsForValue().get(key));
-            int i = Integer.parseInt(String.valueOf(value));
+        String value = redisTemplate.opsForValue().get("ORDER_" + hbOrderDto.getPkGoodId());
+        log.info("value" + value);
+        if (!StringUtils.isEmpty(value)) {
+            int i = Integer.parseInt(value);
             i++;
             hbOrder.setRank(i);
             redisTemplate.opsForValue().set("ORDER_" + hbOrderDto.getPkGoodId(), String.valueOf(i));
@@ -114,28 +118,39 @@ public class HbOrderServiceImpl implements HbOrderService {
             return ResponseResult.failure(ResultCode.ORDER_PAY);
         } else {
             //查询用户余额
-            ResponseResult result = userCenterFeignClient.findInfoById(hbOrder.getUserId());
-            HbUser hbUser = (HbUser) result.getData();
+            ResponseResult consumerResult = userCenterFeignClient.findInfoById(hbOrder.getUserId());
+            HbUser hbUserConsumer = (HbUser) consumerResult.getData();
 
             //查询该商品的价格和剩余数量
             HbGood hbGood = hbGoodRepository.getOne(hbOrder.getPkGoodId());
 
+            //获取商品的发布者
+            String hbUserProduceId = hbGood.getUserId();
+            ResponseResult produceResult = userCenterFeignClient.findInfoById(hbUserProduceId.toString());
+            HbUser hbUserProduce = (HbUser) produceResult.getData();
+
             System.out.println("*********变化前*************");
-            System.out.println(hbUser + "----");
-            System.out.println(hbOrder + "----");
-            System.out.println(hbGood + "----");
+            System.out.println(hbUserConsumer + "----" + hbUserConsumer);
+            System.out.println(hbUserProduce + "----" + hbUserProduce);
+            System.out.println(hbOrder + "----" + hbOrder);
+            System.out.println(hbGood + "----" + hbGood);
             System.out.println("*******************************");
             //如果购买数量大于库存，则购买失败
             if (hbOrder.getNumber() > hbGood.getCount()) {
                 //返回库存不足
                 return ResponseResult.failure(ResultCode.Order_OVER);
-            } else if (hbUser.getMoney() < hbGood.getPrice() * hbOrder.getNumber()) {
+            } else if (hbUserConsumer.getMoney() < hbGood.getPrice() * hbOrder.getNumber()) {
                 //返回余额不足
                 return ResponseResult.failure(ResultCode.Order_CREDIT_LOW);
             } else {
                 //用户余额变化
-                hbUser.setMoney(hbUser.getMoney() - hbGood.getPrice() * hbOrder.getNumber());
-                userCenterFeignClient.payOrder(hbUser);
+                //消费者余额减少
+                hbUserConsumer.setMoney(hbUserConsumer.getMoney() - hbGood.getPrice() * hbOrder.getNumber());
+                userCenterFeignClient.payOrder(hbUserConsumer);
+
+                hbUserProduce.setMoney(hbUserProduce.getMoney() + hbGood.getPrice() * hbOrder.getNumber());
+                userCenterFeignClient.payOrder(hbUserProduce);
+
                 //商品数量减少
                 int resultCount = hbGood.getCount() - hbOrder.getNumber();
                 hbGood.setCount(resultCount);
@@ -144,9 +159,10 @@ public class HbOrderServiceImpl implements HbOrderService {
                 hbOrder.setState(2);
                 hbOrderRepository.save(hbOrder);
                 System.out.println("*******变化后***************");
-                System.out.println(hbUser + "----");
-                System.out.println(hbOrder + "----");
-                System.out.println(hbGood + "----");
+                System.out.println(hbUserConsumer + "----" + hbUserConsumer);
+                System.out.println(hbUserProduce + "----" + hbUserProduce);
+                System.out.println(hbOrder + "----" + hbOrder);
+                System.out.println(hbGood + "----" + hbGood);
                 System.out.println("*******************************");
                 return ResponseResult.success();
             }

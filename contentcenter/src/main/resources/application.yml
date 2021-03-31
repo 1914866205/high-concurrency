@@ -28,20 +28,12 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
-#        server-addr: 120.26.177.51:8848
+    #        server-addr: 120.26.177.51:8848
     #        server-addr: 120.26.177.51:8848
     #        namespace: ef32c1be-c63c-4db4-8b07-b3b84a7c27ef
     sentinel:
       transport:
-        dashboard: 120.26.177.51:8081
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-  endpoint:
-    health:
-      show-details: always
+        dashboard: localhost:8081
 
   jpa:
     database: mysql
@@ -52,38 +44,63 @@ management:
       ddl-auto: update
   redis:
     database: 0
-    host: 101.37.31.188
+    host: 120.26.177.51
     port: 6379
-    password:
     jedis:
       pool:
+        # 连接池最大连接数（使用负值表示没有限制）
         max-active: 200
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
         max-wait: -1
+        # 连接池中的最大空闲连接
         max-idle: 10
         min-idle: 0
-    timeout: 1000
+    timeout: 5000
 
-#user-center:
-#  ribbon:
-#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
 
-#ribbon:
-#  eager-load:
-#    enabled: true
-#    clients: user-center
+
+user-center:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+ribbon:
+  eager-load:
+    enabled: true
+    clients: user-center
 
 logging:
   level:
     com.soft.content.feignclient.UserCenterFeignClient: debug
     #feign细粒度配置
+
 feign:
+  sentinel:
+    enabled: true
   client:
     config:
       default:
         #想要调用的微服务的名称
         user-center:
           loggerLevel: full
+          requestInterceptors:
+            - com.soft.content.feignclient.TokenInterceptor
   httpclient:
     enabled: true
     max-connections: 200
     max-connections-per-route: 50
+
+eureka:
+  instance:
+    hostname: localhost  #主机名
+    prefer-ip-address: true # 是否将当前服务的IP注册到 Eureka Server
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:7001/eureka/

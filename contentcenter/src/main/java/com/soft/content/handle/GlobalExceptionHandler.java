@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  * @Date 2020/5/24 10:27
  * @Version 1.0
  **/
-@RestControllerAdvice(annotations = {RestController.class, Controller.class})
+//@RestControllerAdvice(annotations = {RestController.class, Controller.class})
 @Slf4j
 public class GlobalExceptionHandler {
 

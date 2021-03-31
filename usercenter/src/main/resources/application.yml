@@ -1,7 +1,14 @@
+server:
+  port: 8088
 spring:
   application:
-    name: userApplication
-
+    name: user-center
+  zipkin:
+    base-url: http://localhost:9411/
+    discovery-client-enabled: false
+  sleuth:
+    sampler:
+      probability: 1.0
 
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
@@ -39,6 +46,34 @@ spring:
         min-idle: 0
     timeout: 5000
 
+  cloud:
+    nacos:
+      discovery:
+        #        server-addr: 120.26.177.51:8848
+        server-addr: localhost:8848
+        #        namespace: ef32c1be-c63c-4db4-8b07-b3b84a7c27ef
 
-server:
-  port: 8088
+        metadata:
+          instance: cc
+          version: 1.0
+          author: tt
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+#rocketmq:
+#  name-server: 47.111.64.183:9876
+#  name-server: 120.26.177.51:9876
+
+# 服务注册
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka/

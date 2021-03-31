@@ -31,6 +31,7 @@ public class HbOrderController {
 
     /**
      * 创建订单
+     *
      * @param OrderDto
      * @return
      */
@@ -38,6 +39,7 @@ public class HbOrderController {
     @PostMapping("addOrder")
     @ControllerWebLog(name = "addOrder", isSaved = true)
     public ResponseResult addOrder(@RequestBody OrderDto OrderDto) {
+        log.info("进入添加订单接口");
         return ResponseResult.success(hbOrderService.addOrder(OrderDto));
     }
 
