@@ -914,3 +914,35 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2021-03-31 15:24:06.692  INFO 17984 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
 2021-03-31 15:24:06.759  INFO 17984 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
 2021-03-31 15:24:06.765  INFO 17984 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 14.818 seconds (JVM running for 16.333)
+2021-03-31 15:25:21.030  INFO 17984 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-03-31 15:25:21.030  INFO 17984 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-03-31 15:25:21.036  INFO 17984 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2021-03-31 15:25:21.076  INFO 17984 --- [http-nio-8088-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-03-31 15:25:21.076  INFO 17984 --- [http-nio-8088-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-03-31 15:25:26.249  INFO 17984 --- [http-nio-8088-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-03-31 15:25:26.250  INFO 17984 --- [http-nio-8088-exec-2] c.s.u.controller.HbUserController        : userId2
+2021-03-31 15:25:27.260  INFO 17984 --- [http-nio-8088-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-03-31 15:25:27.260  INFO 17984 --- [http-nio-8088-exec-5] c.s.u.controller.HbUserController        : userId2
+2021-03-31 15:25:27.758  INFO 17984 --- [http-nio-8088-exec-4] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-03-31 15:25:27.759  INFO 17984 --- [http-nio-8088-exec-4] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=1, username=ntt, password=123, phone=18851855103, code=null, sex=1, avatar=https://avatars.githubusercontent.com/u/58495771?v=4, address=江苏省南京市, email=1914866205@qq.com, nickname=醉忆丶无回路, money=75.1)
+2021-03-31 15:25:29.242  INFO 17984 --- [http-nio-8088-exec-4] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTg0NzE1MjksInVzZXJuYW1lIjoibnR0In0.bsODrogynjIHH50Em42PTOimfzl3vQfdU6YZvP9C0M4
+2021-03-31 15:25:45.428  INFO 17984 --- [http-nio-8088-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-03-31 15:25:45.429  INFO 17984 --- [http-nio-8088-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-03-31 15:25:46.054  INFO 17984 --- [http-nio-8088-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-03-31 15:25:46.054  INFO 17984 --- [http-nio-8088-exec-6] c.s.u.controller.HbUserController        : userId2
+2021-03-31 15:25:46.637  INFO 17984 --- [http-nio-8088-exec-7] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-03-31 15:25:46.638  INFO 17984 --- [http-nio-8088-exec-7] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=1, username=ntt, password=123, phone=18851855103, code=null, sex=1, avatar=https://avatars.githubusercontent.com/u/58495771?v=4, address=江苏省南京市, email=1914866205@qq.com, nickname=醉忆丶无回路, money=50.199999999999996)
+2021-03-31 15:25:47.132  INFO 17984 --- [http-nio-8088-exec-7] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTg0NzE1NDcsInVzZXJuYW1lIjoibnR0In0.Et-HQQTKMJIhgQwDH-9L1KJINPMk7aBXbvVXuWwdE2s
+2021-03-31 15:25:47.137  INFO 17984 --- [http-nio-8088-exec-8] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-03-31 15:25:47.138  INFO 17984 --- [http-nio-8088-exec-8] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=2, username=crq, password=456, phone=18851855105, code=null, sex=2, avatar=https://avatars.githubusercontent.com/u/59445871?v=4, address=江苏省南京市, email=2631315464@qq.com, nickname=骸冰, money=124.9)
+2021-03-31 15:25:47.934  INFO 17984 --- [http-nio-8088-exec-8] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTg0NzE1NDcsInVzZXJuYW1lIjoiY3JxIn0.LPSDzvzcLuzU0S-QMVGhDcewl2cUc-fqD35Oj18ZT3Q
+2021-03-31 15:28:16.758  INFO 17984 --- [http-nio-8088-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-03-31 15:28:16.758  INFO 17984 --- [http-nio-8088-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-03-31 15:28:17.336  INFO 17984 --- [http-nio-8088-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-03-31 15:28:17.336  INFO 17984 --- [http-nio-8088-exec-1] c.s.u.controller.HbUserController        : userId2
+2021-03-31 15:28:17.665  INFO 17984 --- [http-nio-8088-exec-2] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-03-31 15:28:17.666  INFO 17984 --- [http-nio-8088-exec-2] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=1, username=ntt, password=123, phone=18851855103, code=null, sex=1, avatar=https://avatars.githubusercontent.com/u/58495771?v=4, address=江苏省南京市, email=1914866205@qq.com, nickname=醉忆丶无回路, money=75.1)
+2021-03-31 15:28:18.571  INFO 17984 --- [http-nio-8088-exec-2] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTg0NzE2OTgsInVzZXJuYW1lIjoibnR0In0.2EdB2EdmqyaD0DkczuqOZoR1fE14gk06tXGG4NcxLOA
+2021-03-31 15:28:18.575  INFO 17984 --- [http-nio-8088-exec-5] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-03-31 15:28:18.575  INFO 17984 --- [http-nio-8088-exec-5] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=2, username=crq, password=456, phone=18851855105, code=null, sex=2, avatar=https://avatars.githubusercontent.com/u/59445871?v=4, address=江苏省南京市, email=2631315464@qq.com, nickname=骸冰, money=124.9)
+2021-03-31 15:28:19.234  INFO 17984 --- [http-nio-8088-exec-5] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTg0NzE2OTksInVzZXJuYW1lIjoiY3JxIn0.UznmFXGenhEy4WIwh9o2Yn-adJLm44k9YmEXbXglN4k
