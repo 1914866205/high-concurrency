@@ -90,14 +90,6 @@ public class HbUser {
 
 
     /**
-     * 生日
-     */
-    @Column(nullable = true)
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Timestamp birthday;
-
-
-    /**
      * 创建时间
      */
     @Column(nullable = false)

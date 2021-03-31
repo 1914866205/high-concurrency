@@ -26,9 +26,7 @@ class HbUserServiceImplTest {
     void edit() {
         Optional<HbUser> byId = hbUserRepository.findById("1");
         System.out.println("-----------------------");
-        System.out.println(byId);
-        System.out.println("-----------------------");
-        System.out.println(byId.get().getAvatar());
+        System.out.println(byId.get());
         System.out.println("-----------------------");
 
     }

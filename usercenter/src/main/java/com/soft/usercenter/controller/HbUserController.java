@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
 
 /**
  * @author 倪涛涛
@@ -83,8 +84,9 @@ public class HbUserController {
     @ControllerWebLog(name = "userEdit", isSaved = true)
     @ApiOperation(value = "用户信息修改", notes = "用户信息修改")//birthday时间传的形式为  2021-03-29 形式
     @PostMapping("edit")
-    public ResponseResult editUser(@RequestBody EditUserDto editUserDto) throws UnsupportedEncodingException {
-        System.out.println(editUserDto.toString());
+    public ResponseResult editUser(@RequestBody EditUserDto editUserDto) throws UnsupportedEncodingException, ParseException {
+        log.info("进入编辑接口");
+        log.info("editUserDto,{}", editUserDto);
         return hbUserService.edit(editUserDto);
     }
 

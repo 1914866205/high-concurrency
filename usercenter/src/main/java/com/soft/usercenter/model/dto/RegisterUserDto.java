@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * @author 倪涛涛
@@ -34,6 +35,5 @@ public class RegisterUserDto {
     private String address;
     private String email;
     private String nickname;
-    private Date birthday;
 }
 

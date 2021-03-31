@@ -7,6 +7,7 @@ import com.soft.usercenter.model.dto.RegisterUserDto;
 import com.soft.usercenter.model.dto.VerifyPhoneDto;
 
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
 
 /**
  * @author 倪涛涛
@@ -45,7 +46,7 @@ public interface HbUserService {
      * @param editUserDto
      * @return
      */
-    ResponseResult edit(EditUserDto editUserDto) throws UnsupportedEncodingException;
+    ResponseResult edit(EditUserDto editUserDto) throws UnsupportedEncodingException, ParseException;
 
     /**
      * 根据用户id得到用户信息

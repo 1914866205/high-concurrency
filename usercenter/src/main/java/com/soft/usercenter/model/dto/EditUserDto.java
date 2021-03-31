@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * @author 倪涛涛
@@ -19,22 +20,22 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EditUserDto {
-    private String pkHbUserId;
+    private String pkUserId;
     private String username;
     private String password;
     private String phone;
     /**
-     *手机验证码
+     * 手机验证码
      */
     private String code;
     /**
-     *1男 2女
-      */
+     * 1男 2女
+     */
     private int sex;
     private String avatar;
     private String address;
     private String email;
     private String nickname;
-    private Date birthday;
+    private Double money;
 }
 

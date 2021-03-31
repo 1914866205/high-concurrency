@@ -1,5 +1,7 @@
 package com.soft.content.service.impl;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.soft.content.common.ResponseResult;
 import com.soft.content.common.ResultCode;
 import com.soft.content.feignclient.UserCenterFeignClient;
@@ -119,22 +121,27 @@ public class HbOrderServiceImpl implements HbOrderService {
         } else {
             //查询用户余额
             ResponseResult consumerResult = userCenterFeignClient.findInfoById(hbOrder.getUserId());
-            HbUser hbUserConsumer = (HbUser) consumerResult.getData();
+//            log.info("***********************");
+//            log.info(consumerResult.toString());
+//            log.info(consumerResult.getData().toString());
+//            log.info("***********************");
 
+
+            HbUser hbUserConsumer = JSONObject.parseObject(consumerResult.getData().toString(), HbUser.class);
             //查询该商品的价格和剩余数量
             HbGood hbGood = hbGoodRepository.getOne(hbOrder.getPkGoodId());
 
             //获取商品的发布者
             String hbUserProduceId = hbGood.getUserId();
-            ResponseResult produceResult = userCenterFeignClient.findInfoById(hbUserProduceId.toString());
-            HbUser hbUserProduce = (HbUser) produceResult.getData();
+            ResponseResult produceResult = userCenterFeignClient.findInfoById(hbUserProduceId);
+            HbUser hbUserProduce = JSONObject.parseObject(produceResult.getData().toString(), HbUser.class);
 
-            System.out.println("*********变化前*************");
-            System.out.println(hbUserConsumer + "----" + hbUserConsumer);
-            System.out.println(hbUserProduce + "----" + hbUserProduce);
-            System.out.println(hbOrder + "----" + hbOrder);
-            System.out.println(hbGood + "----" + hbGood);
-            System.out.println("*******************************");
+//            log.info("*********变化前*************");
+//            log.info(hbUserConsumer + "----" + hbUserConsumer);
+//            log.info(hbUserProduce + "----" + hbUserProduce);
+//            log.info(hbOrder + "----" + hbOrder);
+//            log.info(hbGood + "----" + hbGood);
+//            log.info("*******************************");
             //如果购买数量大于库存，则购买失败
             if (hbOrder.getNumber() > hbGood.getCount()) {
                 //返回库存不足
@@ -158,12 +165,12 @@ public class HbOrderServiceImpl implements HbOrderService {
                 //订单状态改变
                 hbOrder.setState(2);
                 hbOrderRepository.save(hbOrder);
-                System.out.println("*******变化后***************");
-                System.out.println(hbUserConsumer + "----" + hbUserConsumer);
-                System.out.println(hbUserProduce + "----" + hbUserProduce);
-                System.out.println(hbOrder + "----" + hbOrder);
-                System.out.println(hbGood + "----" + hbGood);
-                System.out.println("*******************************");
+//                System.out.println("*******变化后***************");
+//                System.out.println(hbUserConsumer + "----" + hbUserConsumer);
+//                System.out.println(hbUserProduce + "----" + hbUserProduce);
+//                System.out.println(hbOrder + "----" + hbOrder);
+//                System.out.println(hbGood + "----" + hbGood);
+//                System.out.println("*******************************");
                 return ResponseResult.success();
             }
         }

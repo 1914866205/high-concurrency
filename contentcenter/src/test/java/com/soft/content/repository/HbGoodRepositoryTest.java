@@ -6,6 +6,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -23,13 +27,15 @@ class HbGoodRepositoryTest {
     private HbGoodService hbGoodService;
 
     @Test
-    void findHbGoodsByGoodNameOrDescriptionLike() {
+    void findHbGoodsByGoodNameOrDescriptionLike() throws ParseException {
 //        System.out.println(hbGoodRepository.findHbGoodsByGoodNameLikeOrDescriptionLike("%天线%", "%治%"));
 //        System.out.println(hbGoodRepository.findHbGoodsByGoodNameLikeOrDescriptionLike("%天线%", "%治%"));
 //        System.out.println("111111111111111");
 //        System.out.println(hbGoodRepository.findHbGoodsByGoodNameLike("%天线%"));
 //        System.out.println("111111111111111");
 //        System.out.println(hbGoodRepository.findHbGoodsByDescriptionLike("%治%"));
-        System.out.println(hbGoodService.findGoodsByType());
+//        System.out.println(hbGoodService.findGoodsByType());
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf("2021-03-31 14:19")));
+
     }
 }

@@ -1,5 +1,6 @@
 package com.soft.usercenter.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.soft.usercenter.common.ResponseResult;
 import com.soft.usercenter.common.ResultCode;
 import com.soft.usercenter.model.dto.EditUserDto;
@@ -17,7 +18,10 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -96,7 +100,6 @@ public class HbUserServiceImpl implements HbUserService {
                     .money(0.0)
                     .address(registerUserDto.getAddress())
                     .avatar(registerUserDto.getAvatar())
-                    .birthday(registerUserDto.getBirthday())
                     .nickname(registerUserDto.getNickname())
                     .email(registerUserDto.getEmail())
                     .username(registerUserDto.getUsername())
@@ -123,16 +126,16 @@ public class HbUserServiceImpl implements HbUserService {
 
     @Override
     public ResponseResult edit(EditUserDto editUserDto) throws UnsupportedEncodingException {
-        Optional<HbUser> byId = hbUserRepository.findById(editUserDto.getPkHbUserId());
+        Optional<HbUser> byId = hbUserRepository.findById(editUserDto.getPkUserId());
         System.out.println("原数据：" + byId.get());
 //        如果手机号没变，则无需判断code
         if (editUserDto.getPhone().equals(byId.get().getPhone())) {
+
             HbUser hbUser = HbUser.builder()
                     .pkUserId(byId.get().getPkUserId())
-                    .money(byId.get().getMoney())
+                    .money(editUserDto.getMoney())
                     .address(editUserDto.getAddress())
                     .avatar(editUserDto.getAvatar())
-                    .birthday(editUserDto.getBirthday())
                     .nickname(editUserDto.getNickname())
                     .email(editUserDto.getEmail())
                     .username(editUserDto.getUsername())
@@ -159,7 +162,6 @@ public class HbUserServiceImpl implements HbUserService {
                         .money(byId.get().getMoney())
                         .address(editUserDto.getAddress())
                         .avatar(editUserDto.getAvatar())
-                        .birthday(editUserDto.getBirthday())
                         .nickname(editUserDto.getNickname())
                         .email(editUserDto.getEmail())
                         .username(editUserDto.getUsername())
@@ -188,6 +190,6 @@ public class HbUserServiceImpl implements HbUserService {
 
     @Override
     public ResponseResult getInfoById(String userId) {
-        return ResponseResult.success(hbUserRepository.findById(userId));
+        return ResponseResult.success(JSON.toJSONString(hbUserRepository.findById(userId)));
     }
 }
