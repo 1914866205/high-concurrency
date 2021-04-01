@@ -22,4 +22,6 @@ public interface HbGoodService {
     Page<HbGood> findAllGoods(SearchDto searchDto);
 
     Map<String, List<HbGood>> findGoodsByType();
+
+    List<HbGood> getAllGoods();
 }

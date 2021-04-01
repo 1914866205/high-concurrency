@@ -58,4 +58,9 @@ public class HbGoodServiceImpl implements HbGoodService {
         return listMap;
     }
 
+    @Override
+    public List<HbGood> getAllGoods() {
+        return hbGoodRepository.findAll();
+    }
+
 }

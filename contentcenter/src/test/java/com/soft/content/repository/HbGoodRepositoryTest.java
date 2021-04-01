@@ -35,7 +35,7 @@ class HbGoodRepositoryTest {
 //        System.out.println("111111111111111");
 //        System.out.println(hbGoodRepository.findHbGoodsByDescriptionLike("%治%"));
 //        System.out.println(hbGoodService.findGoodsByType());
-        System.out.println(new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf("2021-03-31 14:19")));
-
+//        System.out.println(new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf("2021-03-31 14:19")));
+        System.out.println(hbGoodService.getAllGoods());
     }
 }

@@ -209,8 +209,14 @@ public class HbOrderServiceImpl implements HbOrderService {
                     .money(order.getNumber() * hbGood.getPrice())
                     .build());
         }
-            hbUser = null;
-            hbGood = null;
+        hbUser = null;
+        hbGood = null;
         return ResponseResult.success(list);
+    }
+
+    @Override
+    public void secKill(OrderDto orderDto) {
+        //此处模拟订单创建
+        addOrder(orderDto);
     }
 }
