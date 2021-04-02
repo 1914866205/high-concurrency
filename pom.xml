@@ -10,6 +10,7 @@
     <modules>
         <module>usercenter</module>
         <module>contentcenter</module>
+        <module>seckillcenter</module>
     </modules>
 
 

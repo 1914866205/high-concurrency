@@ -1,4 +1,4 @@
-package com.soft.content;
+package com.soft.seckillcenter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,22 +6,26 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.AsyncRestTemplate;
 import org.springframework.web.client.RestTemplate;
-import redis.clients.jedis.Jedis;
 
+
+/**
+ * @author nitaotao
+ */
 @SpringBootApplication
-@EnableFeignClients
 @EnableDiscoveryClient
-public class ContentcenterApplication {
+@EnableFeignClients(basePackages = {"com.soft.seckillcenter.feignclient"})
+public class SecKillCenterApplication {
 
     public static void main(String[] args) {
-//        测试redis是否连接成功
-//        Jedis jedis = new Jedis("120.26.177.51", 6379);
+        //测试redis是否连接成功
+//          Jedis jedis = new Jedis("120.26.177.51", 6379);
 //        System.out.println(jedis.ping());
-        SpringApplication.run(ContentcenterApplication.class, args);
+        SpringApplication.run(SecKillCenterApplication.class, args);
     }
 
     @Bean
@@ -41,5 +45,4 @@ public class ContentcenterApplication {
         factory.setTaskExecutor(new SimpleAsyncTaskExecutor());
         return new AsyncRestTemplate(factory);
     }
-
 }

@@ -132,11 +132,8 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-alibaba-dependencies</artifactId>
             <version>2.2.3.RELEASE</version>
-        </dependency>
-        <!--        Eureka是Netflix中的一个开源框架。它和 zookeeper、Consul一样,都是用于服务注册管理的-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <type>pom</type>
+            <scope>import</scope>
         </dependency>
 
         <!--        服务容错-->

@@ -1,5 +1,5 @@
 server:
-  port: 8088
+  port: 8082
 spring:
   application:
     name: user-center
@@ -70,10 +70,3 @@ management:
 #  name-server: 47.111.64.183:9876
 #  name-server: 120.26.177.51:9876
 
-# 服务注册
-eureka:
-  client:
-    fetch-registry: true
-    register-with-eureka: true
-    service-url:
-      defaultZone: http://localhost:7001/eureka/

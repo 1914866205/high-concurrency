@@ -39,10 +39,10 @@ public interface HbOrderService {
      * @return
      */
     ResponseResult findUserAllOrder(String pkUserId);
-
-    /**
-     * 把成功的订单请求发送给消息队列
-     * @param orderDto
-     */
-    void secKill(OrderDto orderDto);
+//
+//    /**
+//     * 把成功的订单请求发送给消息队列
+//     * @param orderDto
+//     */
+//    void secKill(OrderDto orderDto);
 }

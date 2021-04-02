@@ -40,6 +40,7 @@ import java.util.*;
 public class HbOrderServiceImpl implements HbOrderService {
     @Resource
     private HbOrderRepository hbOrderRepository;
+
     private final RedisTemplate<String, String> redisTemplate;
     private final UserCenterFeignClient userCenterFeignClient;
     private final HbGoodRepository hbGoodRepository;
@@ -213,10 +214,10 @@ public class HbOrderServiceImpl implements HbOrderService {
         hbGood = null;
         return ResponseResult.success(list);
     }
-
-    @Override
-    public void secKill(OrderDto orderDto) {
-        //此处模拟订单创建
-        addOrder(orderDto);
-    }
+//
+//    @Override
+//    public void secKill(OrderDto orderDto) {
+//        //此处模拟订单创建
+//        addOrder(orderDto);
+//    }
 }

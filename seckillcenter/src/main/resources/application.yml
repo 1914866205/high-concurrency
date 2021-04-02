@@ -1,15 +1,15 @@
 server:
-  port: 8081
+  port: 10005
 spring:
   application:
-    name: content-center
+    name: secKill-center
   zipkin:
     base-url: http://localhost:9411/
-    discoveryClientEnabled: false
+    discovery-client-enabled: false
   sleuth:
     sampler:
-      # æŠ½æ ·ç‡ï¼Œé»˜è®¤æ˜¯0.1ï¼ˆ10%ï¼‰
       probability: 1.0
+
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
@@ -24,17 +24,6 @@ spring:
       max-lifetime: 1800000
       connection-timeout: 30000
       connection-test-query: SELECT 1
-  cloud:
-    nacos:
-      discovery:
-        server-addr: localhost:8848
-    #        server-addr: 120.26.177.51:8848
-    #        server-addr: 120.26.177.51:8848
-    #        namespace: ef32c1be-c63c-4db4-8b07-b3b84a7c27ef
-    sentinel:
-      transport:
-        dashboard: localhost:8081
-
   jpa:
     database: mysql
     show-sql: true
@@ -48,14 +37,26 @@ spring:
     port: 6379
     jedis:
       pool:
-        # è¿æ¥æ± æœ€å¤§è¿æ¥æ•°ï¼ˆä½¿ç”¨è´Ÿå€¼è¡¨ç¤ºæ²¡æœ‰é™åˆ¶ï¼‰
+        # Á¬½Ó³Ø×î´óÁ¬½ÓÊı£¨Ê¹ÓÃ¸ºÖµ±íÊ¾Ã»ÓĞÏŞÖÆ£©
         max-active: 200
-        # è¿æ¥æ± æœ€å¤§é˜»å¡ç­‰å¾…æ—¶é—´ï¼ˆä½¿ç”¨è´Ÿå€¼è¡¨ç¤ºæ²¡æœ‰é™åˆ¶ï¼‰
+        # Á¬½Ó³Ø×î´ó×èÈûµÈ´ıÊ±¼ä£¨Ê¹ÓÃ¸ºÖµ±íÊ¾Ã»ÓĞÏŞÖÆ£©
         max-wait: -1
-        # è¿æ¥æ± ä¸­çš„æœ€å¤§ç©ºé—²è¿æ¥
+        # Á¬½Ó³ØÖĞµÄ×î´ó¿ÕÏĞÁ¬½Ó
         max-idle: 10
         min-idle: 0
     timeout: 5000
+
+  cloud:
+    nacos:
+      discovery:
+        #        server-addr: 120.26.177.51:8848
+        server-addr: localhost:8848
+        #        namespace: ef32c1be-c63c-4db4-8b07-b3b84a7c27ef
+
+        metadata:
+          instance: cc
+          version: 1.0
+          author: tt
 
 management:
   endpoints:
@@ -65,26 +66,9 @@ management:
   endpoint:
     health:
       show-details: always
-
-
-user-center:
-  ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
-
-seckill-center:
-  ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
-
-
-ribbon:
-  eager-load:
-    enabled: true
-    clients: user-center&secKill-center
-
-logging:
-  level:
-    com.soft.content.feignclient.UserCenterFeignClient: debug
-    #feignç»†ç²’åº¦é…ç½®
+#rocketmq:
+#  name-server: 47.111.64.183:9876
+#  name-server: 120.26.177.51:9876
 
 feign:
   sentinel:
@@ -92,17 +76,23 @@ feign:
   client:
     config:
       default:
-        #æƒ³è¦è°ƒç”¨çš„å¾®æœåŠ¡çš„åç§°
-        user-center:
+        #ÏëÒªµ÷ÓÃµÄÎ¢·şÎñµÄÃû³Æ
+        content-center:
           loggerLevel: full
           requestInterceptors:
-            - com.soft.content.feignclient.TokenInterceptor
-        secKill-center:
-          loggerLevel: full
-          requestInterceptors:
-            - com.soft.content.feignclient.TokenInterceptor
+            - com.soft.seckillcenter.feignclient.TokenInterceptor
 
   httpclient:
     enabled: true
     max-connections: 200
     max-connections-per-route: 50
+
+ribbon:
+  eager-load:
+    enabled: true
+    clients: content-center
+
+content-center:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
