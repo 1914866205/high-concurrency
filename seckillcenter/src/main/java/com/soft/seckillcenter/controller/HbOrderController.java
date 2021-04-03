@@ -6,12 +6,17 @@ import com.soft.seckillcenter.common.ResultCode;
 import com.soft.seckillcenter.model.dto.OrderDto;
 import com.soft.seckillcenter.service.HbOrderService;
 import io.swagger.annotations.Api;
+import jodd.datetime.TimeUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.Redisson;
+import org.redisson.api.RLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author 倪涛涛
@@ -29,38 +34,41 @@ public class HbOrderController {
 
     @Resource
     private HbOrderService hbOrderService;
+
     @Autowired
-    private RedisTemplate<String, String> redisTemplate;
+    private Redisson redisson;
 
     @PostMapping("secKill")
     ResponseResult secKill(@RequestBody OrderDto orderDto) {
+        //加锁
+        String lockKey = orderDto.getPkGoodId();
+        //设置线程ID,作为锁， 因为如果是固定的lockkey，在高并发场景下，锁会永久失效
+        String clientId = UUID.randomUUID().toString();
+        //为了防止中间代码异常，锁无法解开，要try catch，同时finally保证锁会被解开
+        RLock redissonLock = redisson.getLock(lockKey);
 
-        //1.redis先库存-1，要使用decrement方法，底层是线程安全的
-        //返回的数据是减完之后的数字
-        Long stock = redisTemplate.opsForValue().decrement(Constants.REDIS_PRODUCT_STOCK_PREFIX + orderDto.getPkGoodId());
-        if (stock < 0) {
-            //如果库存＜0   防止少卖
-            redisTemplate.opsForValue().increment(Constants.REDIS_PRODUCT_STOCK_PREFIX + orderDto.getPkGoodId());
-            return ResponseResult.failure(ResultCode.GOOD_CLEAN);
-        }
-
-        //2.如果有剩余商品
-        //发送消息给消息队列，传输用户id和订单信息，异步传输数据
-        //秒杀活动每人限抢一个
         try {
-            hbOrderService.secKill(orderDto);
+
+            //boolean result=redisTemplate.opsForValue().setIfAbsent(lockKye,"lock");
+//为了防止系统直接宕机，锁无法解开，要给锁设置过期时间10秒
+//restTemplate.expire(lockKey,10,TimeUnit.SECONDS)
+//            boolean result = redisTemplate.opsForValue().setIfAbsent(lockKey, clientId, 10, TimeUnit.SECONDS);
+//            if (!result) {
+//                return ResponseResult.failure(ResultCode.INTERFACE_IN_LOCK);
+//            }
+            //加锁, 底层= setIfAbsent
+            redissonLock.lock();
+            hbOrderService.toSecKill(orderDto);
         } catch (Exception e) {
-            //如果遇到异常，回滚事务
-            redisTemplate.opsForValue().increment(Constants.REDIS_PRODUCT_STOCK_PREFIX + orderDto.getPkGoodId());
-            log.info("订单创建失败");
-            return ResponseResult.failure(ResultCode.ORDER_CREATE_ERROR);
+            e.printStackTrace();
+        } finally {
+            //开锁
+//            if (clientId.equals(redisTemplate.opsForValue().get(lockKey))) {
+//                redisTemplate.delete(lockKey);
+//            }
+            redissonLock.unlock();
+            return ResponseResult.failure(ResultCode.SERVER_ERROR);
         }
-
-        log.info("订单创建成功" + redisTemplate.opsForValue().get(Constants.REDIS_PRODUCT_STOCK_PREFIX + orderDto.getPkGoodId()));
-        return ResponseResult.success();
-
-        //3.消息队列监听到数据变化，创建订单，此处先用RabbitMQ替代
-
 
     }
 }

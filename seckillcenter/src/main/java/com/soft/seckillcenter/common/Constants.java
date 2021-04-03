@@ -18,5 +18,7 @@ public class Constants {
      */
     public static final String REDIS_PRODUCT_STOCK_PREFIX = "product_stock_";
 
+    public static  int count = 0;
+
 
 }

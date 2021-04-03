@@ -380,3 +380,7 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2021-04-02 16:20:41.570  INFO 10848 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
 2021-04-02 16:20:41.635  INFO 10848 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
 2021-04-02 16:20:41.641  INFO 10848 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 16.422 seconds (JVM running for 17.987)
+2021-04-02 16:53:46.846  WARN 10848 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m25s170ms664µs600ns).
+2021-04-02 18:33:34.259  WARN 10848 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=58m16s770ms788µs200ns).
+2021-04-02 20:09:08.320  WARN 10848 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h27m33s952ms321µs100ns).
+2021-04-02 21:01:02.030  WARN 10848 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=45m23s645ms304µs).

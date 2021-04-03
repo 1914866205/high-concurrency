@@ -1,6 +1,7 @@
 package com.soft.seckillcenter.service;
 
 
+import com.soft.seckillcenter.common.ResponseResult;
 import com.soft.seckillcenter.model.dto.OrderDto;
 
 /**
@@ -18,4 +19,5 @@ public interface HbOrderService {
      */
     void secKill(OrderDto orderDto);
 
+    ResponseResult toSecKill(OrderDto orderDto);
 }

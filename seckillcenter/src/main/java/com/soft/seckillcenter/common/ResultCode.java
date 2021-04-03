@@ -65,6 +65,8 @@ public enum ResultCode {
     INTERFACE_ADDRESS_INVALID(60004, "接口地址无效"),
     INTERFACE_REQUEST_TIMEOUT(60005, "接口请求超时"),
     INTERFACE_EXCEED_LOAD(60006, "接口负载过高"),
+    INTERFACE_IN_LOCK(60016, "接口已上锁"),
+
     SCHOOL_MATE_THUMBS_UP(60007, "点赞成功"),
     SCHOOL_MATE_THUMBS_DOWN(60008, "取消点赞"),
     SCHOOL_MATE_THUMBS_UP_REDIS(60009, "redis没有点赞信息"),

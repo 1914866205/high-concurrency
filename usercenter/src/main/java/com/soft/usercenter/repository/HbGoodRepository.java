@@ -12,4 +12,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface HbGoodRepository extends JpaRepository<HbGood, String> {
 
+
 }

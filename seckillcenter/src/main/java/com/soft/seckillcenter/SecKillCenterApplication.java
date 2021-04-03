@@ -1,12 +1,13 @@
 package com.soft.seckillcenter;
 
+import org.redisson.Redisson;
+import org.redisson.config.Config;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.AsyncRestTemplate;
@@ -27,7 +28,6 @@ public class SecKillCenterApplication {
 //        System.out.println(jedis.ping());
         SpringApplication.run(SecKillCenterApplication.class, args);
     }
-
     @Bean
     RestTemplate restTemplate() {
         return new RestTemplate();
@@ -44,5 +44,13 @@ public class SecKillCenterApplication {
         //设置异步任务（线程不会重用，每次调用时都会重新启动一个新的线程
         factory.setTaskExecutor(new SimpleAsyncTaskExecutor());
         return new AsyncRestTemplate(factory);
+    }
+
+    @Bean
+    public Redisson redisson() {
+        //单机模式
+        Config config = new Config();
+        config.useSingleServer().setAddress("redis://120.26.177.51:6379").setDatabase(0);
+        return (Redisson) Redisson.create(config);
     }
 }
