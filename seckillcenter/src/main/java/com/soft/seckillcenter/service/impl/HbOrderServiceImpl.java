@@ -52,8 +52,8 @@ public class HbOrderServiceImpl implements HbOrderService {
         //秒杀活动每人限抢一个
         try {
 //            this.secKill(orderDto);
-            Constants.count++;
-            System.out.println("创建第" + Constants.count + "个订单");
+            //先把其他逻辑仅仅作为打印
+            System.out.println("消息队列信息+1");
         } catch (Exception e) {
             //如果遇到异常，回滚事务
             redisTemplate.opsForValue().increment(Constants.REDIS_PRODUCT_STOCK_PREFIX + orderDto.getPkGoodId());
