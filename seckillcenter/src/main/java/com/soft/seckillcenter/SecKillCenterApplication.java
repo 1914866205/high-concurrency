@@ -24,8 +24,6 @@ public class SecKillCenterApplication {
 
     public static void main(String[] args) {
         //测试redis是否连接成功
-//          Jedis jedis = new Jedis("120.26.177.51", 6379);
-//        System.out.println(jedis.ping());
         SpringApplication.run(SecKillCenterApplication.class, args);
     }
     @Bean

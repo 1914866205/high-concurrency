@@ -11,6 +11,7 @@
         <module>usercenter</module>
         <module>contentcenter</module>
         <module>seckillcenter</module>
+        <module>mqcenter</module>
     </modules>
 
 

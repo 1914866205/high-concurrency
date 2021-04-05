@@ -1,4 +1,4 @@
-package com.soft.content.common;
+package com.soft.mqcenter.common;
 
 /**
  * @author 倪涛涛
@@ -65,6 +65,8 @@ public enum ResultCode {
     INTERFACE_ADDRESS_INVALID(60004, "接口地址无效"),
     INTERFACE_REQUEST_TIMEOUT(60005, "接口请求超时"),
     INTERFACE_EXCEED_LOAD(60006, "接口负载过高"),
+    INTERFACE_IN_LOCK(60016, "接口已上锁"),
+
     SCHOOL_MATE_THUMBS_UP(60007, "点赞成功"),
     SCHOOL_MATE_THUMBS_DOWN(60008, "取消点赞"),
     SCHOOL_MATE_THUMBS_UP_REDIS(60009, "redis没有点赞信息"),
@@ -79,9 +81,7 @@ public enum ResultCode {
     ORDER_PAY(80002, "订单已支付，请不要重复支付"),
     Order_OVER(80003, "库存不足"), Order_CREDIT_LOW(8004, "余额不足"),
     GOOD_CLEAN(80004, "商品已被抢光"),
-    ORDER_CREATE_ERROR(80005, "订单创建异常"),
-    GOOD_IN_LOCK(80006,"商品被锁");
-
+    ORDER_CREATE_ERROR(80005,"订单创建异常");
 
 
     /*校友圈模块：90001-99999*/

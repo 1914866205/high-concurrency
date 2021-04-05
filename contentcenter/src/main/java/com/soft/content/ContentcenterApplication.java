@@ -12,6 +12,8 @@ import org.springframework.web.client.AsyncRestTemplate;
 import org.springframework.web.client.RestTemplate;
 import redis.clients.jedis.Jedis;
 
+import java.sql.ResultSet;
+
 @SpringBootApplication
 @EnableFeignClients
 @EnableDiscoveryClient
@@ -26,7 +28,15 @@ public class ContentcenterApplication {
 
     @Bean
     RestTemplate restTemplate() {
-        return new RestTemplate();
+//        java.net.SocketTimeoutException: Read timed out
+//        at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_41]
+        //复杂构造函数的使用
+        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+        requestFactory.setConnectTimeout(30000);//设置超时
+        requestFactory.setReadTimeout(30000);
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setRequestFactory(requestFactory);
+        return restTemplate;
     }
 
     @Bean

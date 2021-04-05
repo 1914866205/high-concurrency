@@ -58,6 +58,9 @@ public class HbOrderController {
 //            }
             //加锁, 底层= setIfAbsent
             redissonLock.lock();
+            System.out.println(1);
+            log.info(lockKey+"已上锁");
+            System.out.println(2);
             hbOrderService.toSecKill(orderDto);
         } catch (Exception e) {
             e.printStackTrace();
@@ -66,7 +69,12 @@ public class HbOrderController {
 //            if (clientId.equals(redisTemplate.opsForValue().get(lockKey))) {
 //                redisTemplate.delete(lockKey);
 //            }
+            System.out.println(9);
+
             redissonLock.unlock();
+            log.info(lockKey + "已解锁");
+            System.out.println(10);
+
             return ResponseResult.failure(ResultCode.SERVER_ERROR);
         }
 
