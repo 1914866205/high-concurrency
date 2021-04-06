@@ -12,6 +12,7 @@ import com.soft.content.service.HbOrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -72,6 +73,7 @@ public class HbOrderController {
     @PostMapping("spikeOrder")
     public ResponseResult spikeOrder(@RequestBody OrderDto orderDto) {
         //  负载均衡，高并发，请求秒杀服务
+        log.info("内容中心收到秒杀订单:" + orderDto.toString());
         return secKillCenterFeignClient.secKill(orderDto);
 
 //        //1.redis先库存-1，要使用decrement方法，底层是线程安全的
@@ -106,16 +108,16 @@ public class HbOrderController {
     /**
      * 创建订单
      *
-     * @param OrderDto
+     * @param orderDto
      * @return
      */
     @ApiOperation(value = "添加订单", notes = "添加订单")
     @PostMapping("addOrder")
     @ControllerWebLog(name = "addOrder", isSaved = true)
-    public ResponseResult addOrder(@RequestBody OrderDto OrderDto) {
+    public ResponseResult addOrder(@RequestBody OrderDto orderDto) {
 
-        log.info("进入添加订单接口");
-        return ResponseResult.success(hbOrderService.addOrder(OrderDto));
+        log.info("进入内容中心添加订单接口：" + orderDto);
+        return ResponseResult.success(hbOrderService.addOrder(orderDto));
     }
 
     /**

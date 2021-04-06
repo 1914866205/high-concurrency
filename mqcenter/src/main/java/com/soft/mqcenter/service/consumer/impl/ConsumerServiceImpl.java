@@ -23,19 +23,19 @@ import javax.annotation.Resource;
 public class ConsumerServiceImpl implements ConsumerService {
     @Autowired
     private RedisUtil redisUtil;
-//    @Resource
-//    private ContentCenterFeignClient contentCenterFeignClient;
+    @Resource
+    private ContentCenterFeignClient contentCenterFeignClient;
 
     @Override
     public void receiveMessage(String message) {
-        System.out.println("收到订单：" + message);
+        log.info("队列监听到订单信息：" + message);
 
         //json对象反序列化
         OrderDto orderDto = JSON.parseObject(message, OrderDto.class);
 
         //由内容中心创建订单
         //此处可以用自旋转 调用线程池的线程重复创建
-
-//        contentCenterFeignClient.addOrder(orderDto);
+        log.info("队列发送订单信息给内容中心，由内容中心创建订单:" + orderDto);
+        contentCenterFeignClient.addOrder(orderDto);
     }
 }

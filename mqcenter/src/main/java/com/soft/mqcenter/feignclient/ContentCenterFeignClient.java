@@ -3,6 +3,7 @@ package com.soft.mqcenter.feignclient;
 
 import com.soft.mqcenter.common.ResponseResult;
 import com.soft.mqcenter.model.dto.OrderDto;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @Description TODO
  * @createTime 2021年4月5日 14:00:03
  */
-//@FeignClient(name = "content-center")
+@FeignClient(name = "content-center")
 public interface ContentCenterFeignClient {
 
 

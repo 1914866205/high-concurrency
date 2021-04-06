@@ -1,6 +1,10 @@
 package com.soft.seckillcenter.feignclient;
 
+import com.soft.seckillcenter.common.ResponseResult;
+import com.soft.seckillcenter.model.dto.OrderDto;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  * @author 倪涛涛
@@ -12,4 +16,6 @@ import org.springframework.cloud.openfeign.FeignClient;
 @FeignClient(name = "mq-center")
 public interface MQCenterFeignClient {
 
+    @PostMapping("messageToQueue")
+    ResponseResult messageToQueue(@RequestBody OrderDto orderDto);
 }

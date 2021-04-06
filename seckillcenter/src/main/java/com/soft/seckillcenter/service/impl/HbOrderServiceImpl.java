@@ -4,6 +4,7 @@ import com.soft.seckillcenter.common.Constants;
 import com.soft.seckillcenter.common.ResponseResult;
 import com.soft.seckillcenter.common.ResultCode;
 import com.soft.seckillcenter.feignclient.ContentCenterFeignClient;
+import com.soft.seckillcenter.feignclient.MQCenterFeignClient;
 import com.soft.seckillcenter.model.dto.OrderDto;
 import com.soft.seckillcenter.service.HbOrderService;
 import lombok.extern.slf4j.Slf4j;
@@ -26,14 +27,10 @@ import javax.annotation.Resource;
 @Transactional(rollbackFor = {RuntimeException.class})
 public class HbOrderServiceImpl implements HbOrderService {
     @Resource
-    private ContentCenterFeignClient contentCenterFeignClient;
+    private MQCenterFeignClient mqCenterFeignClient;
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
 
-    @Override
-    public void secKill(OrderDto orderDto) {
-        contentCenterFeignClient.addOrder(orderDto);
-    }
 
     @Override
     public ResponseResult toSecKill(OrderDto orderDto) {
@@ -56,9 +53,9 @@ public class HbOrderServiceImpl implements HbOrderService {
         try {
             System.out.println(6);
 
-//            this.secKill(orderDto);
             //先把其他逻辑仅仅作为打印
-            System.out.println("消息队列信息+1");
+            System.out.println("秒杀中心把订单发给消息中心");
+            mqCenterFeignClient.messageToQueue(orderDto);
         } catch (Exception e) {
             System.out.println(7);
 

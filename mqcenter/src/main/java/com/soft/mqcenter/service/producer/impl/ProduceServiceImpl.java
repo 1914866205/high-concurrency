@@ -31,9 +31,7 @@ public class ProduceServiceImpl implements ProducerService {
 //        private String phone;
 //        private int number;
         // 键为product_商品id   值为订单对象的json字符串
-        System.out.println("键为：++++++++++++++++++++++++++++++++++++++");
-        System.out.println(Constants.REDIS_PRODUCT_PREFIX + orderDto.getPkGoodId());
-        System.out.println("键为：++++++++++++++++++++++++++++++++++++++");
+        log.info("队列存储信息:"+Constants.REDIS_PRODUCT_PREFIX + orderDto.getPkGoodId());
         stringRedisTemplate.convertAndSend(Constants.REDIS_PRODUCT_PREFIX + orderDto.getPkGoodId(), JSON.toJSONString(orderDto));
     }
 }

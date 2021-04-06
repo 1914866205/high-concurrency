@@ -27,7 +27,7 @@ public class ListenerConfig {
                                             MessageListenerAdapter listenerAdapter) {
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
-        container.addMessageListener(listenerAdapter, new PatternTopic("produce_1"));
+        container.addMessageListener(listenerAdapter, new PatternTopic("product_1"));
         /**
          * 如果不定义线程池，每一次消费都会创建一个线程池，如果业务层不做限制，就会导致秒杀超卖
          */

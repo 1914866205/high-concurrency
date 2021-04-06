@@ -40,10 +40,11 @@ public class HbOrderController {
 
     @PostMapping("secKill")
     ResponseResult secKill(@RequestBody OrderDto orderDto) {
+        log.info("秒杀中心收到秒杀请求:"+orderDto);
         //加锁
         String lockKey = orderDto.getPkGoodId();
         //设置线程ID,作为锁， 因为如果是固定的lockkey，在高并发场景下，锁会永久失效
-        String clientId = UUID.randomUUID().toString();
+//        String clientId = UUID.randomUUID().toString();
         //为了防止中间代码异常，锁无法解开，要try catch，同时finally保证锁会被解开
         RLock redissonLock = redisson.getLock(lockKey);
 

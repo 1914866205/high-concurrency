@@ -13,11 +13,10 @@ import com.soft.seckillcenter.model.dto.OrderDto;
  */
 public interface HbOrderService {
 
+
     /**
      * 把成功的订单请求发送给消息队列
      * @param orderDto
      */
-    void secKill(OrderDto orderDto);
-
     ResponseResult toSecKill(OrderDto orderDto);
 }
