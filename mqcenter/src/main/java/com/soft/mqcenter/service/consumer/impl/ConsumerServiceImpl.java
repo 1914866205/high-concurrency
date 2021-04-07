@@ -37,16 +37,16 @@ public class ConsumerServiceImpl implements ConsumerService {
         log.info(++num + "队列监听到订单信息：");
 //        log.info("队列监听到订单信息：" + message);
 
-//        //json对象反序列化
-//        OrderDto orderDto = JSON.parseObject(message, OrderDto.class);
-//
-//        //由内容中心创建订单
-//        //此处可以用自旋转 调用线程池的线程重复创建
-//        log.info("队列发送订单信息给内容中心，由内容中心创建订单:" + orderDto);
-//        try {
-//            contentCenterFeignClient.addOrder(orderDto);
-//        } catch (Exception e) {
-//            redisTemplate.opsForValue().increment(Constants.REDIS_PRODUCT_STOCK_PREFIX + orderDto.getPkGoodId());
-//        }
+        //json对象反序列化
+        OrderDto orderDto = JSON.parseObject(message, OrderDto.class);
+
+        //由内容中心创建订单
+        //此处可以用自旋转 调用线程池的线程重复创建
+        log.info("队列发送订单信息给内容中心，由内容中心创建订单:" + orderDto);
+        try {
+            contentCenterFeignClient.addOrder(orderDto);
+        } catch (Exception e) {
+            redisTemplate.opsForValue().increment(Constants.REDIS_PRODUCT_STOCK_PREFIX + orderDto.getPkGoodId());
+        }
     }
 }

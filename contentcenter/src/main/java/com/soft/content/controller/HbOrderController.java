@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * @author 倪涛涛
@@ -41,6 +42,7 @@ public class HbOrderController {
     private HbGoodService hbGoodService;
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
+    private int num = 0;
 
     /**
      * 在Servlet初始化之前加载一些缓存数据等
@@ -87,9 +89,10 @@ public class HbOrderController {
     @PostMapping("addOrder")
     @ControllerWebLog(name = "addOrder", isSaved = true)
     public ResponseResult addOrder(@RequestBody OrderDto orderDto) {
-
-        log.info("进入内容中心添加订单接口：" + orderDto);
-        return ResponseResult.success(hbOrderService.addOrder(orderDto));
+        log.info(++num + "进入内容中心添加订单接口：");
+        Thread thread = new Thread(new FollowThread(orderDto));
+        thread.start();
+        return ResponseResult.success();
     }
 
     /**
@@ -132,8 +135,20 @@ public class HbOrderController {
         return ResponseResult.success(hbOrderService.findUserAllOrder(pkUserId));
     }
 
-}
+    class FollowThread extends Thread {
+        private OrderDto orderDto;
 
+        public FollowThread(OrderDto orderDto) {
+            this.orderDto = orderDto;
+        }
+
+        @Override
+        public void run() {
+            hbOrderService.addOrder(orderDto);
+        }
+    }
+
+}
 
 
 //    /**
