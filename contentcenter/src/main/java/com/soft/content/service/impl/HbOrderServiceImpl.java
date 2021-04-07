@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.soft.content.common.ResponseResult;
 import com.soft.content.common.ResultCode;
+import com.soft.content.feignclient.SecKillCenterFeignClient;
 import com.soft.content.feignclient.UserCenterFeignClient;
 import com.soft.content.model.dto.OrderDto;
 import com.soft.content.model.entity.HbGood;
@@ -22,10 +23,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author 倪涛涛
@@ -38,12 +44,41 @@ import java.util.*;
 @Service
 @RequiredArgsConstructor(onConstructor = @_(@Autowired))
 public class HbOrderServiceImpl implements HbOrderService {
-    @Resource
-    private HbOrderRepository hbOrderRepository;
-
+    private final HbOrderRepository hbOrderRepository;
+    private final HbGoodRepository hbGoodRepository;
     private final RedisTemplate<String, String> redisTemplate;
     private final UserCenterFeignClient userCenterFeignClient;
-    private final HbGoodRepository hbGoodRepository;
+    private final SecKillCenterFeignClient secKillCenterFeignClient;
+    LinkedBlockingQueue<OrderDto> queue = new LinkedBlockingQueue<>();
+    private int number = 0;
+
+    @PostConstruct
+    public void init() {
+        //声明定时任务
+        ScheduledExecutorService sh = Executors.newScheduledThreadPool(1);
+        sh.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                if (queue.size()==0){
+                    return;
+                }
+                number += queue.size();
+                log.info("定时任务被执行"+queue.size()+"number:"+number);
+                Runnable target;
+                Thread thread = new Thread(new SendThread(queue));
+                thread.start();
+//                secKillCenterFeignClient.barchSeckill(queue);
+                queue.clear();
+            }
+        }, 0, 10, TimeUnit.MILLISECONDS);
+    }
+
+    @Override
+    public ResponseResult seckOrder(OrderDto orderDto) {
+        queue.add(orderDto);
+        return ResponseResult.success(ResultCode.Order_Send);
+    }
+
 
     /**
      * 添加订单
@@ -166,12 +201,6 @@ public class HbOrderServiceImpl implements HbOrderService {
                 //订单状态改变
                 hbOrder.setState(2);
                 hbOrderRepository.save(hbOrder);
-//                System.out.println("*******变化后********");
-//                System.out.println(hbUserConsumer + "----" + hbUserConsumer);
-//                System.out.println(hbUserProduce + "----" + hbUserProduce);
-//                System.out.println(hbOrder + "----" + hbOrder);
-//                System.out.println(hbGood + "----" + hbGood);
-//                System.out.println("********************");
                 return ResponseResult.success();
             }
         }
@@ -214,10 +243,18 @@ public class HbOrderServiceImpl implements HbOrderService {
         hbGood = null;
         return ResponseResult.success(list);
     }
-//
-//    @Override
-//    public void secKill(OrderDto orderDto) {
-//        //此处模拟订单创建
-//        addOrder(orderDto);
-//    }
+
+    class SendThread extends Thread {
+        private LinkedBlockingQueue<OrderDto> queue;
+
+        public SendThread(LinkedBlockingQueue<OrderDto> queue) {
+            this.queue = queue;
+        }
+
+        @Override
+        public void run() {
+            secKillCenterFeignClient.barchSeckill(queue);
+        }
+    }
+
 }

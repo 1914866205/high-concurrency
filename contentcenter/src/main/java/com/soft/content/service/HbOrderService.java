@@ -39,6 +39,13 @@ public interface HbOrderService {
      * @return
      */
     ResponseResult findUserAllOrder(String pkUserId);
+
+    /**
+     * 秒杀订单，进行分批发送
+     * @param orderDto
+     * @return
+     */
+    ResponseResult seckOrder(OrderDto orderDto);
 //
 //    /**
 //     * 把成功的订单请求发送给消息队列

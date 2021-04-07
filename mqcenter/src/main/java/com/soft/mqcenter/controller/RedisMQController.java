@@ -20,10 +20,12 @@ import org.springframework.web.bind.annotation.*;
 public class RedisMQController {
     @Autowired
     private ProducerService producerService;
+    private int number = 0;
 
     @PostMapping("/messageToQueue")
     public ResponseResult messageToQueue(@RequestBody OrderDto orderDto) {
-        log.info("消息中心收到订单，上传到消息队列:" + orderDto);
+        number++;
+        log.info("消息中心收到订单，上传到消息队列_number:" + number);
         producerService.sendMessage(orderDto);
         return ResponseResult.success();
     }

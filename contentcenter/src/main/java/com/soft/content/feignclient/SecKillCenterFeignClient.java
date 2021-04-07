@@ -6,6 +6,8 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.concurrent.LinkedBlockingQueue;
+
 /**
  * @author 倪涛涛
  * @version 1.0.0
@@ -24,4 +26,11 @@ public interface SecKillCenterFeignClient {
      */
     @PostMapping("order/secKill")
     ResponseResult secKill(@RequestBody OrderDto orderDto);
+
+    /**
+     * 批量分批发送
+     * @param queue
+     */
+    @PostMapping("order/barchSecKill")
+    void barchSeckill(@RequestBody LinkedBlockingQueue<OrderDto> queue);
 }

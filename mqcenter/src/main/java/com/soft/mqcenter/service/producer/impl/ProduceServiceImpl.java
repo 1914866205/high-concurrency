@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 public class ProduceServiceImpl implements ProducerService {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
+    private int number = 0;
 
     @Override
     public void sendMessage(OrderDto orderDto) {
@@ -31,7 +32,8 @@ public class ProduceServiceImpl implements ProducerService {
 //        private String phone;
 //        private int number;
         // 键为product_商品id   值为订单对象的json字符串
-        log.info("队列存储信息:"+Constants.REDIS_PRODUCT_PREFIX + orderDto.getPkGoodId());
+        log.info(++number+"队列存储信息_number");
+//        log.info("队列存储信息:"+Constants.REDIS_PRODUCT_PREFIX + orderDto.getPkGoodId());
         stringRedisTemplate.convertAndSend(Constants.REDIS_PRODUCT_PREFIX + orderDto.getPkGoodId(), JSON.toJSONString(orderDto));
     }
 }

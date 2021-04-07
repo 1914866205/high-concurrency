@@ -49,7 +49,7 @@ public class HbOrderServiceImpl implements HbOrderService {
         try {
 
             //先把其他逻辑仅仅作为打印
-            System.out.println("秒杀中心把订单发给消息中心");
+//            System.out.println("秒杀中心把订单发给消息中心");
             mqCenterFeignClient.messageToQueue(orderDto);
         } catch (Exception e) {
             //如果遇到异常，回滚事务

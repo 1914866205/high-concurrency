@@ -80,7 +80,8 @@ public enum ResultCode {
     Order_OVER(80003, "库存不足"), Order_CREDIT_LOW(8004, "余额不足"),
     GOOD_CLEAN(80004, "商品已被抢光"),
     ORDER_CREATE_ERROR(80005, "订单创建异常"),
-    GOOD_IN_LOCK(80006,"商品被锁");
+    GOOD_IN_LOCK(80006,"商品被锁"),
+    Order_Send(80007,"成功参与秒杀");
 
 
 
