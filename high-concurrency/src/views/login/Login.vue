@@ -28,7 +28,6 @@
                     label="用户名"
                     name="name"
                     type="text"
-                    
                     v-model="validateForm.username"
                   />
                   <v-text-field
@@ -36,7 +35,6 @@
                     label="密码"
                     name="password"
                     type="password"
-                    
                     v-model="validateForm.password"
                   />
                 </v-form>
@@ -46,7 +44,6 @@
                     label="手机号"
                     name="name"
                     type="phone"
-                   
                     v-model="validateForm.phone"
                   />
 
@@ -55,7 +52,6 @@
                     label="验证码"
                     name="password"
                     type="password"
-                    
                     v-model="validateForm.code"
                   >
                   </v-text-field>
@@ -89,6 +85,7 @@
 </template>
 
 <script>
+const API = require("../../utils/request.js")
 export default {
   name: "Login",
   data() {
@@ -133,67 +130,64 @@ export default {
     source: String,
   },
   methods: {
-    submit() {
+    async submit() {
       if (this.loginNum === 0) {
         //表单验证
-        this.axios({
-          method: "post",
-          url: this.GLOBAL.baseUrl + "/user/login",
-          data: {
+
+          this.url = this.GLOBAL.baseUrl + "/user/login",
+          this.data= {
             username: this.validateForm.username,
             password: this.validateForm.password,
           },
-        }).then((res) => {
+          this.result = await API.init(this.url,this.data,"post")
           //登录成功
-          console.log(res);
-          if (res.data.code === 1) {
+          console.log("登录成功")
+          console.log(this.result);
+          if (this.result.code === 1) {
             //存入token
-            localStorage.setItem("token", res.data.data.token);
-            localStorage.setItem("userId", res.data.data.user.pkUserId);
-            localStorage.setItem("avatar", res.data.data.user.avatar);
-            this.$store.commit("setToken", res.data.data.token);
+            localStorage.setItem("token", this.result.data.token);
+            localStorage.setItem("user", this.result.data.user);
+            localStorage.setItem("userId", this.result.data.user.pkUserId);
+            localStorage.setItem("avatar", this.result.data.user.avatar);
+            this.$store.commit("setToken", this.result.data.token);
             this.$router.push("/");
           }
-        });
+
       } else if (this.loginNum === 1) {
-        this.axios({
-          method: "post",
-          url: this.GLOBAL.baseUrl + "/user/code/login",
-          data: {
+          this.url= this.GLOBAL.baseUrl + "/user/code/login",
+          this.data={
             phoneNumber: this.validateForm.phone,
             verifyCode: this.validateForm.code,
           },
-        }).then((res) => {
-          //登录成功
-          console.log(res);
-          if (res.data.code === 1) {
+          this.result = await API.init(this.url,this.data,"post")
+          if (this.result.code === 1) {
             //存入token
-            localStorage.setItem("token", res.data.data.token);
-            this.$store.commit("setToken", res.data.data.token);
+            localStorage.setItem("token", this.result.data.token);
+            localStorage.setItem("user", this.result.data.user);
+            localStorage.setItem("userId", this.result.data.user.pkUserId);
+            localStorage.setItem("avatar", this.result.data.user.avatar);
+            this.$store.commit("setToken", this.result.data.token);
             this.$router.push("/");
           }
-        });
+       
       } else {
-        this.axios({
-          method: "post",
-          url: this.GLOBAL.baseUrl + "/user/register",
-          data: {
+ 
+          this.url=this.GLOBAL.baseUrl + "/user/register",
+          this.data= {
             address: "",
             avatar: "",
             birthday: "",
             code: this.validateForm.code,
             email: "",
-            nickname: "",
-            password: "",
+            nickname: this.validateForm.phone,
+            password: this.validateForm.phone,
             phone: this.validateForm.phone,
             sex: 0,
             username: "",
           },
-        }).then((res) => {
-          //注册成功
-          console.log(res);
-          this.loginNum === 0;
-        });
+         this.result = await API.init(this.url,this.data,"post")
+          alert("注册成功")
+          this.loginNum = 0
       }
     },
     changeLogin() {
@@ -206,20 +200,18 @@ export default {
     changeRes() {
       this.loginNum = 2;
     },
-    sendCode() {
+    async sendCode() {
       //手机号正则
       var mPattern = /^1[34578]\d{9}$/;
       if (!mPattern.test(this.validateForm.phone)) {
         alert("手机号格式不正确");
       } else {
-        this.axios({
-          method: "post",
-          url: this.GLOBAL.baseUrl + "/sendCode",
-          data: {
+   
+          this.url= this.GLOBAL.baseUrl + "/sendCode",
+          this.data= {
             phoneNumber: this.validateForm.phone,
           },
-        }).then((res) => {
-          console.log(res);
+        this.result = await API.init(this.url,this.data,"post")
           this.send = true;
           // 倒计时60s结束后 可再次发送验证码
           let promise = new Promise((resolve, reject) => {
@@ -235,7 +227,7 @@ export default {
           promise.then((setTimer) => {
             clearInterval(setTimer);
           });
-        });
+      
       }
     },
   },
