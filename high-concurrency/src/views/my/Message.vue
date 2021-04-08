@@ -125,10 +125,10 @@
             <h4>性别</h4>
             <span class="label">
               <label
-                ><input type="radio" name="sex" v-model="validate.sex" />男</label
+                ><input type="radio" name="sex" value="1" v-model="validate.sex" />男</label
               >
               <label style="margin-left: 20px"
-                ><input type="radio" name="sex" v-model="validate.sex" />女</label
+                ><input type="radio" name="sex" value="2" v-model="validate.sex" />女</label
               >
             </span>
           </span>
@@ -239,8 +239,10 @@ export default {
       .get(this.GLOBAL.baseUrl + "/user/getInfoById/" + id)
       .then((res) => {
         console.log(res);
-        this.user = res.data.data;
-        localStorage.setItem("user", res.data.data);
+        this.user = JSON.parse(res.data.data);
+        this.validate.sex = this.user.sex
+        console.log(this.validate.sex);
+        localStorage.setItem("user", this.user);
       });
     },
     updateUser() {
