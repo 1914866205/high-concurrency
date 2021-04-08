@@ -1,16 +1,18 @@
 package com.soft.content.service.impl;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.soft.content.common.ResponseResult;
 import com.soft.content.common.ResultCode;
 import com.soft.content.feignclient.SecKillCenterFeignClient;
 import com.soft.content.feignclient.UserCenterFeignClient;
 import com.soft.content.model.dto.OrderDto;
+import com.soft.content.model.dto.SecResultDto;
 import com.soft.content.model.entity.HbGood;
 import com.soft.content.model.entity.HbOrder;
+import com.soft.content.model.entity.HbStrategy;
 import com.soft.content.model.entity.HbUser;
 import com.soft.content.model.vo.HbOrderView;
+import com.soft.content.model.vo.SecResultVo;
 import com.soft.content.repository.HbGoodRepository;
 import com.soft.content.repository.HbOrderRepository;
 import com.soft.content.repository.HbUserRepository;
@@ -24,7 +26,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -46,6 +47,7 @@ import java.util.concurrent.TimeUnit;
 public class HbOrderServiceImpl implements HbOrderService {
     private final HbOrderRepository hbOrderRepository;
     private final HbGoodRepository hbGoodRepository;
+    private final HbUserRepository hbUserRepository;
     private final RedisTemplate<String, String> redisTemplate;
     private final UserCenterFeignClient userCenterFeignClient;
     private final SecKillCenterFeignClient secKillCenterFeignClient;
@@ -59,12 +61,11 @@ public class HbOrderServiceImpl implements HbOrderService {
         sh.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
-                if (queue.size()==0){
+                if (queue.size() == 0) {
                     return;
                 }
                 number += queue.size();
-                log.info("定时任务被执行"+queue.size()+"number:"+number);
-                Runnable target;
+                log.info("定时任务被执行" + queue.size() + "number:" + number);
                 Thread thread = new Thread(new SendThread(queue));
                 thread.start();
 //                secKillCenterFeignClient.barchSeckill(queue);
@@ -79,6 +80,45 @@ public class HbOrderServiceImpl implements HbOrderService {
         return ResponseResult.success(ResultCode.Order_Send);
     }
 
+    @Override
+    public ResponseResult findSecKillUserOrder(SecResultDto secResultDto) {
+        List<SecResultVo> result = new ArrayList<>();
+        List<HbStrategy> strategies = secResultDto.getStrategies();
+        //如果该策略的商品id不是指定商品的策略id，则移除该策略
+        strategies.removeIf(strategy -> !strategy.getGoodId().equals(secResultDto.getGoodId()));
+        System.out.println(1);
+        //对策略的结束排名进行排序
+        strategies.sort(Comparator.comparing(HbStrategy::getRankEnd));
+        System.out.println(2);
+
+        List<HbOrder> secKillUserOrder = hbOrderRepository.findSecKillUserOrder(secResultDto.getGoodId(), secResultDto.getTime());
+        System.out.println(3);
+        for (int i = 0; i < secKillUserOrder.size(); i++) {
+            System.out.println("i__" + i);
+            SecResultVo secResultVo = new SecResultVo();
+            HbOrder hbOrder = secKillUserOrder.get(i);
+            HbUser hbUser = hbUserRepository.findById(hbOrder.getUserId()).get();
+            for (int j = 0; j < strategies.size(); j++) {
+                System.out.println("i__j" + i + "__" + j);
+                if (hbOrder.getRank() > strategies.get(i).getRankEnd()) {
+                    if (i == 0) {
+                        secResultVo.setDiscount(1.00);
+                    }else {
+                        secResultVo.setDiscount(strategies.get(i).getDiscount());
+                    }
+                    break;
+                }
+            }
+            secResultVo.setUserName(hbUser.getNickname());
+            secResultVo.setPhoneNumber(hbOrder.getPhone());
+            secResultVo.setRank(++i);
+            result.add(secResultVo);
+            System.out.println(secResultVo);
+        }
+
+        System.out.println(secKillUserOrder);
+        return ResponseResult.success(secKillUserOrder);
+    }
 
     /**
      * 添加订单

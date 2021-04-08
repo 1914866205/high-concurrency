@@ -1,6 +1,8 @@
 package com.soft.mqcenter.config;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.soft.mqcenter.common.Constants;
+import com.soft.mqcenter.feignclient.ContentCenterFeignClient;
 import com.soft.mqcenter.service.consumer.ConsumerService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +12,8 @@ import org.springframework.data.redis.listener.PatternTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 
+import javax.annotation.Resource;
+import java.util.List;
 import java.util.concurrent.*;
 
 /**
@@ -21,13 +25,19 @@ import java.util.concurrent.*;
  */
 @Configuration
 public class ListenerConfig {
+    @Resource
+    private ContentCenterFeignClient contentCenterFeignClient;
+    private List<String> goodId = null;
 
     @Bean
     RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory,
                                             MessageListenerAdapter listenerAdapter) {
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
-        container.addMessageListener(listenerAdapter, new PatternTopic("product_1"));
+        goodId = contentCenterFeignClient.getAllGoodId();
+        for (String goodId : goodId) {
+            container.addMessageListener(listenerAdapter, new PatternTopic(Constants.REDIS_PRODUCT_PREFIX + goodId));
+        }
         /**
          * 如果不定义线程池，每一次消费都会创建一个线程池，如果业务层不做限制，就会导致秒杀超卖
          */
@@ -71,6 +81,7 @@ public class ListenerConfig {
 
     /**
      * 使用默认的工厂初始化redis操作模板
+     *
      * @param connectionFactory
      * @return
      */

@@ -3,6 +3,10 @@ package com.soft.content.service;
 import com.soft.content.common.ResponseResult;
 import com.soft.content.common.ResultCode;
 import com.soft.content.model.dto.OrderDto;
+import com.soft.content.model.dto.SecResultDto;
+import com.soft.content.model.entity.HbStrategy;
+
+import java.util.List;
 
 /**
  * @author 倪涛涛
@@ -46,6 +50,8 @@ public interface HbOrderService {
      * @return
      */
     ResponseResult seckOrder(OrderDto orderDto);
+
+    ResponseResult findSecKillUserOrder(SecResultDto secResultDto);
 //
 //    /**
 //     * 把成功的订单请求发送给消息队列

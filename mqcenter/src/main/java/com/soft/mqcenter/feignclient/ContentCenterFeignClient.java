@@ -4,8 +4,11 @@ package com.soft.mqcenter.feignclient;
 import com.soft.mqcenter.common.ResponseResult;
 import com.soft.mqcenter.model.dto.OrderDto;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
 
 /**
  * @author 倪涛涛
@@ -26,5 +29,12 @@ public interface ContentCenterFeignClient {
      */
     @PostMapping("order/addOrder")
     ResponseResult addOrder(@RequestBody OrderDto orderDto);
+
+    /**
+     * 返回调用内容中心获取所有商品Id接口
+     * @return
+     */
+    @GetMapping("goods/findAllGoodId")
+    List<String> getAllGoodId();
 }
 

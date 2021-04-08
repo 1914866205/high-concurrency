@@ -1,6 +1,6 @@
 <script>
-const baseUrl = 'http://localhost:8088'
-const contentUrl = 'http://localhost:8081'
+const baseUrl = 'http://localhost:8082'
+const contentUrl = 'http://localhost:8083'
 export default {
   baseUrl,
   contentUrl

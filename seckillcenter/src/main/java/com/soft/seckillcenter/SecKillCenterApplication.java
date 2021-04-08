@@ -48,7 +48,7 @@ public class SecKillCenterApplication {
     public Redisson redisson() {
         //单机模式
         Config config = new Config();
-        config.useSingleServer().setAddress("redis://120.26.177.51:6379").setDatabase(0);
+        config.useSingleServer().setAddress("redis://127.0.0.1:6379").setDatabase(0);
         return (Redisson) Redisson.create(config);
     }
 }

@@ -63,4 +63,9 @@ public class HbGoodServiceImpl implements HbGoodService {
         return hbGoodRepository.findAll();
     }
 
+    @Override
+    public List<String> findAllGoodsId() {
+        return hbGoodRepository.findAllGoodId();
+    }
+
 }
