@@ -15,8 +15,10 @@ import com.soft.content.model.vo.HbOrderView;
 import com.soft.content.model.vo.SecResultVo;
 import com.soft.content.repository.HbGoodRepository;
 import com.soft.content.repository.HbOrderRepository;
+import com.soft.content.repository.HbStrategyRepository;
 import com.soft.content.repository.HbUserRepository;
 import com.soft.content.service.HbOrderService;
+import javassist.runtime.Desc;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +50,7 @@ public class HbOrderServiceImpl implements HbOrderService {
     private final HbOrderRepository hbOrderRepository;
     private final HbGoodRepository hbGoodRepository;
     private final HbUserRepository hbUserRepository;
+    private final HbStrategyRepository hbStrategyRepository;
     private final RedisTemplate<String, String> redisTemplate;
     private final UserCenterFeignClient userCenterFeignClient;
     private final SecKillCenterFeignClient secKillCenterFeignClient;
@@ -83,41 +86,51 @@ public class HbOrderServiceImpl implements HbOrderService {
     @Override
     public ResponseResult findSecKillUserOrder(SecResultDto secResultDto) {
         List<SecResultVo> result = new ArrayList<>();
-        List<HbStrategy> strategies = secResultDto.getStrategies();
+        //此处先写死策略时
+//        List<HbStrategy> strategies = secResultDto.getStrategies();
+        List<HbStrategy> strategies = hbStrategyRepository.findAll();
         //如果该策略的商品id不是指定商品的策略id，则移除该策略
         strategies.removeIf(strategy -> !strategy.getGoodId().equals(secResultDto.getGoodId()));
-        System.out.println(1);
         //对策略的结束排名进行排序
-        strategies.sort(Comparator.comparing(HbStrategy::getRankEnd));
-        System.out.println(2);
-
+        strategies.sort(Comparator.comparing(HbStrategy::getRankEnd).reversed());
+        //从大到小排
         List<HbOrder> secKillUserOrder = hbOrderRepository.findSecKillUserOrder(secResultDto.getGoodId(), secResultDto.getTime());
-        System.out.println(3);
+        //遍历所有秒杀订单
         for (int i = 0; i < secKillUserOrder.size(); i++) {
-            System.out.println("i__" + i);
             SecResultVo secResultVo = new SecResultVo();
             HbOrder hbOrder = secKillUserOrder.get(i);
+            hbOrder.setRank(i + 1);
             HbUser hbUser = hbUserRepository.findById(hbOrder.getUserId()).get();
+            //遍历所有该商品的策略，根据时间排位的排名，分别给予不同的折扣
+            boolean flag = true;
             for (int j = 0; j < strategies.size(); j++) {
-                System.out.println("i__j" + i + "__" + j);
-                if (hbOrder.getRank() > strategies.get(i).getRankEnd()) {
-                    if (i == 0) {
+                //如果订单的排名比最大的策略排名还大，就原价
+                if (hbOrder.getRank() > strategies.get(j).getRankEnd()) {
+                    if (!flag) {
+                        break;
+                    } else if (secResultVo.getDiscount() == null) {
                         secResultVo.setDiscount(1.00);
-                    }else {
-                        secResultVo.setDiscount(strategies.get(i).getDiscount());
+                    } else {
+                        flag = false;
                     }
-                    break;
+                } else {
+                    //如果订单排名比最大的排名大，就设置为当前最大的折扣
+                    secResultVo.setDiscount(strategies.get(j).getDiscount());
                 }
             }
             secResultVo.setUserName(hbUser.getNickname());
             secResultVo.setPhoneNumber(hbOrder.getPhone());
-            secResultVo.setRank(++i);
+            //保存最终订单排名
+            hbOrderRepository.save(hbOrder);
             result.add(secResultVo);
-            System.out.println(secResultVo);
         }
 
-        System.out.println(secKillUserOrder);
-        return ResponseResult.success(secKillUserOrder);
+        result.sort(Comparator.comparing(SecResultVo::getDiscount));
+        for (int i = 0; i < result.size(); i++) {
+            result.get(i).setRank(i + 1);
+        }
+        System.out.println(result);
+        return ResponseResult.success(result);
     }
 
     /**
@@ -298,3 +311,54 @@ public class HbOrderServiceImpl implements HbOrderService {
     }
 
 }
+
+/**
+ * {
+ * "code": 1,
+ * "msg": "成功",
+ * "data": [
+ * {
+ * "userName": "醉忆丶无回路",
+ * "phoneNumber": "18851855106",
+ * "rank": 1,
+ * "discount": 0.1
+ * },
+ * {
+ * "userName": "醉忆丶无回路",
+ * "phoneNumber": "18851855106",
+ * "rank": 2,
+ * "discount": 0.1
+ * },
+ * {
+ * "userName": "醉忆丶无回路",
+ * "phoneNumber": "18851855106",
+ * "rank": 3,
+ * "discount": 0.5
+ * },
+ * {
+ * "userName": "醉忆丶无回路",
+ * "phoneNumber": "18851855106",
+ * "rank": 4,
+ * "discount": 0.5
+ * },
+ * {
+ * "userName": "醉忆丶无回路",
+ * "phoneNumber": "18851855106",
+ * "rank": 5,
+ * "discount": 0.8
+ * },
+ * {
+ * "userName": "醉忆丶无回路",
+ * "phoneNumber": "18851855106",
+ * "rank": 6,
+ * "discount": 0.8
+ * },
+ * {
+ * "userName": "醉忆丶无回路",
+ * "phoneNumber": "18851855106",
+ * "rank": 7,
+ * "discount": 1.0
+ * }
+ * ]
+ * }
+ */
