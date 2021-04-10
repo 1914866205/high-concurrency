@@ -58,7 +58,7 @@ const API = require("../utils/request.js")
 export default {
   data() {
     return {
-      items: ["用户中心", "订单中心","发布商品"],
+      items: ["用户中心", "订单中心","我的发布"],
       avatar: localStorage.getItem("avatar"),
       content: "",
       goods:''

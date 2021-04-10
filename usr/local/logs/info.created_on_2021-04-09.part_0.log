@@ -87,3 +87,4 @@
 2021-04-09 14:32:32.058  INFO 30424 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
 2021-04-09 14:32:32.146  INFO 30424 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
 2021-04-09 14:32:32.154  INFO 30424 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 16.536 seconds (JVM running for 18.935)
+2021-04-09 20:20:47.075  WARN 30424 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h20s437ms76µs800ns).
