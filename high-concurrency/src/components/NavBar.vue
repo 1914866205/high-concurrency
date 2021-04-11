@@ -1,5 +1,10 @@
 <template>
-  <v-card class="static" flat height="70px" tile>
+  <v-card
+    :class="navBarFixed == true ? 'navBarWrap' : ''"
+    flat
+    height="70px"
+    tile
+  >
     <v-toolbar>
       <v-toolbar-title
         @click="goHome()"
@@ -39,7 +44,9 @@
           <div v-if="isLogin" class="user" v-bind="attrs" v-on="on">
             <img class="image" :src="avatar" />
           </div>
-          <div  v-else @click="goLogin()" class="user" style="color:#26a69a;">未登录，请先登录</div>
+          <div v-else @click="goLogin()" class="user" style="color: #26a69a">
+            未登录，请先登录
+          </div>
         </template>
         <v-list v-if="goods !== null">
           <v-list-item v-for="item in items" :key="item" link>
@@ -71,18 +78,22 @@ export default {
       goods: "",
       overlay: false,
       zIndex: 0,
-      isLogin:false
+      isLogin: false,
+      navBarFixed: false,
     };
   },
   computed: {},
-  mounted: function(){
-    if(localStorage.getItem("avatar") != null) {
-      this.avatar = localStorage.getItem("avatar")
-      this.isLogin = true
+  mounted() {
+    // 事件监听滚动条
+    window.addEventListener("scroll", this.watchScroll);
+  },
+  created: function () {
+    if (localStorage.getItem("avatar") != null) {
+      this.avatar = localStorage.getItem("avatar");
+      this.isLogin = true;
     } else {
-      this.isLogin = false
+      this.isLogin = false;
     }
-    
   },
   methods: {
     goUser(item) {
@@ -99,6 +110,18 @@ export default {
         localStorage.clear("avatar");
         this.$router.push("/login");
       }
+    },
+    watchScroll() {
+      // var scrollTop =
+      //   window.pageYOffset ||
+      //   document.documentElement.scrollTop ||
+      //   document.body.scrollTop;
+      // //  当滚动超过 50 时，实现吸顶效果
+      // if (scrollTop > 70) {
+      //   this.navBarFixed = true;
+      // } else {
+      //   this.navBarFixed = false;
+      // }
     },
     goLogin() {
       this.$router.push("/login");
@@ -165,8 +188,7 @@ export default {
   background-color: rgba(0, 0, 0, 0);
 }
 .user {
-  position: absolute;
-  right: 30px;
+  float: right;
 }
 .image {
   width: 50px;
@@ -186,8 +208,10 @@ export default {
   height: 30px;
   margin: 10px;
 }
-// .static {
-//   position: relative;
-//   top:0;
-// }
+.navBarWrap {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+}
 </style>

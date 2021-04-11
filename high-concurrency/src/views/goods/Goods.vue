@@ -6,7 +6,7 @@
       <div style="margin: 20px">
         <div style="display: flex">
           <span class="type">{{ goodsInfo.type }}</span>
-          <h1> {{ goodsInfo.goodName }}</h1>
+          <h1>{{ goodsInfo.goodName }}</h1>
         </div>
 
         <div class="goodsBorder">
@@ -25,9 +25,7 @@
           </div>
           <div style="color: gray; margin: 10px">
             <span>促 销</span>
-            <span style="margin-left: 34px"
-              >{{ goodsInfo.description }}</span
-            >
+            <span style="margin-left: 34px">{{ goodsInfo.description }}</span>
           </div>
         </div>
 
@@ -47,15 +45,32 @@
       </div>
     </div>
     <div class="comm">
-      <div class="comment">商品评价</div>
-
-      <div v-for="(item,index) in comments" :key="index" style="margin-top: 30px">
-        <img class="user_avatar" src="../../assets/images/me.jpg" />
-        <div style="margin-top: -40px">
-          <span style="margin: 50px">用户名</span>
-          <span style="margin-left: 100px">{{item.content}}</span>
+      <div class="line-shu">
+        <div class="goods-user">
+          <div style="display:flex;">
+          <img class="user-img" :src="user.avatar" />
+            <div  style="margin:20px 5px;">{{ user.nickname }}</div>
+          </div>
+          <div  style="margin-top: 10px">
+            <v-btn @click="goIndex()" outlined color="teal lighten-1"> 进入主页 </v-btn>
+          </div>
         </div>
-        <div class="line"></div>
+      </div>
+      <div class="comment-content">
+        <div class="comment">商品评价</div>
+
+        <div
+          v-for="(item, index) in comments"
+          :key="index"
+          style="margin-top: 20px; padding: 20px"
+        >
+          <img class="user_avatar" src="../../assets/images/me.jpg" />
+          <div style="margin-top: -40px">
+            <span style="margin: 50px">用户名</span>
+            <span style="margin-left: 100px">{{ item.content }}</span>
+          </div>
+          <div class="line"></div>
+        </div>
       </div>
     </div>
   </v-app>
@@ -71,16 +86,24 @@ export default {
       goodsInfo: [],
       count: 0,
       comments: [],
+      user: [],
     };
   },
-  mounted: function () {
-    console.log(this.$route.query.goodsId)
+  created: function () {
     let params = new URLSearchParams();
-    params.append("goodsId", this.$route.query.goodsId)
-    
-    this.axios.post(this.GLOBAL.contentUrl + "/goods/findGoodsById", params).then((res)=> {
-      this.goodsInfo = res.data.data.Goods
-    })
+    params.append("goodsId", this.$route.query.goodsId);
+    this.axios
+      .post(this.GLOBAL.contentUrl + "/goods/findGoodsById", params)
+      .then((res) => {
+        this.goodsInfo = res.data.data.Goods;
+        let id = this.goodsInfo.userId;
+        this.axios
+          .get(this.GLOBAL.baseUrl + "/user/getInfoById/" + id)
+          .then((res) => {
+            this.user = JSON.parse(res.data.data);
+            console.log(this.user);
+          });
+      });
     this.getCommont();
   },
   methods: {
@@ -108,17 +131,24 @@ export default {
       };
       await API.init(_this.url, _this.data, "post");
     },
+    goIndex(){
+
+    },
     getCommont() {
       let params = new URLSearchParams();
       params.append("goodId", this.$route.query.goodsId);
-      this.axios.post(
-        this.GLOBAL.contentUrl + "/comment/selectCommentsById",
-        params
-      ).then((res) => {
-        
-        this.comments = res.data.data
-        console.log(this.comments);
-      })
+      this.axios
+        .post(this.GLOBAL.contentUrl + "/comment/selectCommentsById", params)
+        .then((res) => {
+          this.comments = res.data.data;
+          //   let id = res.data.data.pkUserIngId
+          // console.log(res.data.data)
+          // this.axios
+          // .get(this.GLOBAL.baseUrl + "/user/getInfoById/" + id)
+          // .then((res) => {
+          //   console.log(res);
+          // });
+        });
     },
   },
   components: {
@@ -191,8 +221,9 @@ export default {
   margin-top: 30px;
 }
 .comm {
-  width: 90%;
+  width: 85%;
   margin: 100px auto;
+  display: flex;
 }
 .comment {
   background-color: #f6f6f6;
@@ -201,9 +232,30 @@ export default {
   padding: 5px;
   color: gray;
 }
+.comment-content {
+  width: 80%;
+  float: right;
+  padding: 10px;
+}
 .user_avatar {
   width: 40px;
   height: 40px;
   border-radius: 20px;
+}
+.user-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+.goods-user {
+  border: 1px solid #e6e6e6;
+  color: gray;
+  padding: 10px;
+  width:100%;
+}
+.line-shu {
+  width: 20%;
+  border-right: 1px solid #f1f1f1;
+  padding: 10px;
 }
 </style>

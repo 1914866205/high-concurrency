@@ -226,7 +226,7 @@ export default {
   components: {
     NavBar,
   },
-  mounted: function () {
+  created: function () {
     this.refreshUser()
     
   },

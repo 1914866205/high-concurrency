@@ -81,7 +81,7 @@ export default {
       inx:0
     };
   },
-  mounted: function () {
+  created: function () {
     let params = new URLSearchParams();
     let id = localStorage.getItem("userId");
     console.log(id);
