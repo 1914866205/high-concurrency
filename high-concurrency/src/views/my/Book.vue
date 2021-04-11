@@ -236,7 +236,7 @@
 </template>
 <script src="https://gosspublic.alicdn.com/aliyun-oss-sdk.min.js"></script>
 <script>
-const API = require("../utils/api");
+const API = require("../../utils/request.js");
 export default {
   data() {
     var validatePass = (rule, value, callback) => {

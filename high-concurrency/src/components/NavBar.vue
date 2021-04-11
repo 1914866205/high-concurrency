@@ -27,7 +27,7 @@
         <v-list v-model="goods">
           <v-list-item v-for="(item, index) in goods" :key="index" link>
             <v-list-item-title
-              @click="goGoods(goods.pkGoodId)"
+              @click="goGoods(item.pkGoodId)"
               v-text="item.goodName"
             ></v-list-item-title>
           </v-list-item>
