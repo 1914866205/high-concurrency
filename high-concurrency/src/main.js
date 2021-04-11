@@ -6,7 +6,9 @@ import vuetify from './plugins/vuetify'
 import VueAxios from 'vue-axios'
 import global_ from './utils/Global'
 import axios from 'axios'
-
+import 'element-ui/lib/theme-chalk/index.css';
+import Element from 'element-ui';
+Vue.use(Element, { size: 'small', zIndex: 3000 });
 Vue.use(VueAxios, axios)
 
 Vue.prototype.GLOBAL = global_

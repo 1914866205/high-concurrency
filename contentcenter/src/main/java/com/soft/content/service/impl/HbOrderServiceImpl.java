@@ -1,20 +1,24 @@
 package com.soft.content.service.impl;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.soft.content.common.ResponseResult;
 import com.soft.content.common.ResultCode;
 import com.soft.content.feignclient.SecKillCenterFeignClient;
 import com.soft.content.feignclient.UserCenterFeignClient;
 import com.soft.content.model.dto.OrderDto;
+import com.soft.content.model.dto.SecResultDto;
 import com.soft.content.model.entity.HbGood;
 import com.soft.content.model.entity.HbOrder;
+import com.soft.content.model.entity.HbStrategy;
 import com.soft.content.model.entity.HbUser;
 import com.soft.content.model.vo.HbOrderView;
+import com.soft.content.model.vo.SecResultVo;
 import com.soft.content.repository.HbGoodRepository;
 import com.soft.content.repository.HbOrderRepository;
+import com.soft.content.repository.HbStrategyRepository;
 import com.soft.content.repository.HbUserRepository;
 import com.soft.content.service.HbOrderService;
+import javassist.runtime.Desc;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +28,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -46,6 +49,8 @@ import java.util.concurrent.TimeUnit;
 public class HbOrderServiceImpl implements HbOrderService {
     private final HbOrderRepository hbOrderRepository;
     private final HbGoodRepository hbGoodRepository;
+    private final HbUserRepository hbUserRepository;
+    private final HbStrategyRepository hbStrategyRepository;
     private final RedisTemplate<String, String> redisTemplate;
     private final UserCenterFeignClient userCenterFeignClient;
     private final SecKillCenterFeignClient secKillCenterFeignClient;
@@ -59,12 +64,11 @@ public class HbOrderServiceImpl implements HbOrderService {
         sh.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
-                if (queue.size()==0){
+                if (queue.size() == 0) {
                     return;
                 }
                 number += queue.size();
-                log.info("定时任务被执行"+queue.size()+"number:"+number);
-                Runnable target;
+                log.info("定时任务被执行" + queue.size() + "number:" + number);
                 Thread thread = new Thread(new SendThread(queue));
                 thread.start();
 //                secKillCenterFeignClient.barchSeckill(queue);
@@ -79,6 +83,55 @@ public class HbOrderServiceImpl implements HbOrderService {
         return ResponseResult.success(ResultCode.Order_Send);
     }
 
+    @Override
+    public ResponseResult findSecKillUserOrder(SecResultDto secResultDto) {
+        List<SecResultVo> result = new ArrayList<>();
+        //此处先写死策略时
+//        List<HbStrategy> strategies = secResultDto.getStrategies();
+        List<HbStrategy> strategies = hbStrategyRepository.findAll();
+        //如果该策略的商品id不是指定商品的策略id，则移除该策略
+        strategies.removeIf(strategy -> !strategy.getGoodId().equals(secResultDto.getGoodId()));
+        //对策略的结束排名进行排序
+        strategies.sort(Comparator.comparing(HbStrategy::getRankEnd).reversed());
+        //从大到小排
+        List<HbOrder> secKillUserOrder = hbOrderRepository.findSecKillUserOrder(secResultDto.getGoodId(), secResultDto.getTime());
+        //遍历所有秒杀订单
+        for (int i = 0; i < secKillUserOrder.size(); i++) {
+            SecResultVo secResultVo = new SecResultVo();
+            HbOrder hbOrder = secKillUserOrder.get(i);
+            hbOrder.setRank(i + 1);
+            HbUser hbUser = hbUserRepository.findById(hbOrder.getUserId()).get();
+            //遍历所有该商品的策略，根据时间排位的排名，分别给予不同的折扣
+            boolean flag = true;
+            for (int j = 0; j < strategies.size(); j++) {
+                //如果订单的排名比最大的策略排名还大，就原价
+                if (hbOrder.getRank() > strategies.get(j).getRankEnd()) {
+                    if (!flag) {
+                        break;
+                    } else if (secResultVo.getDiscount() == null) {
+                        secResultVo.setDiscount(1.00);
+                    } else {
+                        flag = false;
+                    }
+                } else {
+                    //如果订单排名比最大的排名大，就设置为当前最大的折扣
+                    secResultVo.setDiscount(strategies.get(j).getDiscount());
+                }
+            }
+            secResultVo.setUserName(hbUser.getNickname());
+            secResultVo.setPhoneNumber(hbOrder.getPhone());
+            //保存最终订单排名
+            hbOrderRepository.save(hbOrder);
+            result.add(secResultVo);
+        }
+
+        result.sort(Comparator.comparing(SecResultVo::getDiscount));
+        for (int i = 0; i < result.size(); i++) {
+            result.get(i).setRank(i + 1);
+        }
+        System.out.println(result);
+        return ResponseResult.success(result);
+    }
 
     /**
      * 添加订单
@@ -258,3 +311,54 @@ public class HbOrderServiceImpl implements HbOrderService {
     }
 
 }
+
+/**
+ * {
+ * "code": 1,
+ * "msg": "成功",
+ * "data": [
+ * {
+ * "userName": "醉忆丶无回路",
+ * "phoneNumber": "18851855106",
+ * "rank": 1,
+ * "discount": 0.1
+ * },
+ * {
+ * "userName": "醉忆丶无回路",
+ * "phoneNumber": "18851855106",
+ * "rank": 2,
+ * "discount": 0.1
+ * },
+ * {
+ * "userName": "醉忆丶无回路",
+ * "phoneNumber": "18851855106",
+ * "rank": 3,
+ * "discount": 0.5
+ * },
+ * {
+ * "userName": "醉忆丶无回路",
+ * "phoneNumber": "18851855106",
+ * "rank": 4,
+ * "discount": 0.5
+ * },
+ * {
+ * "userName": "醉忆丶无回路",
+ * "phoneNumber": "18851855106",
+ * "rank": 5,
+ * "discount": 0.8
+ * },
+ * {
+ * "userName": "醉忆丶无回路",
+ * "phoneNumber": "18851855106",
+ * "rank": 6,
+ * "discount": 0.8
+ * },
+ * {
+ * "userName": "醉忆丶无回路",
+ * "phoneNumber": "18851855106",
+ * "rank": 7,
+ * "discount": 1.0
+ * }
+ * ]
+ * }
+ */

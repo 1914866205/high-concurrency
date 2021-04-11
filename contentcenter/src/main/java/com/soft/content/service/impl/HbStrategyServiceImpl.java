@@ -1,7 +1,12 @@
 package com.soft.content.service.impl;
 
+import com.soft.content.model.entity.HbStrategy;
+import com.soft.content.repository.HbStrategyRepository;
 import com.soft.content.service.HbStrategyService;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 
 /**
@@ -13,5 +18,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class HbStrategyServiceImpl implements HbStrategyService {
+    @Resource
+    private HbStrategyRepository hbStrategyRepository;
 
+    @Override
+    public List<HbStrategy> findAllStrategy() {
+        return hbStrategyRepository.findAll();
+    }
 }

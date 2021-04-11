@@ -33,7 +33,6 @@ spring:
       ddl-auto: update
   redis:
     database: 0
-#    host: 120.26.177.51
     host: 127.0.0.1
     port: 6379
     jedis:
@@ -64,9 +63,6 @@ management:
   endpoint:
     health:
       show-details: always
-#rocketmq:
-#  name-server: 47.111.64.183:9876
-#  name-server: 120.26.177.51:9876
 
 feign:
   sentinel:

@@ -6,7 +6,9 @@ import com.soft.content.common.ResponseResult;
 import com.soft.content.common.ResultCode;
 import com.soft.content.feignclient.SecKillCenterFeignClient;
 import com.soft.content.model.dto.OrderDto;
+import com.soft.content.model.dto.SecResultDto;
 import com.soft.content.model.entity.HbGood;
+import com.soft.content.model.entity.HbStrategy;
 import com.soft.content.service.HbGoodService;
 import com.soft.content.service.HbOrderService;
 import io.swagger.annotations.Api;
@@ -134,6 +136,21 @@ public class HbOrderController {
     public ResponseResult findUserAllOrder(String pkUserId) {
         return ResponseResult.success(hbOrderService.findUserAllOrder(pkUserId));
     }
+
+    /**
+     * 按照抢购顺序公示前1000名客户名称、手机号码（星号隐藏第4-7位）及对应折扣。
+     *
+     * @return
+     */
+    @ApiOperation(value = "顺序公示前1000名", notes = "findSecKillUserOrder")
+    @PostMapping("findSecKillUserOrder")
+    @ControllerWebLog(name = "findSecKillUserOrder", isSaved = true)
+    public ResponseResult findSecKillUserOrder(@RequestBody SecResultDto secResultDto) {
+         return hbOrderService.findSecKillUserOrder(secResultDto);
+    }
+
+
+
 
     class FollowThread extends Thread {
         private OrderDto orderDto;

@@ -25,7 +25,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 @ResponseBody
 @RequestMapping("/order/")
 @Api(value = "HbOrderController", tags = {"秒杀接口"})
-public class HbOrderController {
+public class    HbOrderController {
     private int number = 0;
 
     @Resource

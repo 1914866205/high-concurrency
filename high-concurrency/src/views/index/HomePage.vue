@@ -37,19 +37,22 @@
             </v-btn>
           </v-card-actions>
         </v-card> -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap"
+          rel="stylesheet"
+        />
 
-<div class="grp">
-  <h1>HAIBINGSHOP</h1>
-  <div class="card"></div>
-  <div class="squares">
-    <div class="square square-1"></div>
-    <div class="square square-2"></div>
-    <div class="square square-3"></div>
-    <div class="square square-4"></div>
-  </div>
-</div>
+        <div class="grp">
+          <h1>HAIBINGSHOP</h1>
+          <div class="card"></div>
+          <div class="squares">
+            <div class="square square-1"></div>
+            <div class="square square-2"></div>
+            <div class="square square-3"></div>
+            <div class="square square-4"></div>
+          </div>
+        </div>
       </div>
 
       <div class="miaosha">
@@ -70,15 +73,11 @@
             v-for="(item, index) in goods"
             :key="index"
           >
-            <v-card
-              class="ma-1"
-              height="370"
-              @click="goGoods(item)"
-            >
+            <v-card class="ma-1" height="370" @click="goGoods(item.pkGoodId)">
               <img class="goodsImg" :src="item.image" />
 
               <v-card-title
-                >{{ item.description }} {{ item.goodName }}</v-card-title
+                >{{ item.goodName }}</v-card-title
               >
 
               <v-card-text>
@@ -130,17 +129,8 @@ export default {
 
       setTimeout(() => (this.loading = false), 2000);
     },
-
-    next() {
-      this.onboarding =
-        this.onboarding + 1 === this.length ? 0 : this.onboarding + 1;
-    },
-    prev() {
-      this.onboarding =
-        this.onboarding - 1 < 0 ? this.length - 1 : this.onboarding - 1;
-    },
-    goGoods(goods) {
-      this.$router.push({ path: "/goods", query: { goodsInfo: goods } });
+    goGoods(goodsId) {
+      this.$router.push({ path: "/goods", query: { goodsId: goodsId } });
     },
   },
   components: {
@@ -152,15 +142,23 @@ export default {
 .solid {
   width: 90%;
   margin: auto;
-  font-family: 'Montserrat', sans-serif;
-  color: #FFF;
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 50vh;
-  background: #26a69a;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #2894af, #26a69a);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #2894af, #26a69a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #26a69a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #2894af,
+    #26a69a
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #2894af,
+    #26a69a
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .grp {
   position: relative;
@@ -171,11 +169,11 @@ export default {
 .card {
   height: 150px;
   width: 400px;
-  background: #FFFFFF40;
-  border: 1px solid #FFFFFF20;
+  background: #ffffff40;
+  border: 1px solid #ffffff20;
   border-radius: 10px;
   backdrop-filter: blur(4px);
-  position: absolute;
+  z-index: 999;
   box-shadow: 0 0 40px 0 #00000040;
 }
 
@@ -196,21 +194,21 @@ h1 {
   position: absolute;
   box-shadow: 0 0 40px 0 #00000040;
   backdrop-filter: blur(4px);
-  
+
   &-1 {
     height: 40px;
     width: 40px;
     bottom: -20px;
     left: 40px;
   }
-  
+
   &-2 {
     height: 60px;
     width: 60px;
     top: -30px;
     right: 30px;
   }
-  
+
   &-3 {
     height: 30px;
     width: 30px;
@@ -218,7 +216,7 @@ h1 {
     top: -40px;
     left: 40px;
   }
-  
+
   &-4 {
     height: 20px;
     width: 20px;
@@ -264,7 +262,6 @@ h1 {
   width: 100%;
   height: 240px;
   border: 1px solid #f6f6f6;
-  
 }
 .type {
   background-color: #26a69a;

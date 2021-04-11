@@ -6,7 +6,7 @@
       <div style="margin: 20px">
         <div style="display: flex">
           <span class="type">{{ goodsInfo.type }}</span>
-          <h1>{{ goodsInfo.description }} {{ goodsInfo.goodName }}</h1>
+          <h1> {{ goodsInfo.goodName }}</h1>
         </div>
 
         <div class="goodsBorder">
@@ -26,7 +26,7 @@
           <div style="color: gray; margin: 10px">
             <span>促 销</span>
             <span style="margin-left: 34px"
-              >第1-100名商品1折销售，第101-500名5折，第501-1000名8折，第1001名后商品原价销售</span
+              >{{ goodsInfo.description }}</span
             >
           </div>
         </div>
@@ -74,9 +74,13 @@ export default {
     };
   },
   mounted: function () {
-    this.goodsInfo = this.$route.query.goodsInfo;
-    localStorage.setItem("goods", this.goodsInfo);
-    console.log(localStorage.getItem("goods"));
+    console.log(this.$route.query.goodsId)
+    let params = new URLSearchParams();
+    params.append("goodsId", this.$route.query.goodsId)
+    
+    this.axios.post(this.GLOBAL.contentUrl + "/goods/findGoodsById", params).then((res)=> {
+      this.goodsInfo = res.data.data.Goods
+    })
     this.getCommont();
   },
   methods: {
@@ -106,7 +110,7 @@ export default {
     },
     getCommont() {
       let params = new URLSearchParams();
-      params.append("goodId", this.goodsInfo.pkGoodId);
+      params.append("goodId", this.$route.query.goodsId);
       this.axios.post(
         this.GLOBAL.contentUrl + "/comment/selectCommentsById",
         params

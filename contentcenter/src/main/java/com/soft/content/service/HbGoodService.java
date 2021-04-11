@@ -24,4 +24,8 @@ public interface HbGoodService {
     Map<String, List<HbGood>> findGoodsByType();
 
     List<HbGood> getAllGoods();
+
+    List<String> findAllGoodsId();
+
+    HbGood getGoodsById(String goodId);
 }

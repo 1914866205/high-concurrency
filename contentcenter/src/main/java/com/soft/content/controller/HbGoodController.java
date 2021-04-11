@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -97,5 +98,21 @@ public class HbGoodController {
     }
 
 
+    @ApiOperation(value = "消息中心调用的，获取所有商品ID", notes = "消息中心调用的，获取所有商品ID")
+    @GetMapping("findAllGoodId")
+    List<String> findAllGoodId(){
+        return hbGoodService.findAllGoodsId();
+    }
 
+    /**
+     * 根据商品id查询商品
+     */
+    @ApiOperation(value = "根据商品id查询商品", notes = "根据商品id查询商品")
+    @PostMapping("findGoodsById")
+    @ControllerWebLog(name = "findGoodsById", isSaved = true)
+    ResponseResult findGoodsById(String goodsId) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("Goods", hbGoodService.getGoodsById(goodsId));
+        return ResponseResult.success(map);
+    }
 }
