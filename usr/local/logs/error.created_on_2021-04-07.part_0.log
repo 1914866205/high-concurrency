@@ -3772,3 +3772,31 @@ Caused by: java.io.IOException: 远程主机强迫关闭了一个现有的连接
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
 	... 54 common frames omitted
 
+2021-04-07 17:59:12.190 ERROR 8296 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   LoggingFailureAnalysisReporter.java:40: 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2021-04-07 18:00:44.617 ERROR 14544 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   LoggingFailureAnalysisReporter.java:40: 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+

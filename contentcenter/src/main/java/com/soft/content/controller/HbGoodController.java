@@ -103,4 +103,16 @@ public class HbGoodController {
     List<String> findAllGoodId(){
         return hbGoodService.findAllGoodsId();
     }
+
+    /**
+     * 根据商品id查询商品
+     */
+    @ApiOperation(value = "根据商品id查询商品", notes = "根据商品id查询商品")
+    @PostMapping("findGoodsById")
+    @ControllerWebLog(name = "findGoodsById", isSaved = true)
+    ResponseResult findGoodsById(String goodsId) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("Goods", hbGoodService.getGoodsById(goodsId));
+        return ResponseResult.success(map);
+    }
 }

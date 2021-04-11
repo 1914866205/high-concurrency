@@ -26,4 +26,6 @@ public interface HbGoodService {
     List<HbGood> getAllGoods();
 
     List<String> findAllGoodsId();
+
+    HbGood getGoodsById(String goodId);
 }

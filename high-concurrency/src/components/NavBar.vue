@@ -1,8 +1,13 @@
 <template>
-  <v-card class="static" flat height="70px" tile>
+  <v-card
+    :class="navBarFixed == true ? 'navBarWrap' : ''"
+    flat
+    height="70px"
+    tile
+  >
     <v-toolbar>
       <v-toolbar-title
-      @click="goHome()"
+        @click="goHome()"
         style="color: #26a69a; font-weight: 300; font-size: 1.75rem"
         >骸冰商城</v-toolbar-title
       >
@@ -27,7 +32,7 @@
         <v-list v-model="goods">
           <v-list-item v-for="(item, index) in goods" :key="index" link>
             <v-list-item-title
-              @click="goGoods(goods,index)"
+              @click="goGoods(item.pkGoodId)"
               v-text="item.goodName"
             ></v-list-item-title>
           </v-list-item>
@@ -36,8 +41,11 @@
 
       <v-menu offset-y>
         <template v-slot:activator="{ attrs, on }">
-          <div class="user" v-bind="attrs" v-on="on">
+          <div v-if="isLogin" class="user" v-bind="attrs" v-on="on">
             <img class="image" :src="avatar" />
+          </div>
+          <div v-else @click="goLogin()" class="user" style="color: #26a69a">
+            未登录，请先登录
           </div>
         </template>
         <v-list v-if="goods !== null">
@@ -50,49 +58,89 @@
         </v-list>
       </v-menu>
     </v-toolbar>
+
+    <!-- <v-overlay :z-index="zIndex" :value="overlay">
+      <v-btn class="white--text" color="teal" @click="overlay = false">
+        Hide Overlay
+      </v-btn>
+    </v-overlay> -->
   </v-card>
 </template>
    
 <script>
-const API = require("../utils/request.js")
+const API = require("../utils/request.js");
 export default {
   data() {
     return {
-      items: ["用户中心", "订单中心","我的发布"],
-      avatar: localStorage.getItem("avatar"),
+      items: ["用户中心", "订单中心", "我的发布", "退出登录"],
+      avatar: "",
       content: "",
-      goods:''
+      goods: "",
+      overlay: false,
+      zIndex: 0,
+      isLogin: false,
+      navBarFixed: false,
     };
   },
-  computed:{
+  computed: {},
+  mounted() {
+    // 事件监听滚动条
+    window.addEventListener("scroll", this.watchScroll);
+  },
+  created: function () {
+    if (localStorage.getItem("avatar") != null) {
+      this.avatar = localStorage.getItem("avatar");
+      this.isLogin = true;
+    } else {
+      this.isLogin = false;
+    }
   },
   methods: {
     goUser(item) {
       if (item === "用户中心") {
         this.$router.push("/message");
-      } else if(item === "订单中心"){
+      } else if (item === "订单中心") {
         this.$router.push("/order");
-      } else {
+      } else if (item === "我的发布") {
         this.$router.push("/put");
+        //this.overlay = !this.overlay;
+      } else {
+        localStorage.clear("user");
+        localStorage.clear("userId");
+        localStorage.clear("avatar");
+        this.$router.push("/login");
       }
     },
-    goHome(){
+    watchScroll() {
+      // var scrollTop =
+      //   window.pageYOffset ||
+      //   document.documentElement.scrollTop ||
+      //   document.body.scrollTop;
+      // //  当滚动超过 50 时，实现吸顶效果
+      // if (scrollTop > 70) {
+      //   this.navBarFixed = true;
+      // } else {
+      //   this.navBarFixed = false;
+      // }
+    },
+    goLogin() {
+      this.$router.push("/login");
+    },
+    goHome() {
       this.$router.push("/");
     },
-    goGoods(goods,index) {
-      this.$router.push({ path: "/goods", query: { goodsInfo: goods[index] } });
+    goGoods(id) {
+      this.$router.push({ path: "/goods", query: { goodsId: id } });
     },
     async search() {
-
-        this.url= this.GLOBAL.contentUrl + "/goods/search",
-        this.data= {
+      (this.url = this.GLOBAL.contentUrl + "/goods/search"),
+        (this.data = {
           content: this.content,
           currentPage: 1,
           pageSize: 10,
-        },
-        this.result = await API.init(this.url,this.data,"post")
-        this.goods = this.result.data.Goods.content
-      
+        }),
+        (this.result = await API.init(this.url, this.data, "post"));
+      this.goods = this.result.data.Goods.content;
     },
   },
 };
@@ -120,12 +168,15 @@ export default {
   content: " ";
   display: block;
   position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   inset: 0 0 0 0;
   background: #f6f6f6;
   border-radius: 20px;
   z-index: -1;
-  transition: transform .3s ease;
+  transition: transform 0.3s ease;
 }
 
 .inputBorder {
@@ -137,8 +188,7 @@ export default {
   background-color: rgba(0, 0, 0, 0);
 }
 .user {
-  position: absolute;
-  right: 30px;
+  float: right;
 }
 .image {
   width: 50px;
@@ -158,8 +208,10 @@ export default {
   height: 30px;
   margin: 10px;
 }
-// .static {
-//   position: relative;
-//   top:0;
-// }
+.navBarWrap {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+}
 </style>
