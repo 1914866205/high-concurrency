@@ -1,13 +1,14 @@
 package com.soft.content.controller;
 
+import com.soft.content.common.ResponseResult;
+import com.soft.content.model.dto.SecKillAddDto;
 import com.soft.content.service.HbStrategyService;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.text.ParseException;
 
 
 /**
@@ -20,11 +21,15 @@ import javax.annotation.Resource;
 @RestController
 @Slf4j
 @ResponseBody
-@RequestMapping
+@RequestMapping(value = "/hbStrategy/")
 @Api(value = "HbStrategyController", tags = {"策略模块接口"})
 public class HbStrategyController {
 
     @Resource
     private HbStrategyService hbStrategyService;
 
+    @PostMapping("add")
+    ResponseResult addHbStrategy(@RequestBody SecKillAddDto secKillAddDto) throws ParseException {
+        return hbStrategyService.addStrategy(secKillAddDto);
+    }
 }

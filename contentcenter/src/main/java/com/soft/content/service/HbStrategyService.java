@@ -1,7 +1,10 @@
 package com.soft.content.service;
 
+import com.soft.content.common.ResponseResult;
+import com.soft.content.model.dto.SecKillAddDto;
 import com.soft.content.model.entity.HbStrategy;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -13,4 +16,6 @@ import java.util.List;
  */
 public interface HbStrategyService {
     List<HbStrategy> findAllStrategy();
+
+    ResponseResult addStrategy(SecKillAddDto secKillAddDto) throws ParseException;
 }

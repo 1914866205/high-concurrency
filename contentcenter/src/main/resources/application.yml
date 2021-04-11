@@ -3,6 +3,9 @@ server:
 spring:
   application:
     name: content-center
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
   zipkin:
     base-url: http://localhost:9411/
     discoveryClientEnabled: false

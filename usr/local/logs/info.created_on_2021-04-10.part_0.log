@@ -1,1 +1,21 @@
 2021-04-10 09:58:28.032  WARN 30424 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13h37m52s956ms646µs700ns).
+2021-04-10 10:39:11.321  INFO 30424 --- [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-10 10:39:11.322  INFO 30424 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-10 10:39:11.345  INFO 30424 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 23 ms
+2021-04-10 10:39:11.460  INFO 30424 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问login接口
+2021-04-10 10:39:11.460  INFO 30424 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-04-10 10:39:11.460  INFO 30424 --- [http-nio-8082-exec-4] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-04-10 10:39:12.565  INFO 30424 --- [http-nio-8082-exec-4] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-04-10 10:39:12.666  INFO 30424 --- [http-nio-8082-exec-4] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTkzMTgzNTIsInVzZXJuYW1lIjoibnR0In0.mEz9SXkGIPEtepDzzMmuRqZpBwWqAnsJmdaIiaZpNow
+2021-04-10 11:34:50.773  INFO 30424 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问login接口
+2021-04-10 11:34:50.773  INFO 30424 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-04-10 11:34:50.774  INFO 30424 --- [http-nio-8082-exec-10] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-04-10 11:34:50.819  INFO 30424 --- [http-nio-8082-exec-10] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-04-10 11:34:50.820  INFO 30424 --- [http-nio-8082-exec-10] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTkzMjE2OTAsInVzZXJuYW1lIjoibnR0In0.2fT9TnlgBFAecdhC35fyE-b12RVE4MYolzyM1yrJYN8
+2021-04-10 11:39:29.585  INFO 30424 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问login接口
+2021-04-10 11:39:29.585  INFO 30424 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-04-10 11:39:29.586  INFO 30424 --- [http-nio-8082-exec-8] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-04-10 11:39:30.022  INFO 30424 --- [http-nio-8082-exec-8] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-04-10 11:39:30.022  INFO 30424 --- [http-nio-8082-exec-8] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTkzMjE5NzAsInVzZXJuYW1lIjoibnR0In0.Vu8mQJWdOsJolsZm-BS5QwTOONMPWYdh9dHjAn9iSqM
+2021-04-10 15:26:41.833  WARN 30424 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h35m10s79ms24µs900ns).
+2021-04-10 20:38:38.468  WARN 30424 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h24s395ms434µs401ns).

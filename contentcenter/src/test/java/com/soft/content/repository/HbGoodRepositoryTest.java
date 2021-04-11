@@ -1,6 +1,8 @@
 package com.soft.content.repository;
 
+import com.soft.content.model.entity.HbStrategy;
 import com.soft.content.service.HbGoodService;
+import com.soft.content.service.HbStrategyService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -26,6 +28,8 @@ class HbGoodRepositoryTest {
     private HbGoodRepository hbGoodRepository;
     @Resource
     private HbOrderRepository hbOrderRepository;
+    @Resource
+    private HbStrategyService hbStrategyService;
 
     @Test
     void findHbGoodsByGoodNameOrDescriptionLike() throws ParseException {
@@ -37,11 +41,14 @@ class HbGoodRepositoryTest {
 //        System.out.println(hbGoodRepository.findHbGoodsByDescriptionLike("%治%"));
 //        System.out.println(hbGoodService.findGoodsByType());
 //        System.out.println(new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf("2021-03-31 14:19")));
-        Date currentTime = new Date();
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String dateString = formatter.format(currentTime);
-            ParsePosition pos = new ParsePosition(8);
-            Date currentTime_2 = formatter.parse("2021-04-08 12:32:09", pos);
-        System.out.println(hbOrderRepository.findSecKillUserOrder( "1","2021-04-08 12:32:09"));
+//        Date currentTime = new Date();
+//            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//            String dateString = formatter.format(currentTime);
+//            ParsePosition pos = new ParsePosition(8);
+//            Date currentTime_2 = formatter.parse("2021-04-08 12:32:09", pos);
+//        System.out.println(hbOrderRepository.findSecKillUserOrder( "1","2021-04-08 12:32:09"));
+//
+
+        System.out.println(hbStrategyService.addStrategy(null));
     }
 }

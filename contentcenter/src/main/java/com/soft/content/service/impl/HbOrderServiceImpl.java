@@ -210,11 +210,6 @@ public class HbOrderServiceImpl implements HbOrderService {
         } else {
             //查询用户余额
             ResponseResult consumerResult = userCenterFeignClient.findInfoById(hbOrder.getUserId());
-//            log.info("***********************");
-//            log.info(consumerResult.toString());
-//            log.info(consumerResult.getData().toString());
-//            log.info("***********************");
-
 
             HbUser hbUserConsumer = JSONObject.parseObject(consumerResult.getData().toString(), HbUser.class);
             //查询该商品的价格和剩余数量
@@ -224,13 +219,6 @@ public class HbOrderServiceImpl implements HbOrderService {
             String hbUserProduceId = hbGood.getUserId();
             ResponseResult produceResult = userCenterFeignClient.findInfoById(hbUserProduceId);
             HbUser hbUserProduce = JSONObject.parseObject(produceResult.getData().toString(), HbUser.class);
-
-//            log.info("*********变化前*************");
-//            log.info(hbUserConsumer + "----" + hbUserConsumer);
-//            log.info(hbUserProduce + "----" + hbUserProduce);
-//            log.info(hbOrder + "----" + hbOrder);
-//            log.info(hbGood + "----" + hbGood);
-//            log.info("*******************************");
             //如果购买数量大于库存，则购买失败
             if (hbOrder.getNumber() > hbGood.getCount()) {
                 //返回库存不足
