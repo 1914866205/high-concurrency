@@ -15,3 +15,5 @@
 2021-04-11 14:36:45.586  INFO 30424 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
 2021-04-11 14:36:45.714  INFO 30424 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
 2021-04-11 14:36:45.715  INFO 30424 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-04-11 19:58:21.596  INFO 30424 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-11 19:58:21.597  INFO 30424 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
