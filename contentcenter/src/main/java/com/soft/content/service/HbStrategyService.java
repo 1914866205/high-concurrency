@@ -18,4 +18,6 @@ public interface HbStrategyService {
     List<HbStrategy> findAllStrategy();
 
     ResponseResult addStrategy(SecKillAddDto secKillAddDto) throws ParseException;
+
+    ResponseResult getStrategy(String goodId);
 }

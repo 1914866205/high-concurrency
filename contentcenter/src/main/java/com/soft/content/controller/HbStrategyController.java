@@ -32,4 +32,9 @@ public class HbStrategyController {
     ResponseResult addHbStrategy(@RequestBody SecKillAddDto secKillAddDto) throws ParseException {
         return hbStrategyService.addStrategy(secKillAddDto);
     }
+
+    @PostMapping("get")
+    ResponseResult getHbStrategy(String goodId)  {
+        return hbStrategyService.getStrategy(goodId);
+    }
 }

@@ -1,5 +1,4 @@
 <template>
-
   <v-app>
     <nav-bar></nav-bar>
     <el-dialog
@@ -29,7 +28,7 @@
         <el-alert title="（包含末尾数字，折扣区间0-10)" type="warning"></el-alert>
         <el-form-item
           v-for="(domain, index) in dynamicValidateForm.domains"
-          :label="'活动规则' + index"
+          :label="'当前活动' + index+':'"
           :key="domain.key"
           style="padding: 10px;"
         >
@@ -84,7 +83,7 @@
         <div style="margin-left: 15px">
           <span style="color: gray">库存修改</span>
           <button @click="btnMinute" class="btn_minute">-</button>
-          <input class="input" type="text" size="1" v-model="count" />
+          <input class="input" type="text" size="1" v-model="item.count"  />
           <button @click="btnAdd" class="btn_add">+</button>
           <span style="color: gray; margin-left: 10px">(库存：{{ item.count }})</span>
           <button
@@ -134,45 +133,63 @@ export default {
   },
   methods: {
     addSecKill() {
-      let d = new Date(this.form.date1);
-      let date1 =
-        d.getFullYear() +
-        "-" +
-        (d.getMonth() + 1) +
-        "-" +
-        d.getDate() +
-        " " +
-        d.getHours() +
-        ":" +
-        d.getMinutes() +
-        ":" +
-        d.getSeconds();
-      d = new Date(this.form.date2);
-      let date2 =
-        d.getFullYear() +
-        "-" +
-        (d.getMonth() + 1) +
-        "-" +
-        d.getDate() +
-        " " +
-        d.getHours() +
-        ":" +
-        d.getMinutes() +
-        ":" +
-        d.getSeconds();
-      let params = {
-        goodId: this.goodId,
-        day: date1,
-        detail: date2,
-        description: this.form.desc,
-        ruleDtoList: this.dynamicValidateForm.domains
-      };
-      this.axios.post(this.GLOBAL.contentUrl + "/hbStrategy/add", params);
-      this.$message({
-        message: "创建成功",
-        type: "success"
-      });
-      this.updatecenterDialogVisible = !this.updatecenterDialogVisible;
+      this.$confirm("此操作将修改商品获得, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      })
+        .then(() => {
+          let d = new Date(this.form.date1);
+          let date1 =
+            d.getFullYear() +
+            "-" +
+            (d.getMonth() + 1) +
+            "-" +
+            d.getDate() +
+            " " +
+            d.getHours() +
+            ":" +
+            d.getMinutes() +
+            ":" +
+            d.getSeconds();
+          d = new Date(this.form.date2);
+          let date2 =
+            d.getFullYear() +
+            "-" +
+            (d.getMonth() + 1) +
+            "-" +
+            d.getDate() +
+            " " +
+            d.getHours() +
+            ":" +
+            d.getMinutes() +
+            ":" +
+            d.getSeconds();
+          let params = {
+            goodId: this.goodId,
+            day: date1,
+            detail: date2,
+            description: this.form.desc,
+            ruleDtoList: this.dynamicValidateForm.domains
+          };
+          this.axios.post(this.GLOBAL.contentUrl + "/hbStrategy/add", params);
+          this.$message({
+            message: "创建成功",
+            type: "success"
+          });
+          this.updatecenterDialogVisible = !this.updatecenterDialogVisible;
+
+          this.$message({
+            type: "success",
+            message: "修改成功!"
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消修改"
+          });
+        });
     },
     getAllGoodsByUser() {
       let params = new URLSearchParams();
@@ -187,6 +204,30 @@ export default {
     dialogControl(goodId) {
       this.updatecenterDialogVisible = !this.updatecenterDialogVisible;
       this.goodId = goodId;
+      this.getSecKillInfo();
+    },
+    getSecKillInfo() {
+      let params = new URLSearchParams();
+      params.append("goodId", this.goodId);
+      this.axios
+        .post(this.GLOBAL.contentUrl + "/hbStrategy/get", params)
+        .then(res => {
+          let data = res.data.data;
+          this.goodId = data.goodId;
+          this.form.date1 = data.day;
+          this.form.date2 = data.detail;
+          this.form.desc = data.description;
+          for (let i = 0; i < data.ruleDtoList.length; i++) {
+            let domain = {
+              start: data.ruleDtoList[i].start,
+              end: data.ruleDtoList[i].end,
+              discount: data.ruleDtoList[i].discount
+            };
+            this.dynamicValidateForm.domains[i] = domain;
+          }
+
+          console.log(data);
+        });
     },
     btnAdd() {
       this.count++;
@@ -343,9 +384,9 @@ export default {
   color: gray;
 }
 
-  .user_avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-  }
+.user_avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
 </style>

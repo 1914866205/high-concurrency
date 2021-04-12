@@ -1,5 +1,6 @@
 package com.soft.content.service.impl;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.soft.content.common.ResponseResult;
 import com.soft.content.model.dto.RuleDto;
 import com.soft.content.model.dto.SecKillAddDto;
@@ -15,6 +16,7 @@ import javax.annotation.Resource;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -94,5 +96,34 @@ public class HbStrategyServiceImpl implements HbStrategyService {
         hbGoodRepository.save(hbGood);
 
         return ResponseResult.success();
+    }
+
+    @Override
+    public ResponseResult getStrategy(String goodId) {
+        SecKillAddDto secKillAddDto = new SecKillAddDto();
+//        private String goodId;
+//        private Date day;
+//        private Date detail;
+//        private String description;
+//        private List<RuleDto> ruleDtoList;
+        List<HbStrategy> list = hbStrategyRepository.findHbStrategiesByGoodIdEquals(goodId);
+        secKillAddDto.setGoodId(goodId);
+        secKillAddDto.setDay(list.get(0).getCreatedTime());
+        secKillAddDto.setDetail(list.get(0).getCreatedTime());
+        secKillAddDto.setDescription(list.get(0).getStrategyName());
+        List<RuleDto> ruleDtos = new ArrayList<>();
+        for (HbStrategy hbStrategy : list) {
+            RuleDto ruleDto = new RuleDto();
+            ruleDto.setStart(hbStrategy.getRankStart());
+            ruleDto.setEnd(hbStrategy.getRankEnd());
+//            不进行四舍五入操作：
+//            (int)x
+//            进行四舍五入操作：
+//            Integer.parseInt(new java.text.DecimalFormat("0").format(x))
+            ruleDto.setDiscount((int) (hbStrategy.getDiscount() * 10));
+            ruleDtos.add(ruleDto);
+        }
+        secKillAddDto.setRuleDtoList(ruleDtos);
+        return ResponseResult.success(secKillAddDto);
     }
 }
