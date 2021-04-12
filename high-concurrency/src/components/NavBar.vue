@@ -1,17 +1,24 @@
 <template>
-  <v-card
-    :class="navBarFixed == true ? 'navBarWrap' : ''"
-    flat
-    height="70px"
-    tile
-  >
+  <v-card class="navBarWrap" flat height="64px" tile>
+    <link
+      href="https://fonts.googleapis.com/css?family=Abril+Fatface|Comfortaa|Yellowtail"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Marck+Script|Monoton|Oleo+Script|Oswald"
+      rel="stylesheet"
+    />
+    <link
+      href="http://cdn.webfont.youziku.com/webfonts/nomal/104937/46613/59647993f629e1108c0d5238.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Kurale"
+      rel="stylesheet"
+    />
     <v-toolbar>
-      <v-toolbar-title
-        @click="goHome()"
-        style="color: #26a69a; font-weight: 300; font-size: 1.75rem"
-        >骸冰商城</v-toolbar-title
-      >
-
+      <a href="/" class="nav-title">Haibing shops</a>
       <v-menu offset-y>
         <template v-slot:activator="{ attrs, on }">
           <div class="input" v-bind="attrs" v-on="on">
@@ -79,7 +86,6 @@ export default {
       overlay: false,
       zIndex: 0,
       isLogin: false,
-      navBarFixed: false,
     };
   },
   computed: {},
@@ -125,9 +131,6 @@ export default {
     },
     goLogin() {
       this.$router.push("/login");
-    },
-    goHome() {
-      this.$router.push("/");
     },
     goGoods(id) {
       this.$router.push({ path: "/goods", query: { goodsId: id } });
@@ -213,5 +216,17 @@ export default {
   top: 0;
   z-index: 999;
   width: 100%;
+  background-color: #f6f6f6;
+}
+.nav-title {
+  font-family: "Abril Fatface", cursive;
+  text-decoration: none;
+  color: #26a69a;
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+.nav-title:hover {
+  background: #fff;
+  color: #000;
 }
 </style>
