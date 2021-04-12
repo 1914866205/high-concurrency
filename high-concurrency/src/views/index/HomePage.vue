@@ -138,7 +138,7 @@ export default {
 
 .shop-card {
   width: 290px;
-  height: 290px;
+  height: 320px;
   background: #f5f5f5;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   overflow: hidden;
@@ -154,7 +154,7 @@ export default {
     & img {
       // margin: -95px 0 -60px;
       width: 100%;
-      height: 200px;
+      height: 230px;
     }
   }
 

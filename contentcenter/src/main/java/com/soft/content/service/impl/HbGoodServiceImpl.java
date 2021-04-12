@@ -93,7 +93,7 @@ public class HbGoodServiceImpl implements HbGoodService {
                 .createdTime(Timestamp.valueOf(LocalDateTime.now()))
                 .updatedTime(Timestamp.valueOf(LocalDateTime.now()))
                 .build());
-        return null;
+        return ResponseResult.success();
     }
 
 }

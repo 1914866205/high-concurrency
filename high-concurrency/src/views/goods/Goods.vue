@@ -57,7 +57,7 @@
       </div>
 
       <div class="goods-right">
-        <div class="font" style="margin: 50px 0 20px 50px">价格</div>
+        <div class="font" style="margin: 100px 0 20px 50px">价格</div>
         <span
           style="
             color: #26a69a;
@@ -76,7 +76,14 @@
         <div style="margin-left: 50px">
           <span style="font-size: 1rem">购买数量</span>
           <button @click="btnMinute" class="btn_minute">-</button>
-          <input class="input" type="text" size="1" v-model="count" />
+          <input
+            class="input"
+            type="number"
+            min="1"
+            max="3"
+            oninput="if(value>count)value=10;if(value.length>10)value=value.slice(0,4);if(value<0)value=0"
+            v-model="count"
+          />
           <button @click="btnAdd" class="btn_add">+</button>
           <span style="color: gray; margin-left: 10px"
             >(库存：{{ goodsInfo.count }})</span
@@ -87,18 +94,49 @@
           <button @click="sumbitGoods()" class="btn">立即购买</button>
         </div>
       </div>
-
-      
     </div>
     <div class="goods-footer">
-        <span style="font-size: 1.5rem">{{ user.nickname}}的其他商品</span>
-      </div>
+      <span style="font-size: 1.5rem">{{ user.nickname }}的其他商品</span>
+      <v-sheet class="mx-auto mt-8" elevation="8" max-width="100%">
+        <v-slide-group v-model="model" prev-icon="«"
+      next-icon="»" class="pa-4">
+          <v-slide-item v-for="(item, index) in goods"
+        :key="index"
+        @click="goGoods(item.pkGoodId)">
+            <v-card
+              class="ma-4"
+              height="300"
+              width="300"
+            >
+              <div class="ag-shop-card_box">
+							<div class="ag-shop-card_body">
+								<div class="js-card-bg ag-card-bg"
+									:style="'background-image: url('+item.image+');'">
+								</div>
+								<a @click="goGoods(item.pkGoodId)" class="ag-shop-card-body_link"><img
+										:src="item.image"
+										alt="Falu" class="ag-shop-card-body_img"></a>
+							</div>
+							<div class="ag-shop-card_footer">
+								<a@click="goGoods(item.pkGoodId)" class="ag-shop-card-footer_link"><img
+										src="https://rawcdn.githack.com/SochavaAG/example-mycode/master/pens/parallax-swipe/images/arrow.svg"
+										class="ag-shop-card-footer_arrow"></a>
+								<span class="ag-shop-card-footer_title">{{item.goodName}}</span>
+								<span class="ag-shop-card-footer_products">Tienda oficial</span>
+							</div>
+						</div>
+            </v-card>
+          </v-slide-item>
+        </v-slide-group>
+      </v-sheet>
+    </div>
   </v-app>
 </template>
 
 <script>
 import NavBar from "../../components/NavBar";
 const API = require("../../utils/request.js");
+
 export default {
   name: "HomePage",
   data() {
@@ -107,6 +145,8 @@ export default {
       count: 0,
       comments: [],
       user: [],
+      model: null,
+      goods:[]
     };
   },
   created: function () {
@@ -119,9 +159,17 @@ export default {
         let id = this.goodsInfo.userId;
         this.axios
           .get(this.GLOBAL.baseUrl + "/user/getInfoById/" + id)
-          .then((res) => {
-            this.user = JSON.parse(res.data.data);
-            console.log(this.user);
+          .then((res1) => {
+            this.user = JSON.parse(res1.data.data);
+            console.log(this.user.pkUserId);
+            let userId = new URLSearchParams();
+            userId.append("userId", this.user.pkUserId);
+             this.axios
+          .post(this.GLOBAL.contentUrl + "/goods/findGoodsByUserId" , userId)
+          .then((res2) => {
+            this.goods = res2.data.data.Goods
+            console.log(this.goods);
+          });
           });
       });
     this.getCommont();
@@ -133,6 +181,9 @@ export default {
       } else {
         this.count++;
       }
+    },
+     goGoods(goodsId) {
+      this.$router.push({ path: "/goods", query: { goodsId: goodsId } });
     },
     btnMinute() {
       if (this.count <= 0) {
@@ -178,6 +229,12 @@ export default {
 .goodsImg {
   width: 400px;
   height: 400px;
+  transition: all 2s;
+  &:hover{
+    cursor: crosshair;
+    /*放大倍数*/
+    transform: scale(1.5);
+  }
 }
 .img {
   height: 700px;
@@ -186,7 +243,7 @@ export default {
   justify-content: center;
 }
 .goodsInfo {
-  margin: 0 auto;
+  margin: 50px auto;
   display: flex;
   width: 100%;
   height: 100%;
@@ -219,6 +276,8 @@ export default {
 .input {
   padding: 0.146rem 0.12rem;
   text-align: center;
+  border: #f6f6f6;
+  outline: none;
 }
 .btn_add {
   border-radius: 0 0.133rem 0.133rem 0;
@@ -230,11 +289,15 @@ export default {
 .btn {
   background-color: #26a69a;
   border-radius: 8px;
+  border: none;
   color: #ffffff;
   font-size: 1rem;
   width: 80%;
   height: 65px;
   padding: 10px;
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
 .line {
@@ -281,7 +344,140 @@ export default {
   color: gray;
 }
 .goods-footer {
-  width:100%;
+  width: 90%;
+  text-align: center;
   height: 300px;
+  margin: 0 auto;
 }
+
+.ag-card-bg {
+				height: 100%;
+				width: 200%;
+				background-position: 50%;
+				background-size: cover;
+				position: absolute;
+				top: 0;
+				left: -50%;
+				transition: height .6s;
+			}
+
+			.ag-shop-card_box {
+				background-color: #FFF;
+				width:300px;
+				overflow: hidden;
+
+				-webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 35, .25);
+				-moz-box-shadow: 0 10px 20px 0 rgba(0, 0, 35, .25);
+				-o-box-shadow: 0 10px 20px 0 rgba(0, 0, 35, .25);
+				box-shadow: 0 10px 20px 0 rgba(0, 0, 35, .25);
+
+				-webkit-border-radius: 8px;
+				-moz-border-radius: 8px;
+				border-radius: 8px;
+
+				-webkit-transition: .4s;
+				-moz-transition: .4s;
+				-o-transition: .4s;
+				transition: .4s;
+			}
+
+			.ag-shop-card_body {
+				display: block;
+				height: 250px;
+				width: 300px;
+				background-position: 50%;
+				background-size: cover;
+
+				overflow: hidden;
+
+				-webkit-transition: .4s;
+				-moz-transition: .4s;
+				-o-transition: .4s;
+				transition: .4s;
+
+				position: relative;
+			}
+
+			.ag-shop-card-body_link {
+				height: 100px;
+				width: 100px;
+				margin: 0 auto;
+
+				overflow: hidden;
+
+				z-index: 9;
+				position: absolute;
+				top: 50%;
+				left: 0;
+				right: 0;
+
+				-webkit-border-radius: 50%;
+				-moz-border-radius: 50%;
+				border-radius: 50%;
+
+				-webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .35);
+				-moz-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .35);
+				-o-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .35);
+				box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .35);
+
+				-webkit-transform: translateY(-50%);
+				-moz-transform: translateY(-50%);
+				-o-transform: translateY(-50%);
+				transform: translateY(-50%);
+
+				-webkit-transition: top .4s;
+				-moz-transition: top .4s;
+				-o-transition: top .4s;
+				transition: top .4s;
+			}
+
+			.ag-shop-card-body_img {
+				max-width: 100%;
+			}
+
+			.ag-shop-card_footer {
+				padding: 15px 30px;
+				border: 0;
+				background-color: #FFF;
+
+				position: relative;
+			}
+
+			.ag-shop-card-footer_title {
+				display: block;
+				line-height: 1.3;
+
+				font-weight: 700;
+				font-size: 14px;
+				color: #690911;
+			}
+
+			.ag-shop-card-footer_products {
+				display: block;
+				line-height: 1.3;
+
+				font-size: 12px;
+			}
+
+			.ag-shop-card-footer_link {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 35px;
+				width: 35px;
+				background-color: #ff7b1a;
+
+				position: absolute;
+				right: 10px;
+				top: 15px;
+
+				-webkit-border-radius: 50%;
+				-moz-border-radius: 50%;
+				border-radius: 50%;
+			}
+
+			.ag-shop-card-footer_arrow {
+				max-width: 16px;
+			}
+
 </style>
