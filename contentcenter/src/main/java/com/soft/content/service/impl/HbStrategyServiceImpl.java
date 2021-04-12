@@ -89,12 +89,6 @@ public class HbStrategyServiceImpl implements HbStrategyService {
             hbStrategy.setDiscount(Double.parseDouble(String.valueOf(ruleDto.getDiscount())) / 10);
             hbStrategyRepository.save(hbStrategy);
         }
-
-        //  4.修改商品的描述
-        HbGood hbGood = hbGoodRepository.getOne(secKillAddDto.getGoodId());
-        hbGood.setDescription(secKillAddDto.getDescription());
-        hbGoodRepository.save(hbGood);
-
         return ResponseResult.success();
     }
 

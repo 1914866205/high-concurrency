@@ -47,6 +47,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Service
 @RequiredArgsConstructor(onConstructor = @_(@Autowired))
+@Transactional
 public class HbOrderServiceImpl implements HbOrderService {
     private final HbOrderRepository hbOrderRepository;
     private final HbGoodRepository hbGoodRepository;
@@ -206,14 +207,19 @@ public class HbOrderServiceImpl implements HbOrderService {
     /**
      * 支付订单
      *
-     * @param hBorderId
+     * @param hbOrderId
      * @return
      */
     @Override
     @Transactional(rollbackFor = RuntimeException.class)
-    public ResponseResult payOrder(String hBorderId) {
-        Optional<HbOrder> hbOrderList = hbOrderRepository.findById(hBorderId);
+    public ResponseResult payOrder(String hbOrderId) {
+        Optional<HbOrder> hbOrderList = hbOrderRepository.findById(hbOrderId);
         HbOrder hbOrder = hbOrderList.get();
+        HbGood good = hbGoodRepository.findHbGoodByPkGoodIdEquals(hbOrder.getPkGoodId());
+        if (good.getUserId().equals(hbOrder.getUserId())) {
+            return ResponseResult.failure(ResultCode.BY_ONESELF_ERROR);
+        }
+
         final int state = hbOrder.getState();
         if (state == 3) {
             //如果订单已经取消，则不可支付
@@ -250,18 +256,18 @@ public class HbOrderServiceImpl implements HbOrderService {
             System.out.println(strategies);
             List<HbOrder> secKillUserOrder = hbOrderRepository.findSecKillUserOrder(hbOrder.getPkGoodId(), strategies.get(0).getCreatedTime().toString());
             if (!secKillUserOrder.isEmpty()) {
-                System.out.println("订单有折扣");
+//                System.out.println("订单有折扣");
                 int maxRank = strategies.get(0).getRankEnd();
-                System.out.println("maxRank" + maxRank);
-                System.out.println("hbOrder.getRank()" + hbOrder.getRank());
+//                System.out.println("maxRank" + maxRank);
+//                System.out.println("hbOrder.getRank()" + hbOrder.getRank());
                 //如果当前订单的排名在策略范围内
                 if (hbOrder.getRank() < maxRank) {
-                    System.out.println("进循环");
+//                    System.out.println("进循环");
                     //得到当前订单的排名
                     for (int i = 0; i <strategies.size(); i++) {
-                        System.out.println("订单排名" + hbOrder.getRank());
-                        System.out.println("当前策略起始"+strategies.get(i).getRankStart());
-                        System.out.println("当前策略终点" + strategies.get(i).getRankEnd());
+//                        System.out.println("订单排名" + hbOrder.getRank());
+//                        System.out.println("当前策略起始"+strategies.get(i).getRankStart());
+//                        System.out.println("当前策略终点" + strategies.get(i).getRankEnd());
                         System.out.println(strategies.get(i).getRankEnd() >= hbOrder.getRank() && hbOrder.getRank() > strategies.get(i).getRankStart());
                         if (strategies.get(i).getRankEnd() >= hbOrder.getRank() && hbOrder.getRank() > strategies.get(i).getRankStart()) {
                             payMoney = payMoney * strategies.get(i).getDiscount();
@@ -272,7 +278,7 @@ public class HbOrderServiceImpl implements HbOrderService {
             }
 
 
-            System.out.println("实际支付" + payMoney);
+//            System.out.println("实际支付" + payMoney);
             //如果购买数量大于库存，则购买失败
             if (hbOrder.getNumber() > hbGood.getCount()) {
                 //返回库存不足

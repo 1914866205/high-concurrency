@@ -333,3 +333,80 @@
 2021-04-12 14:23:52.026  INFO 10312 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 进入编辑接口
 2021-04-12 14:23:52.027  INFO 10312 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=1, username=ntt, password=123, phone=18851855103, code=null, sex=1, avatar=http://nttbucket.oss-cn-beijing.aliyuncs.com/img/1617282580000.jpeg, address=江苏省南京市, email=1914866205@qq.com, nickname=醉忆丶无回路, money=153.7)
 2021-04-12 14:23:52.407  INFO 10312 --- [http-nio-8082-exec-4] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTk1MDQ2MzIsInVzZXJuYW1lIjoibnR0In0.pmidnkNn_lsByxGFC65xnQQqPlWAo4va0UEhcO54Tgw
+2021-04-12 14:28:03.915  INFO 10312 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-12 14:28:03.915  INFO 10312 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-04-12 14:28:04.496  INFO 10312 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-12 14:28:04.497  INFO 10312 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-04-12 14:28:04.775  INFO 10312 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-04-12 14:28:04.776  INFO 10312 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=1, username=ntt, password=123, phone=18851855103, code=null, sex=1, avatar=http://nttbucket.oss-cn-beijing.aliyuncs.com/img/1617282580000.jpeg, address=江苏省南京市, email=1914866205@qq.com, nickname=醉忆丶无回路, money=133.0)
+2021-04-12 14:28:05.246  INFO 10312 --- [http-nio-8082-exec-8] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTk1MDQ4ODUsInVzZXJuYW1lIjoibnR0In0.mJ77d4nsL0dZfbBQ28OK9WDNU7fx3Dooc5xJ6hUuhe8
+2021-04-12 14:28:05.261  INFO 10312 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-04-12 14:28:05.261  INFO 10312 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=1, username=ntt, password=123, phone=18851855103, code=null, sex=1, avatar=http://nttbucket.oss-cn-beijing.aliyuncs.com/img/1617282580000.jpeg, address=江苏省南京市, email=1914866205@qq.com, nickname=醉忆丶无回路, money=174.39999999999998)
+2021-04-12 14:28:05.647  INFO 10312 --- [http-nio-8082-exec-9] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTk1MDQ4ODUsInVzZXJuYW1lIjoibnR0In0.mJ77d4nsL0dZfbBQ28OK9WDNU7fx3Dooc5xJ6hUuhe8
+2021-04-12 14:31:16.830  INFO 10312 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-12 14:31:16.830  INFO 10312 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-04-12 14:31:17.166  INFO 10312 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-12 14:31:17.166  INFO 10312 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-04-12 14:31:18.606  INFO 10312 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-04-12 14:31:18.606  INFO 10312 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=1, username=ntt, password=123, phone=18851855103, code=null, sex=1, avatar=http://nttbucket.oss-cn-beijing.aliyuncs.com/img/1617282580000.jpeg, address=江苏省南京市, email=1914866205@qq.com, nickname=醉忆丶无回路, money=153.70000000000002)
+2021-04-12 14:31:18.967  INFO 10312 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTk1MDUwNzgsInVzZXJuYW1lIjoibnR0In0.5sNiiGusbLVk8WlxMR3clFs5Jtiejm7iPGF61Z-Nq-4
+2021-04-12 14:31:18.981  INFO 10312 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-04-12 14:31:18.981  INFO 10312 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=1, username=ntt, password=123, phone=18851855103, code=null, sex=1, avatar=http://nttbucket.oss-cn-beijing.aliyuncs.com/img/1617282580000.jpeg, address=江苏省南京市, email=1914866205@qq.com, nickname=醉忆丶无回路, money=195.1)
+2021-04-12 14:31:19.476  INFO 10312 --- [http-nio-8082-exec-4] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTk1MDUwNzksInVzZXJuYW1lIjoibnR0In0.phzXe1PoAfo9x4_90ImRC09keaCiVQkEKyVDVZdn5o8
+2021-04-12 14:32:10.023  INFO 10312 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-12 14:32:10.023  INFO 10312 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-04-12 14:32:10.485  INFO 10312 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-12 14:32:10.486  INFO 10312 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-04-12 14:32:11.501  INFO 10312 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-12 14:32:11.502  INFO 10312 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-04-12 14:32:11.904  INFO 10312 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-04-12 14:32:11.904  INFO 10312 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=1, username=ntt, password=123, phone=18851855103, code=null, sex=1, avatar=http://nttbucket.oss-cn-beijing.aliyuncs.com/img/1617282580000.jpeg, address=江苏省南京市, email=1914866205@qq.com, nickname=醉忆丶无回路, money=174.4)
+2021-04-12 14:32:12.238  INFO 10312 --- [http-nio-8082-exec-9] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTk1MDUxMzIsInVzZXJuYW1lIjoibnR0In0.yyJDW0tsh2T428OUMkrig36tFZZrombZ1srBC1ZNZBQ
+2021-04-12 14:32:12.246  INFO 10312 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-04-12 14:32:12.247  INFO 10312 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=1, username=ntt, password=123, phone=18851855103, code=null, sex=1, avatar=http://nttbucket.oss-cn-beijing.aliyuncs.com/img/1617282580000.jpeg, address=江苏省南京市, email=1914866205@qq.com, nickname=醉忆丶无回路, money=215.79999999999998)
+2021-04-12 14:32:12.649  INFO 10312 --- [http-nio-8082-exec-10] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTk1MDUxMzIsInVzZXJuYW1lIjoibnR0In0.yyJDW0tsh2T428OUMkrig36tFZZrombZ1srBC1ZNZBQ
+2021-04-12 14:34:48.003  INFO 10312 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-12 14:34:48.004  INFO 10312 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-04-12 14:34:48.391  INFO 10312 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-12 14:34:48.391  INFO 10312 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-04-12 14:35:29.442  INFO 10312 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-12 14:35:29.442  INFO 10312 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-04-12 14:35:30.059  INFO 10312 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-12 14:35:30.060  INFO 10312 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-04-12 14:36:38.378  INFO 10312 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-12 14:36:38.379  INFO 10312 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-04-12 14:36:38.975  INFO 10312 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-12 14:36:38.975  INFO 10312 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-04-12 14:36:39.401  INFO 10312 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-04-12 14:36:39.401  INFO 10312 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=1, username=ntt, password=123, phone=18851855103, code=null, sex=1, avatar=http://nttbucket.oss-cn-beijing.aliyuncs.com/img/1617282580000.jpeg, address=江苏省南京市, email=1914866205@qq.com, nickname=醉忆丶无回路, money=195.10000000000002)
+2021-04-12 14:36:39.700  INFO 10312 --- [http-nio-8082-exec-10] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTk1MDUzOTksInVzZXJuYW1lIjoibnR0In0.3oRJPRRUdV4GSNPFzD-aoZ7E9bpwOeyNx77RTLCl2Mk
+2021-04-12 14:36:39.712  INFO 10312 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-04-12 14:36:39.713  INFO 10312 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=1, username=ntt, password=123, phone=18851855103, code=null, sex=1, avatar=http://nttbucket.oss-cn-beijing.aliyuncs.com/img/1617282580000.jpeg, address=江苏省南京市, email=1914866205@qq.com, nickname=醉忆丶无回路, money=236.5)
+2021-04-12 14:36:40.526  INFO 10312 --- [http-nio-8082-exec-1] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTk1MDU0MDAsInVzZXJuYW1lIjoibnR0In0.xhuXnKFMWN6LM-HqZZ3JdZ-wLnQa4W3xPpKnGuZDX_k
+2021-04-12 14:38:10.439  INFO 10312 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-12 14:38:10.440  INFO 10312 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-04-12 14:38:10.814  INFO 10312 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-12 14:38:10.814  INFO 10312 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-04-12 14:38:11.029  INFO 10312 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-04-12 14:38:11.030  INFO 10312 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=1, username=ntt, password=123, phone=18851855103, code=null, sex=1, avatar=http://nttbucket.oss-cn-beijing.aliyuncs.com/img/1617282580000.jpeg, address=江苏省南京市, email=1914866205@qq.com, nickname=醉忆丶无回路, money=215.8)
+2021-04-12 14:38:12.135  INFO 10312 --- [http-nio-8082-exec-5] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTk1MDU0OTIsInVzZXJuYW1lIjoibnR0In0.P1HylhlchsXUI-ncj2HS4CbGisdfeZKGjezNfOhs9c8
+2021-04-12 14:39:45.664  INFO 10312 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-12 14:39:45.665  INFO 10312 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-04-12 14:39:46.255  INFO 10312 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-12 14:39:46.255  INFO 10312 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-04-12 14:39:47.262  INFO 10312 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-12 14:39:47.262  INFO 10312 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-04-12 14:39:49.659  INFO 10312 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-04-12 14:39:49.659  INFO 10312 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=1, username=ntt, password=123, phone=18851855103, code=null, sex=1, avatar=http://nttbucket.oss-cn-beijing.aliyuncs.com/img/1617282580000.jpeg, address=江苏省南京市, email=1914866205@qq.com, nickname=醉忆丶无回路, money=211.66000000000003)
+2021-04-12 14:39:50.689  INFO 10312 --- [http-nio-8082-exec-9] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTk1MDU1OTAsInVzZXJuYW1lIjoibnR0In0.WBUZJD98_hV7auMOb-IhEza7owDV3_VDy2rXYfoMcsM
+2021-04-12 14:41:05.273  INFO 10312 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-12 14:41:05.273  INFO 10312 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-04-12 14:41:05.623  INFO 10312 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-12 14:41:05.624  INFO 10312 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-04-12 14:41:06.072  INFO 10312 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-04-12 14:41:06.072  INFO 10312 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=1, username=ntt, password=123, phone=18851855103, code=null, sex=1, avatar=http://nttbucket.oss-cn-beijing.aliyuncs.com/img/1617282580000.jpeg, address=江苏省南京市, email=1914866205@qq.com, nickname=醉忆丶无回路, money=207.52)
+2021-04-12 14:41:06.258  INFO 10312 --- [http-nio-8082-exec-3] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTk1MDU2NjYsInVzZXJuYW1lIjoibnR0In0.HujGcfFXHrv98ajsVRgqdsxbxiBKJG0YSvTKs80Go5M
+2021-04-12 14:41:06.276  INFO 10312 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-04-12 14:41:06.276  INFO 10312 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=1, username=ntt, password=123, phone=18851855103, code=null, sex=1, avatar=http://nttbucket.oss-cn-beijing.aliyuncs.com/img/1617282580000.jpeg, address=江苏省南京市, email=1914866205@qq.com, nickname=醉忆丶无回路, money=215.79999999999998)
+2021-04-12 14:41:06.473  INFO 10312 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTk1MDU2NjYsInVzZXJuYW1lIjoibnR0In0.HujGcfFXHrv98ajsVRgqdsxbxiBKJG0YSvTKs80Go5M
+2021-04-12 16:26:07.144  WARN 10312 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h43m9s680ms522µs400ns).

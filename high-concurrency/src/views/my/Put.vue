@@ -33,9 +33,9 @@
           style="padding: 10px;"
         >
           第
-          <el-input v-model="domain.start" style="width: 50px;" />名到第
-          <el-input v-model="domain.end" style="width: 50px;"></el-input>名打
-          <el-input v-model="domain.discount" style="width: 50px;"></el-input>折
+          <el-input v-model="domain.start" style="width: 100px;" />名到第
+          <el-input v-model="domain.end" style="width: 100px;"></el-input>名打
+          <el-input v-model="domain.discount" style="width: 40px;"></el-input>折
           <el-button
             @click.prevent="removeDomain(domain)"
             style="background-color: #FF5252;color:white;margin-left:30px"
@@ -75,7 +75,7 @@
             <span style="color: #26a69a; font-size: 2rem ;margin-left:40px">￥ {{ item.price }}</span>
           </div>
           <div style="color: gray; margin: 10px">
-            <span>活动介绍</span>
+            <span>商品介绍</span>
             <span style="margin-left: 34px">{{ item.description }}</span>
           </div>
         </div>
@@ -83,7 +83,7 @@
         <div style="margin-left: 15px">
           <span style="color: gray">库存修改</span>
           <button @click="btnMinute" class="btn_minute">-</button>
-          <input class="input" type="text" size="1" v-model="item.count"  />
+          <input class="input" type="text" size="1" v-model="count"  />
           <button @click="btnAdd" class="btn_add">+</button>
           <span style="color: gray; margin-left: 10px">(库存：{{ item.count }})</span>
           <button
