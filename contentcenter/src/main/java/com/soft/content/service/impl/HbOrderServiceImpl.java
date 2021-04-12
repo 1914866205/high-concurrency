@@ -21,6 +21,7 @@ import com.soft.content.service.HbOrderService;
 import javassist.runtime.Desc;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -56,6 +57,7 @@ public class HbOrderServiceImpl implements HbOrderService {
     private final SecKillCenterFeignClient secKillCenterFeignClient;
     LinkedBlockingQueue<OrderDto> queue = new LinkedBlockingQueue<>();
     private int number = 0;
+    private OrderDto orderDto = new OrderDto();
 
     @PostConstruct
     public void init() {
@@ -67,11 +69,22 @@ public class HbOrderServiceImpl implements HbOrderService {
                 if (queue.size() == 0) {
                     return;
                 }
+
+                //如果10毫秒内只是一个请求，直接单步执行
+                if (queue.size() == 1) {
+                    number += queue.size();
+                    log.info("定时任务被执行" + queue.size() + "number:" + number);
+                    System.out.println(queue + "----------");
+                    secKillCenterFeignClient.secKill(orderDto);
+                    queue.clear();
+                    return;
+                }
+
                 number += queue.size();
                 log.info("定时任务被执行" + queue.size() + "number:" + number);
+                System.out.println(queue + "----------");
                 Thread thread = new Thread(new SendThread(queue));
                 thread.start();
-//                secKillCenterFeignClient.barchSeckill(queue);
                 queue.clear();
             }
         }, 0, 10, TimeUnit.MILLISECONDS);
@@ -80,6 +93,7 @@ public class HbOrderServiceImpl implements HbOrderService {
     @Override
     public ResponseResult seckOrder(OrderDto orderDto) {
         queue.add(orderDto);
+        this.orderDto = orderDto;
         return ResponseResult.success(ResultCode.Order_Send);
     }
 
@@ -88,9 +102,9 @@ public class HbOrderServiceImpl implements HbOrderService {
         List<SecResultVo> result = new ArrayList<>();
         //此处先写死策略时
 //        List<HbStrategy> strategies = secResultDto.getStrategies();
-        List<HbStrategy> strategies = hbStrategyRepository.findAll();
-        //如果该策略的商品id不是指定商品的策略id，则移除该策略
-        strategies.removeIf(strategy -> !strategy.getGoodId().equals(secResultDto.getGoodId()));
+        List<HbStrategy> strategies = hbStrategyRepository.findHbStrategiesByGoodIdEquals(secResultDto.getGoodId());
+//        如果该策略的商品id不是指定商品的策略id，则移除该策略
+//        strategies.removeIf(strategy -> !strategy.getGoodId().equals(secResultDto.getGoodId()));
         //对策略的结束排名进行排序
         strategies.sort(Comparator.comparing(HbStrategy::getRankEnd).reversed());
         //从大到小排
@@ -219,20 +233,60 @@ public class HbOrderServiceImpl implements HbOrderService {
             String hbUserProduceId = hbGood.getUserId();
             ResponseResult produceResult = userCenterFeignClient.findInfoById(hbUserProduceId);
             HbUser hbUserProduce = JSONObject.parseObject(produceResult.getData().toString(), HbUser.class);
+
+            //对原价进行优惠折算
+            Double payMoney = hbGood.getPrice() * hbOrder.getNumber();
+            /**
+             * 获取当前订单的折扣
+             * 获取最终价格
+             */
+
+
+            //对当前商品查找最大的优惠范围
+            List<HbStrategy> strategies = hbStrategyRepository.findHbStrategiesByGoodIdEquals(hbGood.getPkGoodId());
+            //对策略的结束排名进行排序
+            strategies.sort(Comparator.comparing(HbStrategy::getRankEnd).reversed());
+            //从大到小排
+            System.out.println(strategies);
+            List<HbOrder> secKillUserOrder = hbOrderRepository.findSecKillUserOrder(hbOrder.getPkGoodId(), strategies.get(0).getCreatedTime().toString());
+            if (!secKillUserOrder.isEmpty()) {
+                System.out.println("订单有折扣");
+                int maxRank = strategies.get(0).getRankEnd();
+                System.out.println("maxRank" + maxRank);
+                System.out.println("hbOrder.getRank()" + hbOrder.getRank());
+                //如果当前订单的排名在策略范围内
+                if (hbOrder.getRank() < maxRank) {
+                    System.out.println("进循环");
+                    //得到当前订单的排名
+                    for (int i = 0; i <strategies.size(); i++) {
+                        System.out.println("订单排名" + hbOrder.getRank());
+                        System.out.println("当前策略起始"+strategies.get(i).getRankStart());
+                        System.out.println("当前策略终点" + strategies.get(i).getRankEnd());
+                        System.out.println(strategies.get(i).getRankEnd() >= hbOrder.getRank() && hbOrder.getRank() > strategies.get(i).getRankStart());
+                        if (strategies.get(i).getRankEnd() >= hbOrder.getRank() && hbOrder.getRank() > strategies.get(i).getRankStart()) {
+                            payMoney = payMoney * strategies.get(i).getDiscount();
+                            break;
+                        }
+                    }
+                }
+            }
+
+
+            System.out.println("实际支付" + payMoney);
             //如果购买数量大于库存，则购买失败
             if (hbOrder.getNumber() > hbGood.getCount()) {
                 //返回库存不足
                 return ResponseResult.failure(ResultCode.Order_OVER);
-            } else if (hbUserConsumer.getMoney() < hbGood.getPrice() * hbOrder.getNumber()) {
+            } else if (hbUserConsumer.getMoney() < payMoney) {
                 //返回余额不足
                 return ResponseResult.failure(ResultCode.Order_CREDIT_LOW);
             } else {
                 //用户余额变化
                 //消费者余额减少
-                hbUserConsumer.setMoney(hbUserConsumer.getMoney() - hbGood.getPrice() * hbOrder.getNumber());
+                hbUserConsumer.setMoney(hbUserConsumer.getMoney() - payMoney);
                 userCenterFeignClient.payOrder(hbUserConsumer);
 
-                hbUserProduce.setMoney(hbUserProduce.getMoney() + hbGood.getPrice() * hbOrder.getNumber());
+                hbUserProduce.setMoney(hbUserProduce.getMoney() + payMoney);
                 userCenterFeignClient.payOrder(hbUserProduce);
 
                 //商品数量减少

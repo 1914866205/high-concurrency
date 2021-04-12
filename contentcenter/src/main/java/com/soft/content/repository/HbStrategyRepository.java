@@ -18,4 +18,5 @@ public interface HbStrategyRepository extends JpaRepository<HbStrategy, String> 
 
     List<HbStrategy> findHbStrategiesByGoodIdEquals(String goodId);
 
+
 }

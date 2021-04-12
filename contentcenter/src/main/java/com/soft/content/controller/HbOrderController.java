@@ -120,7 +120,7 @@ public class HbOrderController {
     @PostMapping("payOrder")
     @ControllerWebLog(name = "payOrder", isSaved = true)
     public ResponseResult payOrder(String orderId) {
-        return ResponseResult.success(hbOrderService.payOrder(orderId));
+        return hbOrderService.payOrder(orderId);
     }
 
 
@@ -146,10 +146,8 @@ public class HbOrderController {
     @PostMapping("findSecKillUserOrder")
     @ControllerWebLog(name = "findSecKillUserOrder", isSaved = true)
     public ResponseResult findSecKillUserOrder(@RequestBody SecResultDto secResultDto) {
-         return hbOrderService.findSecKillUserOrder(secResultDto);
+        return hbOrderService.findSecKillUserOrder(secResultDto);
     }
-
-
 
 
     class FollowThread extends Thread {
