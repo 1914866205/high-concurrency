@@ -65,4 +65,6 @@ public interface HbGoodRepository extends JpaRepository<HbGood, String> {
     @Query(value = "select distinct  pkGoodId from  HbGood ")
     List<String> findAllGoodId();
 
+
+
 }

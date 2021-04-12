@@ -1,5 +1,7 @@
 package com.soft.content.service.impl;
 
+import com.soft.content.common.ResponseResult;
+import com.soft.content.model.dto.GoodsDto;
 import com.soft.content.model.dto.SearchDto;
 import com.soft.content.model.entity.HbGood;
 import com.soft.content.repository.HbGoodRepository;
@@ -8,9 +10,12 @@ import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * @author 倪涛涛
@@ -71,6 +76,24 @@ public class HbGoodServiceImpl implements HbGoodService {
     @Override
     public HbGood getGoodsById(String goodId) {
         return hbGoodRepository.findHbGoodByPkGoodIdEquals(goodId);
+    }
+
+    @Override
+    public ResponseResult addGoods(GoodsDto goodsDto) {
+        hbGoodRepository.save(HbGood.builder()
+    .pkGoodId(UUID.randomUUID().toString().substring(0, 19))
+                .type(goodsDto.getType())
+                .userId(goodsDto.getPkUserIngId())
+                .goodName(goodsDto.getGoodName())
+                .price(goodsDto.getPrice())
+                .image(goodsDto.getImage())
+                .description(goodsDto.getDescription())
+                .count(goodsDto.getCount())
+                .status(1)
+                .createdTime(Timestamp.valueOf(LocalDateTime.now()))
+                .updatedTime(Timestamp.valueOf(LocalDateTime.now()))
+                .build());
+        return null;
     }
 
 }

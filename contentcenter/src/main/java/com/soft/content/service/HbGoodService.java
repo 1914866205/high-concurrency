@@ -1,5 +1,7 @@
 package com.soft.content.service;
 
+import com.soft.content.common.ResponseResult;
+import com.soft.content.model.dto.GoodsDto;
 import com.soft.content.model.dto.SearchDto;
 import com.soft.content.model.entity.HbGood;
 import org.springframework.data.domain.Page;
@@ -28,4 +30,11 @@ public interface HbGoodService {
     List<String> findAllGoodsId();
 
     HbGood getGoodsById(String goodId);
+
+    /**
+     * 发布商品
+     * @param goodsDto
+     * @return
+     */
+    ResponseResult addGoods(GoodsDto goodsDto);
 }
