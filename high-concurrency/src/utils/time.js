@@ -1,5 +1,5 @@
 //时间格式化函数
-export async function timeFmt(value) {
+export  function timeFmt(value) {
     var date=new Date(value);
     var year=date.getFullYear();
     var month=date.getMonth()+1;

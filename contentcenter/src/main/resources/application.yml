@@ -16,8 +16,8 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://120.26.177.51:3306/haibing?useUnide=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&allowPublicKeyRetrieval=true
-    username: userhaibing
-    password: passhaibing
+    username: root
+    password: root
     hikari:
       minimum-idle: 1
       maximum-pool-size: 20

@@ -95,12 +95,12 @@ export default {
         for (let j = 0, len = arr.length; j < len; j++) {
           //时间格式化
           let time1 = Date.parse(arr[j].createTime);
+          console.log(time1)
           arr[j].createTime = time.timeFmt(time1);
           if(arr[j].status == 1) {
             noArr.push(arr[j])
           }
         }
-        console.log(noArr)
         this.noArr = noArr
         this.order = arr;
         console.log(this.order);
@@ -128,7 +128,7 @@ export default {
 <style lang="scss" scoped>
 .order {
   width: 85%;
-  margin: 0 auto;
+  margin: 100px auto;
 }
 .order-one {
   border: 1px solid rgb(228, 225, 225);

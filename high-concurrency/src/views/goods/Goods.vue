@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="goods">
     <nav-bar></nav-bar>
     <div class="goodsInfo">
       <div class="goods-left">
@@ -81,7 +81,13 @@
             type="number"
             min="1"
             max="3"
-            oninput="if(value>count)value=10;if(value.length>10)value=value.slice(0,4);if(value<0)value=0"
+            :oninput="
+              'if(value>' +
+              goodsInfo.count +
+              ')value=' +
+              goodsInfo.count +
+              ';if(value.length>10)value=value.slice(0,4);if(value<0)value=0'
+            "
             v-model="count"
           />
           <button @click="btnAdd" class="btn_add">+</button>
@@ -96,39 +102,58 @@
       </div>
     </div>
     <div class="goods-footer">
-      <span style="font-size: 1.5rem">{{ user.nickname }}的其他商品</span>
-      <v-sheet class="mx-auto mt-8" elevation="8" max-width="100%">
-        <v-slide-group v-model="model" prev-icon="«"
-      next-icon="»" class="pa-4">
-          <v-slide-item v-for="(item, index) in goods"
-        :key="index"
-        @click="goGoods(item.pkGoodId)">
-            <v-card
-              class="ma-4"
-              height="300"
-              width="300"
-            >
+      <div>
+      <img src="../../assets/icon/yinhao.png" />
+      <span style="font-size: 1.5rem">{{ user.nickname }}的所有商品</span>
+      </div>
+
+      <div>
+      <v-sheet style="height:380px;" class="mx-auto mt-8" elevation="8" max-width="100%">
+        <v-slide-group v-model="model" prev-icon="«" next-icon="»" class="pa-4 mt-12">
+          <v-slide-item
+            v-for="(item, index) in goods"
+            :key="index"
+            @click="goGoods(item.pkGoodId)"
+          >
+            <v-card class="ma-4" height="300" width="300">
               <div class="ag-shop-card_box">
-							<div class="ag-shop-card_body">
-								<div class="js-card-bg ag-card-bg"
-									:style="'background-image: url('+item.image+');'">
-								</div>
-								<a @click="goGoods(item.pkGoodId)" class="ag-shop-card-body_link"><img
-										:src="item.image"
-										alt="Falu" class="ag-shop-card-body_img"></a>
-							</div>
-							<div class="ag-shop-card_footer">
-								<a@click="goGoods(item.pkGoodId)" class="ag-shop-card-footer_link"><img
-										src="https://rawcdn.githack.com/SochavaAG/example-mycode/master/pens/parallax-swipe/images/arrow.svg"
-										class="ag-shop-card-footer_arrow"></a>
-								<span class="ag-shop-card-footer_title">{{item.goodName}}</span>
-								<span class="ag-shop-card-footer_products">Tienda oficial</span>
-							</div>
-						</div>
+                <div class="ag-shop-card_body">
+                  <div
+                    class="js-card-bg ag-card-bg"
+                    :style="'background-image: url(' + item.image + ');'"
+                  ></div>
+                  <a
+                    @click="goGoods(item.pkGoodId)"
+                    class="ag-shop-card-body_link"
+                    ><img
+                      :src="item.image"
+                      alt="Falu"
+                      class="ag-shop-card-body_img"
+                  /></a>
+                </div>
+                <div class="ag-shop-card_footer">
+                  <a
+                    @click="goGoods(item.pkGoodId)"
+                    class="ag-shop-card-footer_link"
+                    ><img
+                      src="https://rawcdn.githack.com/SochavaAG/example-mycode/master/pens/parallax-swipe/images/arrow.svg"
+                      class="ag-shop-card-footer_arrow"
+                  /></a>
+                  <span class="ag-shop-card-footer_title">{{
+                    item.goodName
+                  }}</span>
+                  <span class="ag-shop-card-footer_products"
+                    >${{
+                    item.price
+                  }}</span
+                  >
+                </div>
+              </div>
             </v-card>
           </v-slide-item>
         </v-slide-group>
       </v-sheet>
+      </div>
     </div>
   </v-app>
 </template>
@@ -138,7 +163,8 @@ import NavBar from "../../components/NavBar";
 const API = require("../../utils/request.js");
 
 export default {
-  name: "HomePage",
+  name: "goods",
+  inject: ["reload"],
   data() {
     return {
       goodsInfo: [],
@@ -146,32 +172,11 @@ export default {
       comments: [],
       user: [],
       model: null,
-      goods:[]
+      goods: [],
     };
   },
   created: function () {
-    let params = new URLSearchParams();
-    params.append("goodsId", this.$route.query.goodsId);
-    this.axios
-      .post(this.GLOBAL.contentUrl + "/goods/findGoodsById", params)
-      .then((res) => {
-        this.goodsInfo = res.data.data.Goods;
-        let id = this.goodsInfo.userId;
-        this.axios
-          .get(this.GLOBAL.baseUrl + "/user/getInfoById/" + id)
-          .then((res1) => {
-            this.user = JSON.parse(res1.data.data);
-            console.log(this.user.pkUserId);
-            let userId = new URLSearchParams();
-            userId.append("userId", this.user.pkUserId);
-             this.axios
-          .post(this.GLOBAL.contentUrl + "/goods/findGoodsByUserId" , userId)
-          .then((res2) => {
-            this.goods = res2.data.data.Goods
-            console.log(this.goods);
-          });
-          });
-      });
+    this.getIndex();
     this.getCommont();
   },
   methods: {
@@ -182,8 +187,11 @@ export default {
         this.count++;
       }
     },
-     goGoods(goodsId) {
-      this.$router.push({ path: "/goods", query: { goodsId: goodsId } });
+    goGoods(goodsId) {
+      this.$router.push({ path: "/router", query: { goodsId: goodsId } });
+      // this.reload()
+      //   this.getIndex()
+      // this.getCommont();
     },
     btnMinute() {
       if (this.count <= 0) {
@@ -202,7 +210,33 @@ export default {
       };
       await API.init(_this.url, _this.data, "post");
     },
-    goIndex() {},
+    getIndex() {
+      let params = new URLSearchParams();
+      params.append("goodsId", this.$route.query.goodsId);
+      this.axios
+        .post(this.GLOBAL.contentUrl + "/goods/findGoodsById", params)
+        .then((res) => {
+          this.goodsInfo = res.data.data.Goods;
+          let id = this.goodsInfo.userId;
+          this.axios
+            .get(this.GLOBAL.baseUrl + "/user/getInfoById/" + id)
+            .then((res1) => {
+              this.user = JSON.parse(res1.data.data);
+              console.log(this.user.pkUserId);
+              let userId = new URLSearchParams();
+              userId.append("userId", this.user.pkUserId);
+              this.axios
+                .post(
+                  this.GLOBAL.contentUrl + "/goods/findGoodsByUserId",
+                  userId
+                )
+                .then((res2) => {
+                  this.goods = res2.data.data.Goods;
+                  console.log(this.goods);
+                });
+            });
+        });
+    },
     getCommont() {
       let params = new URLSearchParams();
       params.append("goodId", this.$route.query.goodsId);
@@ -230,7 +264,7 @@ export default {
   width: 400px;
   height: 400px;
   transition: all 2s;
-  &:hover{
+  &:hover {
     cursor: crosshair;
     /*放大倍数*/
     transform: scale(1.5);
@@ -345,139 +379,100 @@ export default {
 }
 .goods-footer {
   width: 90%;
-  text-align: center;
   height: 300px;
   margin: 0 auto;
 }
 
 .ag-card-bg {
-				height: 100%;
-				width: 200%;
-				background-position: 50%;
-				background-size: cover;
-				position: absolute;
-				top: 0;
-				left: -50%;
-				transition: height .6s;
-			}
+  height: 100%;
+  width: 200%;
+  background-position: 50%;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: -50%;
+  transition: height 0.6s;
+}
 
-			.ag-shop-card_box {
-				background-color: #FFF;
-				width:300px;
-				overflow: hidden;
+.ag-shop-card_box {
+  background-color: #fff;
+  width: 300px;
+  overflow: hidden;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 35, 0.25);
+  border-radius: 8px;
+  transition: 0.4s;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
 
-				-webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 35, .25);
-				-moz-box-shadow: 0 10px 20px 0 rgba(0, 0, 35, .25);
-				-o-box-shadow: 0 10px 20px 0 rgba(0, 0, 35, .25);
-				box-shadow: 0 10px 20px 0 rgba(0, 0, 35, .25);
+.ag-shop-card_body {
+  display: block;
+  height: 250px;
+  width: 300px;
+  background-position: 50%;
+  background-size: cover;
+  overflow: hidden;
+  transition: 0.4s;
+  position: relative;
+}
 
-				-webkit-border-radius: 8px;
-				-moz-border-radius: 8px;
-				border-radius: 8px;
+.ag-shop-card-body_link {
+  height: 100px;
+  width: 100px;
+  margin: 0 auto;
+  overflow: hidden;
+  z-index: 9;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  border-radius: 50%;
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.35);
+  transform: translateY(-50%);
+  transition: top 0.4s;
+}
 
-				-webkit-transition: .4s;
-				-moz-transition: .4s;
-				-o-transition: .4s;
-				transition: .4s;
-			}
+.ag-shop-card-body_img {
+  max-width: 100%;
+}
 
-			.ag-shop-card_body {
-				display: block;
-				height: 250px;
-				width: 300px;
-				background-position: 50%;
-				background-size: cover;
+.ag-shop-card_footer {
+  padding: 15px 30px;
+  border: 0;
+  background-color: #fff;
+  position: relative;
+}
 
-				overflow: hidden;
+.ag-shop-card-footer_title {
+  display: block;
+  line-height: 1.3;
 
-				-webkit-transition: .4s;
-				-moz-transition: .4s;
-				-o-transition: .4s;
-				transition: .4s;
+  font-weight: 700;
+  font-size: 14px;
+  color: #690911;
+}
 
-				position: relative;
-			}
+.ag-shop-card-footer_products {
+  display: block;
+  line-height: 1.3;
+  font-size: 12px;
+}
 
-			.ag-shop-card-body_link {
-				height: 100px;
-				width: 100px;
-				margin: 0 auto;
+.ag-shop-card-footer_link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  width: 35px;
+  background-color: #26a69a;
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  border-radius: 50%;
+}
 
-				overflow: hidden;
-
-				z-index: 9;
-				position: absolute;
-				top: 50%;
-				left: 0;
-				right: 0;
-
-				-webkit-border-radius: 50%;
-				-moz-border-radius: 50%;
-				border-radius: 50%;
-
-				-webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .35);
-				-moz-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .35);
-				-o-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .35);
-				box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .35);
-
-				-webkit-transform: translateY(-50%);
-				-moz-transform: translateY(-50%);
-				-o-transform: translateY(-50%);
-				transform: translateY(-50%);
-
-				-webkit-transition: top .4s;
-				-moz-transition: top .4s;
-				-o-transition: top .4s;
-				transition: top .4s;
-			}
-
-			.ag-shop-card-body_img {
-				max-width: 100%;
-			}
-
-			.ag-shop-card_footer {
-				padding: 15px 30px;
-				border: 0;
-				background-color: #FFF;
-
-				position: relative;
-			}
-
-			.ag-shop-card-footer_title {
-				display: block;
-				line-height: 1.3;
-
-				font-weight: 700;
-				font-size: 14px;
-				color: #690911;
-			}
-
-			.ag-shop-card-footer_products {
-				display: block;
-				line-height: 1.3;
-
-				font-size: 12px;
-			}
-
-			.ag-shop-card-footer_link {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				height: 35px;
-				width: 35px;
-				background-color: #ff7b1a;
-
-				position: absolute;
-				right: 10px;
-				top: 15px;
-
-				-webkit-border-radius: 50%;
-				-moz-border-radius: 50%;
-				border-radius: 50%;
-			}
-
-			.ag-shop-card-footer_arrow {
-				max-width: 16px;
-			}
-
+.ag-shop-card-footer_arrow {
+  max-width: 16px;
+}
 </style>
