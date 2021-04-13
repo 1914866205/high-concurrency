@@ -9,11 +9,6 @@
       rel="stylesheet"
     />
     <link
-      href="http://cdn.webfont.youziku.com/webfonts/nomal/104937/46613/59647993f629e1108c0d5238.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
       href="https://fonts.googleapis.com/css?family=Kurale"
       rel="stylesheet"
     />

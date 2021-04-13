@@ -44,12 +44,30 @@
             :key="index"
             style="margin-top: 20px; padding: 20px; width: 100%"
           >
-            <div>
-              <img class="user_avatar" src="../../assets/images/me.jpg" />
+            <div class="user">
+              <img class="user_avatar" :src="item.avatar" />
+               <div class="font-s">{{ item.username }}</div>
             </div>
-            <span class="font-s">用户名</span>
             <div style="margin-top: -60px; margin-left: 60px">
-              <span>{{ item.content }}</span>
+              <span style="margin-left:10px;">{{ item.content }}</span>
+              <!-- <v-rating
+                empty-icon="mdi-star-outline"
+                full-icon="mdi-star"
+                half-icon="mdi-star-outline"
+                hover
+                length="5"
+                size="50"
+                value="3"
+              ></v-rating> -->
+              <v-rating
+                empty-icon="mdi-star-outline"
+                full-icon="mdi-star"
+                half-icon="mdi-star-half-full"
+                length="5"
+                size="30"
+                readonly
+                :value="item.type"
+              ></v-rating>
             </div>
             <div class="line1"></div>
           </div>
@@ -103,56 +121,64 @@
     </div>
     <div class="goods-footer">
       <div>
-      <img src="../../assets/icon/yinhao.png" />
-      <span style="font-size: 1.5rem">{{ user.nickname }}的所有商品</span>
+        <img src="../../assets/icon/yinhao.png" />
+        <span style="font-size: 1.5rem">{{ user.nickname }}的所有商品</span>
       </div>
 
       <div>
-      <v-sheet style="height:380px;" class="mx-auto mt-8" elevation="8" max-width="100%">
-        <v-slide-group v-model="model" prev-icon="«" next-icon="»" class="pa-4 mt-12">
-          <v-slide-item
-            v-for="(item, index) in goods"
-            :key="index"
-            @click="goGoods(item.pkGoodId)"
+        <v-sheet
+          style="height: 380px"
+          class="mx-auto mt-8"
+          elevation="8"
+          max-width="100%"
+        >
+          <v-slide-group
+            v-model="model"
+            prev-icon="«"
+            next-icon="»"
+            class="pa-4 mt-12"
           >
-            <v-card class="ma-4" height="300" width="300">
-              <div class="ag-shop-card_box">
-                <div class="ag-shop-card_body">
-                  <div
-                    class="js-card-bg ag-card-bg"
-                    :style="'background-image: url(' + item.image + ');'"
-                  ></div>
-                  <a
-                    @click="goGoods(item.pkGoodId)"
-                    class="ag-shop-card-body_link"
-                    ><img
-                      :src="item.image"
-                      alt="Falu"
-                      class="ag-shop-card-body_img"
-                  /></a>
+            <v-slide-item
+              v-for="(item, index) in goods"
+              :key="index"
+              @click="goGoods(item.pkGoodId)"
+            >
+              <v-card class="ma-4" height="300" width="300">
+                <div class="ag-shop-card_box">
+                  <div class="ag-shop-card_body">
+                    <div
+                      class="js-card-bg ag-card-bg"
+                      :style="'background-image: url(' + item.image + ');'"
+                    ></div>
+                    <a
+                      @click="goGoods(item.pkGoodId)"
+                      class="ag-shop-card-body_link"
+                      ><img
+                        :src="item.image"
+                        alt="Falu"
+                        class="ag-shop-card-body_img"
+                    /></a>
+                  </div>
+                  <div class="ag-shop-card_footer">
+                    <a
+                      @click="goGoods(item.pkGoodId)"
+                      class="ag-shop-card-footer_link"
+                      ><img
+                        src="https://rawcdn.githack.com/SochavaAG/example-mycode/master/pens/parallax-swipe/images/arrow.svg"
+                        class="ag-shop-card-footer_arrow"
+                    /></a>
+                    <span class="ag-shop-card-footer_title">{{
+                      item.goodName
+                    }}</span>
+                    <span class="ag-shop-card-footer_products"
+                      >${{ item.price }}</span
+                    >
+                  </div>
                 </div>
-                <div class="ag-shop-card_footer">
-                  <a
-                    @click="goGoods(item.pkGoodId)"
-                    class="ag-shop-card-footer_link"
-                    ><img
-                      src="https://rawcdn.githack.com/SochavaAG/example-mycode/master/pens/parallax-swipe/images/arrow.svg"
-                      class="ag-shop-card-footer_arrow"
-                  /></a>
-                  <span class="ag-shop-card-footer_title">{{
-                    item.goodName
-                  }}</span>
-                  <span class="ag-shop-card-footer_products"
-                    >${{
-                    item.price
-                  }}</span
-                  >
-                </div>
-              </div>
-            </v-card>
-          </v-slide-item>
-        </v-slide-group>
-      </v-sheet>
+              </v-card>
+            </v-slide-item>
+          </v-slide-group>
+        </v-sheet>
       </div>
     </div>
   </v-app>
@@ -290,7 +316,10 @@ export default {
   width: 35%;
   height: 100%;
 }
-
+.user {
+  text-align: center;
+  width:50px;
+}
 .type {
   background-color: #26a69a;
   color: #ffffff;
