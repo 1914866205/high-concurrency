@@ -5,9 +5,11 @@ import com.soft.content.common.ResponseResult;
 import com.soft.content.feignclient.UserCenterFeignClient;
 import com.soft.content.model.dto.CommentDto;
 import com.soft.content.model.entity.HbComment;
+import com.soft.content.model.entity.HbOrder;
 import com.soft.content.model.entity.HbUser;
 import com.soft.content.model.vo.HbCommentView;
 import com.soft.content.repository.HbCommentRepository;
+import com.soft.content.repository.HbOrderRepository;
 import com.soft.content.service.HbCommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +33,7 @@ import java.util.UUID;
 public class HbCommentServiceImpl implements HbCommentService {
     private final HbCommentRepository hbCommentRepository;
     private final UserCenterFeignClient userCenterFeignClient;
-
+    private final HbOrderRepository hbOrderRepository;
 
     @Override
     public ResponseResult addComment(CommentDto commentDto) {
@@ -45,6 +47,18 @@ public class HbCommentServiceImpl implements HbCommentService {
                 .createdTime(Timestamp.valueOf(LocalDateTime.now()))
                 .updatedTime(Timestamp.valueOf(LocalDateTime.now()))
                 .build());
+        /**
+         *根据商品id和用户id查询该商品的订单
+         *修改订单状态
+         */
+
+        List<HbOrder> hbOrderlist = hbOrderRepository.findHbOrderByGoodIdAndUserId(commentDto.getPkGoodId(), commentDto.getPkUserIngId());
+        if (hbOrderlist.size() > 0) {
+            HbOrder hbOrder = hbOrderlist.get(0);
+            hbOrder.setState(3);
+            hbOrderRepository.save(hbOrder);
+        }
+
         return ResponseResult.success();
     }
 

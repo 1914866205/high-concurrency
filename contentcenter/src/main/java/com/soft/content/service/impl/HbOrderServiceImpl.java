@@ -18,10 +18,8 @@ import com.soft.content.repository.HbOrderRepository;
 import com.soft.content.repository.HbStrategyRepository;
 import com.soft.content.repository.HbUserRepository;
 import com.soft.content.service.HbOrderService;
-import javassist.runtime.Desc;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -318,6 +316,8 @@ public class HbOrderServiceImpl implements HbOrderService {
             hbUser = JSONObject.parseObject(userCenterFeignClient.findInfoById(order.getUserId()).getData().toString(), HbUser.class);
             HbOrderView.builder()
                     .pkOrderId(order.getPkOrderId())
+                    .pkGoodId(order.getPkGoodId())
+                    .userId(order.getUserId())
                     .createTime(order.getCreatedTime())
                     .status(order.getState())
                     .count(order.getNumber())
@@ -329,6 +329,8 @@ public class HbOrderServiceImpl implements HbOrderService {
                     .build();
 
             list.add(HbOrderView.builder()
+                    .pkGoodId(order.getPkGoodId())
+                    .userId(order.getUserId())
                     .pkOrderId(order.getPkOrderId())
                     .createTime(order.getCreatedTime())
                     .status(order.getState())

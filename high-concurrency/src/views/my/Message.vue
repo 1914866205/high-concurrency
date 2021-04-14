@@ -28,7 +28,7 @@
         </v-hover>
 
 
-        <div class="btn-col">
+        <div v-if="isUpdate" class="btn-col">
           <button @click="submit()" class="btn">提交</button>
         </div>
         <div class="xinxi">
@@ -201,6 +201,7 @@ export default {
   name: "HomePage",
   data() {
     return {
+      isUpdate:false,
       userInput: false,
       emailInput: false,
       addressInput: false,
@@ -228,8 +229,8 @@ export default {
   },
   created: function () {
     this.refreshUser()
-    
   },
+  
   directives: { clickoutside },
   methods: {
     refreshUser() {

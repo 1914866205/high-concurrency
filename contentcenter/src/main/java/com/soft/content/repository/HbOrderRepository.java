@@ -5,7 +5,6 @@ import com.soft.content.model.entity.HbOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,4 +26,7 @@ public interface HbOrderRepository extends JpaRepository<HbOrder, String> {
 
     @Query(value = "SELECT * FROM hb_order  WHERE pk_good_id= ?1 and created_time>?2 ORDER BY created_time ASC limit 0,1000", nativeQuery = true)
     List<HbOrder> findSecKillUserOrder( String goodId,String time);
+
+    @Query(value = "SELECT * FROM hb_order  WHERE pk_good_id= ?1 and user_id=?2", nativeQuery = true)
+    List<HbOrder> findHbOrderByGoodIdAndUserId(String goodId, String userId);
 }

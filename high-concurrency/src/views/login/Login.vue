@@ -145,7 +145,7 @@ export default {
           console.log(this.result);
           if (this.result.code === 1) {
             //存入token
-            localStorage.setItem("token", this.result.data.token);
+            localStorage.setItem("phone", this.result.data.user.phone);
             localStorage.setItem("user", this.result.data.user);
             localStorage.setItem("userId", this.result.data.user.pkUserId);
             localStorage.setItem("avatar", this.result.data.user.avatar);
@@ -162,7 +162,7 @@ export default {
           this.result = await API.init(this.url,this.data,"post")
           if (this.result.code === 1) {
             //存入token
-            localStorage.setItem("token", this.result.data.token);
+            localStorage.setItem("phone", this.result.data.user.phone);
             localStorage.setItem("user", this.result.data.user);
             localStorage.setItem("userId", this.result.data.user.pkUserId);
             localStorage.setItem("avatar", this.result.data.user.avatar);

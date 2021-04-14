@@ -28,5 +28,7 @@ public class HbOrderView {
     private String userName;
     private Double money;
     private int status;
+    private String pkGoodId;
+    private String userId;
 
 }

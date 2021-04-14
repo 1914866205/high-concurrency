@@ -1,6 +1,52 @@
 <template>
   <v-app class="goods">
     <nav-bar></nav-bar>
+    <v-alert
+      dense
+      dismissible
+      type="info"
+      v-if="isCount"
+      class="infom"
+      @click="cancelSubmit()"
+      >购买数量必须大于0</v-alert
+    >
+    <v-alert dense dismissible type="success" class="infom" v-if="isSubmit"
+      >成功参与秒杀 稍后请在我的订单中支付订单</v-alert
+    >
+    <v-overlay :z-index="zIndex" :value="overlay">
+      <div class="forms">
+        <h2>请确认订单</h2>
+        <v-form ref="form" class="mt-6" v-model="valid" lazy-validation>
+          <v-text-field
+            v-model="phone"
+            :rules="phoneRules"
+            label="phone"
+            required
+          ></v-text-field>
+          <div>数量 : {{ count }}</div>
+          <div style="margin-top: 40px">
+            <v-btn
+              :disabled="!valid"
+              color="success"
+              class="mr-6"
+              @click="validate"
+            >
+              提交订单
+            </v-btn>
+
+            <v-btn color="warning" class="mr-6" @click="reset">
+              刷新表单
+            </v-btn>
+
+            <v-btn color="error" @click="cancel()"> 取消提交 </v-btn>
+          </div>
+          <!-- <v-btn color="warning" @click="resetValidation">
+            Reset Validation
+          </v-btn> -->
+        </v-form>
+      </div>
+    </v-overlay>
+
     <div class="goodsInfo">
       <div class="goods-left">
         <div class="img">
@@ -46,19 +92,10 @@
           >
             <div class="user">
               <img class="user_avatar" :src="item.avatar" />
-               <div class="font-s">{{ item.username }}</div>
+              <div class="font-s">{{ item.username }}</div>
             </div>
             <div style="margin-top: -60px; margin-left: 60px">
-              <span style="margin-left:10px;">{{ item.content }}</span>
-              <!-- <v-rating
-                empty-icon="mdi-star-outline"
-                full-icon="mdi-star"
-                half-icon="mdi-star-outline"
-                hover
-                length="5"
-                size="50"
-                value="3"
-              ></v-rating> -->
+              <span style="margin-left: 10px">{{ item.content }}</span>
               <v-rating
                 empty-icon="mdi-star-outline"
                 full-icon="mdi-star"
@@ -87,8 +124,8 @@
         >
 
         <div style="color: gray; margin: 50px">
-          <span>促 销</span>
-          <span style="margin-left: 34px">{{ goodsInfo.description }}</span>
+          <!-- <span>促 销</span> -->
+          <span>{{ goodsInfo.description }}</span>
         </div>
 
         <div style="margin-left: 50px">
@@ -115,7 +152,7 @@
         </div>
 
         <div style="margin-left: 50px; margin-top: 50px">
-          <button @click="sumbitGoods()" class="btn">立即购买</button>
+          <button @click="goSubmit()" class="btn">立即购买</button>
         </div>
       </div>
     </div>
@@ -187,18 +224,27 @@
 <script>
 import NavBar from "../../components/NavBar";
 const API = require("../../utils/request.js");
-
 export default {
-  name: "goods",
-  inject: ["reload"],
   data() {
     return {
       goodsInfo: [],
       count: 0,
       comments: [],
       user: [],
+      isCount: false,
       model: null,
       goods: [],
+      overlay: false,
+      zIndex: 0,
+      valid: true,
+      phone: localStorage.getItem("phone"),
+      phoneRules: [
+        (v) => !!v || "手机号必须填写",
+        (v) => (v && v.length <= 11) || "手机号不能小于十一位",
+        (v) => /^1[34578]\d{9}$/.test(v) || "手机号填写不规范",
+      ],
+      checkbox: false,
+      isSubmit: false,
     };
   },
   created: function () {
@@ -206,6 +252,26 @@ export default {
     this.getCommont();
   },
   methods: {
+    reset() {
+      this.$refs.form.reset();
+    },
+    goSubmit() {
+      if (this.count == 0) {
+        this.isCount = true;
+      } else {
+        this.overlay = true;
+      }
+    },
+    cancelSubmit() {
+      this.isCount = false;
+    },
+    cancel() {
+      this.overlay = false;
+    },
+    validate() {
+      this.$refs.form.validate();
+      this.sumbitGoods();
+    },
     btnAdd() {
       if (this.count >= 10) {
         console.log("该宝贝不能购买更多了");
@@ -215,9 +281,6 @@ export default {
     },
     goGoods(goodsId) {
       this.$router.push({ path: "/router", query: { goodsId: goodsId } });
-      // this.reload()
-      //   this.getIndex()
-      // this.getCommont();
     },
     btnMinute() {
       if (this.count <= 0) {
@@ -227,14 +290,16 @@ export default {
       }
     },
     async sumbitGoods() {
-      this.url = this.GLOBAL.contentUrl + "/order/addOrder";
+      this.url = this.GLOBAL.contentUrl + "/order/spikeOrder";
       this.data = {
         number: this.count,
-        phone: "18851699003",
-        pkGoodId: this.goodsId,
+        phone: this.phone,
+        pkGoodId: this.goods.pkGoodId,
         userId: localStorage.getItem("userId"),
       };
-      await API.init(_this.url, _this.data, "post");
+      await API.init(this.url, this.data, "post");
+      this.overlay = false;
+      this.isSubmit = true;
     },
     getIndex() {
       let params = new URLSearchParams();
@@ -270,13 +335,6 @@ export default {
         .post(this.GLOBAL.contentUrl + "/comment/selectCommentsById", params)
         .then((res) => {
           this.comments = res.data.data;
-          //   let id = res.data.data.pkUserIngId
-          // console.log(res.data.data)
-          // this.axios
-          // .get(this.GLOBAL.baseUrl + "/user/getInfoById/" + id)
-          // .then((res) => {
-          //   console.log(res);
-          // });
         });
     },
   },
@@ -318,7 +376,7 @@ export default {
 }
 .user {
   text-align: center;
-  width:50px;
+  width: 50px;
 }
 .type {
   background-color: #26a69a;
@@ -352,14 +410,16 @@ export default {
 .btn {
   background-color: #26a69a;
   border-radius: 8px;
-  border: none;
+  outline: none;
   color: #ffffff;
   font-size: 1rem;
   width: 80%;
   height: 65px;
   padding: 10px;
   &:hover {
-    transform: scale(1.05);
+    background-color: #fff;
+  border: 1px solid #fff;
+  color: #26a69a;
   }
 }
 
@@ -503,5 +563,20 @@ export default {
 
 .ag-shop-card-footer_arrow {
   max-width: 16px;
+}
+
+.forms {
+  background-color: #26a69a;
+  width: 400px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 1px #fff;
+}
+
+.infom {
+  position: absolute;
+  top: 400px;
+  left: 40%;
+  width: 20%;
 }
 </style>
