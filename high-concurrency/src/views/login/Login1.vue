@@ -1,66 +1,259 @@
 <template>
-  <v-app class="body">
+  <div class="body">
     <div class="container right-panel-active">
       <!-- Sign Up -->
       <div class="container__form container--signup">
-        <form action="#" class="form" id="form1">
-          <h2 class="form__title">Sign Up</h2>
-          <input type="text" placeholder="User" class="input" />
-          <input type="email" placeholder="Email" class="input" />
-          <input type="password" placeholder="Password" class="input" />
-          <button class="btn">Sign Up</button>
-        </form>
+        <v-form action="#" class="form" id="form1">
+          <h2 class="form__title">注 册</h2>
+          <v-text-field
+            solo
+            height="45"
+            type="number"
+            :rules="phoneRules"
+            label="phone"
+            class="input"
+            v-model="validateForm.phone"
+          ></v-text-field>
+          <!-- <input type="number" :rules="phoneRules" placeholder="Phone" class="input" /> -->
+          <!-- <input type="email" placeholder="Email" class="input" /> -->
+          <v-text-field
+            solo
+            height="45"
+            :rules="codeRules"
+            label="code"
+            type="number"
+            class="input"
+            v-model="validateForm.code"
+          ></v-text-field>
+          <div>
+            <button class="link" v-if="!send" @click="sendCode()">
+              发送验证码
+            </button>
+            <p class="link" v-else>还剩{{ time }}s</p>
+          </div>
+          <button @click="signUp()" class="btn">Sign Up</button>
+        </v-form>
       </div>
 
       <!-- Sign In -->
       <div class="container__form container--signin">
-        <form action="#" class="form" id="form2">
-          <h2 class="form__title">Sign In</h2>
-          <input type="email" placeholder="Email" class="input" />
-          <input type="password" placeholder="Password" class="input" />
-          <a href="#" class="link">Forgot your password?</a>
-          <button class="btn">Sign In</button>
-        </form>
+        <v-form action="#" class="form" id="form2">
+          <h2 class="form__title">登 录</h2>
+          <div v-if="upLogin">
+            <v-text-field
+              solo
+              height="45"
+              name="name"
+              type="text"
+              v-model="validateForm.username"
+              :rules="phoneRules"
+              label="username"
+              class="input"
+            ></v-text-field>
+            <v-text-field
+              solo
+              height="45"
+              name="password"
+              type="password"
+              v-model="validateForm.password"
+              :rules="codeRules"
+              label="password"
+              class="input"
+            ></v-text-field>
+          </div>
+          <div v-else>
+            <v-text-field
+              solo
+              height="45"
+              type="number"
+              :rules="phoneRules"
+              label="phone"
+              class="input"
+              v-model="validateForm.phone"
+            ></v-text-field>
+            <v-text-field
+              solo
+              height="45"
+              :rules="codeRules"
+              label="code"
+              type="number"
+              class="input"
+              v-model="validateForm.code"
+            ></v-text-field>
+            <button class="link right" v-if="!send" @click="sendCode()">
+              发送验证码
+            </button>
+            <p class="link right" v-else>还剩{{ time }}s</p>
+          </div>
+          <div @click="goUpLogin()">
+            <button class="link">
+              {{ upLogin ? "手机号登录" : "账号密码登录" }}
+            </button>
+          </div>
+          <div style="margin-top: 20px">
+            <button @click="login()" class="btn">Sign In</button>
+          </div>
+        </v-form>
       </div>
 
       <!-- Overlay -->
       <div class="container__overlay">
         <div class="overlay">
           <div class="overlay__panel overlay--left">
-            <button class="btn" id="signIn">Sign In</button>
+            <button @click="changeSingUp()" class="btn" id="signIn">
+              Sign In
+            </button>
           </div>
           <div class="overlay__panel overlay--right">
-            <button class="btn" id="signUp">Sign Up</button>
+            <button @click="changeSingIn()" class="btn" id="signUp">
+              Sign Up
+            </button>
           </div>
         </div>
       </div>
     </div>
-  </v-app>
+  </div>
 </template>
 
 <script>
-// const signInBtn = document.getElementById("signIn");
-// const signUpBtn = document.getElementById("signUp");
-// const fistForm = document.getElementById("form1");
-// const secondForm = document.getElementById("form2");
-// const container = document.querySelector(".container");
+const API = require("../../utils/request.js");
+export default {
+  name: "Login",
+  data() {
+    return {
+      phoneRules: [
+        (v) => !!v || "手机号必须填写",
+        (v) => (v && v.length <= 11) || "手机号必须为十一位",
+        (v) => /^1[34578]\d{9}$/.test(v) || "手机号填写不规范",
+      ],
+      codeRules: [
+        (v) => !!v || "必须填写验证码",
+        (v) => (v && v.length >= 6) || "验证码必须为6位",
+      ],
+      validateForm: {
+        username: "ntt",
+        password: "123",
+        phone: "",
+        code: "",
+      },
+      upLogin: true,
+      send: false,
+      time: 60,
+    };
+  },
+  methods: {
+    changeSingUp() {
+      const container = document.querySelector(".container");
+      container.classList.remove("right-panel-active");
+    },
+    changeSingIn() {
+      const container = document.querySelector(".container");
+      container.classList.add("right-panel-active");
+    },
+    goUpLogin() {
+      console.log("111111");
+      this.upLogin = !this.upLogin;
+    },
+    async login() {
+      if (this.upLogin == true) {
+        //账密登录
+        (this.url = this.GLOBAL.baseUrl + "/user/login"),
+          (this.data = {
+            username: this.validateForm.username,
+            password: this.validateForm.password,
+          }),
+          (this.result = await API.init(this.url, this.data, "post"));
+        //登录成功
+        console.log("登录成功");
+        console.log(this.result);
+        if (this.result.code === 1) {
+          //存入token
+          localStorage.setItem("phone", this.result.data.user.phone);
+          localStorage.setItem("user", this.result.data.user);
+          localStorage.setItem("userId", this.result.data.user.pkUserId);
+          localStorage.setItem("avatar", this.result.data.user.avatar);
+          this.$store.commit("setToken", this.result.data.token);
+          this.$router.push("/");
+        }
+      } else {
+        //手机号登录
+        (this.url = this.GLOBAL.baseUrl + "/user/code/login"),
+          (this.data = {
+            phoneNumber: this.validateForm.phone,
+            verifyCode: this.validateForm.code,
+          }),
+          (this.result = await API.init(this.url, this.data, "post"));
+        if (this.result.code === 1) {
+          //存入token
+          localStorage.setItem("phone", this.result.data.user.phone);
+          localStorage.setItem("user", this.result.data.user);
+          localStorage.setItem("userId", this.result.data.user.pkUserId);
+          localStorage.setItem("avatar", this.result.data.user.avatar);
+          this.$store.commit("setToken", this.result.data.token);
+          this.$router.push("/");
+        }
+      }
+    },
+    async signUp() {
+      (this.url = this.GLOBAL.baseUrl + "/user/register"),
+        (this.data = {
+          address: "",
+          avatar: "",
+          birthday: "",
+          code: this.validateForm.code,
+          email: "",
+          nickname: "",
+          password: "",
+          phone: this.validateForm.phone,
+          sex: 0,
+          username: "",
+        }),
+        (this.result = await API.init(this.url, this.data, "post"));
+      alert("注册成功");
+      if (this.result.code === 1) {
+        //存入token
+        localStorage.setItem("phone", this.result.data.user.phone);
+        localStorage.setItem("user", this.result.data.user);
+        localStorage.setItem("userId", this.result.data.user.pkUserId);
+        localStorage.setItem("avatar", this.result.data.user.avatar);
+        this.$store.commit("setToken", this.result.data.token);
+        this.$router.push("/");
+      }
+    },
 
-// signInBtn.addEventListener("click", () => {
-// 	container.classList.remove("right-panel-active");
-// });
-
-// signUpBtn.addEventListener("click", () => {
-// 	container.classList.add("right-panel-active");
-// });
-
-// fistForm.addEventListener("submit", (e) => e.preventDefault());
-// secondForm.addEventListener("submit", (e) => e.preventDefault());
-
-// export default {};
+    async sendCode() {
+      //手机号正则
+      var mPattern = /^1[34578]\d{9}$/;
+      if (!mPattern.test(this.validateForm.phone)) {
+        alert("手机号格式不正确");
+      } else {
+        (this.url = this.GLOBAL.baseUrl + "/sendCode"),
+          (this.data = {
+            phoneNumber: this.validateForm.phone,
+          }),
+          (this.result = await API.init(this.url, this.data, "post"));
+        this.send = true;
+        // 倒计时60s结束后 可再次发送验证码
+        let promise = new Promise((resolve, reject) => {
+          let setTimer = setInterval(() => {
+            this.time = this.time - 1;
+            if (this.time <= 0) {
+              this.send = false;
+              resolve(setTimer);
+              this.time = 60;
+            }
+          }, 1000);
+        });
+        promise.then((setTimer) => {
+          clearInterval(setTimer);
+        });
+      }
+    },
+  },
+};
 </script>
 
-<style scoped>
-
+<style>
 :root {
   /* COLORS */
   --white: #e9e9e9;
@@ -95,15 +288,18 @@
 
 .form__title {
   font-weight: 300;
-  margin: 0;
+  margin: 70px 0;
   margin-bottom: 1.25rem;
 }
-
+.right {
+  float: left;
+  margin-left: 40px;
+}
 .link {
   color: var(--gray);
   font-size: 0.9rem;
-  margin: 1.5rem 0;
-  text-decoration: none;
+
+  outline: none;
 }
 
 .container {
@@ -247,20 +443,20 @@
 
 .form {
   background-color: var(--white);
-  display: flex;
+  /* display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: column; */
   padding: 0 3rem;
   height: 100%;
   text-align: center;
 }
 
 .input {
-  background-color: #fff;
-  border: none;
-  padding: 0.9rem 0.9rem;
-  margin: 0.5rem 0;
+  /* background-color: #fff;
+  border: none; */
+  /* padding: 0.9rem 0.9rem; */
+  /* margin: 0.5rem 0; */
   width: 100%;
 }
 

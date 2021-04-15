@@ -28,8 +28,8 @@
         </v-hover>
 
 
-        <div v-if="isUpdate" class="btn-col">
-          <button @click="submit()" class="btn">提交</button>
+        <div class="btn-col">
+          <v-btn :disabled="!isUpdate" @click="submit()" class="btn">提交</v-btn>
         </div>
         <div class="xinxi">
           <span style="display: flex">
@@ -61,15 +61,16 @@
                   v-model="validate.code"
                 ></v-text-field>
                 <span>
-                  <span
+                  <button
                     @click="sendCode()"
-                    style="coloe: grey; font-size: 0.7rem"
-                    >获取验证码</span
+                    class="msg-btn"
+                    >获取验证码</button
                   >
-                  <span
+                  <button
                     @click="verifyCode()"
-                    style="coloe: grey; font-size: 0.7rem"
-                    >验证验证码</span
+                    class="msg-btn"
+                    style="margin-left:10px;"
+                    >验证</button
                   >
                 </span>
               </span>
@@ -151,7 +152,7 @@
               <v-text-field
                 v-if="addressInput"
                 label="地址"
-                placeholder="请输入地址。。"
+                placeholder="请输入地址.."
                 v-model="validate.addresss"
               ></v-text-field>
               <span v-else>{{ user.address }}</span>
@@ -223,6 +224,12 @@ export default {
         code: "",
       },
     };
+  },
+  watch:{
+    validate() {
+      console.log("sdaadsa")
+      this.isUpdate = true
+    }
   },
   components: {
     NavBar,
@@ -432,7 +439,7 @@ export default {
   width: 80px;
   height: 40px;
   background-color: #26a69a;
-  color: #ffffff;
+  color: #26a69a;
   font-size: 1.3rem;
   border-radius: 10px;
   border: 0; // 去除未选中状态边框
@@ -440,7 +447,12 @@ export default {
 }
 .btn-col {
   position: absolute;
-  right: 20%;
-  top: 40%;
+  right: 15%;
+  top: 35%;
+}
+.msg-btn {
+  outline: none;
+  color: #26a69a;
+  font-size: 0.7rem;
 }
 </style>
