@@ -84,3 +84,68 @@
 2021-04-15 12:40:13.265  INFO 14888 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
 2021-04-15 12:40:32.584  INFO 14888 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
 2021-04-15 12:40:32.584  INFO 14888 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-04-15 12:50:22.398  INFO 14888 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-15 12:50:22.399  INFO 14888 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-04-15 12:50:27.903  INFO 14888 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-15 12:50:27.903  INFO 14888 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-04-15 12:50:32.949  INFO 14888 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-15 12:50:32.949  INFO 14888 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-04-15 12:58:13.018  INFO 14888 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-15 12:58:13.019  INFO 14888 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-04-15 12:58:25.164  INFO 14888 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-15 12:58:25.165  INFO 14888 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-04-15 12:58:25.825  INFO 14888 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-15 12:58:25.825  INFO 14888 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-04-15 12:58:38.781  INFO 14888 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-15 12:58:38.781  INFO 14888 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-04-15 12:58:39.990  INFO 14888 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-15 12:58:39.991  INFO 14888 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-04-15 12:58:43.177  INFO 14888 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-15 12:58:43.177  INFO 14888 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-04-15 12:59:53.582  INFO 14888 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-15 12:59:53.583  INFO 14888 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-04-15 13:00:01.751  INFO 14888 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-15 13:00:01.751  INFO 14888 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-04-15 13:00:46.802  INFO 14888 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-15 13:00:46.803  INFO 14888 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-04-15 13:16:20.412  INFO 14888 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-15 13:16:20.412  INFO 14888 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-04-15 13:17:35.968  INFO 14888 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-15 13:17:35.968  INFO 14888 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-04-15 13:18:00.457  INFO 14888 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-15 13:18:00.457  INFO 14888 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-04-15 18:58:30.407  WARN 14888 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=26m59s403ms887µs700ns).
+2021-04-15 20:42:43.307  INFO 14888 --- [http-nio-8082-exec-3] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-04-15 20:42:43.312  INFO 14888 --- [http-nio-8082-exec-3] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851699003)**1**
+2021-04-15 20:43:28.050  INFO 14888 --- [http-nio-8082-exec-10] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=062f)**1**
+2021-04-15 20:43:28.059  INFO 14888 --- [http-nio-8082-exec-10] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,062f**1**
+2021-04-15 20:43:28.413  INFO 14888 --- [http-nio-8082-exec-10] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTk3ODY2MDgsInVzZXJuYW1lIjoiIn0.CXm8wBKVCCsEa4bIYSXZ7bvhp8kvYq12jkWJrefpffY
+2021-04-15 20:46:28.316  INFO 14888 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问login接口
+2021-04-15 20:46:28.317  INFO 14888 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-04-15 20:46:28.317  INFO 14888 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-04-15 20:46:28.388  INFO 14888 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-04-15 20:46:28.391  INFO 14888 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTk3ODY3ODgsInVzZXJuYW1lIjoibnR0In0.kITTDUt1UAbDjbviWeVePNRz5dseGeB85-K8JFox_7g
+2021-04-15 20:47:40.188  INFO 14888 --- [lettuce-nioEventLoop-4-1] io.lettuce.core.protocol.CommandHandler  : null Unexpected exception during request: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at java.base/sun.nio.ch.SocketDispatcher.read0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:276) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:233) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:223) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:358) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:253) ~[netty-buffer-4.1.51.Final.jar:4.1.51.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1133) ~[netty-buffer-4.1.51.Final.jar:4.1.51.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350) ~[netty-transport-4.1.51.Final.jar:4.1.51.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:148) ~[netty-transport-4.1.51.Final.jar:4.1.51.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714) ~[netty-transport-4.1.51.Final.jar:4.1.51.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650) ~[netty-transport-4.1.51.Final.jar:4.1.51.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576) ~[netty-transport-4.1.51.Final.jar:4.1.51.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493) ~[netty-transport-4.1.51.Final.jar:4.1.51.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989) ~[netty-common-4.1.51.Final.jar:4.1.51.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.51.Final.jar:4.1.51.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.51.Final.jar:4.1.51.Final]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2021-04-15 20:47:40.827  INFO 14888 --- [lettuce-eventExecutorLoop-1-5] i.l.core.protocol.ConnectionWatchdog     : Reconnecting, last destination was /127.0.0.1:6379
+2021-04-15 20:47:43.285  WARN 14888 --- [lettuce-nioEventLoop-4-2] i.l.core.protocol.ConnectionWatchdog     : Cannot reconnect to [127.0.0.1:6379]: Connection refused: no further information: /127.0.0.1:6379

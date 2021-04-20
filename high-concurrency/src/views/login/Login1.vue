@@ -1,6 +1,6 @@
 <template>
   <div class="body">
-    <div class="container right-panel-active">
+    <div class="container-login right-panel-active">
       <!-- Sign Up -->
       <div class="container__form container--signup">
         <v-form action="#" class="form" id="form1">
@@ -143,11 +143,11 @@ export default {
   },
   methods: {
     changeSingUp() {
-      const container = document.querySelector(".container");
+      const container = document.querySelector(".container-login");
       container.classList.remove("right-panel-active");
     },
     changeSingIn() {
-      const container = document.querySelector(".container");
+      const container = document.querySelector(".container-login");
       container.classList.add("right-panel-active");
     },
     goUpLogin() {
@@ -165,8 +165,9 @@ export default {
           (this.result = await API.init(this.url, this.data, "post"));
         //登录成功
         console.log("登录成功");
-        console.log(this.result);
         if (this.result.code === 1) {
+          
+        console.log(this.result);
           //存入token
           localStorage.setItem("phone", this.result.data.user.phone);
           localStorage.setItem("user", this.result.data.user);
@@ -302,7 +303,7 @@ export default {
   outline: none;
 }
 
-.container {
+.container-login {
   background-color: var(--white);
   border-radius: var(--button-radius);
   box-shadow: 0 0.9rem 1.7rem rgba(0, 0, 0, 0.25),
@@ -327,7 +328,7 @@ export default {
   z-index: 2;
 }
 
-.container.right-panel-active .container--signin {
+.container-login.right-panel-active .container--signin {
   transform: translateX(100%);
 }
 
@@ -338,7 +339,7 @@ export default {
   z-index: 1;
 }
 
-.container.right-panel-active .container--signup {
+.container-login.right-panel-active .container--signup {
   animation: show 0.6s;
   opacity: 1;
   transform: translateX(100%);
@@ -356,7 +357,7 @@ export default {
   z-index: 100;
 }
 
-.container.right-panel-active .container__overlay {
+.container-login.right-panel-active .container__overlay {
   transform: translateX(-100%);
 }
 
@@ -375,7 +376,7 @@ export default {
   width: 200%;
 }
 
-.container.right-panel-active .overlay {
+.container-login.right-panel-active .overlay {
   transform: translateX(50%);
 }
 
@@ -397,7 +398,7 @@ export default {
   transform: translateX(-20%);
 }
 
-.container.right-panel-active .overlay--left {
+.container-login.right-panel-active .overlay--left {
   transform: translateX(0);
 }
 
@@ -406,7 +407,7 @@ export default {
   transform: translateX(0);
 }
 
-.container.right-panel-active .overlay--right {
+.container-login.right-panel-active .overlay--right {
   transform: translateX(20%);
 }
 

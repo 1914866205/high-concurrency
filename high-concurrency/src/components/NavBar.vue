@@ -41,6 +41,16 @@
         </v-list>
       </v-menu>
 
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-icon @click="goPublish()" class="mr-4" color="teal" dark v-bind="attrs" v-on="on">
+            mdi-publish
+          </v-icon>
+        </template>
+        <span>发布</span>
+      </v-tooltip>
+
+
       <v-menu offset-y>
         <template v-slot:activator="{ attrs, on }">
           <div v-if="isLogin" class="user" v-bind="attrs" v-on="on">
@@ -111,6 +121,9 @@ export default {
         localStorage.clear("avatar");
         this.$router.push("/login");
       }
+    },
+    goPublish(){
+      this.$router.push("/publish");
     },
     watchScroll() {
       // var scrollTop =

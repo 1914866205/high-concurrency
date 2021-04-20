@@ -1,0 +1,41 @@
+/* 百分之90width的居中布局 */
+.index {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.index-border {
+    border: 1px solid #f0eeee;
+    border-radius: 20px;
+}
+
+/* 去除数字输入框的上下箭头 */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* 小字体 */
+.small {
+    font-size: 0.8rem;
+    color: gray;
+}
+
+.br-1{
+    border-radius: 10px;
+}
+
+.br-2{
+    border-radius: 20px;
+}
+.br-5{
+    border-radius: 50px;
+}
+.mt-100{
+    margin-top: 100px;
+}

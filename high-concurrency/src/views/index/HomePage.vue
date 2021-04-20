@@ -14,7 +14,7 @@
     />
     <nav-bar></nav-bar>
     <div class="bghome" id="home" style="height: 855px">
-      <div class="container">
+      <div>
         <h1 class="home_title text-center">Haibing shops</h1>
       </div>
     </div>

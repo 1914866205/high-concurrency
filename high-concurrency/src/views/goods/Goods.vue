@@ -40,9 +40,6 @@
 
             <v-btn color="error" @click="cancel()"> 取消提交 </v-btn>
           </div>
-          <!-- <v-btn color="warning" @click="resetValidation">
-            Reset Validation
-          </v-btn> -->
         </v-form>
       </div>
     </v-overlay>
@@ -132,7 +129,7 @@
           <span style="font-size: 1rem">购买数量</span>
           <button @click="btnMinute" class="btn_minute">-</button>
           <input
-            class="input"
+            class="goods-input"
             type="number"
             min="1"
             max="3"
@@ -152,7 +149,7 @@
         </div>
 
         <div style="margin-left: 50px; margin-top: 50px">
-          <button @click="goSubmit()" class="btn">立即购买</button>
+          <button @click="goSubmit()" class="goods-btn">立即购买</button>
         </div>
       </div>
     </div>
@@ -394,7 +391,7 @@ export default {
   border: 0; // 去除未选中状态边框
   outline: none; // 去除选中状态边框
 }
-.input {
+.goods-input {
   padding: 0.146rem 0.12rem;
   text-align: center;
   border: #f6f6f6;
@@ -407,7 +404,7 @@ export default {
   border: 0; // 去除未选中状态边框
   outline: none; // 去除选中状态边框
 }
-.btn {
+.goods-btn {
   background-color: #26a69a;
   border-radius: 8px;
   outline: none;
