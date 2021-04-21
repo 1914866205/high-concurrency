@@ -1,7 +1,7 @@
 /* 百分之90width的居中布局 */
 .index {
     width: 85%;
-    margin: 0 auto;
+    margin: 50px auto;
 }
 
 .index-border {

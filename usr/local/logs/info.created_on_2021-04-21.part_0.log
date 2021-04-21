@@ -42,3 +42,16 @@
 2021-04-21 12:25:09.176  INFO 18924 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
 2021-04-21 12:25:09.482  INFO 18924 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
 2021-04-21 12:25:09.533  INFO 18924 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 29.178 seconds (JVM running for 32.016)
+2021-04-21 12:30:22.424  INFO 18924 --- [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-21 12:30:22.425  INFO 18924 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-21 12:30:22.447  INFO 18924 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 22 ms
+2021-04-21 12:30:22.534  INFO 18924 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问login接口
+2021-04-21 12:30:22.534  INFO 18924 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-04-21 12:30:22.534  INFO 18924 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-04-21 12:30:22.704  INFO 18924 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-04-21 12:30:22.942  INFO 18924 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjAyNzU0MjIsInVzZXJuYW1lIjoibnR0In0.Y9ISm_W3x0r_Y7NNHUd367UTTA943gf6f6dLdThpu-8
+2021-04-21 12:30:30.733  INFO 18924 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问login接口
+2021-04-21 12:30:30.734  INFO 18924 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-04-21 12:30:30.734  INFO 18924 --- [http-nio-8082-exec-4] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-04-21 12:30:30.770  INFO 18924 --- [http-nio-8082-exec-4] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-04-21 12:30:30.772  INFO 18924 --- [http-nio-8082-exec-4] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjAyNzU0MzAsInVzZXJuYW1lIjoibnR0In0.a_jWJ0ZcRT4dc_7Blu_vc_7RGLo8cYIUZGokaKWBuGA

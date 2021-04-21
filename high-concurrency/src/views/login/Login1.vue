@@ -3,7 +3,7 @@
     <div class="container-login right-panel-active">
       <!-- Sign Up -->
       <div class="container__form container--signup">
-        <v-form action="#" class="form" id="form1">
+        <v-form :model="validateForm" class="form">
           <h2 class="form__title">注 册</h2>
           <v-text-field
             solo
@@ -31,13 +31,15 @@
             </button>
             <p class="link" v-else>还剩{{ time }}s</p>
           </div>
-          <button @click="signUp()" class="btn">Sign Up</button>
+          <v-btn width="200" height="50" rounded @click="signUp" class="btn"
+            ><span style="color: #e9e9e9">Sign Up</span></v-btn
+          >
         </v-form>
       </div>
 
       <!-- Sign In -->
       <div class="container__form container--signin">
-        <v-form action="#" class="form" id="form2">
+        <v-form :model="validateForm" class="form">
           <h2 class="form__title">登 录</h2>
           <div v-if="upLogin">
             <v-text-field
@@ -91,7 +93,11 @@
             </button>
           </div>
           <div style="margin-top: 20px">
-            <button @click="login()" class="btn">Sign In</button>
+            <v-btn width="200" height="50" rounded @click="submit" class="btn"
+              ><span style="color: #e9e9e9">Sign In</span></v-btn
+            >
+            <!-- <input value="Sign In" style="width:100%;" class="btn" type="submit" @click="login()"> -->
+            <!-- <router-link ref="go" :to="{path:'/'}"></router-link> -->
           </div>
         </v-form>
       </div>
@@ -151,10 +157,10 @@ export default {
       container.classList.add("right-panel-active");
     },
     goUpLogin() {
-      console.log("111111");
       this.upLogin = !this.upLogin;
     },
-    async login() {
+    async submit() {
+      console.log("登录1");
       if (this.upLogin == true) {
         //账密登录
         (this.url = this.GLOBAL.baseUrl + "/user/login"),
@@ -166,15 +172,16 @@ export default {
         //登录成功
         console.log("登录成功");
         if (this.result.code === 1) {
-          
-        console.log(this.result);
+          console.log(this.result);
           //存入token
           localStorage.setItem("phone", this.result.data.user.phone);
           localStorage.setItem("user", this.result.data.user);
           localStorage.setItem("userId", this.result.data.user.pkUserId);
           localStorage.setItem("avatar", this.result.data.user.avatar);
-          this.$store.commit("setToken", this.result.data.token);
-          this.$router.push("/");
+          // this.$store.commit("setToken", this.result.data.token);
+          console.log("登录2");
+          // this.$refs.go.click();
+          this.$router.replace("/");
         }
       } else {
         //手机号登录
@@ -190,8 +197,8 @@ export default {
           localStorage.setItem("user", this.result.data.user);
           localStorage.setItem("userId", this.result.data.user.pkUserId);
           localStorage.setItem("avatar", this.result.data.user.avatar);
-          this.$store.commit("setToken", this.result.data.token);
-          this.$router.push("/");
+          // this.$store.commit("setToken", this.result.data.token);
+          this.$refs.go.click();
         }
       }
     },
