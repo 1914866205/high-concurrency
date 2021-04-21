@@ -39,3 +39,17 @@ input[type=number]::-webkit-outer-spin-button {
 .mt-100{
     margin-top: 100px;
 }
+
+/* 手型样式 */
+.button-hand{
+    cursor:pointer
+}
+
+/* 通知 */
+.infom {
+    position: absolute;
+    top: 200px;
+    left: 40%;
+    width: 20%;
+    z-index: 999;
+  }

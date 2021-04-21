@@ -366,13 +366,7 @@ export default {
     color: #fff;
   }
 }
-.infom {
-  position: absolute;
-  top: 200px;
-  left: 40%;
-  width: 20%;
-  z-index: 999;
-}
+
 .star {
   display: flex;
   margin: 10px;

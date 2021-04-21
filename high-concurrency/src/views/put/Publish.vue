@@ -1,6 +1,15 @@
 <template>
   <v-app>
     <nav-bar></nav-bar>
+    <v-alert
+      dense
+      dismissible
+      type="success"
+      class="infom"
+      @click="cancelSuc()"
+      v-show="publishSuc"
+      >支付成功</v-alert
+    >
     <div class="publish index index-border">
       <v-form ref="form" v-model="valid" lazy-validation>
         <v-text-field
@@ -16,19 +25,25 @@
           label="商品详情"
           v-model="goodsValidate.description"
         ></v-textarea>
-        <div class="image-arr">
+        <div class="image-arr" :style="'max-width:' + maxLength + 'px;'">
           <div v-for="(item, index) in goodsValidate.image" :key="index">
-               <figure
-            @mouseover="mouseOver"
-            @mouseleave="mouseLeave"
-            data-color="#E24938, #A30F22"
-          >
-            <img style="width: 150px; height: 150px" :src="item" />
-            <v-icon>mid-trash-can-outline</v-icon>
-            <transition name="slideFade">
-            <div class="goodname" transiton="slideFade" v-show="showDel"><v-icon>mid-trash-can-outline</v-icon></div>
-            </transition>
-          </figure>
+            <figure
+              @mouseover="mouseOver"
+              @mouseleave="mouseLeave"
+              data-color="#E24938, #A30F22"
+            >
+              <img style="width: 150px; height: 150px" :src="item" />
+              <transition name="slideFade">
+                <div
+                  class="del-icon button-hand"
+                  @click="delImage(index)"
+                  transiton="slideFade"
+                  v-show="showDel"
+                >
+                  <v-icon>mdi-trash-can-outline</v-icon>
+                </div>
+              </transition>
+            </figure>
           </div>
           <div class="publish-image">
             <v-icon @click="imageClick()" size="90" color="#f6f6f6"
@@ -85,6 +100,8 @@ export default {
   data: () => ({
     showDel: false,
     valid: true,
+    maxLength: 170,
+    publishSuc: false,
     nameRules: [
       (v) => !!v || "商品名称不能为空",
       (v) => (v && v.length <= 30) || "超过最长命名",
@@ -139,6 +156,18 @@ export default {
     },
   },
   methods: {
+    mouseOver() {
+      this.showDel = true;
+    },
+    mouseLeave() {
+      this.showDel = false;
+    },
+    delImage(index) {
+      //根据索引删除照片
+      console.log(index);
+      this.goodsValidate.image.splice(index, 1);
+    },
+
     imageClick() {
       this.$refs.file.click();
     },
@@ -161,6 +190,14 @@ export default {
       client.multipartUpload(imgUrl, file).then(function (result) {
         _this.goodsValidate.image.push(result.res.requestUrls[0]);
         console.log(_this.goodsValidate.image);
+        console.log(_this.goodsValidate.image.length);
+        if (_this.goodsValidate.image.length == 1) {
+          _this.maxLength = 320;
+        } else if (_this.goodsValidate.image.length == 2) {
+          _this.maxLength = 490;
+        } else {
+          _this.maxLength = 630;
+        }
       });
     },
     async publish() {
@@ -175,6 +212,11 @@ export default {
         type: this.goodsValidate.type,
       };
       await API.init(this.url, this.data, "post");
+      this.publishSuc = true;
+    },
+    cancelSuc() {
+      this.publishSuc = false;
+      this.$router.push("/");
     },
   },
   components: {
@@ -209,7 +251,6 @@ export default {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: 60%;
 }
 .publish-tags {
   position: absolute;
@@ -220,5 +261,10 @@ export default {
   width: 150px;
   margin-left: 45%;
   border-radius: 30px;
+}
+.del-icon {
+  position: absolute;
+  z-index: 999;
+  top: 50%;
 }
 </style>
