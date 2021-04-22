@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <nav-bar></nav-bar>
-    <div class="message">
+    <div class="message index index-border">
       <div class="fengmian"></div>
       <div class="biankuang">
         <v-hover>
@@ -27,9 +27,10 @@
           </template>
         </v-hover>
 
-
         <div class="btn-col">
-          <button @click="submit()" class="btn">提交</button>
+          <v-btn :disabled="!isUpdate" @click="submit()" class="message-btn"
+            >提交</v-btn
+          >
         </div>
         <div class="xinxi">
           <span style="display: flex">
@@ -61,16 +62,16 @@
                   v-model="validate.code"
                 ></v-text-field>
                 <span>
-                  <span
-                    @click="sendCode()"
-                    style="coloe: grey; font-size: 0.7rem"
-                    >获取验证码</span
-                  >
-                  <span
+                  <button @click="sendCode()" class="msg-btn">
+                    获取验证码
+                  </button>
+                  <button
                     @click="verifyCode()"
-                    style="coloe: grey; font-size: 0.7rem"
-                    >验证验证码</span
+                    class="msg-btn"
+                    style="margin-left: 10px"
                   >
+                    验证
+                  </button>
                 </span>
               </span>
               <span v-else>{{ user.phone }}</span>
@@ -125,10 +126,20 @@
             <h4>性别</h4>
             <span class="label">
               <label
-                ><input type="radio" name="sex" value="1" v-model="validate.sex" />男</label
+                ><input
+                  type="radio"
+                  name="sex"
+                  value="1"
+                  v-model="validate.sex"
+                />男</label
               >
               <label style="margin-left: 20px"
-                ><input type="radio" name="sex" value="2" v-model="validate.sex" />女</label
+                ><input
+                  type="radio"
+                  name="sex"
+                  value="2"
+                  v-model="validate.sex"
+                />女</label
               >
             </span>
           </span>
@@ -151,7 +162,7 @@
               <v-text-field
                 v-if="addressInput"
                 label="地址"
-                placeholder="请输入地址。。"
+                placeholder="请输入地址.."
                 v-model="validate.addresss"
               ></v-text-field>
               <span v-else>{{ user.address }}</span>
@@ -201,6 +212,7 @@ export default {
   name: "HomePage",
   data() {
     return {
+      isUpdate: false,
       userInput: false,
       emailInput: false,
       addressInput: false,
@@ -213,7 +225,7 @@ export default {
       user: [],
       validate: {
         nickname: "",
-        sex: "",
+        sex: 1,
         avatar: "",
         address: "",
         email: "",
@@ -223,27 +235,37 @@ export default {
       },
     };
   },
+  watch: {
+    validate: {
+      handler(val, oldVal) {
+        console.log(val, oldVal);
+
+        this.isUpdate = true;
+      },
+      deep: true,
+    },
+  },
   components: {
     NavBar,
   },
   created: function () {
-    this.refreshUser()
-    
+    this.refreshUser();
   },
+
   directives: { clickoutside },
   methods: {
     refreshUser() {
       const id = localStorage.getItem("userId");
-    console.log("1111111");
-    this.axios
-      .get(this.GLOBAL.baseUrl + "/user/getInfoById/" + id)
-      .then((res) => {
-        console.log(res);
-        this.user = JSON.parse(res.data.data);
-        this.validate.sex = this.user.sex
-        console.log(this.validate.sex);
-        localStorage.setItem("user", this.user);
-      });
+      console.log("1111111");
+      this.axios
+        .get(this.GLOBAL.baseUrl + "/user/getInfoById/" + id)
+        .then((res) => {
+          console.log(res);
+          this.user = JSON.parse(res.data.data);
+          this.validate.sex = this.user.sex;
+          console.log(this.validate.sex);
+          localStorage.setItem("user", this.user);
+        });
     },
     updateUser() {
       this.userInput = !this.userInput;
@@ -270,8 +292,8 @@ export default {
         var sex = 1;
       } else if (_this.validate.sex === "女") {
         var sex = 2;
-      }else {
-        var sex = users.sex
+      } else {
+        var sex = users.sex;
       }
 
       if (_this.validate.password === "") {
@@ -314,8 +336,8 @@ export default {
         username: users.username,
       };
       await API.init(_this.url, _this.data, "post");
-      alert('修改成功')
-      this.refreshUser()
+      alert("修改成功");
+      this.refreshUser();
       if ((avatar = _this.validate.avatar)) {
         localStorage.setItem("avatar", avatar);
       }
@@ -327,7 +349,7 @@ export default {
     },
     async sendCode() {
       //手机号正则
-      let validate = this.validate
+      let validate = this.validate;
       var mPattern = /^1[34578]\d{9}$/;
       if (!mPattern.test(validate.phone)) {
         alert("手机号格式不正确");
@@ -355,22 +377,21 @@ export default {
       }
     },
     async verifyCode() {
-      let validate = this.validate
-      this.url = this.GLOBAL.baseUrl + "/verifyCode",
-        this.data = {
+      let validate = this.validate;
+      (this.url = this.GLOBAL.baseUrl + "/verifyCode"),
+        (this.data = {
           phoneNumber: validate.phone,
           verifyCode: validate.code,
-        },
-        this.result = await API.init(this.url, this.data, "post")
+        }),
+        (this.result = await API.init(this.url, this.data, "post"));
       if (this.result.code === 1) {
-        alert('验证成功')
+        alert("验证成功");
       } else {
         validate.code === "";
-        alert('验证失败')
+        alert("验证失败");
       }
     },
     uploadAvatar(event) {
-      console.log("111111111");
       const OSS = require("ali-oss");
       let client = new OSS({
         region: "oss-cn-beijing",
@@ -385,7 +406,6 @@ export default {
       client.multipartUpload(imgUrl, file).then(function (result) {
         _this.validate.avatar = result.res.requestUrls[0];
         _this.updateAdminInfo(_this.validate.avatar);
-        console.log("222222");
         console.log(_this.validate.avatar);
       });
     },
@@ -394,16 +414,12 @@ export default {
 </script>
 <style lang="scss" scoped>
 .message {
-  width: 85%;
-  margin: auto;
-  box-shadow: #26a69a 0 0 2px 1px;
-  border-radius: 10px;
+  box-shadow: 0 8px 32px 0 rgba(166, 169, 204, 0.37);
 }
 .fengmian {
   background-color: #26a69a;
   height: 300px;
   border-radius: 10px 10px 0 0;
-  
 }
 .avatar {
   width: 200px;
@@ -427,11 +443,11 @@ export default {
 .biankuang {
   display: flex;
 }
-.btn {
+.message-btn {
   width: 80px;
   height: 40px;
   background-color: #26a69a;
-  color: #ffffff;
+  color: #26a69a;
   font-size: 1.3rem;
   border-radius: 10px;
   border: 0; // 去除未选中状态边框
@@ -439,7 +455,12 @@ export default {
 }
 .btn-col {
   position: absolute;
-  right: 20%;
-  top: 40%;
+  right: 15%;
+  top: 35%;
+}
+.msg-btn {
+  outline: none;
+  color: #26a69a;
+  font-size: 0.7rem;
 }
 </style>

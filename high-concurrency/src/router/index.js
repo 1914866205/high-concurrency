@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomePage from '../views/index/HomePage.vue'
-import Login from '../views/login/Login.vue'
+import Login from '../views/login/Login1.vue'
 
 
 Vue.use(VueRouter)
@@ -11,7 +11,6 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
-    // component: () => import('../views/login/Login.vue')
   },
   {
     path: '/',
@@ -37,7 +36,17 @@ const routes = [
     path: '/put',
     name: 'Put',
     component: () => import('../views/my/Put.vue')
-  }
+  },
+  {
+    path: '/router',
+    name: 'RouterUtil',
+    component: () => import('../views/other/RouterUtil.vue')
+  },
+  {
+    path: '/publish',
+    name: 'Publish',
+    component: () => import('../views/put/Publish.vue')
+  },
 ]
 
 const router = new VueRouter({

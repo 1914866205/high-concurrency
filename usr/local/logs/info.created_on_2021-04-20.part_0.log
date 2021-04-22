@@ -1,0 +1,118 @@
+2021-04-20 10:18:54.447  WARN 2820 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16h2m37s599ms400µs300ns).
+2021-04-20 12:41:07.933  INFO 2820 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 12:41:07.942  INFO 2820 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-04-20 12:41:12.986  WARN 2820 --- [http-nio-8082-exec-10] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@386bc6f (Communications link failure
+
+The last packet successfully received from the server was 1,390,572 milliseconds ago.  The last packet sent successfully to the server was 5,012 milliseconds ago.). Possibly consider using a shorter maxLifetime value.
+2021-04-20 12:46:01.345  INFO 2820 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 12:46:01.345  INFO 2820 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:02:29.425  INFO 2820 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:02:29.425  INFO 2820 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:02:50.981  INFO 2820 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:02:50.982  INFO 2820 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:03:20.795  INFO 2820 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:03:20.795  INFO 2820 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:03:35.986  INFO 2820 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:03:35.987  INFO 2820 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:03:58.369  INFO 2820 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:03:58.370  INFO 2820 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:04:00.921  INFO 2820 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:04:00.922  INFO 2820 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:04:41.144  INFO 2820 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:04:41.144  INFO 2820 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:04:42.012  INFO 2820 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:04:42.014  INFO 2820 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:05:16.594  INFO 2820 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:05:16.595  INFO 2820 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:05:19.555  INFO 2820 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:05:19.556  INFO 2820 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:05:38.708  INFO 2820 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:05:38.709  INFO 2820 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:05:39.529  INFO 2820 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:05:39.530  INFO 2820 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:05:49.792  INFO 2820 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:05:49.792  INFO 2820 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:05:58.110  INFO 2820 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:05:58.110  INFO 2820 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:06:27.138  INFO 2820 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:06:27.138  INFO 2820 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:06:30.372  INFO 2820 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:06:30.373  INFO 2820 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:06:32.614  INFO 2820 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:06:32.614  INFO 2820 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:06:41.734  INFO 2820 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:06:41.735  INFO 2820 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:06:54.314  INFO 2820 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:06:54.315  INFO 2820 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:06:56.510  INFO 2820 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:06:56.510  INFO 2820 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:07:02.492  INFO 2820 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:07:02.492  INFO 2820 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:07:46.905  INFO 2820 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:07:46.905  INFO 2820 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:07:47.809  INFO 2820 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:07:47.810  INFO 2820 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:08:17.106  INFO 2820 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:08:17.108  INFO 2820 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:08:20.039  INFO 2820 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:08:20.040  INFO 2820 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:08:21.659  INFO 2820 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:08:21.660  INFO 2820 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:09:55.302  INFO 2820 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:09:55.303  INFO 2820 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:11:50.077  INFO 2820 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:11:50.078  INFO 2820 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:12:52.308  INFO 2820 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:12:52.309  INFO 2820 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:12:55.357  INFO 2820 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:12:55.359  INFO 2820 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:14:48.045  INFO 2820 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:14:48.045  INFO 2820 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-04-20 13:15:09.923  INFO 2820 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-20 13:15:09.924  INFO 2820 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-04-20 15:30:54.511  WARN 2820 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=36m22s95ms745µs900ns).
+2021-04-20 17:25:49.280  INFO 10384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-20 17:25:49.822  INFO 10384 --- [main] c.soft.usercenter.UserCenterApplication  : No active profile set, falling back to default profiles: default
+2021-04-20 17:25:51.716  INFO 10384 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-04-20 17:25:51.720  INFO 10384 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2021-04-20 17:25:51.927  INFO 10384 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 197ms. Found 5 JPA repository interfaces.
+2021-04-20 17:25:51.971  INFO 10384 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-04-20 17:25:51.976  INFO 10384 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-04-20 17:25:52.021  INFO 10384 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbCommentRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-04-20 17:25:52.023  INFO 10384 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbGoodRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-04-20 17:25:52.025  INFO 10384 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbOrderRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-04-20 17:25:52.027  INFO 10384 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbStrategyRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-04-20 17:25:52.029  INFO 10384 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbUserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-04-20 17:25:52.030  INFO 10384 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31ms. Found 0 Redis repository interfaces.
+2021-04-20 17:25:52.454  INFO 10384 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=9913dd3c-5bfb-3d0c-b1ed-81b6501ad54b
+2021-04-20 17:25:52.717  INFO 10384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-20 17:25:53.117  INFO 10384 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2021-04-20 17:25:53.132  INFO 10384 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-20 17:25:53.132  INFO 10384 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-04-20 17:25:53.610  INFO 10384 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-20 17:25:53.611  INFO 10384 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3774 ms
+2021-04-20 17:25:54.128  INFO 10384 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-20 17:25:54.251  INFO 10384 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-20 17:25:54.330  INFO 10384 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2021-04-20 17:25:54.496  INFO 10384 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-04-20 17:25:54.687  INFO 10384 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-20 17:25:55.181  INFO 10384 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-04-20 17:25:55.234  INFO 10384 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-04-20 17:25:56.684  INFO 10384 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-20 17:25:56.691  INFO 10384 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-20 17:25:58.082  WARN 10384 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-20 17:25:58.337  INFO 10384 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-04-20 17:25:58.416  WARN 10384 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-20 17:25:58.417  INFO 10384 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-20 17:25:58.420  WARN 10384 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-20 17:25:58.420  INFO 10384 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-20 17:25:59.417  INFO 10384 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'Nacso-Watch-Task-Scheduler'
+2021-04-20 17:26:01.456  INFO 10384 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2021-04-20 17:26:01.761  INFO 10384 --- [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP user-center 10.20.172.190:8082 register finished
+2021-04-20 17:26:02.421  INFO 10384 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-04-20 17:26:02.470  INFO 10384 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-04-20 17:26:02.544  INFO 10384 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-04-20 17:26:02.921  INFO 10384 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2021-04-20 17:26:03.068  INFO 10384 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2021-04-20 17:26:03.085  INFO 10384 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 15.103 seconds (JVM running for 17.537)
+2021-04-20 18:20:30.795  WARN 10384 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m34s901ms743µs900ns).

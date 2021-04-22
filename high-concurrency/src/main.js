@@ -4,13 +4,20 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
 import VueAxios from 'vue-axios'
+//全局统一封装
 import global_ from './utils/Global'
 import axios from 'axios'
 import 'element-ui/lib/theme-chalk/index.css';
 import Element from 'element-ui';
+//统一样式
+import common from './common/common.css'
+// import Icon from '@mdi/react'
+import  { Component } from 'react'
 Vue.use(Element, { size: 'small', zIndex: 3000 });
 Vue.use(VueAxios, axios)
+import Vuetify from 'vuetify/lib'
 
+Vue.use(Vuetify,Component,common)
 Vue.prototype.GLOBAL = global_
 
 //导航守卫

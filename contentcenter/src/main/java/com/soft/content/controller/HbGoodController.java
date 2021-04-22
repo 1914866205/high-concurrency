@@ -2,6 +2,7 @@ package com.soft.content.controller;
 
 import com.soft.content.annotation.ControllerWebLog;
 import com.soft.content.common.ResponseResult;
+import com.soft.content.model.dto.GoodsDto;
 import com.soft.content.model.dto.SearchDto;
 import com.soft.content.model.entity.HbGood;
 import com.soft.content.service.HbGoodService;
@@ -114,5 +115,16 @@ public class HbGoodController {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("Goods", hbGoodService.getGoodsById(goodsId));
         return ResponseResult.success(map);
+    }
+
+
+    /**
+     * 发布商品
+     */
+    @ApiOperation(value = "添加商品", notes = "添加商品")
+    @PostMapping("addGoods")
+    @ControllerWebLog(name = "addGoods", isSaved = true)
+    public ResponseResult addComment(@RequestBody GoodsDto goodsDto) {
+        return hbGoodService.addGoods(goodsDto);
     }
 }

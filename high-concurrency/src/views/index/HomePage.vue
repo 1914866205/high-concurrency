@@ -1,51 +1,26 @@
 <template>
-  <v-app style="background-color: #f3f3f3; width: 100%">
+  <v-app style="width: 100%">
+    <link
+      href="https://fonts.googleapis.com/css?family=Abril+Fatface|Comfortaa|Yellowtail"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Marck+Script|Monoton|Oleo+Script|Oswald"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Kurale"
+      rel="stylesheet"
+    />
     <nav-bar></nav-bar>
-    <div class="solid">
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap"
-        rel="stylesheet"
-      />
-
-      <div class="grp">
-        <h1>HAIBINGSHOP</h1>
-        <div class="card"></div>
-        <div class="squares">
-          <div class="square square-1"></div>
-          <div class="square square-2"></div>
-          <div class="square square-3"></div>
-          <div class="square square-4"></div>
-        </div>
+    <div class="bghome" id="home" style="height: 855px">
+      <div>
+        <h1 class="home_title text-center">Haibing shops</h1>
       </div>
-
-      <!-- <div class="miaosha">
-        <div class="goods">
-          <div
-            style="margin: 10px; width: 30%"
-            v-for="(item, index) in goods"
-            :key="index"
-          >
-            <v-card class="ma-1" height="370" @click="goGoods(item.pkGoodId)">
-              <img class="goodsImg" :src="item.image" />
-
-              <v-card-title>{{ item.goodName }}</v-card-title>
-
-              <v-card-text>
-                <v-row align="center" class="mx-0"> </v-row>
-
-                <div class="my-2 subtitle-1">
-                   <span class="type">{{ item.type }}</span> -->
-      <!-- <span> ${{ item.price }}</span>
-                </div>
-                <div>倒计时</div>
-              </v-card-text>
-            </v-card>
-          </div>
-        </div>
-      </div> -->
     </div>
-
+    <div class="neighborhood-title">
+      <h4>秒杀商品</h4>
+    </div>
     <div class="goods">
       <div
         class="shop-card"
@@ -53,13 +28,16 @@
         :key="index"
         @click="goGoods(item.pkGoodId)"
       >
-        <div class="title">
-          {{ item.goodName }}
-        </div>
-        <div class="desc">Men's training shoe</div>
         <div class="slider">
-          <figure data-color="#E24938, #A30F22">
+          <figure
+            @mouseover="mouseOver"
+            @mouseleave="mouseLeave"
+            data-color="#E24938, #A30F22"
+          >
             <img class="goodsImg" :src="item.image" />
+            <transition name="slideFade">
+            <div class="goodname" transiton="slideFade" v-show="showTitle">{{ item.goodName }}</div>
+            </transition>
           </figure>
         </div>
 
@@ -68,34 +46,26 @@
           <button class="btn">Add to cart<span class="bg"></span></button>
         </div>
       </div>
-      <div class="bg"></div>
     </div>
+
+    <footer>
+      <div class="footer-stuff">
+        <p><strong>@骸冰</strong></p>
+      </div>
+    </footer>
   </v-app>
 </template>
 
 
 <script>
 import NavBar from "../../components/NavBar";
-function background(c1, c2) {
-  return {
-    background: "-moz-linear-gradient(15deg, " + c1 + " 50%, " + c2 + " 50.1%)",
-    background: "-o-linear-gradient(15deg, " + c1 + ", " + c2 + " 50.1%)",
-    background: "-webkit-linear-gradient(15deg, " + c1 + " 50%, " + c2 + ")",
-    background: "-ms-linear-gradient(15deg, " + c1 + " 50%, " + c2 + " 50.1%)",
-    background: "linear-gradient(15deg, " + c1 + " 50%," + c2 + " 50.1%)",
-  };
-}
-
 export default {
   name: "HomePage",
   data() {
     return {
-      length: 3,
-      onboarding: 0,
       model: null,
       goods: [],
-      loading: false,
-      selection: 1,
+      showTitle: false,
     };
   },
   created: function () {
@@ -110,13 +80,14 @@ export default {
       });
   },
   methods: {
-    reserve() {
-      this.loading = true;
-
-      setTimeout(() => (this.loading = false), 2000);
-    },
     goGoods(goodsId) {
       this.$router.push({ path: "/goods", query: { goodsId: goodsId } });
+    },
+    mouseOver() {
+      this.showTitle = true;
+    },
+    mouseLeave() {
+      this.showTitle = false;
     },
   },
   components: {
@@ -125,96 +96,36 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.solid {
-  width: 90%;
-  margin: auto;
-  font-family: "Montserrat", sans-serif;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50vh;
-  background: #26a69a; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #2894af,
-    #26a69a
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #2894af,
-    #26a69a
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+.bghome {
+  padding-top: 100px;
+  background: url("https://images.unsplash.com/photo-1488120299791-f9241bdf10c9?dpr=1&auto=format&fit=crop&w=1500&h=917&q=80&cs=tinysrgb&crop=")
+    no-repeat center center;
+  background-size: cover;
 }
-.grp {
-  position: relative;
-  height: 150px;
-  width: 400px;
-}
-
-.card {
-  height: 150px;
-  width: 400px;
-  background: #ffffff40;
-  border: 1px solid #ffffff20;
-  border-radius: 10px;
-  backdrop-filter: blur(4px);
-  z-index: 999;
-  box-shadow: 0 0 40px 0 #00000040;
-}
-
-h1 {
+.home_title {
+  color: #f9f1e9;
+  font-family: "Marck Script", cursive;
+  position: absolute;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   margin: 0;
-  position: absolute;
-  font-size: 70px;
-  letter-spacing: 2px;
+  transform: translate(-50%, -80%);
+  top: 500px;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  font-size: 4rem;
 }
-
-.square {
-  border-radius: 10px;
-  border: 1px solid #00000020;
-  background: #ffffff40;
+.home_motto {
+  display: none;
+  color: #f9f1e9;
+  font-size: 2.5em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   position: absolute;
-  box-shadow: 0 0 40px 0 #00000040;
-  backdrop-filter: blur(4px);
-
-  &-1 {
-    height: 40px;
-    width: 40px;
-    bottom: -20px;
-    left: 40px;
-  }
-
-  &-2 {
-    height: 60px;
-    width: 60px;
-    top: -30px;
-    right: 30px;
-  }
-
-  &-3 {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    top: -40px;
-    left: 40px;
-  }
-
-  &-4 {
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    bottom: -40px;
-    right: -20px;
-  }
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 10%);
 }
-
 .goods {
-  width: 85%;
-  margin: 10px auto;
+  width: 100%;
+  margin: 20px auto;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -222,45 +133,77 @@ h1 {
 
 .shop-card {
   width: 290px;
-  margin-top: 20px;
+  height: 320px;
   background: #f5f5f5;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  margin: 2%;
   border-radius: 5px;
-  padding: 25px;
+  // padding: 25px;
   text-align: center;
   z-index: 2;
-
+  &:hover {
+    transform: scale(1.05);
+  }
   figure {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    outline: none !important;
-
     & img {
       // margin: -95px 0 -60px;
       width: 100%;
-      height: 150px;
+      height: 230px;
     }
   }
 
-  .title {
-    font-weight: 900;
-    text-transform: uppercase;
-    font-size: 30px;
-    color: #23211f;
-    margin-bottom: 5px;
+  .goodname {
+    position: absolute;
+    top: 150px;
+    left: 10px;
+    color: #fff;
+    font-size:0.8rem;
+    height:30px;
+    padding:5px;
+    background: rgba( 0, 0, 0, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(2.5px);
+    -webkit-backdrop-filter: blur(2.5px);
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
   }
-
-  .desc {
-    font-size: 17px;
-    opacity: 0.8;
-    margin-bottom: 3px;
+.slideFade-enter {
+    animation: slideFade-dialog-fade-in 0.5s ease;
+}
+  .slideFade-leave {
+    animation: slideFade-dialog-fade-out 0.5s ease forwards;
+  }
+  .slideFade-enter-active {
+    animation: slideFade-dialog-fade-in 0.5s ease;
+  }
+  .slideFade-leave-active {
+    animation: slideFade-dialog-fade-out 0.5s ease forwards;
+  }
+  
+  @keyframes slideFade-dialog-fade-in {
+    0% {
+      transform: translate3d(-100%, 0, 0);//修改这个可以控制，上下左右动画，例如：100%为从右到左
+      opacity: 1;
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+  @keyframes slideFade-dialog-fade-out {
+    0% {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+    100% {
+      transform: translate3d(-100%, 0, 0);
+      opacity: 1;
+    }
   }
 
   .cta {
     padding: 20px 20px 5px;
-
     &::after {
       content: "";
       display: table;
@@ -270,12 +213,11 @@ h1 {
 
   .price {
     float: left;
-    color: #ff3100;
+    color: #26a69a;
     font-size: 22px;
     font-weight: 900;
     padding-top: 2px;
     transition: color 0.3s ease-in-out;
-    margin-top: 4px;
   }
 
   .btn {
@@ -286,7 +228,7 @@ h1 {
     font-size: 13px;
     font-weight: 900;
     text-transform: uppercase;
-    color: #ff3100;
+    color: #26a69a;
     padding: 12px 12px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
@@ -294,7 +236,7 @@ h1 {
     border: none;
     background: none;
     outline: none;
-    border: 1px solid #ff3100;
+    border: 1px solid #26a69a;
     border-radius: 20px;
     overflow: hidden;
 
@@ -305,11 +247,10 @@ h1 {
       z-index: -1;
       opacity: 0;
       transition: all 0.3s ease-in-out;
-      background: linear-gradient(135deg, #a61322, #d33f34);
     }
 
     &:hover {
-      color: #fff !important;
+      color: #26a69a !important;
       border: 1px solid transparent !important;
 
       & .bg {
@@ -317,5 +258,25 @@ h1 {
       }
     }
   }
+}
+
+.neighborhood-title {
+  font-size: 32px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+footer {
+  background: #26a69a;
+  color: #fff;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.footer-stuff {
+  margin: 20px auto;
+  text-align: center;
 }
 </style>

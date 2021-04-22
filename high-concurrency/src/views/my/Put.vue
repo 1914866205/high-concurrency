@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <nav-bar></nav-bar>
+    <div class="index">
     <el-dialog
       class="dialog"
       title="骸冰秒杀"
@@ -94,6 +95,7 @@
           <button @click="edit" class="btn_edit">确定修改</button>
         </div>
       </div>
+    </div>
     </div>
   </v-app>
 </template>
