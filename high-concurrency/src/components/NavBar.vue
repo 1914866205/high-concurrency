@@ -41,34 +41,94 @@
         </v-list>
       </v-menu>
 
-      <v-tooltip bottom>
+      <v-tooltip v-if="isLogin" bottom>
         <template v-slot:activator="{ on, attrs }">
-          <v-icon @click="goPublish()" class="mr-4" color="teal" dark v-bind="attrs" v-on="on">
-            mdi-publish
+          <v-icon
+            @click="goPublish()"
+            class="mr-4"
+            color="teal"
+            dark
+            v-bind="attrs"
+            v-on="on"
+          >
+            mdi-plus-circle-outline
           </v-icon>
         </template>
-        <span>发布</span>
+        <span>发布商品</span>
       </v-tooltip>
 
-
-      <v-menu offset-y>
-        <template v-slot:activator="{ attrs, on }">
-          <div v-if="isLogin" class="user" v-bind="attrs" v-on="on">
-            <img class="image" :src="avatar" />
-          </div>
-          <div v-else @click="goLogin()" class="user" style="color: #26a69a">
-            未登录，请先登录
-          </div>
+      <v-tooltip v-if="isLogin" bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-icon
+            @click="goOrder()"
+            class="mr-4"
+            color="teal"
+            dark
+            v-bind="attrs"
+            v-on="on"
+          >
+            mdi-file-document-outline
+          </v-icon>
         </template>
-        <v-list v-if="goods !== null">
+        <span>我的订单</span>
+      </v-tooltip>
+
+      <v-tooltip v-if="isLogin" bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-icon
+            @click="goPut()"
+            class="mr-4"
+            color="teal"
+            dark
+            v-bind="attrs"
+            v-on="on"
+          >
+            mdi-cog-outline
+          </v-icon>
+        </template>
+        <span>商品策略</span>
+      </v-tooltip>
+
+      <v-tooltip v-if="isLogin" bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-icon
+            @click="logout()"
+            class="mr-4"
+            color="teal"
+            dark
+            v-bind="attrs"
+            v-on="on"
+          >
+            mdi-logout-variant
+          </v-icon>
+        </template>
+        <span>退出登录</span>
+      </v-tooltip>
+
+      <!-- <v-menu offset-y>
+        <template v-slot:activator="{ attrs, on }"> -->
+      <!-- <div v-if="isLogin" class="user" v-bind="attrs" v-on="on"> -->
+      <div @click="goUser()" v-if="isLogin" class="user">
+        <img class="image" :src="avatar" />
+      </div>
+      <div
+        v-else
+        @click="goLogin()"
+        class="user button-hand"
+        style="color: #26a69a"
+      >
+        未登录，请先登录
+      </div>
+      <!-- </template> -->
+      <!-- <v-list v-if="goods !== null">
           <v-list-item v-for="item in items" :key="item" link>
             <v-list-item-title
               @click="goUser(item)"
               v-text="item"
             ></v-list-item-title>
           </v-list-item>
-        </v-list>
-      </v-menu>
+        </v-list> -->
+      <!-- </v-menu> -->
     </v-toolbar>
 
     <!-- <v-overlay :z-index="zIndex" :value="overlay">
@@ -107,22 +167,24 @@ export default {
     }
   },
   methods: {
-    goUser(item) {
-      if (item === "用户中心") {
-        this.$router.push("/message");
-      } else if (item === "订单中心") {
-        this.$router.push("/order");
-      } else if (item === "我的发布") {
-        this.$router.push("/put");
-        //this.overlay = !this.overlay;
-      } else {
-        localStorage.clear("user");
-        localStorage.clear("userId");
-        localStorage.clear("avatar");
-        this.$router.push("/login");
-      }
+    goUser() {
+      this.$router.push("/message");
+
+      //this.overlay = !this.overlay;
     },
-    goPublish(){
+    goOrder() {
+      this.$router.push("/order");
+    },
+    goPut() {
+      this.$router.push("/put");
+    },
+    logout() {
+      localStorage.clear("user");
+      localStorage.clear("userId");
+      localStorage.clear("avatar");
+      this.$router.push("/login");
+    },
+    goPublish() {
       this.$router.push("/publish");
     },
     watchScroll() {
