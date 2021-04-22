@@ -106,10 +106,8 @@
             <artifactId>commons-pool2</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-        </dependency>
+
+
 
         <!--		接口文档-->
         <dependency>
@@ -147,11 +145,7 @@
             <version>3.1.0</version>
         </dependency>
 
-        <!--给redis提供连接池支持-->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-pool2</artifactId>
-        </dependency>
+
 
         <!--        短信服务-->
         <dependency>

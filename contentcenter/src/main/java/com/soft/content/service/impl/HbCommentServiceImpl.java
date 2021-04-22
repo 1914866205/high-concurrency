@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 /**
@@ -26,6 +25,11 @@ public class HbCommentServiceImpl implements HbCommentService {
     private HbCommentRepository hbCommentRepository;
 
 
+    /**
+     * 添加商品评价并且把订单改为已评价 status=3
+     * @param commentDto
+     * @return
+     */
     @Override
     public ResponseResult addComment(CommentDto commentDto) {
         hbCommentRepository.save(HbComment.builder()
@@ -38,6 +42,8 @@ public class HbCommentServiceImpl implements HbCommentService {
                 .createdTime(Timestamp.valueOf(LocalDateTime.now()))
                 .updatedTime(Timestamp.valueOf(LocalDateTime.now()))
                 .build());
+
+
         return ResponseResult.success();
     }
 
