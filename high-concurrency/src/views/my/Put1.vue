@@ -72,7 +72,7 @@
       <div
         v-for="(item, index) in goodsInfo"
         :key="index"
-        class="put-card pa-15"
+        class="put-card pa-15 glassmorphism"
       >
         <div style="width: 50%" class="right mt-12">
           <h1 class="put-title">
@@ -266,13 +266,7 @@ export default {
   text-align: center;
   width: 83%;
   height: 530px;
-  background: rgba(255, 255, 255, 0.35);
-  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  /* z-index: 2; */
+  
 }
 .put-title {
   font-size: 3rem;

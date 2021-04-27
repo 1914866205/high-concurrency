@@ -27,7 +27,7 @@
         class="shop-card"
         v-for="(item, index) in miaoshaGoods"
         :key="index"
-        @click="goGoods(item.goodId,item.day)"
+        @click="goGoods(item.goodId, item.day)"
       >
         <div class="slider">
           <figure
@@ -155,9 +155,11 @@ export default {
         }
       }, 1000);
     },
-
-    goGoods(goodsId,day) {
-      this.$router.push({ path: "/goods", query: { goodsId: goodsId,day:day } });
+    goGoods(goodsId, day) {
+      this.$router.push({
+        path: "/goods",
+        query: { goodsId: goodsId, day: day },
+      });
     },
     mouseOver() {
       this.showTitle = true;
@@ -288,9 +290,8 @@ export default {
   }
 
   .cta-text {
-    padding: 2px;
+    padding: 5px;
     float: right;
-    font-size: 1.1rem;
     background: #26a69a;
     color: #fff;
   }

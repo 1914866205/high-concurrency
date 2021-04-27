@@ -109,23 +109,20 @@
       </div>
 
       <div class="goods-right">
-        <div class="font" style="margin: 100px 0 20px 50px">价格</div>
-        <span
-          style="
-            color: #26a69a;
-            font-size: 2.5rem;
-            margin-left: 50px;
-            font-weight: 300;
-          "
-          >RMB￥{{ goodsInfo.price }}</span
-        >
+        <div class="font mt-10">价格</div>
 
-        <div style="color: gray; margin: 50px">
-          <!-- <span>促 销</span> -->
+        <div
+          class="mt-8"
+          style="color: #26a69a; font-size: 2.5rem; font-weight: 300"
+        >
+          RMB￥{{ goodsInfo.price }}
+        </div>
+
+        <div class="mt-8" style="color: gray">
           <span>{{ goodsInfo.description }}</span>
         </div>
 
-        <div style="margin-left: 50px">
+        <div class="mt-8">
           <span style="font-size: 1rem">购买数量</span>
           <button @click="btnMinute" class="btn_minute btn-none">-</button>
           <input
@@ -148,8 +145,30 @@
           >
         </div>
 
-        <div style="margin-left: 50px; margin-top: 50px">
-          <button @click="goSubmit()" class="goods-btn">立即购买</button>
+        <div v-show="miaosha.description!=null" class="goods-discount br-2 pa-1 mt-4">
+          <span>{{ miaosha.description }}</span>
+          <div v-for="(item, index) in miaosha.ruleDtoList" :key="index">
+            <span
+              >第{{ item.start }}名到第{{ item.end }}名打{{
+                item.discount
+              }}折</span
+            >
+          </div>
+        </div>
+        <div style="margin-top: 50px">
+          <v-btn
+            @click="goSubmit()"
+            width="380"
+            height="60"
+            v-if="miaosha.day <= 0 || miaosha.day == null"
+            class="goods-btn btn-green"
+            ><span style="color: #fff">立即购买</span></v-btn
+          >
+          <v-btn disabled width="380" height="60" v-else class="goods-btn btn-white"
+            ><span style="color: #fff">{{
+              daojishi(miaosha.day)
+            }}</span></v-btn
+          >
         </div>
       </div>
     </div>
@@ -242,20 +261,53 @@ export default {
       ],
       checkbox: false,
       isSubmit: false,
-      day:"",
-      isMiaosha:false
+      day: "",
+      isMiaosha: false,
+      miaosha: [],
     };
   },
   created: function () {
-     //根据是否有秒杀时间来判定是否是秒杀订单
-    // this.day = this.$route.query.day
-    // if(this.day != null){
-    //   this.isMiaosha = true
-    // }
+    //根据是否有秒杀时间来判定是否是秒杀订单
+    this.day = this.$route.query.day;
+    if (this.day != null) {
+      this.isMiaosha = true;
+      let params = new URLSearchParams();
+      params.append("goodId", this.$route.query.goodsId);
+      this.axios
+        .post(this.GLOBAL.contentUrl + "/hbStrategy/get", params)
+        .then((res) => {
+          this.miaosha = res.data.data;
+          this.miaosha.day =
+            new Date(this.miaosha.day).getTime() - new Date().getTime();
+          if (this.ticker) {
+            //这一段是防止进入页面出去后再进来计时器重复启动
+            clearInterval(this.ticker);
+          }
+          this.beginTimer(); //启动计时器减指定字段的时间
+        });
+    }
     this.getIndex();
     this.getCommont();
   },
   methods: {
+    daojishi(time) {
+      if (time >= 0) {
+        let d = Math.floor(time / 1000 / 60 / 60 / 24);
+        let h = Math.floor((time / 1000 / 60 / 60) % 24);
+        let m = Math.floor((time / 1000 / 60) % 60);
+        let s = Math.floor((time / 1000) % 60);
+        return "还有" + d + "天" + h + "时" + m + "分" + s + "秒";
+      }
+    },
+    beginTimer() {
+      //这个计时器是每秒减去数组中指定字段的时间
+      this.ticker = setInterval(() => {
+        const item = this.miaosha;
+        if (item.day > 0) {
+          item.day = item.day - 1000;
+        }
+      }, 1000);
+    },
     reset() {
       this.$refs.form.reset();
     },
@@ -295,12 +347,12 @@ export default {
     },
     async sumbitGoods() {
       //根据是否是秒杀订单来请求不同的接口
-      if(this.isMiaosha){
+      if (this.isMiaosha) {
         this.url = this.GLOBAL.contentUrl + "/order/spikeOrder";
-      }else{
+      } else {
         this.url = this.GLOBAL.contentUrl + "/order/addOrder";
       }
-      
+
       this.data = {
         number: this.count,
         phone: this.phone,
@@ -323,7 +375,6 @@ export default {
             .get(this.GLOBAL.baseUrl + "/user/getInfoById/" + id)
             .then((res1) => {
               this.user = JSON.parse(res1.data.data);
-              
               let userId = new URLSearchParams();
               userId.append("userId", this.user.pkUserId);
               this.axios
@@ -333,7 +384,6 @@ export default {
                 )
                 .then((res2) => {
                   this.goods = res2.data.data.Goods;
-                  console.log(this.goods);
                 });
             });
         });
@@ -354,6 +404,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.goods-discount {
+  border: 5px solid #f6f6f6;
+  span{
+    color: gray;
+  }
+}
 .goodsImg {
   width: 400px;
   height: 400px;
@@ -383,6 +439,7 @@ export default {
   background-color: #fbfbfb;
   width: 35%;
   height: 100%;
+  padding: 50px;
 }
 .user {
   text-align: center;
@@ -415,9 +472,7 @@ export default {
   border: 0; // 去除未选中状态边框
 }
 .goods-btn {
-  background-color: #26a69a;
   border-radius: 8px;
-  color: #ffffff;
   font-size: 1rem;
   width: 80%;
   height: 65px;
