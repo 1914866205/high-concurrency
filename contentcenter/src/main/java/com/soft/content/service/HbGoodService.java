@@ -1,6 +1,7 @@
 package com.soft.content.service;
 
 import com.soft.content.common.ResponseResult;
+import com.soft.content.model.dto.AllGoodsDto;
 import com.soft.content.model.dto.GoodsDto;
 import com.soft.content.model.dto.SearchDto;
 import com.soft.content.model.entity.HbGood;
@@ -21,7 +22,7 @@ public interface HbGoodService {
 
     List<HbGood> findGoodsByUserId(String userId);
 
-    Page<HbGood> findAllGoods(SearchDto searchDto);
+    Page<AllGoodsDto> findAllGoods(SearchDto searchDto);
 
     Map<String, List<HbGood>> findGoodsByType();
 

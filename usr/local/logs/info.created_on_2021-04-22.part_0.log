@@ -42,3 +42,33 @@
 2021-04-22 11:13:43.092  INFO 980 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
 2021-04-22 11:13:43.272  INFO 980 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
 2021-04-22 11:13:43.308  INFO 980 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 16.324 seconds (JVM running for 18.038)
+2021-04-22 11:20:25.671  INFO 980 --- [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-22 11:20:25.671  INFO 980 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-22 11:20:25.688  INFO 980 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 16 ms
+2021-04-22 11:20:25.867  INFO 980 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问login接口
+2021-04-22 11:20:25.868  INFO 980 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-04-22 11:20:25.868  INFO 980 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-04-22 11:20:26.282  INFO 980 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-04-22 11:20:26.469  INFO 980 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjAzNTc2MjYsInVzZXJuYW1lIjoibnR0In0.vfZhi2vmV7XijORRttBwDbBrkXwy6ADL27i1tyof5Ys
+2021-04-22 11:20:43.599  INFO 980 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 11:20:43.601  INFO 980 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-04-22 11:22:08.071  INFO 980 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 11:22:08.072  INFO 980 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-04-22 11:40:51.052  INFO 980 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 11:40:51.053  INFO 980 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-04-22 11:42:31.004  INFO 980 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 11:42:31.004  INFO 980 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-04-22 12:02:20.154  INFO 980 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问login接口
+2021-04-22 12:02:20.155  INFO 980 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-04-22 12:02:20.155  INFO 980 --- [http-nio-8082-exec-3] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-04-22 12:02:20.236  INFO 980 --- [http-nio-8082-exec-3] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-04-22 12:02:20.243  INFO 980 --- [http-nio-8082-exec-3] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjAzNjAxNDAsInVzZXJuYW1lIjoibnR0In0.J2a-JKFyG84DZWatM9AbwLGhk9-pRpQMmQg1bDFQxV8
+2021-04-22 13:03:40.239  WARN 980 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=28m32s917ms589µs700ns).
+2021-04-22 17:36:16.685  INFO 980 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 17:36:16.703  INFO 980 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-04-22 17:36:17.387  INFO 980 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 17:36:17.388  INFO 980 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-04-22 17:42:18.008  INFO 980 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 17:42:18.008  INFO 980 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-04-22 17:42:18.028  INFO 980 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 17:42:18.029  INFO 980 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1

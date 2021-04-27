@@ -127,9 +127,9 @@
 
         <div style="margin-left: 50px">
           <span style="font-size: 1rem">购买数量</span>
-          <button @click="btnMinute" class="btn_minute">-</button>
+          <button @click="btnMinute" class="btn_minute btn-none">-</button>
           <input
-            class="goods-input"
+            class="goods-input btn-none"
             type="number"
             min="1"
             max="3"
@@ -142,7 +142,7 @@
             "
             v-model="count"
           />
-          <button @click="btnAdd" class="btn_add">+</button>
+          <button @click="btnAdd" class="btn_add btn-none">+</button>
           <span style="color: gray; margin-left: 10px"
             >(库存：{{ goodsInfo.count }})</span
           >
@@ -242,9 +242,16 @@ export default {
       ],
       checkbox: false,
       isSubmit: false,
+      day:"",
+      isMiaosha:false
     };
   },
   created: function () {
+     //根据是否有秒杀时间来判定是否是秒杀订单
+    // this.day = this.$route.query.day
+    // if(this.day != null){
+    //   this.isMiaosha = true
+    // }
     this.getIndex();
     this.getCommont();
   },
@@ -287,7 +294,13 @@ export default {
       }
     },
     async sumbitGoods() {
-      this.url = this.GLOBAL.contentUrl + "/order/spikeOrder";
+      //根据是否是秒杀订单来请求不同的接口
+      if(this.isMiaosha){
+        this.url = this.GLOBAL.contentUrl + "/order/spikeOrder";
+      }else{
+        this.url = this.GLOBAL.contentUrl + "/order/addOrder";
+      }
+      
       this.data = {
         number: this.count,
         phone: this.phone,
@@ -310,7 +323,7 @@ export default {
             .get(this.GLOBAL.baseUrl + "/user/getInfoById/" + id)
             .then((res1) => {
               this.user = JSON.parse(res1.data.data);
-              console.log(this.user.pkUserId);
+              
               let userId = new URLSearchParams();
               userId.append("userId", this.user.pkUserId);
               this.axios
@@ -389,34 +402,29 @@ export default {
   background: #f5f5f5;
   margin-left: 20px;
   border: 0; // 去除未选中状态边框
-  outline: none; // 去除选中状态边框
 }
 .goods-input {
   padding: 0.146rem 0.12rem;
   text-align: center;
   border: #f6f6f6;
-  outline: none;
 }
 .btn_add {
   border-radius: 0 0.133rem 0.133rem 0;
   padding: 0.146rem 0.226rem 0.146rem 0.2rem;
   background: #f5f5f5;
   border: 0; // 去除未选中状态边框
-  outline: none; // 去除选中状态边框
 }
 .goods-btn {
   background-color: #26a69a;
   border-radius: 8px;
-  outline: none;
   color: #ffffff;
   font-size: 1rem;
   width: 80%;
   height: 65px;
   padding: 10px;
   &:hover {
-    background-color: #fff;
-  border: 1px solid #fff;
-  color: #26a69a;
+    transform: scale(1.05);
+    cursor: pointer;
   }
 }
 
