@@ -38,7 +38,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("骸冰项目在线接口文档。")
+                .title("骸冰内容中心在线接口文档")
                 .description("swagger-bootstrap-ui")
                 .contact(new Contact("骸冰", "https://github.com/1914866205", "1914866205@qq.com"))
                 .version("1.0")

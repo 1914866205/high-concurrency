@@ -31,6 +31,6 @@ public interface SecKillCenterFeignClient {
      * 批量分批发送
      * @param queue
      */
-    @PostMapping("order/barchSecKill")
-    void barchSeckill(@RequestBody LinkedBlockingQueue<OrderDto> queue);
+    @PostMapping("order/batchSecKill")
+    void batchSeckill(@RequestBody LinkedBlockingQueue<OrderDto> queue);
 }

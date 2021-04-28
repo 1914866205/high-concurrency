@@ -45,7 +45,7 @@ public class HbOrderController {
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
     private int num = 0;
-
+    private int secnum = 0;
     /**
      * 在Servlet初始化之前加载一些缓存数据等
      * 先把各大产品的剩余量放到redis中
@@ -74,6 +74,7 @@ public class HbOrderController {
     @ApiOperation(value = "秒杀订单", notes = "秒杀订单")
     @PostMapping("spikeOrder")
     public ResponseResult spikeOrder(@RequestBody OrderDto orderDto) {
+        secnum++;
         //  负载均衡，高并发，请求秒杀服务
 //        log.info("内容中心收到秒杀订单:" + orderDto.toString());
         return hbOrderService.seckOrder(orderDto);
@@ -91,11 +92,28 @@ public class HbOrderController {
     @PostMapping("addOrder")
     @ControllerWebLog(name = "addOrder", isSaved = true)
     public ResponseResult addOrder(@RequestBody OrderDto orderDto) {
-        log.info(++num + "进入内容中心添加订单接口：");
+//        log.info(++num + "进入内容中心添加订单接口：");
         Thread thread = new Thread(new FollowThread(orderDto));
         thread.start();
         return ResponseResult.success();
     }
+
+    /**
+     * 批量创建订单
+     *
+     * @param queue
+     * @return
+     */
+    @ApiOperation(value = "批量添加订单", notes = "批量添加订单")
+    @PostMapping("batchAddOrder")
+    @ControllerWebLog(name = "batchAddOrder", isSaved = true)
+    public ResponseResult batchAddOrder(@RequestBody LinkedBlockingQueue<OrderDto> queue) {
+        log.info(++num + "进入内容中心添加订单接口："+"queue大小:"+queue.size());
+        Thread thread = new Thread(new BatchFollowThread(queue));
+        thread.start();
+        return ResponseResult.success();
+    }
+
 
     /**
      * 根据订单Id取消订单
@@ -163,6 +181,18 @@ public class HbOrderController {
         }
     }
 
+    class BatchFollowThread extends Thread {
+        private LinkedBlockingQueue<OrderDto> queue;
+
+        public BatchFollowThread(LinkedBlockingQueue<OrderDto> queue) {
+            this.queue = queue;
+        }
+
+        @Override
+        public void run() {
+            hbOrderService.batchAddOrder(queue);
+        }
+    }
 }
 
 

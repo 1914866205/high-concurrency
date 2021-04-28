@@ -192,3 +192,58 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2021-04-22 12:23:16.770  INFO 14408 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
 2021-04-22 12:26:30.157  INFO 14408 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
 2021-04-22 12:26:30.157  INFO 14408 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-04-22 12:29:54.454  INFO 14408 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问login接口
+2021-04-22 12:29:54.454  INFO 14408 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-04-22 12:29:54.454  INFO 14408 --- [http-nio-8082-exec-1] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-04-22 12:29:54.645  INFO 14408 --- [http-nio-8082-exec-1] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-04-22 12:29:54.647  INFO 14408 --- [http-nio-8082-exec-1] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjAzNjE3OTQsInVzZXJuYW1lIjoibnR0In0.VWNVK4COiJKhmTT0w_i9Yq77D7UxLH-GTi1WSjh7sN8
+2021-04-22 12:31:19.305  INFO 14408 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问login接口
+2021-04-22 12:31:19.306  INFO 14408 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-04-22 12:31:19.306  INFO 14408 --- [http-nio-8082-exec-6] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-04-22 12:31:19.486  INFO 14408 --- [http-nio-8082-exec-6] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-04-22 12:31:19.487  INFO 14408 --- [http-nio-8082-exec-6] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjAzNjE4NzksInVzZXJuYW1lIjoibnR0In0.gzN1rZI-j1qOnaq4Evmw-ew8Ji8q8XykoztNjLiGjIc
+2021-04-22 16:19:38.244  WARN 14408 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h44m4s646ms687µs100ns).
+2021-04-22 16:25:08.674  INFO 14408 --- [http-nio-8082-exec-2] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=, verifyCode=)**1**
+2021-04-22 16:25:10.674  INFO 14408 --- [http-nio-8082-exec-2] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,null**1**
+2021-04-22 16:25:17.370  INFO 14408 --- [http-nio-8082-exec-8] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=, verifyCode=)**1**
+2021-04-22 16:25:17.372  INFO 14408 --- [http-nio-8082-exec-8] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,null**1**
+2021-04-22 16:38:37.953  INFO 14408 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问login接口
+2021-04-22 16:38:37.953  INFO 14408 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-04-22 16:38:37.953  INFO 14408 --- [http-nio-8082-exec-4] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-04-22 16:38:38.008  INFO 14408 --- [http-nio-8082-exec-4] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-04-22 16:38:38.009  INFO 14408 --- [http-nio-8082-exec-4] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjAzNzY3MTgsInVzZXJuYW1lIjoibnR0In0.xYn3MOCxeooadpUst4zguF_VTUChDIcJ9MVTsuBRahU
+2021-04-22 16:42:54.708  INFO 14408 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 16:42:54.708  INFO 14408 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId2
+2021-04-22 16:42:57.610  INFO 14408 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 16:42:57.610  INFO 14408 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId2
+2021-04-22 16:42:59.010  INFO 14408 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 16:42:59.011  INFO 14408 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId2
+2021-04-22 16:43:01.943  INFO 14408 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 16:43:01.943  INFO 14408 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-04-22 16:43:01.950  INFO 14408 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 16:43:01.950  INFO 14408 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId2
+2021-04-22 17:24:03.968  INFO 14408 --- [http-nio-8082-exec-4] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=, verifyCode=)**1**
+2021-04-22 17:24:03.972  INFO 14408 --- [http-nio-8082-exec-4] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,null**1**
+2021-04-22 17:24:06.603  INFO 14408 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问login接口
+2021-04-22 17:24:06.604  INFO 14408 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-04-22 17:24:06.604  INFO 14408 --- [http-nio-8082-exec-9] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-04-22 17:24:06.644  INFO 14408 --- [http-nio-8082-exec-9] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-04-22 17:24:06.645  INFO 14408 --- [http-nio-8082-exec-9] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjAzNzk0NDYsInVzZXJuYW1lIjoibnR0In0.KDe9zYL31uD2qZk5sBMuVQ5AU4ARBG6WDxtvnlSs71U
+2021-04-22 17:24:10.707  INFO 14408 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问login接口
+2021-04-22 17:24:10.708  INFO 14408 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-04-22 17:24:10.708  INFO 14408 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-04-22 17:24:10.742  INFO 14408 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-04-22 17:24:10.742  INFO 14408 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjAzNzk0NTAsInVzZXJuYW1lIjoibnR0In0.Qwb-kxavPdiJ15ouBq2y52MLuyoOVsqaJcm15snKfS4
+2021-04-22 17:50:44.476  WARN 14408 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m5s182ms37µs700ns).
+2021-04-22 18:10:46.323  INFO 14408 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 18:10:46.323  INFO 14408 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-04-22 18:10:48.498  INFO 14408 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 18:10:48.498  INFO 14408 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-04-22 19:07:50.276  INFO 14408 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问login接口
+2021-04-22 19:07:50.276  INFO 14408 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-04-22 19:07:50.277  INFO 14408 --- [http-nio-8082-exec-6] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-04-22 19:07:51.041  INFO 14408 --- [http-nio-8082-exec-6] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-04-22 19:07:51.043  INFO 14408 --- [http-nio-8082-exec-6] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjAzODU2NzEsInVzZXJuYW1lIjoibnR0In0.X7X_1fAxogaaFGtKhd55usYsRyquSvl09onG0qeip_k
+2021-04-22 19:07:55.846  INFO 14408 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 19:07:55.847  INFO 14408 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-04-22 22:27:07.928  WARN 14408 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h22s114ms983µs900ns).

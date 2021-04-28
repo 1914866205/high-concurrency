@@ -44,13 +44,13 @@ public class HbStrategy {
     private String goodId;
 
     /**
-     * 起始地址
+     * 起始排名
      */
     @Column(nullable = false, length = 8)
     private int rankStart;
 
     /**
-     * 起始地址
+     * 末尾排名
      */
     @Column(nullable = false, length = 8)
     private int rankEnd;

@@ -69,11 +69,11 @@ public class HbOrderServiceImpl implements HbOrderService {
                     return;
                 }
 
-                //如果10毫秒内只是一个请求，直接单步执行
+                //如果100毫秒内只是一个请求，直接单步执行
                 if (queue.size() == 1) {
                     number += queue.size();
-                    log.info("定时任务被执行" + queue.size() + "number:" + number);
-                    System.out.println(queue + "----------");
+//                    log.info("定时任务被执行" + queue.size() + "number:" + number);
+//                    System.out.println(queue + "----------");
                     secKillCenterFeignClient.secKill(orderDto);
                     queue.clear();
                     return;
@@ -81,12 +81,13 @@ public class HbOrderServiceImpl implements HbOrderService {
 
                 number += queue.size();
                 log.info("定时任务被执行" + queue.size() + "number:" + number);
-                System.out.println(queue + "----------");
-                Thread thread = new Thread(new SendThread(queue));
+//                System.out.println("----------"+queue + "----------");
+                //之所以要新建队列对象，因为并发操作，可能造成先清队列再创建线程的数据丢失
+                Thread thread = new Thread(new SendThread(new LinkedBlockingQueue<>(queue)));
                 thread.start();
                 queue.clear();
             }
-        }, 0, 10, TimeUnit.MILLISECONDS);
+        }, 0, 100, TimeUnit.MILLISECONDS);
     }
 
     @Override
@@ -146,6 +147,44 @@ public class HbOrderServiceImpl implements HbOrderService {
         return ResponseResult.success(result);
     }
 
+    @Override
+    public void batchAddOrder(LinkedBlockingQueue<OrderDto> queue) {
+        List<HbOrder> hbOrderList = new LinkedList<>();
+        for (OrderDto hbOrderDto : queue) {
+            HbOrder hbOrder = HbOrder.builder()
+                    .pkOrderId(UUID.randomUUID().toString().substring(0, 19))
+                    .state(0)
+                    .phone(hbOrderDto.getPhone())
+                    .pkGoodId(hbOrderDto.getPkGoodId())
+                    .userId(hbOrderDto.getUserId())
+                    .number(hbOrderDto.getNumber())
+                    .createdTime(Timestamp.valueOf(LocalDateTime.now()))
+                    .updatedTime(Timestamp.valueOf(LocalDateTime.now()))
+                    .build();
+//            System.out.println("*****************");
+//            System.out.println(hbOrder.toString());
+//            System.out.println("*****************");
+            String value = redisTemplate.opsForValue().get("ORDER_" + hbOrderDto.getPkGoodId());
+//            log.info("value" + value);
+            if (!StringUtils.isEmpty(value)) {
+                int i = Integer.parseInt(value);
+                i++;
+                hbOrder.setRank(i);
+                redisTemplate.opsForValue().set("ORDER_" + hbOrderDto.getPkGoodId(), String.valueOf(i));
+            } else {
+                hbOrder.setRank(1);
+                redisTemplate.opsForValue().set("ORDER_" + hbOrderDto.getPkGoodId(), "1");
+            }
+//            System.out.println("----------------");
+//            System.out.println(hbOrderList);
+//            System.out.println("----------------");
+            hbOrderList.add(hbOrder);
+        }
+        log.info("成功存储订单数量"+hbOrderList.size());
+        hbOrderRepository.saveAll(hbOrderList);
+
+    }
+
     /**
      * 添加订单
      *
@@ -154,7 +193,7 @@ public class HbOrderServiceImpl implements HbOrderService {
      */
     @Override
     public ResponseResult addOrder(OrderDto hbOrderDto) {
-        log.info("进入添加订单服务层");
+//        log.info("进入添加订单服务层");
         HbOrder hbOrder = HbOrder.builder()
                 .pkOrderId(UUID.randomUUID().toString().substring(0, 19))
                 .state(0)
@@ -165,7 +204,7 @@ public class HbOrderServiceImpl implements HbOrderService {
                 .createdTime(Timestamp.valueOf(LocalDateTime.now()))
                 .updatedTime(Timestamp.valueOf(LocalDateTime.now()))
                 .build();
-        log.info("订单创建" + hbOrder);
+//        log.info("订单创建" + hbOrder);
         /**
          * 从redis中取该商品的订单排名
          * 1.从redis中取数据
@@ -174,7 +213,7 @@ public class HbOrderServiceImpl implements HbOrderService {
          * 4.如果键不存在，添加键值对
          */
         String value = redisTemplate.opsForValue().get("ORDER_" + hbOrderDto.getPkGoodId());
-        log.info("value" + value);
+//        log.info("value" + value);
         if (!StringUtils.isEmpty(value)) {
             int i = Integer.parseInt(value);
             i++;
@@ -184,6 +223,8 @@ public class HbOrderServiceImpl implements HbOrderService {
             hbOrder.setRank(1);
             redisTemplate.opsForValue().set("ORDER_" + hbOrderDto.getPkGoodId(), "1");
         }
+//        System.out.println("创建单个订单："+hbOrder);
+        log.info("成功存储订单数量"+1);
         hbOrderRepository.save(hbOrder);
         return ResponseResult.success();
     }
@@ -356,59 +397,9 @@ public class HbOrderServiceImpl implements HbOrderService {
 
         @Override
         public void run() {
-            secKillCenterFeignClient.barchSeckill(queue);
+//            System.out.println("待转发的queue:"+queue);
+            secKillCenterFeignClient.batchSeckill(queue);
         }
     }
 
 }
-
-/**
- * {
- * "code": 1,
- * "msg": "成功",
- * "data": [
- * {
- * "userName": "醉忆丶无回路",
- * "phoneNumber": "18851855106",
- * "rank": 1,
- * "discount": 0.1
- * },
- * {
- * "userName": "醉忆丶无回路",
- * "phoneNumber": "18851855106",
- * "rank": 2,
- * "discount": 0.1
- * },
- * {
- * "userName": "醉忆丶无回路",
- * "phoneNumber": "18851855106",
- * "rank": 3,
- * "discount": 0.5
- * },
- * {
- * "userName": "醉忆丶无回路",
- * "phoneNumber": "18851855106",
- * "rank": 4,
- * "discount": 0.5
- * },
- * {
- * "userName": "醉忆丶无回路",
- * "phoneNumber": "18851855106",
- * "rank": 5,
- * "discount": 0.8
- * },
- * {
- * "userName": "醉忆丶无回路",
- * "phoneNumber": "18851855106",
- * "rank": 6,
- * "discount": 0.8
- * },
- * {
- * "userName": "醉忆丶无回路",
- * "phoneNumber": "18851855106",
- * "rank": 7,
- * "discount": 1.0
- * }
- * ]
- * }
- */

@@ -4,6 +4,7 @@ import com.soft.seckillcenter.common.ResponseResult;
 import com.soft.seckillcenter.model.dto.OrderDto;
 import com.soft.seckillcenter.service.HbOrderService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.Redisson;
 import org.redisson.api.RLock;
@@ -25,7 +26,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 @ResponseBody
 @RequestMapping("/order/")
 @Api(value = "HbOrderController", tags = {"秒杀接口"})
-public class    HbOrderController {
+public class  HbOrderController {
     private int number = 0;
 
     @Resource
@@ -39,18 +40,20 @@ public class    HbOrderController {
      *
      * @param queue
      */
-    @PostMapping("barchSecKill")
-    void barchSeckill(@RequestBody LinkedBlockingQueue<OrderDto> queue) {
+    @PostMapping("batchSecKill")
+    @ApiOperation(value = "批量秒杀", notes = "批量秒杀")
+    void batchSecKill(@RequestBody LinkedBlockingQueue<OrderDto> queue) {
         number += queue.size();
-        log.info("秒杀中心收到秒杀请求_number:" + number);
+        log.info("批量接收到的队列大小："+ queue.size());
         Thread thread = new Thread(new FollowThread(queue));
         thread.start();
     }
 
 
     @PostMapping("secKill")
+    @ApiOperation(value = "单个秒杀", notes = "单个秒杀")
     ResponseResult secKill(@RequestBody OrderDto orderDto) {
-        log.info("秒杀中心收到秒杀请求:" + orderDto);
+//        log.info("秒杀中心收到单个请求:" + orderDto);
         //加锁
         String lockKey = orderDto.getPkGoodId();
         RLock redissonLock = redisson.getLock(lockKey);
@@ -83,14 +86,14 @@ public class    HbOrderController {
                 RLock redissonLock = redisson.getLock(lockKey);
                 try {
                     //加锁, 底层= setIfAbsent
-                    log.info(Thread.currentThread()+"加锁");
+//                    log.info(Thread.currentThread()+"加锁");
                     redissonLock.lock();
                     hbOrderService.toSecKill(orderDto);
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
                     //开锁
-                    log.info(Thread.currentThread()+"开锁");
+//                    log.info(Thread.currentThread()+"开锁");
                     redissonLock.unlock();
                 }
             }
