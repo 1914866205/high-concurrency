@@ -80,7 +80,6 @@
             <span style="margin-left: 34px">{{ item.description }}</span>
           </div>
         </div>
-
         <div style="margin-left: 15px">
           <span style="color: gray">库存修改</span>
           <button @click="btnMinute" class="btn_minute">-</button>

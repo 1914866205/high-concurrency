@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2021-04-25 14:31:13.651  INFO 7448 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
 2021-04-25 14:31:17.841  INFO 7448 --- [main] c.soft.usercenter.UserCenterApplication  : No active profile set, falling back to default profiles: default
 2021-04-25 14:31:21.414  INFO 7448 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
@@ -42,3 +43,111 @@
 2021-04-25 14:31:35.839  INFO 7448 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
 2021-04-25 14:31:35.926  INFO 7448 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
 2021-04-25 14:31:35.932  INFO 7448 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 25.908 seconds (JVM running for 28.247)
+=======
+2021-04-25 11:00:29.853  INFO 14064 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-25 11:00:31.638  INFO 14064 --- [main] c.soft.usercenter.UserCenterApplication  : No active profile set, falling back to default profiles: default
+2021-04-25 11:00:36.116  INFO 14064 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-04-25 11:00:36.118  INFO 14064 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2021-04-25 11:00:36.412  INFO 14064 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 271ms. Found 5 JPA repository interfaces.
+2021-04-25 11:00:36.463  INFO 14064 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-04-25 11:00:36.466  INFO 14064 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-04-25 11:00:36.520  INFO 14064 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbCommentRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-04-25 11:00:36.522  INFO 14064 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbGoodRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-04-25 11:00:36.523  INFO 14064 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbOrderRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-04-25 11:00:36.525  INFO 14064 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbStrategyRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-04-25 11:00:36.527  INFO 14064 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbUserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-04-25 11:00:36.528  INFO 14064 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37ms. Found 0 Redis repository interfaces.
+2021-04-25 11:00:37.087  INFO 14064 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=9913dd3c-5bfb-3d0c-b1ed-81b6501ad54b
+2021-04-25 11:00:37.368  INFO 14064 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-25 11:00:37.905  INFO 14064 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2021-04-25 11:00:37.925  INFO 14064 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-25 11:00:37.926  INFO 14064 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-04-25 11:00:38.354  INFO 14064 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-25 11:00:38.355  INFO 14064 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6677 ms
+2021-04-25 11:00:38.695  INFO 14064 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-25 11:00:38.770  INFO 14064 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-25 11:00:38.829  INFO 14064 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2021-04-25 11:00:38.972  INFO 14064 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-04-25 11:00:39.083  INFO 14064 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-25 11:00:39.782  INFO 14064 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-04-25 11:00:39.797  INFO 14064 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-04-25 11:00:40.813  INFO 14064 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-25 11:00:40.828  INFO 14064 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-25 11:00:41.587  WARN 14064 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-25 11:00:41.738  INFO 14064 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-04-25 11:00:41.779  WARN 14064 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-25 11:00:41.779  INFO 14064 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-25 11:00:41.784  WARN 14064 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-25 11:00:41.784  INFO 14064 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-25 11:00:42.334  INFO 14064 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'Nacso-Watch-Task-Scheduler'
+2021-04-25 11:00:43.640  INFO 14064 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2021-04-25 11:00:43.777  INFO 14064 --- [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP user-center 10.20.172.190:8082 register finished
+2021-04-25 11:00:44.238  INFO 14064 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-04-25 11:00:44.289  INFO 14064 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-04-25 11:00:44.344  INFO 14064 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-04-25 11:00:44.554  INFO 14064 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2021-04-25 11:00:44.614  INFO 14064 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2021-04-25 11:00:44.622  INFO 14064 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 18.179 seconds (JVM running for 20.705)
+2021-04-25 11:23:33.546  INFO 14064 --- [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-25 11:23:33.547  INFO 14064 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-25 11:23:33.573  INFO 14064 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 25 ms
+2021-04-25 11:23:33.700  INFO 14064 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问login接口
+2021-04-25 11:23:33.700  INFO 14064 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-04-25 11:23:33.700  INFO 14064 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-04-25 11:23:37.706  INFO 14064 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问login接口
+2021-04-25 11:23:37.707  INFO 14064 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-04-25 11:23:37.708  INFO 14064 --- [http-nio-8082-exec-3] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-04-25 11:23:37.922  INFO 14064 --- [http-nio-8082-exec-3] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-04-25 11:23:38.141  INFO 14064 --- [http-nio-8082-exec-3] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjA2MTcwMTcsInVzZXJuYW1lIjoibnR0In0.VETqMDztBYNgiQ1h4nmfUAYVxx2VFaN5lVIYiDV6bLM
+2021-04-25 11:23:38.898  WARN 14064 --- [http-nio-8082-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1f233c05 (Communications link failure
+
+The last packet successfully received from the server was 1,378,082 milliseconds ago.  The last packet sent successfully to the server was 5,035 milliseconds ago.). Possibly consider using a shorter maxLifetime value.
+2021-04-25 11:23:38.946  INFO 14064 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-04-25 11:23:38.952  INFO 14064 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjA2MTcwMTgsInVzZXJuYW1lIjoibnR0In0.sZtKFhj0SRdDL86a-CuTZoTCqd7SSgR4GbEJgtls-vo
+2021-04-25 13:46:36.609  INFO 768 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-25 13:46:38.069  INFO 768 --- [main] c.soft.usercenter.UserCenterApplication  : No active profile set, falling back to default profiles: default
+2021-04-25 13:46:41.542  INFO 768 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-04-25 13:46:41.543  INFO 768 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2021-04-25 13:46:41.838  INFO 768 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 271ms. Found 5 JPA repository interfaces.
+2021-04-25 13:46:41.883  INFO 768 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-04-25 13:46:41.886  INFO 768 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-04-25 13:46:41.932  INFO 768 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbCommentRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-04-25 13:46:41.934  INFO 768 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbGoodRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-04-25 13:46:41.935  INFO 768 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbOrderRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-04-25 13:46:41.937  INFO 768 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbStrategyRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-04-25 13:46:41.938  INFO 768 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbUserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-04-25 13:46:41.939  INFO 768 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29ms. Found 0 Redis repository interfaces.
+2021-04-25 13:46:42.468  INFO 768 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=9913dd3c-5bfb-3d0c-b1ed-81b6501ad54b
+2021-04-25 13:46:42.763  INFO 768 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-25 13:46:43.410  INFO 768 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2021-04-25 13:46:43.434  INFO 768 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-25 13:46:43.435  INFO 768 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-04-25 13:46:43.907  INFO 768 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-25 13:46:43.908  INFO 768 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5806 ms
+2021-04-25 13:46:44.407  INFO 768 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-25 13:46:44.781  INFO 768 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-25 13:46:44.929  INFO 768 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2021-04-25 13:46:45.272  INFO 768 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-04-25 13:46:45.472  INFO 768 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-25 13:46:46.193  INFO 768 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-04-25 13:46:46.238  INFO 768 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-04-25 13:46:47.401  INFO 768 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-25 13:46:47.426  INFO 768 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-25 13:46:48.165  WARN 768 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-25 13:46:48.302  INFO 768 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-04-25 13:46:48.334  WARN 768 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-25 13:46:48.334  INFO 768 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-25 13:46:48.338  WARN 768 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-25 13:46:48.338  INFO 768 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-25 13:46:48.902  INFO 768 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'Nacso-Watch-Task-Scheduler'
+2021-04-25 13:46:49.783  INFO 768 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2021-04-25 13:46:49.901  INFO 768 --- [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP user-center 10.20.172.190:8082 register finished
+2021-04-25 13:46:50.175  INFO 768 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-04-25 13:46:50.196  INFO 768 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-04-25 13:46:50.226  INFO 768 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-04-25 13:46:50.391  INFO 768 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2021-04-25 13:46:50.450  INFO 768 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2021-04-25 13:46:50.458  INFO 768 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 16.662 seconds (JVM running for 18.65)
+2021-04-25 17:46:27.538  WARN 768 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=43m37s795ms330µs900ns).
+2021-04-25 20:21:52.985  WARN 768 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h4m54s938ms296µs).
+>>>>>>> 54db92cdcffe21697cbc9ca6bd30baf46e7a043b

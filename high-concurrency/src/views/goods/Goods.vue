@@ -11,7 +11,7 @@
       >购买数量必须大于0</v-alert
     >
     <v-alert dense dismissible type="success" class="infom" v-if="isSubmit"
-      >成功参与秒杀 稍后请在我的订单中支付订单</v-alert
+      >{{isMiaosha ? '成功参与秒杀':'下单成功'}}</v-alert
     >
     <v-overlay :z-index="zIndex" :value="overlay">
       <div class="forms">
@@ -22,6 +22,9 @@
             :rules="phoneRules"
             label="phone"
             required
+           
+            dark = "true"
+            
           ></v-text-field>
           <div>数量 : {{ count }}</div>
           <div style="margin-top: 40px">
@@ -109,27 +112,24 @@
       </div>
 
       <div class="goods-right">
-        <div class="font" style="margin: 100px 0 20px 50px">价格</div>
-        <span
-          style="
-            color: #26a69a;
-            font-size: 2.5rem;
-            margin-left: 50px;
-            font-weight: 300;
-          "
-          >RMB￥{{ goodsInfo.price }}</span
-        >
+        <div class="font mt-10">价格</div>
 
-        <div style="color: gray; margin: 50px">
-          <!-- <span>促 销</span> -->
+        <div
+          class="mt-8"
+          style="color: #26a69a; font-size: 2.5rem; font-weight: 300"
+        >
+          RMB￥{{ goodsInfo.price }}
+        </div>
+
+        <div class="mt-8" style="color: gray">
           <span>{{ goodsInfo.description }}</span>
         </div>
 
-        <div style="margin-left: 50px">
+        <div class="mt-8">
           <span style="font-size: 1rem">购买数量</span>
-          <button @click="btnMinute" class="btn_minute">-</button>
+          <button @click="btnMinute" class="btn_minute btn-none">-</button>
           <input
-            class="goods-input"
+            class="goods-input btn-none"
             type="number"
             min="1"
             max="3"
@@ -142,14 +142,36 @@
             "
             v-model="count"
           />
-          <button @click="btnAdd" class="btn_add">+</button>
+          <button @click="btnAdd" class="btn_add btn-none">+</button>
           <span style="color: gray; margin-left: 10px"
             >(库存：{{ goodsInfo.count }})</span
           >
         </div>
 
-        <div style="margin-left: 50px; margin-top: 50px">
-          <button @click="goSubmit()" class="goods-btn">立即购买</button>
+        <div v-show="miaosha.description!=null" class="goods-discount br-2 pa-1 mt-4">
+          <span>{{ miaosha.description }}</span>
+          <div v-for="(item, index) in miaosha.ruleDtoList" :key="index">
+            <span
+              >第{{ item.start }}名到第{{ item.end }}名打{{
+                item.discount
+              }}折</span
+            >
+          </div>
+        </div>
+        <div style="margin-top: 50px">
+          <v-btn
+            @click="goSubmit()"
+            width="380"
+            height="60"
+            v-if="miaosha.day <= 0 || miaosha.day == null"
+            class="goods-btn btn-green"
+            ><span style="color: #fff">立即购买</span></v-btn
+          >
+          <v-btn disabled width="380" height="60" v-else class="goods-btn btn-white"
+            ><span style="color: #fff">{{
+              daojishi(miaosha.day)
+            }}</span></v-btn
+          >
         </div>
       </div>
     </div>
@@ -242,13 +264,53 @@ export default {
       ],
       checkbox: false,
       isSubmit: false,
+      day: "",
+      isMiaosha: false,
+      miaosha: [],
     };
   },
   created: function () {
+    //根据是否有秒杀时间来判定是否是秒杀订单
+    this.day = this.$route.query.day;
+    if (this.day != null) {
+      this.isMiaosha = true;
+      let params = new URLSearchParams();
+      params.append("goodId", this.$route.query.goodsId);
+      this.axios
+        .post(this.GLOBAL.contentUrl + "/hbStrategy/get", params)
+        .then((res) => {
+          this.miaosha = res.data.data;
+          this.miaosha.day =
+            new Date(this.miaosha.day).getTime() - new Date().getTime();
+          if (this.ticker) {
+            //这一段是防止进入页面出去后再进来计时器重复启动
+            clearInterval(this.ticker);
+          }
+          this.beginTimer(); //启动计时器减指定字段的时间
+        });
+    }
     this.getIndex();
     this.getCommont();
   },
   methods: {
+    daojishi(time) {
+      if (time >= 0) {
+        let d = Math.floor(time / 1000 / 60 / 60 / 24);
+        let h = Math.floor((time / 1000 / 60 / 60) % 24);
+        let m = Math.floor((time / 1000 / 60) % 60);
+        let s = Math.floor((time / 1000) % 60);
+        return "还有" + d + "天" + h + "时" + m + "分" + s + "秒";
+      }
+    },
+    beginTimer() {
+      //这个计时器是每秒减去数组中指定字段的时间
+      this.ticker = setInterval(() => {
+        const item = this.miaosha;
+        if (item.day > 0) {
+          item.day = item.day - 1000;
+        }
+      }, 1000);
+    },
     reset() {
       this.$refs.form.reset();
     },
@@ -287,7 +349,13 @@ export default {
       }
     },
     async sumbitGoods() {
-      this.url = this.GLOBAL.contentUrl + "/order/spikeOrder";
+      //根据是否是秒杀订单来请求不同的接口
+      if (this.isMiaosha) {
+        this.url = this.GLOBAL.contentUrl + "/order/spikeOrder";
+      } else {
+        this.url = this.GLOBAL.contentUrl + "/order/addOrder";
+      }
+
       this.data = {
         number: this.count,
         phone: this.phone,
@@ -310,7 +378,6 @@ export default {
             .get(this.GLOBAL.baseUrl + "/user/getInfoById/" + id)
             .then((res1) => {
               this.user = JSON.parse(res1.data.data);
-              console.log(this.user.pkUserId);
               let userId = new URLSearchParams();
               userId.append("userId", this.user.pkUserId);
               this.axios
@@ -320,7 +387,6 @@ export default {
                 )
                 .then((res2) => {
                   this.goods = res2.data.data.Goods;
-                  console.log(this.goods);
                 });
             });
         });
@@ -341,6 +407,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.goods-discount {
+  border: 5px solid #f6f6f6;
+  span{
+    color: gray;
+  }
+}
 .goodsImg {
   width: 400px;
   height: 400px;
@@ -370,6 +442,7 @@ export default {
   background-color: #fbfbfb;
   width: 35%;
   height: 100%;
+  padding: 50px;
 }
 .user {
   text-align: center;
@@ -389,34 +462,27 @@ export default {
   background: #f5f5f5;
   margin-left: 20px;
   border: 0; // 去除未选中状态边框
-  outline: none; // 去除选中状态边框
 }
 .goods-input {
   padding: 0.146rem 0.12rem;
   text-align: center;
   border: #f6f6f6;
-  outline: none;
 }
 .btn_add {
   border-radius: 0 0.133rem 0.133rem 0;
   padding: 0.146rem 0.226rem 0.146rem 0.2rem;
   background: #f5f5f5;
   border: 0; // 去除未选中状态边框
-  outline: none; // 去除选中状态边框
 }
 .goods-btn {
-  background-color: #26a69a;
   border-radius: 8px;
-  outline: none;
-  color: #ffffff;
   font-size: 1rem;
   width: 80%;
   height: 65px;
   padding: 10px;
   &:hover {
-    background-color: #fff;
-  border: 1px solid #fff;
-  color: #26a69a;
+    transform: scale(1.05);
+    cursor: pointer;
   }
 }
 
@@ -563,8 +629,9 @@ export default {
 }
 
 .forms {
-  background-color: #26a69a;
-  width: 400px;
+  background-color: #21949c;
+  color: #fff;
+  width: 450px;
   padding: 20px;
   border-radius: 20px;
   box-shadow: 1px #fff;

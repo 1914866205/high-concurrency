@@ -1,5 +1,5 @@
 <template>
-  <v-card class="navBarWrap" flat height="64px" tile>
+  <v-card class="navBarWrap" style="overflow-x: hidden;" flat height="64px" tile>
     <link
       href="https://fonts.googleapis.com/css?family=Abril+Fatface|Comfortaa|Yellowtail"
       rel="stylesheet"
@@ -13,6 +13,7 @@
       rel="stylesheet"
     />
     <v-toolbar>
+      
       <a href="/" class="nav-title">Haibing shops</a>
       <v-menu offset-y>
         <template v-slot:activator="{ attrs, on }">

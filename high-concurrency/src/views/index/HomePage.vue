@@ -18,8 +18,42 @@
         <h1 class="home_title text-center">Haibing shops</h1>
       </div>
     </div>
+    <div class="mt-8"></div>
     <div class="neighborhood-title">
       <h4>秒杀商品</h4>
+    </div>
+    <div class="goods">
+      <div
+        class="shop-card"
+        v-for="(item, index) in miaoshaGoods"
+        :key="index"
+        @click="goGoods(item.goodId, item.day)"
+      >
+        <div class="slider">
+          <figure
+            @mouseover="mouseOver"
+            @mouseleave="mouseLeave"
+            data-color="#E24938, #A30F22"
+          >
+            <img class="goodsImg" :src="item.image" />
+            <transition name="slideFade">
+              <div class="goodname" transiton="slideFade" v-show="showTitle">
+                {{ item.goodName }}
+              </div>
+            </transition>
+          </figure>
+        </div>
+
+        <div class="cta">
+          <div class="price">${{ item.price }}</div>
+          <div class="cta-text" v-if="item.day <= 0 && item.count > 0">秒杀已开始</div>
+          <div class="cta-text" v-if="item.count == 0">秒杀已结束</div>
+          <div class="cta-text" v-if="item.day > 0">{{ daojishi(item.day) }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="neighborhood-title">
+      <h4>其他商品</h4>
     </div>
     <div class="goods">
       <div
@@ -36,14 +70,16 @@
           >
             <img class="goodsImg" :src="item.image" />
             <transition name="slideFade">
-            <div class="goodname" transiton="slideFade" v-show="showTitle">{{ item.goodName }}</div>
+              <div class="goodname" transiton="slideFade" v-show="showTitle">
+                {{ item.goodName }}
+              </div>
             </transition>
           </figure>
         </div>
 
         <div class="cta">
           <div class="price">${{ item.price }}</div>
-          <button class="btn">Add to cart<span class="bg"></span></button>
+          <button class="btn">查看详情<span class="bg"></span></button>
         </div>
       </div>
     </div>
@@ -64,7 +100,9 @@ export default {
   data() {
     return {
       model: null,
+      ticker: null,
       goods: [],
+      miaoshaGoods: [],
       showTitle: false,
     };
   },
@@ -75,13 +113,54 @@ export default {
     this.axios
       .post(this.GLOBAL.contentUrl + "/goods/findAllGoods", params)
       .then((res) => {
-        this.goods = res.data.data.Goods.content;
-        console.log(this.goods);
+        let goods = res.data.data.Goods.content;
+        let arr = [];
+        let miaoshaArr = [];
+        for (let i = 0; i < goods.length; i++) {
+          if (goods[i].day != null) {
+            let time = new Date(goods[i].day).getTime() - new Date().getTime();
+            goods[i].day = time;
+            miaoshaArr.push(goods[i]);
+            if (this.ticker) {
+              //这一段是防止进入页面出去后再进来计时器重复启动
+              clearInterval(this.ticker);
+            }
+            this.beginTimer(); //启动计时器减指定字段的时间
+          } else {
+            arr.push(goods[i]);
+          }
+        }
+        this.goods = arr;
+        this.miaoshaGoods = miaoshaArr;
+        console.log(this.miaoshaGoods);
       });
   },
   methods: {
-    goGoods(goodsId) {
-      this.$router.push({ path: "/goods", query: { goodsId: goodsId } });
+    daojishi(time) {
+      if (time >= 0) {
+        let d = Math.floor(time / 1000 / 60 / 60 / 24);
+        let h = Math.floor((time / 1000 / 60 / 60) % 24);
+        let m = Math.floor((time / 1000 / 60) % 60);
+        let s = Math.floor((time / 1000) % 60);
+        return "还有" + d + "天" + h + "时" + m + "分" + s + "秒";
+      }
+    },
+    beginTimer() {
+      //这个计时器是每秒减去数组中指定字段的时间
+      this.ticker = setInterval(() => {
+        for (let i = 0, len = this.miaoshaGoods.length; i < len; i++) {
+          const item = this.miaoshaGoods[i];
+          if (item.day > 0) {
+            item.day = item.day - 1000;
+          }
+        }
+      }, 1000);
+    },
+    goGoods(goodsId, day) {
+      this.$router.push({
+        path: "/goods",
+        query: { goodsId: goodsId, day: day },
+      });
     },
     mouseOver() {
       this.showTitle = true;
@@ -127,8 +206,9 @@ export default {
   width: 100%;
   margin: 20px auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
+  align-content: flex-start; //紧揍排列
 }
 
 .shop-card {
@@ -158,19 +238,19 @@ export default {
     top: 150px;
     left: 10px;
     color: #fff;
-    font-size:0.8rem;
-    height:30px;
-    padding:5px;
-    background: rgba( 0, 0, 0, 0.25 );
+    font-size: 0.8rem;
+    height: 30px;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.25);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(2.5px);
     -webkit-backdrop-filter: blur(2.5px);
     border-radius: 5px;
     border: 1px solid rgba(255, 255, 255, 0.18);
   }
-.slideFade-enter {
+  .slideFade-enter {
     animation: slideFade-dialog-fade-in 0.5s ease;
-}
+  }
   .slideFade-leave {
     animation: slideFade-dialog-fade-out 0.5s ease forwards;
   }
@@ -180,10 +260,14 @@ export default {
   .slideFade-leave-active {
     animation: slideFade-dialog-fade-out 0.5s ease forwards;
   }
-  
+
   @keyframes slideFade-dialog-fade-in {
     0% {
-      transform: translate3d(-100%, 0, 0);//修改这个可以控制，上下左右动画，例如：100%为从右到左
+      transform: translate3d(
+        -100%,
+        0,
+        0
+      ); //修改这个可以控制，上下左右动画，例如：100%为从右到左
       opacity: 1;
     }
     100% {
@@ -203,20 +287,20 @@ export default {
   }
 
   .cta {
-    padding: 20px 20px 5px;
-    &::after {
-      content: "";
-      display: table;
-      clear: both;
-    }
+    padding: 20px 20px;
   }
 
+  .cta-text {
+    padding: 5px;
+    float: right;
+    background: #26a69a;
+    color: #fff;
+  }
   .price {
     float: left;
     color: #26a69a;
     font-size: 22px;
     font-weight: 900;
-    padding-top: 2px;
     transition: color 0.3s ease-in-out;
   }
 
@@ -262,8 +346,8 @@ export default {
 
 .neighborhood-title {
   font-size: 32px;
-  text-align: center;
-  margin-top: 30px;
+  float: left;
+  margin: 30px;
 }
 
 footer {

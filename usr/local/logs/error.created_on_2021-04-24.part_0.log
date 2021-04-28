@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2021-04-24 12:17:05.214 ERROR 9312 --- [main] c.a.c.n.registry.NacosServiceRegistry    NacosServiceRegistry.java:69: nacos registry, user-center register failed...NacosRegistration{nacosDiscoveryProperties=NacosDiscoveryProperties{serverAddr='localhost:8848', endpoint='', namespace='', watchDelay=30000, logName='', service='user-center', weight=1.0, clusterName='DEFAULT', group='DEFAULT_GROUP', namingLoadCacheAtStart='false', metadata={instance=cc, preserved.register.source=SPRING_CLOUD, version=1.0, author=tt}, registerEnabled=true, ip='10.21.17.24', networkInterface='', port=8082, secure=false, accessKey='', secretKey='', heartBeatInterval=null, heartBeatTimeout=null, ipDeleteTimeout=null}},
 
 java.lang.IllegalStateException: failed to req API:/nacos/v1/ns/instance after all servers([localhost:8848]) tried: failed to req API:localhost:8848/nacos/v1/ns/instance. code:500 msg: java.net.ConnectException: Connection refused: connect
@@ -147,4 +148,19 @@ Caused by: java.lang.IllegalStateException: failed to req API:/nacos/v1/ns/insta
 	at org.springframework.boot.web.servlet.context.WebServerStartStopLifecycle.start(WebServerStartStopLifecycle.java:46) ~[spring-boot-2.3.3.RELEASE.jar:2.3.3.RELEASE]
 	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:182) ~[spring-context-5.2.8.RELEASE.jar:5.2.8.RELEASE]
 	... 14 common frames omitted
+=======
+2021-04-24 10:48:18.664 ERROR 14008 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   LoggingFailureAnalysisReporter.java:40: 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8082 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8082 or configure this application to listen on another port.
+>>>>>>> 54db92cdcffe21697cbc9ca6bd30baf46e7a043b
 

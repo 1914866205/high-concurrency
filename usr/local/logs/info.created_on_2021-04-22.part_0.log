@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2021-04-22 11:51:51.546  INFO 21404 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
 2021-04-22 11:51:55.284  INFO 21404 --- [main] c.soft.usercenter.UserCenterApplication  : No active profile set, falling back to default profiles: default
 2021-04-22 11:52:08.333  INFO 21404 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
@@ -247,3 +248,79 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2021-04-22 19:07:55.846  INFO 14408 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
 2021-04-22 19:07:55.847  INFO 14408 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
 2021-04-22 22:27:07.928  WARN 14408 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h22s114ms983µs900ns).
+=======
+2021-04-22 11:13:28.100  INFO 980 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-22 11:13:29.020  INFO 980 --- [main] c.soft.usercenter.UserCenterApplication  : No active profile set, falling back to default profiles: default
+2021-04-22 11:13:32.162  INFO 980 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-04-22 11:13:32.162  INFO 980 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2021-04-22 11:13:32.420  INFO 980 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 248ms. Found 5 JPA repository interfaces.
+2021-04-22 11:13:32.471  INFO 980 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-04-22 11:13:32.475  INFO 980 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-04-22 11:13:32.519  INFO 980 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbCommentRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-04-22 11:13:32.520  INFO 980 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbGoodRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-04-22 11:13:32.520  INFO 980 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbOrderRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-04-22 11:13:32.520  INFO 980 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbStrategyRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-04-22 11:13:32.520  INFO 980 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbUserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-04-22 11:13:32.520  INFO 980 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30ms. Found 0 Redis repository interfaces.
+2021-04-22 11:13:32.986  INFO 980 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=9913dd3c-5bfb-3d0c-b1ed-81b6501ad54b
+2021-04-22 11:13:33.203  INFO 980 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-22 11:13:33.792  INFO 980 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2021-04-22 11:13:33.823  INFO 980 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-22 11:13:33.823  INFO 980 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-04-22 11:13:34.179  INFO 980 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-22 11:13:34.179  INFO 980 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5120 ms
+2021-04-22 11:13:34.624  INFO 980 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-22 11:13:34.821  INFO 980 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-22 11:13:34.918  INFO 980 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2021-04-22 11:13:35.159  INFO 980 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-04-22 11:13:35.341  INFO 980 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-22 11:13:35.913  INFO 980 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-04-22 11:13:35.947  INFO 980 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-04-22 11:13:37.320  INFO 980 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-22 11:13:37.338  INFO 980 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-22 11:13:38.718  WARN 980 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-22 11:13:38.864  INFO 980 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-04-22 11:13:38.897  WARN 980 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-22 11:13:38.897  INFO 980 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-22 11:13:38.901  WARN 980 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-22 11:13:38.901  INFO 980 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-22 11:13:39.917  INFO 980 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'Nacso-Watch-Task-Scheduler'
+2021-04-22 11:13:41.769  INFO 980 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2021-04-22 11:13:42.008  INFO 980 --- [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP user-center 10.20.172.190:8082 register finished
+2021-04-22 11:13:42.605  INFO 980 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-04-22 11:13:42.641  INFO 980 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-04-22 11:13:42.702  INFO 980 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-04-22 11:13:43.092  INFO 980 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2021-04-22 11:13:43.272  INFO 980 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2021-04-22 11:13:43.308  INFO 980 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 16.324 seconds (JVM running for 18.038)
+2021-04-22 11:20:25.671  INFO 980 --- [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-22 11:20:25.671  INFO 980 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-22 11:20:25.688  INFO 980 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 16 ms
+2021-04-22 11:20:25.867  INFO 980 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问login接口
+2021-04-22 11:20:25.868  INFO 980 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-04-22 11:20:25.868  INFO 980 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-04-22 11:20:26.282  INFO 980 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-04-22 11:20:26.469  INFO 980 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjAzNTc2MjYsInVzZXJuYW1lIjoibnR0In0.vfZhi2vmV7XijORRttBwDbBrkXwy6ADL27i1tyof5Ys
+2021-04-22 11:20:43.599  INFO 980 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 11:20:43.601  INFO 980 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-04-22 11:22:08.071  INFO 980 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 11:22:08.072  INFO 980 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-04-22 11:40:51.052  INFO 980 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 11:40:51.053  INFO 980 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-04-22 11:42:31.004  INFO 980 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 11:42:31.004  INFO 980 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-04-22 12:02:20.154  INFO 980 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问login接口
+2021-04-22 12:02:20.155  INFO 980 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-04-22 12:02:20.155  INFO 980 --- [http-nio-8082-exec-3] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-04-22 12:02:20.236  INFO 980 --- [http-nio-8082-exec-3] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-04-22 12:02:20.243  INFO 980 --- [http-nio-8082-exec-3] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjAzNjAxNDAsInVzZXJuYW1lIjoibnR0In0.J2a-JKFyG84DZWatM9AbwLGhk9-pRpQMmQg1bDFQxV8
+2021-04-22 13:03:40.239  WARN 980 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=28m32s917ms589µs700ns).
+2021-04-22 17:36:16.685  INFO 980 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 17:36:16.703  INFO 980 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-04-22 17:36:17.387  INFO 980 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 17:36:17.388  INFO 980 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-04-22 17:42:18.008  INFO 980 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 17:42:18.008  INFO 980 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-04-22 17:42:18.028  INFO 980 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-04-22 17:42:18.029  INFO 980 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+>>>>>>> 54db92cdcffe21697cbc9ca6bd30baf46e7a043b
