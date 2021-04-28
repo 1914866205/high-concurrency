@@ -49,5 +49,5 @@ public interface ContentCenterFeignClient {
      * @return
      */
     @PostMapping("order/changeFlag")
-    void changeFlag(@RequestParam String goodId);
+    void changeFlag(@RequestParam String goodId, @RequestParam Boolean flag);
 }

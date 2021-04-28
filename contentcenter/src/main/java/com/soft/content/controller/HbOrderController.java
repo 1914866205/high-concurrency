@@ -49,6 +49,14 @@ public class HbOrderController {
     private int num = 0;
     private Map<String, Boolean> goodsFlag = new HashMap<>();
 
+    public Map<String, Boolean> getGoodsFlag() {
+        return goodsFlag;
+    }
+
+    public void setGoodsFlag(Map<String, Boolean> goodsFlag) {
+        this.goodsFlag = goodsFlag;
+    }
+
 
     /**
      * 在Servlet初始化之前加载一些缓存数据等
@@ -69,26 +77,8 @@ public class HbOrderController {
 
     @ApiOperation(value = "修改商品状态", notes = "修改商品状态")
     @PostMapping("changeFlag")
-    public void changeFlag(@RequestParam String goodId) {
-        log.info("编号" + goodId + "商品已经卖完");
-        log.info("编号" + goodId + "商品已经卖完");
-        log.info("编号" + goodId + "商品已经卖完");
-        log.info("编号" + goodId + "商品已经卖完");
-        log.info("编号" + goodId + "商品已经卖完");
-        log.info("编号" + goodId + "商品已经卖完");
-        log.info("编号" + goodId + "商品已经卖完");
-        log.info("编号" + goodId + "商品已经卖完");
-        log.info("编号" + goodId + "商品已经卖完");
-        log.info("编号" + goodId + "商品已经卖完");
-        log.info("编号" + goodId + "商品已经卖完");
-        log.info("编号" + goodId + "商品已经卖完");
-        log.info("编号" + goodId + "商品已经卖完");
-        log.info("编号" + goodId + "商品已经卖完");
-        log.info("编号" + goodId + "商品已经卖完");
-        log.info("编号" + goodId + "商品已经卖完");
-        log.info("编号" + goodId + "商品已经卖完");
-        log.info("编号" + goodId + "商品已经卖完");
-        this.goodsFlag.put(goodId, !this.goodsFlag.get(goodId));
+    public void changeFlag(@RequestParam String goodId,@RequestParam Boolean flag) {
+        this.goodsFlag.put(goodId, flag);
     }
 
 

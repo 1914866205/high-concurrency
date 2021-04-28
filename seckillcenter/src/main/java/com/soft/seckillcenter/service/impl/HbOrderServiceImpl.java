@@ -81,7 +81,7 @@ public class HbOrderServiceImpl implements HbOrderService {
             redisTemplate.opsForValue().increment(Constants.REDIS_PRODUCT_STOCK_PREFIX + orderDto.getPkGoodId());
 
             //基本卖完了,通知不要再接收请求了
-            contentCenterFeignClient.changeFlag(orderDto.getPkGoodId());
+            contentCenterFeignClient.changeFlag(orderDto.getPkGoodId(),false);
             return ResponseResult.failure(ResultCode.GOOD_CLEAN);
         }
         try {

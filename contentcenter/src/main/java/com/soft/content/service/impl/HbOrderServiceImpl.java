@@ -1,8 +1,10 @@
 package com.soft.content.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.soft.content.common.Constants;
 import com.soft.content.common.ResponseResult;
 import com.soft.content.common.ResultCode;
+import com.soft.content.controller.HbOrderController;
 import com.soft.content.feignclient.MQCenterFeignClient;
 import com.soft.content.feignclient.SecKillCenterFeignClient;
 import com.soft.content.feignclient.UserCenterFeignClient;
@@ -54,11 +56,11 @@ public class HbOrderServiceImpl implements HbOrderService {
     private final HbStrategyRepository hbStrategyRepository;
     private final RedisTemplate<String, String> redisTemplate;
     private final UserCenterFeignClient userCenterFeignClient;
-    private final SecKillCenterFeignClient secKillCenterFeignClient;
     private final MQCenterFeignClient mqCenterFeignClient;
     LinkedBlockingQueue<OrderDto> queue = new LinkedBlockingQueue<>();
     private int number = 0;
     private OrderDto orderDto = new OrderDto();
+    private final HbOrderController hbOrderController;
 
     @PostConstruct
     public void init() {
@@ -79,6 +81,25 @@ public class HbOrderServiceImpl implements HbOrderService {
                 queue.clear();
             }
         }, 0, 100, TimeUnit.MILLISECONDS);
+
+        //每分钟更新一次商品的秒杀标志
+        sh.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                List<String> allGoodId = hbGoodRepository.findAllGoodId();
+                Map<String, Boolean> goodsFlag = hbOrderController.getGoodsFlag();
+
+                for (String goodId : allGoodId) {
+                    String value = redisTemplate.opsForValue().get(Constants.REDIS_PRODUCT_STOCK_PREFIX + goodId);
+
+                    if (Integer.parseInt(value) > 0) {
+                        goodsFlag.put(goodId, true);
+                    }
+                }
+                hbOrderController.setGoodsFlag(goodsFlag);
+                log.info(goodsFlag.toString());
+            }
+        }, 0,  60*1000, TimeUnit.MILLISECONDS);
     }
 
     @Override
@@ -387,5 +408,6 @@ public class HbOrderServiceImpl implements HbOrderService {
             mqCenterFeignClient.messageBatchToQueue(queue);
         }
     }
+
 
 }
