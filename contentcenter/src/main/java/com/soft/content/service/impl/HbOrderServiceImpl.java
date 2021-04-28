@@ -3,6 +3,7 @@ package com.soft.content.service.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.soft.content.common.ResponseResult;
 import com.soft.content.common.ResultCode;
+import com.soft.content.feignclient.MQCenterFeignClient;
 import com.soft.content.feignclient.SecKillCenterFeignClient;
 import com.soft.content.feignclient.UserCenterFeignClient;
 import com.soft.content.model.dto.OrderDto;
@@ -54,6 +55,7 @@ public class HbOrderServiceImpl implements HbOrderService {
     private final RedisTemplate<String, String> redisTemplate;
     private final UserCenterFeignClient userCenterFeignClient;
     private final SecKillCenterFeignClient secKillCenterFeignClient;
+    private final MQCenterFeignClient mqCenterFeignClient;
     LinkedBlockingQueue<OrderDto> queue = new LinkedBlockingQueue<>();
     private int number = 0;
     private OrderDto orderDto = new OrderDto();
@@ -69,19 +71,8 @@ public class HbOrderServiceImpl implements HbOrderService {
                     return;
                 }
 
-                //如果100毫秒内只是一个请求，直接单步执行
-                if (queue.size() == 1) {
-                    number += queue.size();
-//                    log.info("定时任务被执行" + queue.size() + "number:" + number);
-//                    System.out.println(queue + "----------");
-                    secKillCenterFeignClient.secKill(orderDto);
-                    queue.clear();
-                    return;
-                }
-
                 number += queue.size();
                 log.info("定时任务被执行" + queue.size() + "number:" + number);
-//                System.out.println("----------"+queue + "----------");
                 //之所以要新建队列对象，因为并发操作，可能造成先清队列再创建线程的数据丢失
                 Thread thread = new Thread(new SendThread(new LinkedBlockingQueue<>(queue)));
                 thread.start();
@@ -100,11 +91,7 @@ public class HbOrderServiceImpl implements HbOrderService {
     @Override
     public ResponseResult findSecKillUserOrder(SecResultDto secResultDto) {
         List<SecResultVo> result = new ArrayList<>();
-        //此处先写死策略时
-//        List<HbStrategy> strategies = secResultDto.getStrategies();
         List<HbStrategy> strategies = hbStrategyRepository.findHbStrategiesByGoodIdEquals(secResultDto.getGoodId());
-//        如果该策略的商品id不是指定商品的策略id，则移除该策略
-//        strategies.removeIf(strategy -> !strategy.getGoodId().equals(secResultDto.getGoodId()));
         //对策略的结束排名进行排序
         strategies.sort(Comparator.comparing(HbStrategy::getRankEnd).reversed());
         //从大到小排
@@ -180,7 +167,7 @@ public class HbOrderServiceImpl implements HbOrderService {
 //            System.out.println("----------------");
             hbOrderList.add(hbOrder);
         }
-        log.info("成功存储订单数量"+hbOrderList.size());
+        log.info("成功存储订单数量" + hbOrderList.size());
         hbOrderRepository.saveAll(hbOrderList);
 
     }
@@ -224,7 +211,7 @@ public class HbOrderServiceImpl implements HbOrderService {
             redisTemplate.opsForValue().set("ORDER_" + hbOrderDto.getPkGoodId(), "1");
         }
 //        System.out.println("创建单个订单："+hbOrder);
-        log.info("成功存储订单数量"+1);
+        log.info("成功存储订单数量" + 1);
         hbOrderRepository.save(hbOrder);
         return ResponseResult.success();
     }
@@ -303,7 +290,7 @@ public class HbOrderServiceImpl implements HbOrderService {
                 if (hbOrder.getRank() < maxRank) {
 //                    System.out.println("进循环");
                     //得到当前订单的排名
-                    for (int i = 0; i <strategies.size(); i++) {
+                    for (int i = 0; i < strategies.size(); i++) {
 //                        System.out.println("订单排名" + hbOrder.getRank());
 //                        System.out.println("当前策略起始"+strategies.get(i).getRankStart());
 //                        System.out.println("当前策略终点" + strategies.get(i).getRankEnd());
@@ -397,8 +384,7 @@ public class HbOrderServiceImpl implements HbOrderService {
 
         @Override
         public void run() {
-//            System.out.println("待转发的queue:"+queue);
-            secKillCenterFeignClient.batchSeckill(queue);
+            mqCenterFeignClient.messageBatchToQueue(queue);
         }
     }
 

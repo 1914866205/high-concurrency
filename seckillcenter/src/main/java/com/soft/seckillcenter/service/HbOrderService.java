@@ -15,7 +15,7 @@ public interface HbOrderService {
 
 
     /**
-     * 把成功的订单请求发送给消息队列
+     * 把成功的订单请求发送给内容中心
      * @param orderDto
      */
     ResponseResult toSecKill(OrderDto orderDto);

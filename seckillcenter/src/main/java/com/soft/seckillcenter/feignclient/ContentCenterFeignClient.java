@@ -5,6 +5,9 @@ import com.soft.seckillcenter.model.dto.OrderDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.concurrent.LinkedBlockingQueue;
 //import org.springframework.cloud.openfeign.FeignClient;
 
 
@@ -27,5 +30,24 @@ public interface ContentCenterFeignClient {
      */
     @PostMapping("order/addOrder")
     ResponseResult addOrder(@RequestBody OrderDto orderDto);
-}
 
+
+    /**
+     * 返回调用内容中心批量添加订单接口
+     *
+     * @param queue
+     * @return
+     */
+    @PostMapping("order/batchAddOrder")
+    void batchAddOrder(@RequestBody LinkedBlockingQueue<OrderDto> queue);
+
+
+    /**
+     * 修改商品状态
+     *
+     * @param goodId
+     * @return
+     */
+    @PostMapping("order/changeFlag")
+    void changeFlag(@RequestParam String goodId);
+}

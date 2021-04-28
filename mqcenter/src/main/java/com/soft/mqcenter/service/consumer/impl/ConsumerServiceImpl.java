@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.soft.mqcenter.common.Constants;
 import com.soft.mqcenter.config.RedisUtil;
 import com.soft.mqcenter.feignclient.ContentCenterFeignClient;
+import com.soft.mqcenter.feignclient.SecKillCenterFeignClient;
 import com.soft.mqcenter.model.dto.OrderDto;
 import com.soft.mqcenter.service.consumer.ConsumerService;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +33,7 @@ public class ConsumerServiceImpl implements ConsumerService {
     @Autowired
     private RedisUtil redisUtil;
     @Resource
-    private ContentCenterFeignClient contentCenterFeignClient;
+    private SecKillCenterFeignClient secKillCenterFeignClient;
     @Resource
     private RedisTemplate redisTemplate;
     private int num;
@@ -47,31 +48,22 @@ public class ConsumerServiceImpl implements ConsumerService {
         sh.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
-
                 try {
-
                     if (queue.size() == 0) {
                         return;
                     }
 
-                    //如果1000毫秒内只是一个请求，直接单步执行
                     if (queue.size() == 1) {
                         number += queue.size();
-//                        log.info("定时任务被执行" + queue.size() + "number:" + number);
-//                        System.out.println(queue + "----------");
-                        contentCenterFeignClient.addOrder(orderDto);
+                        secKillCenterFeignClient.secKill(orderDto);
                         queue.clear();
                         return;
                     }
 
                     number += queue.size();
-//                    log.info("定时任务被执行" + queue.size() + "number:" + number);
-//                    System.out.println(queue + "----------");
-                    //之所以要新建队列对象，因为并发操作，可能造成先清队列再创建线程的数据丢失
                     Thread thread = new Thread(new SendThread(new LinkedBlockingQueue<>(queue)));
                     thread.start();
                     queue.clear();
-
                 } catch (Exception e) {
                     redisTemplate.opsForValue().increment(Constants.REDIS_PRODUCT_STOCK_PREFIX + orderDto.getPkGoodId(), queue.size());
                 }
@@ -82,16 +74,8 @@ public class ConsumerServiceImpl implements ConsumerService {
 
     @Override
     public void receiveMessage(String message) {
-//        log.info(++num + "队列监听到订单信息：");
-//        log.info("队列监听到订单信息：" + message);
-
-        //json对象反序列化
         orderDto = JSON.parseObject(message, OrderDto.class);
         queue.add(orderDto);
-        //由内容中心创建订单
-        //此处可以用自旋转 调用线程池的线程重复创建
-//        log.info("队列发送订单信息给内容中心，由内容中心创建订单:" + orderDto);
-        //监听后批量发送
     }
 
     class SendThread extends Thread {
@@ -103,8 +87,8 @@ public class ConsumerServiceImpl implements ConsumerService {
 
         @Override
         public void run() {
-            log.info("消息队列发送的queue"+queue.size());
-            contentCenterFeignClient.batchAddOrder(queue);
+            log.info("消息中心监听到消息，并分批转发"+queue.size());
+            secKillCenterFeignClient.batchSeckill(queue);
         }
     }
 

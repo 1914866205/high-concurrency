@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
@@ -45,7 +47,9 @@ public class HbOrderController {
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
     private int num = 0;
-    private int secnum = 0;
+    private Map<String, Boolean> goodsFlag = new HashMap<>();
+
+
     /**
      * 在Servlet初始化之前加载一些缓存数据等
      * 先把各大产品的剩余量放到redis中
@@ -56,6 +60,35 @@ public class HbOrderController {
         for (HbGood hbGood : hbGoodList) {
             redisTemplate.opsForValue().set(Constants.REDIS_PRODUCT_STOCK_PREFIX + hbGood.getPkGoodId(), hbGood.getCount() + "");
         }
+        //商品的秒杀标志
+        List<String> allGoodsId = hbGoodService.findAllGoodsId();
+        for (String goodId : allGoodsId) {
+            goodsFlag.put(goodId, true);
+        }
+    }
+
+    @ApiOperation(value = "修改商品状态", notes = "修改商品状态")
+    @PostMapping("changeFlag")
+    public void changeFlag(@RequestParam String goodId) {
+        log.info("编号" + goodId + "商品已经卖完");
+        log.info("编号" + goodId + "商品已经卖完");
+        log.info("编号" + goodId + "商品已经卖完");
+        log.info("编号" + goodId + "商品已经卖完");
+        log.info("编号" + goodId + "商品已经卖完");
+        log.info("编号" + goodId + "商品已经卖完");
+        log.info("编号" + goodId + "商品已经卖完");
+        log.info("编号" + goodId + "商品已经卖完");
+        log.info("编号" + goodId + "商品已经卖完");
+        log.info("编号" + goodId + "商品已经卖完");
+        log.info("编号" + goodId + "商品已经卖完");
+        log.info("编号" + goodId + "商品已经卖完");
+        log.info("编号" + goodId + "商品已经卖完");
+        log.info("编号" + goodId + "商品已经卖完");
+        log.info("编号" + goodId + "商品已经卖完");
+        log.info("编号" + goodId + "商品已经卖完");
+        log.info("编号" + goodId + "商品已经卖完");
+        log.info("编号" + goodId + "商品已经卖完");
+        this.goodsFlag.put(goodId, !this.goodsFlag.get(goodId));
     }
 
 
@@ -74,11 +107,11 @@ public class HbOrderController {
     @ApiOperation(value = "秒杀订单", notes = "秒杀订单")
     @PostMapping("spikeOrder")
     public ResponseResult spikeOrder(@RequestBody OrderDto orderDto) {
-        secnum++;
-        //  负载均衡，高并发，请求秒杀服务
-//        log.info("内容中心收到秒杀订单:" + orderDto.toString());
-        return hbOrderService.seckOrder(orderDto);
-//        return secKillCenterFeignClient.secKill(orderDto);
+        if (goodsFlag.get(orderDto.getPkGoodId())) {
+            return hbOrderService.seckOrder(orderDto);
+        } else {
+            return ResponseResult.failure(ResultCode.GOOD_CLEAN);
+        }
     }
 
 
@@ -108,7 +141,7 @@ public class HbOrderController {
     @PostMapping("batchAddOrder")
     @ControllerWebLog(name = "batchAddOrder", isSaved = true)
     public ResponseResult batchAddOrder(@RequestBody LinkedBlockingQueue<OrderDto> queue) {
-        log.info(++num + "进入内容中心添加订单接口："+"queue大小:"+queue.size());
+        log.info(++num + "进入内容中心添加订单接口：" + "queue大小:" + queue.size());
         Thread thread = new Thread(new BatchFollowThread(queue));
         thread.start();
         return ResponseResult.success();
@@ -193,52 +226,5 @@ public class HbOrderController {
             hbOrderService.batchAddOrder(queue);
         }
     }
+
 }
-
-
-//    /**
-//     * 压测流程
-//     * 1.初始化redis中的商品个数
-//     * 2.Jmeter发送一万个请求
-//     * 3.redis存储商品剩余量
-//     * 4.消息队列存储 用户id，商品id
-//     * <p>
-//     * <p>
-//     * *****************  此orderDto的number限制为1
-//     *
-//     * @return
-//     */
-//    @ApiOperation(value = "秒杀订单", notes = "秒杀订单")
-//    @PostMapping("spikeOrder")
-//    public ResponseResult spikeOrder(@RequestBody OrderDto orderDto) {
-//        //  负载均衡，高并发，请求秒杀服务
-//        log.info("内容中心收到秒杀订单:" + orderDto.toString());
-//        return secKillCenterFeignClient.secKill(orderDto);
-//
-////        //1.redis先库存-1，要使用decrement方法，底层是线程安全的
-////        //返回的数据是减完之后的数字
-////        Long stock = redisTemplate.opsForValue().decrement(Constants.REDIS_PRODUCT_STOCK_PREFIX + orderDto.getPkGoodId());
-////        if (stock < 0) {
-////            //如果库存＜0   防止少卖
-////            redisTemplate.opsForValue().increment(Constants.REDIS_PRODUCT_STOCK_PREFIX + orderDto.getPkGoodId());
-////            return ResponseResult.failure(ResultCode.GOOD_CLEAN);
-////        }
-////
-////        //2.如果有剩余商品
-////        //发送消息给消息队列，传输用户id和订单信息，异步传输数据
-////        //秒杀活动每人限抢一个
-////        try {
-////            hbOrderService.secKill(orderDto);
-////        } catch (Exception e) {
-////            //如果遇到异常，回滚事务
-////            redisTemplate.opsForValue().increment(Constants.REDIS_PRODUCT_STOCK_PREFIX + orderDto.getPkGoodId());
-////            log.info("订单创建失败");
-////            return ResponseResult.failure(ResultCode.ORDER_CREATE_ERROR);
-////        }
-////
-////        log.info("订单创建成功" + redisTemplate.opsForValue().get(Constants.REDIS_PRODUCT_STOCK_PREFIX + orderDto.getPkGoodId()));
-////        return ResponseResult.success();
-////
-////        //3.消息队列监听到数据变化，创建订单，此处先用RabbitMQ替代
-//
-//    }
