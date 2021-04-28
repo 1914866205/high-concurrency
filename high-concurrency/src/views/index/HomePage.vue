@@ -46,8 +46,9 @@
 
         <div class="cta">
           <div class="price">${{ item.price }}</div>
-          <div class="cta-text" v-if="item.day < 0">秒杀已开始</div>
-          <div class="cta-text" v-else>{{ daojishi(item.day) }}</div>
+          <div class="cta-text" v-if="item.day <= 0 && item.count > 0">秒杀已开始</div>
+          <div class="cta-text" v-if="item.count == 0">秒杀已结束</div>
+          <div class="cta-text" v-if="item.day > 0">{{ daojishi(item.day) }}</div>
         </div>
       </div>
     </div>

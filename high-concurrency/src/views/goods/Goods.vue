@@ -11,7 +11,7 @@
       >购买数量必须大于0</v-alert
     >
     <v-alert dense dismissible type="success" class="infom" v-if="isSubmit"
-      >成功参与秒杀 稍后请在我的订单中支付订单</v-alert
+      >{{isMiaosha ? '成功参与秒杀':'下单成功'}}</v-alert
     >
     <v-overlay :z-index="zIndex" :value="overlay">
       <div class="forms">
@@ -22,6 +22,9 @@
             :rules="phoneRules"
             label="phone"
             required
+           
+            dark = "true"
+            
           ></v-text-field>
           <div>数量 : {{ count }}</div>
           <div style="margin-top: 40px">
@@ -626,8 +629,9 @@ export default {
 }
 
 .forms {
-  background-color: #26a69a;
-  width: 400px;
+  background-color: #21949c;
+  color: #fff;
+  width: 450px;
   padding: 20px;
   border-radius: 20px;
   box-shadow: 1px #fff;
