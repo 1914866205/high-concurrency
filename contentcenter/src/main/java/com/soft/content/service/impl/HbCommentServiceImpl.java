@@ -35,6 +35,11 @@ public class HbCommentServiceImpl implements HbCommentService {
     private final UserCenterFeignClient userCenterFeignClient;
     private final HbOrderRepository hbOrderRepository;
 
+    /**
+     * 添加商品评价并且把订单改为已评价 status=3
+     * @param commentDto
+     * @return
+     */
     @Override
     public ResponseResult addComment(CommentDto commentDto) {
         hbCommentRepository.save(HbComment.builder()
@@ -58,7 +63,6 @@ public class HbCommentServiceImpl implements HbCommentService {
             hbOrder.setState(3);
             hbOrderRepository.save(hbOrder);
         }
-
         return ResponseResult.success();
     }
 

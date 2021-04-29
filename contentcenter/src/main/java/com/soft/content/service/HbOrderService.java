@@ -7,6 +7,7 @@ import com.soft.content.model.dto.SecResultDto;
 import com.soft.content.model.entity.HbStrategy;
 
 import java.util.List;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * @author 倪涛涛
@@ -52,6 +53,12 @@ public interface HbOrderService {
     ResponseResult seckOrder(OrderDto orderDto);
 
     ResponseResult findSecKillUserOrder(SecResultDto secResultDto);
+
+    /**
+     * 批量添加订单
+     * @param queue
+     */
+    void batchAddOrder(LinkedBlockingQueue<OrderDto> queue);
 //
 //    /**
 //     * 把成功的订单请求发送给消息队列

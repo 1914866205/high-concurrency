@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.LinkedBlockingQueue;
+
 /**
  * @author 倪涛涛
  * @version 1.0.0
@@ -23,17 +25,12 @@ public class ProduceServiceImpl implements ProducerService {
     private StringRedisTemplate stringRedisTemplate;
     private int number = 0;
 
+
     @Override
-    public void sendMessage(OrderDto orderDto) {
-//        public void convertAndSend(String channel, Object message)
-        //channel 为键   message为值
-//        private String pkGoodId;
-//        private String userId;
-//        private String phone;
-//        private int number;
-        // 键为product_商品id   值为订单对象的json字符串
-        log.info(++number+"队列存储信息_number");
-//        log.info("队列存储信息:"+Constants.REDIS_PRODUCT_PREFIX + orderDto.getPkGoodId());
-        stringRedisTemplate.convertAndSend(Constants.REDIS_PRODUCT_PREFIX + orderDto.getPkGoodId(), JSON.toJSONString(orderDto));
+    public void messageBatchToQueue(LinkedBlockingQueue<OrderDto> queue) {
+        log.info("消息中心收到用户中心queue:"+queue);
+        for (OrderDto orderDto : queue) {
+            stringRedisTemplate.convertAndSend(Constants.REDIS_PRODUCT_PREFIX + orderDto.getPkGoodId(), JSON.toJSONString(orderDto));
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.soft.content.model.dto;
 
+import com.soft.content.model.entity.HbGood;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,6 +19,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AllGoodsDto {
+    private List<HbGood> goods;
+    private List<SecKillAddDto> secKillAddDto;
     private String goodId;
     private String type;
     private String description;

@@ -1,0 +1,28 @@
+2021-04-22 11:52:28.489 ERROR 21404 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   LoggingFailureAnalysisReporter.java:40: 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8082 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8082 or configure this application to listen on another port.
+
+2021-04-22 12:08:12.407 ERROR 11200 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   LoggingFailureAnalysisReporter.java:40: 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8082 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8082 or configure this application to listen on another port.
+

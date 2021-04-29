@@ -20,17 +20,11 @@ import java.sql.ResultSet;
 public class ContentcenterApplication {
 
     public static void main(String[] args) {
-//        测试redis是否连接成功
-//        Jedis jedis = new Jedis("120.26.177.51", 6379);
-//        System.out.println(jedis.ping());
         SpringApplication.run(ContentcenterApplication.class, args);
     }
 
     @Bean
     RestTemplate restTemplate() {
-//        java.net.SocketTimeoutException: Read timed out
-//        at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_41]
-        //复杂构造函数的使用
         SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
         requestFactory.setConnectTimeout(30000);//设置超时
         requestFactory.setReadTimeout(30000);

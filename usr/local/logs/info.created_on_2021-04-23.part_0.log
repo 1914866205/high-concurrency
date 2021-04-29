@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+2021-04-23 11:09:16.606  WARN 14408 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=12h42m22s735ms542µs).
+=======
 2021-04-23 10:47:56.828  INFO 21560 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
 2021-04-23 10:47:58.099  INFO 21560 --- [main] c.soft.usercenter.UserCenterApplication  : No active profile set, falling back to default profiles: default
 2021-04-23 10:48:01.338  INFO 21560 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
@@ -53,3 +56,4 @@
 2021-04-23 13:52:03.690  WARN 21560 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h42m57s179ms462µs400ns).
 2021-04-23 17:50:44.951  INFO 21560 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
 2021-04-23 17:50:44.984  INFO 21560 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+>>>>>>> 54db92cdcffe21697cbc9ca6bd30baf46e7a043b

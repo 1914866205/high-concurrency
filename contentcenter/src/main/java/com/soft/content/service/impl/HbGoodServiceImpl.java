@@ -138,7 +138,7 @@ public class HbGoodServiceImpl implements HbGoodService {
     @Override
     public ResponseResult addGoods(GoodsDto goodsDto) {
         hbGoodRepository.save(HbGood.builder()
-    .pkGoodId(UUID.randomUUID().toString().substring(0, 19))
+                .pkGoodId(UUID.randomUUID().toString().substring(0, 19))
                 .type(goodsDto.getType())
                 .userId(goodsDto.getPkUserIngId())
                 .goodName(goodsDto.getGoodName())

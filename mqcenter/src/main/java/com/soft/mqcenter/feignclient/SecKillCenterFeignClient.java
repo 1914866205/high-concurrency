@@ -1,7 +1,7 @@
-package com.soft.content.feignclient;
+package com.soft.mqcenter.feignclient;
 
-import com.soft.content.common.ResponseResult;
-import com.soft.content.model.dto.OrderDto;
+import com.soft.mqcenter.common.ResponseResult;
+import com.soft.mqcenter.model.dto.OrderDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

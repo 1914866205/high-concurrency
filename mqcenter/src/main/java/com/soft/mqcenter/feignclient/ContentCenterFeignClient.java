@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * @author 倪涛涛
@@ -36,5 +37,14 @@ public interface ContentCenterFeignClient {
      */
     @GetMapping("goods/findAllGoodId")
     List<String> getAllGoodId();
+
+    /**
+     * 返回调用内容中心批量添加订单接口
+     *
+     * @param queue
+     * @return
+     */
+    @PostMapping("order/batchAddOrder")
+    void batchAddOrder(LinkedBlockingQueue<OrderDto> queue);
 }
 

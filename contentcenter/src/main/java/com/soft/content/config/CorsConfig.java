@@ -19,6 +19,7 @@ import java.util.List;
  */
 
 
+
 @Configuration
 public class CorsConfig {
     @Bean
@@ -47,4 +48,3 @@ public class CorsConfig {
         return bean;
     }
 }
-

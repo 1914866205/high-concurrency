@@ -48,6 +48,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
         <!--SpringBoot redis-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -65,6 +66,8 @@
             <artifactId>jedis</artifactId>
             <version>2.9.0</version>
         </dependency>
+
+
         <!-- Mysql支持 -->
         <dependency>
             <groupId>mysql</groupId>
@@ -136,12 +139,12 @@
             <scope>import</scope>
         </dependency>
 
-<!--        &lt;!&ndash;        服务容错&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-zipkin</artifactId>-->
-<!--            <version>2.2.7.RELEASE</version>-->
-<!--        </dependency>-->
+        <!--        &lt;!&ndash;        服务容错&ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-zipkin</artifactId>-->
+        <!--            <version>2.2.7.RELEASE</version>-->
+        <!--        </dependency>-->
 
         <!--        feign-->
         <dependency>
@@ -161,17 +164,17 @@
             <version>2.2.3.RELEASE</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>-->
-<!--            <version>2.2.3.RELEASE</version>-->
-<!--            <exclusions>-->
-<!--                <exclusion>-->
-<!--                    <artifactId>fastjson</artifactId>-->
-<!--                    <groupId>com.alibaba</groupId>-->
-<!--                </exclusion>-->
-<!--            </exclusions>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.alibaba.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>-->
+        <!--            <version>2.2.3.RELEASE</version>-->
+        <!--            <exclusions>-->
+        <!--                <exclusion>-->
+        <!--                    <artifactId>fastjson</artifactId>-->
+        <!--                    <groupId>com.alibaba</groupId>-->
+        <!--                </exclusion>-->
+        <!--            </exclusions>-->
+        <!--        </dependency>-->
 
 
         <dependency>
