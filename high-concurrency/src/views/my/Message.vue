@@ -1,6 +1,15 @@
 <template>
   <v-app>
     <nav-bar></nav-bar>
+    <v-alert
+      dense
+      dismissible
+      type="success"
+      v-if="isSuc"
+      class="infom"
+      @click="cancelSubmit()"
+      >修改成功</v-alert
+    >
     <div class="message index index-border">
       <div class="fengmian"></div>
       <div class="biankuang">
@@ -222,6 +231,7 @@ export default {
       updateSuccess: false,
       phoneInput: false,
       overlay: false,
+      isSuc: false,
       user: [],
       validate: {
         nickname: "",
@@ -233,6 +243,7 @@ export default {
         phone: "",
         code: "",
       },
+      
     };
   },
   watch: {
@@ -327,20 +338,24 @@ export default {
         avatar: avatar,
         code: code,
         email: users.email,
+        money:0,
         nickname: users.nickname,
         password: pwd,
         phone: users.phone,
-        pkHbUserId: users.pkUserId,
+        pkUserId: users.pkUserId,
         sex: sex,
-        birthday: "",
         username: users.username,
       };
       await API.init(_this.url, _this.data, "post");
-      alert("修改成功");
+      this.isSuc = true;
       this.refreshUser();
       if ((avatar = _this.validate.avatar)) {
         localStorage.setItem("avatar", avatar);
       }
+    },
+    cancelSubmit() {
+      this.isSuc = false;
+      this.isUpdate = false;
     },
     updateAdminInfo(url) {
       console.log(url);

@@ -17,11 +17,11 @@
       v-if="isXiangou"
       class="infom"
       @click="cancelXiangou()"
-      >{{isMiaosha ? '秒杀订单限购一个' : '不能购买更多了'}}</v-alert
+      >{{ isMiaosha ? "秒杀订单限购一个" : "不能购买更多了" }}</v-alert
     >
-    <v-alert dense dismissible type="success" class="infom" v-if="isSubmit"
-      >{{isMiaosha ? '成功参与秒杀':'下单成功'}}</v-alert
-    >
+    <v-alert dense dismissible type="success" class="infom" v-if="isSubmit">{{
+      isMiaosha ? "成功参与秒杀" : "下单成功"
+    }}</v-alert>
     <v-overlay :z-index="zIndex" :value="overlay">
       <div class="forms">
         <h2>请确认订单</h2>
@@ -31,9 +31,7 @@
             :rules="phoneRules"
             label="phone"
             required
-           
-            dark = "true"
-            
+            dark="true"
           ></v-text-field>
           <div>数量 : {{ count }}</div>
           <div style="margin-top: 40px">
@@ -143,8 +141,11 @@
             min="1"
             max="3"
             :oninput="
-              'if(value>10)value=10' +
-              ';if(value.length>10)value=value.slice(0,4);if(value<0)value=0'
+              'if(' +
+              isMiaosha +
+              ' && value >1)value=1;' +
+              'if(value>10)value=10;' +
+              'if(value.length>10)value=value.slice(0,4);if(value<0)value=0'
             "
             v-model="count"
           />
@@ -154,7 +155,10 @@
           >
         </div>
 
-        <div v-show="miaosha.description!=null" class="goods-discount br-2 pa-1 mt-4">
+        <div
+          v-show="miaosha.description != null"
+          class="goods-discount br-2 pa-1 mt-4"
+        >
           <span>{{ miaosha.description }}</span>
           <div v-for="(item, index) in miaosha.ruleDtoList" :key="index">
             <span
@@ -173,11 +177,36 @@
             class="goods-btn btn-green"
             ><span style="color: #fff">立即购买</span></v-btn
           >
-          <v-btn disabled width="380" height="60" v-else class="goods-btn btn-white"
-            ><span style="color: #fff">{{
-              daojishi(miaosha.day)
-            }}</span></v-btn
+          <v-btn
+            disabled
+            width="380"
+            height="60"
+            v-else
+            class="goods-btn btn-white"
+            ><span style="color: #fff">{{ daojishi(miaosha.day) }}</span></v-btn
           >
+        </div>
+
+        <div>
+          <div class="font mt-100">秒杀前1000名</div>
+          <v-simple-table fixed-header height="500px" class="mt-4">
+            <template v-slot:default>
+              <thead>
+                <tr>
+                  <th class="text-left">用户名</th>
+                  <th class="text-left">手机号</th>
+                  <th class="text-left">折扣</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="item in preOrder" :key="item.name">
+                  <td>{{ item.userName }}</td>
+                  <td>{{ item.phoneNumber }}</td>
+                  <td>{{ item.discount*10 }}折</td>
+                </tr>
+              </tbody>
+            </template>
+          </v-simple-table>
         </div>
       </div>
     </div>
@@ -252,6 +281,7 @@ const API = require("../../utils/request.js");
 export default {
   data() {
     return {
+      preOrder:[],
       goodsInfo: [],
       count: 0,
       comments: [],
@@ -273,7 +303,7 @@ export default {
       day: "",
       isMiaosha: false,
       miaosha: [],
-      isXiangou:false
+      isXiangou: false,
     };
   },
   created: function () {
@@ -297,6 +327,7 @@ export default {
         });
     }
     this.getIndex();
+    this.getPreOrder();
     this.getCommont();
   },
   methods: {
@@ -308,6 +339,31 @@ export default {
         let s = Math.floor((time / 1000) % 60);
         return "还有" + d + "天" + h + "时" + m + "分" + s + "秒";
       }
+    },
+    async getPreOrder() {
+      this.url = this.GLOBAL.contentUrl + "/order/findSecKillUserOrder";
+      this.data = {
+        goodId: this.$route.query.goodsId,
+        strategies: [
+          {
+            pkStrategyId: null,
+            strategyName: null,
+            goodId: null,
+            rankStart: 101,
+            rankEnd: 500,
+            discount: 0.0,
+            createdTime: null,
+            updatedTime: null,
+          },
+        ],
+        time: "2021-04-28 19:31:02",
+      };
+      this.result = await API.init(this.url,this.data,"post")
+      for(let i = 0;i<this.result.data.length;i++){
+        let phone = "" + this.result.data[i].phoneNumber
+        this.result.data[i].phoneNumber = phone.replace(phone.substring(3,7),"****")
+      }
+      this.preOrder = this.result.data
     },
     beginTimer() {
       //这个计时器是每秒减去数组中指定字段的时间
@@ -331,8 +387,8 @@ export default {
     cancelSubmit() {
       this.isCount = false;
     },
-    cancelXiangou(){
-      this.isXiangou = false
+    cancelXiangou() {
+      this.isXiangou = false;
     },
 
     cancel() {
@@ -343,12 +399,14 @@ export default {
       this.sumbitGoods();
     },
     btnAdd() {
-      if(this.isMiaosha){
-        if(this.count > 1) {
-          this.isXiangou = true
+      if (this.isMiaosha) {
+        if (this.count >= 1) {
+          this.isXiangou = true;
+        } else {
+          this.count++;
         }
-      }else if (this.count >= 10) {
-        this.isXiangou = true
+      } else if (this.count >= 10) {
+        this.isXiangou = true;
       } else {
         this.count++;
       }
@@ -424,7 +482,7 @@ export default {
 <style lang="scss" scoped>
 .goods-discount {
   border: 5px solid #f6f6f6;
-  span{
+  span {
     color: gray;
   }
 }

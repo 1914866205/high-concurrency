@@ -42,7 +42,7 @@
           >
 
              第
-            <el-input v-model="domain.start" validate-event class="w-65" />名到第
+            <el-input v-model="domain.start" :rules="startRules" class="w-65" />名到第
             <el-input v-model="domain.end" class="w-65"></el-input>名 打
             <el-input v-model="domain.discount" class="w-40"></el-input
             >折
@@ -106,6 +106,7 @@ import NavBar from "../../components/NavBar";
 export default {
   data() {
     return {
+      startRules:[{ required: true, message: "请输入开始排名",trigger: "blur" }],
       goodsInfo: [],
       updatecenterDialogVisible: false,
       form: {
