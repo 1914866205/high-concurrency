@@ -40,9 +40,10 @@
             :label="'活动'+(index+1)"
             class="mt-2"
           >
+
              第
-            <el-input v-model="domain.start" class="w-60" />名 到 第
-            <el-input v-model="domain.end" class="w-60"></el-input>名 打
+            <el-input v-model="domain.start" validate-event class="w-65" />名到第
+            <el-input v-model="domain.end" class="w-65"></el-input>名 打
             <el-input v-model="domain.discount" class="w-40"></el-input
             >折
             <el-button

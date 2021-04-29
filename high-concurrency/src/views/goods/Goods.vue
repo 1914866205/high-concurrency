@@ -10,6 +10,15 @@
       @click="cancelSubmit()"
       >购买数量必须大于0</v-alert
     >
+    <v-alert
+      dense
+      dismissible
+      type="info"
+      v-if="isXiangou"
+      class="infom"
+      @click="cancelXiangou()"
+      >{{isMiaosha ? '秒杀订单限购一个' : '不能购买更多了'}}</v-alert
+    >
     <v-alert dense dismissible type="success" class="infom" v-if="isSubmit"
       >{{isMiaosha ? '成功参与秒杀':'下单成功'}}</v-alert
     >
@@ -134,10 +143,7 @@
             min="1"
             max="3"
             :oninput="
-              'if(value>' +
-              goodsInfo.count +
-              ')value=' +
-              goodsInfo.count +
+              'if(value>10)value=10' +
               ';if(value.length>10)value=value.slice(0,4);if(value<0)value=0'
             "
             v-model="count"
@@ -267,6 +273,7 @@ export default {
       day: "",
       isMiaosha: false,
       miaosha: [],
+      isXiangou:false
     };
   },
   created: function () {
@@ -324,6 +331,10 @@ export default {
     cancelSubmit() {
       this.isCount = false;
     },
+    cancelXiangou(){
+      this.isXiangou = false
+    },
+
     cancel() {
       this.overlay = false;
     },
@@ -332,8 +343,12 @@ export default {
       this.sumbitGoods();
     },
     btnAdd() {
-      if (this.count >= 10) {
-        console.log("该宝贝不能购买更多了");
+      if(this.isMiaosha){
+        if(this.count > 1) {
+          this.isXiangou = true
+        }
+      }else if (this.count >= 10) {
+        this.isXiangou = true
       } else {
         this.count++;
       }
