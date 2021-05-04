@@ -16,7 +16,7 @@
         <v-hover>
           <template v-slot:default="{ hover }">
             <v-card class="avatar" max-width="200" max-height="200">
-              <img style="height: 200px; width: 200px" :src="user.avatar" />
+              <img style="height: 200px; width: 200px;" class="br-1" :src="user.avatar" />
               <v-fade-transition>
                 <v-overlay v-if="hover" absolute color="#f5f5f5">
                   <v-btn @click="avatarClick()"
@@ -52,6 +52,7 @@
             <h1 v-else>{{ user.nickname }}</h1>
             <img
               @click="updateUser()"
+              class="button-hand"
               style="width: 30px; height: 30px; margin: 10px"
               src="../../assets/icon/bi.png"
             />
@@ -86,6 +87,7 @@
               <span v-else>{{ user.phone }}</span>
               <span
                 @click="updatePhone()"
+                class="button-hand"
                 style="color: #26a69a; margin-left: 20px"
                 >更改</span
               >
@@ -105,6 +107,7 @@
               <span v-else>**********</span>
               <span
                 @click="updateCode()"
+                class="button-hand"
                 style="color: #26a69a; margin-left: 20px"
                 >更改</span
               >
@@ -124,6 +127,7 @@
               <span v-else>{{ user.email }}</span>
               <span
                 @click="updateEmail()"
+                class="button-hand"
                 style="color: #26a69a; margin-left: 20px"
                 >更改</span
               >
@@ -159,7 +163,7 @@
             <span class="label">
               <p>
                 <span>{{ user.money }}</span>
-                <span style="color: #26a69a; margin-left: 20px">充值</span>
+                <span class="button-hand" style="color: #26a69a; margin-left: 20px">充值</span>
               </p>
             </span>
           </span>
@@ -177,6 +181,7 @@
               <span v-else>{{ user.address }}</span>
               <span
                 @click="updateAddress()"
+                class="button-hand"
                 style="color: #26a69a; margin-left: 20px"
                 >更改</span
               >
