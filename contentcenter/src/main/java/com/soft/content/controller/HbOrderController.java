@@ -100,6 +100,7 @@ public class HbOrderController {
         if (goodsFlag.get(orderDto.getPkGoodId())) {
             return hbOrderService.seckOrder(orderDto);
         } else {
+            log.info(orderDto.getPkGoodId()+"is sold out");
             return ResponseResult.failure(ResultCode.GOOD_CLEAN);
         }
     }

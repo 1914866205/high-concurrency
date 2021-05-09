@@ -370,11 +370,11 @@ export default {
       } else {
         this.url = this.GLOBAL.contentUrl + "/order/addOrder";
       }
-
+      console.log(this.goods)
       this.data = {
         number: this.count,
         phone: this.phone,
-        pkGoodId: this.goods.pkGoodId,
+        pkGoodId: this.goodsInfo.pkGoodId,
         userId: localStorage.getItem("userId"),
       };
       await API.init(this.url, this.data, "post");

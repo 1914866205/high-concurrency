@@ -60,7 +60,7 @@
         class="shop-card"
         v-for="(item, index) in goods"
         :key="index"
-        @click="goGoods(item.pkGoodId)"
+        @click="goGoods(item.goodId)"
       >
         <div class="slider">
           <figure

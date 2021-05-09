@@ -28,7 +28,7 @@ public class ProduceServiceImpl implements ProducerService {
 
     @Override
     public void messageBatchToQueue(LinkedBlockingQueue<OrderDto> queue) {
-        log.info("消息中心收到用户中心queue:"+queue);
+//        log.info("消息中心收到用户中心queue:"+queue);
         for (OrderDto orderDto : queue) {
             stringRedisTemplate.convertAndSend(Constants.REDIS_PRODUCT_PREFIX + orderDto.getPkGoodId(), JSON.toJSONString(orderDto));
         }

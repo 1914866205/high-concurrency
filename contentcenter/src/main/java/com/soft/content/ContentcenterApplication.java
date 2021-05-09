@@ -10,9 +10,6 @@ import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.AsyncRestTemplate;
 import org.springframework.web.client.RestTemplate;
-import redis.clients.jedis.Jedis;
-
-import java.sql.ResultSet;
 
 @SpringBootApplication
 @EnableFeignClients
