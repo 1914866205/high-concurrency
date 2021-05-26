@@ -1,34 +1,9 @@
 <template>
   <v-app>
     <nav-bar></nav-bar>
-    <v-alert
-      dense
-      dismissible
-      type="success"
-      class="infom"
-      @click="cancelInfo()"
-      v-if="isPay"
-      >{{isYue ? '余额不足' : '支付成功'}}</v-alert
-    >
-    <v-alert
-      dense
-      dismissible
-      type="success"
-      class="infom"
-      @click="cancelComInfo()"
-      v-if="isComSuc"
-      >评价成功</v-alert
-    >
-    <v-alert
-      dense
-      dismissible
-      type="success"
-      class="infom"
-      @click="cancelDelInfo()"
-      v-if="isDel"
-      >删除成功</v-alert
-    >
-
+    <alert v-if="isPay" @click="cancelInfo()" :alertdata="isYue ? '余额不足' : '支付成功'"></alert>
+    <alert v-if="isComSuc" @click="cancelComInfo()" alertdata="评价成功"></alert>
+    <alert v-if="isDel" @click="cancelDelInfo()" alertdata="删除成功"></alert>
     <div class="order">
       <v-card>
         <v-tabs
@@ -165,7 +140,10 @@
 <script>
 import NavBar from "../../components/NavBar";
 const time = require("../../utils/time.js");
+import Alert from "@/components/Alert";
 const API = require("../../utils/request.js");
+import Vue from 'vue'
+import { USER_ID } from "@/store/mutation-types";
 export default {
   name: "HomePage",
   data() {
@@ -191,7 +169,7 @@ export default {
   },
   created: function () {
     let params = new URLSearchParams();
-    let id = localStorage.getItem("userId");
+    let id = Vue.ls.get(USER_ID);
     params.append("pkUserId", id);
     this.axios
       .post(this.GLOBAL.contentUrl + "/order/findUserAllOrder", params)
@@ -253,8 +231,7 @@ export default {
             this.isPay = true;
             setTimeout(this.cancelInfo,3000)
             let arr = this.noOrder;
-            let arr1 = arr.filter((item) => item.pkOrderid == id);
-            this.noOrder = arr1;
+            this.noOrder = arr.filter((item) => item.pkOrderid == id);
           }else if(res.data.code == 8004){
             this.isYue = true
             this.isPay = true
@@ -279,7 +256,7 @@ export default {
           content: this.value,
           pkGoodId: goodId,
           pkUserEdId: userId,
-          pkUserIngId: localStorage.getItem("userId"),
+          pkUserIngId: Vue.ls.get(USER_ID),
           type: this.rating,
         }),
         (this.result = await API.init(this.url, this.data, "post"));
@@ -287,8 +264,7 @@ export default {
         this.isComSuc = true;
         setTimeout(this.cancelComInfo,3000)
         let arr = this.noCom;
-        let arr1 = arr.filter((item) => item.pkOrderid == orderId);
-        this.noCom = arr1;
+        this.noCom = arr.filter((item) => item.pkOrderid == orderId);
       }
     },
     cancelDelInfo() {
@@ -306,8 +282,7 @@ export default {
             this.isDel = true;
             setTimeout(this.cancelDelInfo,3000)
             let arr = this.allOrder;
-            let arr1 = arr.filter((item) => item.pkOrderid == id);
-            this.allOrder = arr1;
+            this.allOrder = arr.filter((item) => item.pkOrderid == id);
           }
         });
     },
@@ -321,6 +296,7 @@ export default {
   },
   components: {
     NavBar,
+    Alert
   },
 };
 </script>
