@@ -526,3 +526,8 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2021-05-27 17:52:58.488  INFO 3304 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
 2021-05-27 17:52:58.549  INFO 3304 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
 2021-05-27 17:52:58.555  INFO 3304 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 26.482 seconds (JVM running for 30.324)
+2021-05-27 18:14:42.968  INFO 3304 --- [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-05-27 18:14:42.969  INFO 3304 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-05-27 18:14:42.978  INFO 3304 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2021-05-27 18:14:43.069  INFO 3304 --- [http-nio-8082-exec-3] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=, verifyCode=)**1**
+2021-05-27 18:14:49.295  INFO 3304 --- [http-nio-8082-exec-3] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,null**1**
