@@ -1,15 +1,11 @@
 <template>
   <v-app>
     <nav-bar></nav-bar>
-    <v-alert
-      dense
-      dismissible
-      type="success"
-      class="infom"
-      @click="cancelSuc()"
+    <alert
       v-show="publishSuc"
-      >商品发布成功</v-alert
-    >
+      @click="cancelSuc()"
+      alertdata="商品发布成功"
+    ></alert>
     <div class="publish index index-border">
       <v-form ref="form" v-model="valid" lazy-validation>
         <v-text-field
@@ -81,13 +77,25 @@
           </v-chip-group>
         </div>
         <div class="mt-100"></div>
-        <v-btn
+        <!-- <v-btn
           :disabled="valid"
           @click="publish()"
           color="teal"
           class="publish-btn"
           >提交</v-btn
-        >
+        > -->
+        <div style="margin-left: 45%">
+          <v-btn
+            color="teal"
+            width="130"
+            height="45"
+            style="color: white"
+            class="compon-btn btn-none border-no"
+            :disabled="valid"
+            @click="publish()"
+            >提交</v-btn
+          >
+        </div>
       </v-form>
     </div>
   </v-app>
@@ -95,7 +103,10 @@
 
 <script>
 import NavBar from "../../components/NavBar";
-const API = require("../../utils/request.js");
+import Vue from "vue";
+import Alert from "@/components/Alert";
+import { goodsAddGoods } from "@/utils/request.js";
+import { USER_ID } from "@/store/mutation-types";
 export default {
   data: () => ({
     showDel: false,
@@ -150,7 +161,9 @@ export default {
     goodsValidate: {
       handler(val, oldVal) {
         console.log("currentForm", val, oldVal);
-        this.valid = false;
+        if (val.goodName != "") {
+          this.valid = false;
+        }
       },
       deep: true,
     },
@@ -188,8 +201,10 @@ export default {
       var file = event.target.files[0]; //获取文件流
       var _this = this;
       client.multipartUpload(imgUrl, file).then(function (result) {
-        _this.goodsValidate.image.push(result.res.requestUrls[0]);
-        console.log(_this.goodsValidate.image);
+        let index = result.res.requestUrls[0].indexOf("?");
+        let url = result.res.requestUrls[0].slice(0, index);
+        _this.goodsValidate.image.push(url);
+        console.log(result.res);
         console.log(_this.goodsValidate.image.length);
         if (_this.goodsValidate.image.length == 1) {
           _this.maxLength = 320;
@@ -200,27 +215,34 @@ export default {
         }
       });
     },
-    async publish() {
-      this.url = this.GLOBAL.contentUrl + "/goods/addGoods";
-      this.data = {
+    publish() {
+      let data = {
         count: this.goodsValidate.count,
         description: this.goodsValidate.description,
         goodName: this.goodsValidate.goodName,
         image: this.goodsValidate.image.toString(),
-        pkUserIngId: localStorage.getItem("userId"),
+        pkUserIngId: Vue.ls.get(USER_ID),
         price: this.goodsValidate.price,
         type: this.goodsValidate.type,
       };
-      await API.init(this.url, this.data, "post");
-      this.publishSuc = true;
+
+      goodsAddGoods( data ).then((res) => {
+        this.publishSuc = true;
+        setTimeout(this.cancelSuc(), 5000);
+      });
+      // await API.init(this.url, this.data, "post");
     },
     cancelSuc() {
       this.publishSuc = false;
+      setTimeout(this.goIndex(), 5000);
+    },
+    goIndex() {
       this.$router.push("/");
     },
   },
   components: {
     NavBar,
+    Alert,
   },
 };
 </script>
@@ -257,11 +279,11 @@ export default {
   width: 80%;
   left: 8%;
 }
-.publish-btn {
+/* .publish-btn {
   width: 150px;
   margin-left: 45%;
   border-radius: 30px;
-}
+} */
 .del-icon {
   position: absolute;
   z-index: 999;

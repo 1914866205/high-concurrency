@@ -1,5 +1,5 @@
 <template>
-  <v-card class="navBarWrap" style="overflow-x: hidden;" flat height="64px" tile>
+  <v-card class="navBarWrap" style="overflow-x: hidden" flat height="64px" tile>
     <link
       href="https://fonts.googleapis.com/css?family=Abril+Fatface|Comfortaa|Yellowtail"
       rel="stylesheet"
@@ -13,7 +13,6 @@
       rel="stylesheet"
     />
     <v-toolbar>
-      
       <a href="/" class="nav-title">Haibing shops</a>
       <v-menu offset-y>
         <template v-slot:activator="{ attrs, on }">
@@ -120,28 +119,20 @@
       >
         未登录，请先登录
       </div>
-      <!-- </template> -->
-      <!-- <v-list v-if="goods !== null">
-          <v-list-item v-for="item in items" :key="item" link>
-            <v-list-item-title
-              @click="goUser(item)"
-              v-text="item"
-            ></v-list-item-title>
-          </v-list-item>
-        </v-list> -->
-      <!-- </v-menu> -->
     </v-toolbar>
-
-    <!-- <v-overlay :z-index="zIndex" :value="overlay">
-      <v-btn class="white--text" color="teal" @click="overlay = false">
-        Hide Overlay
-      </v-btn>
-    </v-overlay> -->
   </v-card>
 </template>
    
 <script>
-const API = require("../utils/request.js");
+import { goodsSearch } from "@/utils/request.js";
+import Vue from "vue";
+import {
+  ACCESS_TOKEN,
+  USER_PHONE,
+  USER_INFO,
+  USER_ID,
+  USER_AVATAR,
+} from "@/store/mutation-types";
 export default {
   data() {
     return {
@@ -157,11 +148,11 @@ export default {
   computed: {},
   mounted() {
     // 事件监听滚动条
-    window.addEventListener("scroll", this.watchScroll);
+    // window.addEventListener("scroll", this.watchScroll);
   },
   created: function () {
-    if (localStorage.getItem("avatar") != null) {
-      this.avatar = localStorage.getItem("avatar");
+    if (Vue.ls.get(USER_AVATAR) != null) {
+      this.avatar = Vue.ls.get(USER_AVATAR);
       this.isLogin = true;
     } else {
       this.isLogin = false;
@@ -180,25 +171,15 @@ export default {
       this.$router.push("/put");
     },
     logout() {
-      localStorage.clear("user");
-      localStorage.clear("userId");
-      localStorage.clear("avatar");
+      Vue.ls.remove(ACCESS_TOKEN);
+      Vue.ls.remove(USER_PHONE);
+      Vue.ls.remove(USER_INFO);
+      Vue.ls.remove(USER_ID);
+      Vue.ls.remove(USER_AVATAR);
       this.$router.push("/login");
     },
     goPublish() {
       this.$router.push("/publish");
-    },
-    watchScroll() {
-      // var scrollTop =
-      //   window.pageYOffset ||
-      //   document.documentElement.scrollTop ||
-      //   document.body.scrollTop;
-      // //  当滚动超过 50 时，实现吸顶效果
-      // if (scrollTop > 70) {
-      //   this.navBarFixed = true;
-      // } else {
-      //   this.navBarFixed = false;
-      // }
     },
     goLogin() {
       this.$router.push("/login");
@@ -206,15 +187,15 @@ export default {
     goGoods(id) {
       this.$router.push({ path: "/goods", query: { goodsId: id } });
     },
-    async search() {
-      (this.url = this.GLOBAL.contentUrl + "/goods/search"),
-        (this.data = {
-          content: this.content,
-          currentPage: 1,
-          pageSize: 10,
-        }),
-        (this.result = await API.init(this.url, this.data, "post"));
-      this.goods = this.result.data.Goods.content;
+    search() {
+      let data = {
+        content: this.content,
+        currentPage: 1,
+        pageSize: 10,
+      };
+      goodsSearch(data).then((res) => {
+        this.goods = res.data.Goods.content;
+      });
     },
   },
 };

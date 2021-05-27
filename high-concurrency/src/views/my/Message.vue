@@ -1,22 +1,18 @@
 <template>
   <v-app>
     <nav-bar></nav-bar>
-    <v-alert
-      dense
-      dismissible
-      type="success"
-      v-if="isSuc"
-      class="infom"
-      @click="cancelSubmit()"
-      >修改成功</v-alert
-    >
+    <alert v-if="isSuc" @click="cancelSubmit()" alertdata="修改成功"></alert>
     <div class="message index index-border">
       <div class="fengmian"></div>
       <div class="biankuang">
         <v-hover>
           <template v-slot:default="{ hover }">
             <v-card class="avatar" max-width="200" max-height="200">
-              <img style="height: 200px; width: 200px;" class="br-1" :src="user.avatar" />
+              <img
+                style="height: 200px; width: 200px"
+                class="br-1"
+                :src="user.avatar"
+              />
               <v-fade-transition>
                 <v-overlay v-if="hover" absolute color="#f5f5f5">
                   <v-btn @click="avatarClick()"
@@ -37,7 +33,14 @@
         </v-hover>
 
         <div class="btn-col">
-          <v-btn :disabled="!isUpdate" @click="submit()" class="message-btn"
+          <v-btn
+            :disabled="!isUpdate"
+            color="teal"
+            width="130"
+            height="45"
+            style="color: white"
+            class="compon-btn btn-none border-no"
+            @click="submit()"
             >提交</v-btn
           >
         </div>
@@ -163,7 +166,11 @@
             <span class="label">
               <p>
                 <span>{{ user.money }}</span>
-                <span class="button-hand" style="color: #26a69a; margin-left: 20px">充值</span>
+                <span
+                  class="button-hand"
+                  style="color: #26a69a; margin-left: 20px"
+                  >充值</span
+                >
               </p>
             </span>
           </span>
@@ -196,7 +203,8 @@
 
 <script>
 import NavBar from "../../components/NavBar";
-const API = require("../../utils/request.js");
+import Alert from "@/components/Alert";
+import Vue from "vue";
 const clickoutside = {
   // 初始化指令
   bind(el, binding) {
@@ -222,6 +230,7 @@ const clickoutside = {
     delete el.__vueClickOutside__;
   },
 };
+import { USER_INFO, USER_ID, USER_AVATAR } from "@/store/mutation-types";
 export default {
   name: "HomePage",
   data() {
@@ -248,7 +257,6 @@ export default {
         phone: "",
         code: "",
       },
-      
     };
   },
   watch: {
@@ -263,6 +271,7 @@ export default {
   },
   components: {
     NavBar,
+    Alert,
   },
   created: function () {
     this.refreshUser();
@@ -271,16 +280,14 @@ export default {
   directives: { clickoutside },
   methods: {
     refreshUser() {
-      const id = localStorage.getItem("userId");
-      console.log("1111111");
+      const id = Vue.ls.get(USER_ID);
       this.axios
         .get(this.GLOBAL.baseUrl + "/user/getInfoById/" + id)
         .then((res) => {
           console.log(res);
           this.user = JSON.parse(res.data.data);
           this.validate.sex = this.user.sex;
-          console.log(this.validate.sex);
-          localStorage.setItem("user", this.user);
+          Vue.ls.set(USER_INFO, this.user);
         });
     },
     updateUser() {
@@ -301,7 +308,7 @@ export default {
     avatarClick() {
       this.$refs.file.click();
     },
-    async submit() {
+    submit() {
       const _this = this;
       let users = _this.user;
       if (_this.validate.sex === "男") {
@@ -335,15 +342,12 @@ export default {
       } else {
         var address = _this.validate.address;
       }
-
-      _this.url = _this.GLOBAL.baseUrl + "/user/edit";
-
-      _this.data = {
+      let data = {
         address: address,
         avatar: avatar,
         code: code,
         email: users.email,
-        money:0,
+        money: 0,
         nickname: users.nickname,
         password: pwd,
         phone: users.phone,
@@ -351,12 +355,13 @@ export default {
         sex: sex,
         username: users.username,
       };
-      await API.init(_this.url, _this.data, "post");
-      this.isSuc = true;
-      this.refreshUser();
-      if ((avatar = _this.validate.avatar)) {
-        localStorage.setItem("avatar", avatar);
-      }
+      this.axios.post(_this.GLOBAL.baseUrl + "/user/edit", data).then((res) => {
+        _this.isSuc = true;
+        _this.refreshUser();
+        if ((avatar = _this.validate.avatar)) {
+          Vue.ls.set(USER_AVATAR, avatar, 7 * 24 * 60 * 60 * 1000);
+        }
+      });
     },
     cancelSubmit() {
       this.isSuc = false;
@@ -424,7 +429,9 @@ export default {
       var file = event.target.files[0]; //获取文件流
       var _this = this;
       client.multipartUpload(imgUrl, file).then(function (result) {
-        _this.validate.avatar = result.res.requestUrls[0];
+        let index = result.res.requestUrls[0].indexOf("?");
+        let url = result.res.requestUrls[0].slice(0, index);
+        _this.validate.avatar = url;
         _this.updateAdminInfo(_this.validate.avatar);
         console.log(_this.validate.avatar);
       });
@@ -463,16 +470,16 @@ export default {
 .biankuang {
   display: flex;
 }
-.message-btn {
-  width: 80px;
-  height: 40px;
-  background-color: #26a69a;
-  color: #26a69a;
-  font-size: 1.3rem;
-  border-radius: 10px;
-  border: 0; // 去除未选中状态边框
-  outline: none; // 去除选中状态边框
-}
+// .message-btn {
+//   width: 80px;
+//   height: 40px;
+//   background-color: #26a69a;
+//   color: #26a69a;
+//   font-size: 1.3rem;
+//   border-radius: 10px;
+//   border: 0; // 去除未选中状态边框
+//   outline: none; // 去除选中状态边框
+// }
 .btn-col {
   position: absolute;
   right: 15%;

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomePage from '../views/index/HomePage.vue'
-import Login from '../views/login/Login1.vue'
+import Login from '../views/login/Login.vue'
 
 
 Vue.use(VueRouter)
@@ -35,7 +35,7 @@ const routes = [
   {
     path: '/put',
     name: 'Put',
-    component: () => import('../views/my/Put1.vue')
+    component: () => import('../views/my/Put.vue')
   },
   {
     path: '/router',

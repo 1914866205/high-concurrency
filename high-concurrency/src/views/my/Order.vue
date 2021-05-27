@@ -1,34 +1,17 @@
 <template>
   <v-app>
     <nav-bar></nav-bar>
-    <v-alert
-      dense
-      dismissible
-      type="success"
-      class="infom"
-      @click="cancelInfo()"
+    <alert
       v-if="isPay"
-      >{{isYue ? '余额不足' : '支付成功'}}</v-alert
-    >
-    <v-alert
-      dense
-      dismissible
-      type="success"
-      class="infom"
-      @click="cancelComInfo()"
+      @click="cancelInfo()"
+      :alertdata="isYue ? '余额不足' : '支付成功'"
+    ></alert>
+    <alert
       v-if="isComSuc"
-      >评价成功</v-alert
-    >
-    <v-alert
-      dense
-      dismissible
-      type="success"
-      class="infom"
-      @click="cancelDelInfo()"
-      v-if="isDel"
-      >删除成功</v-alert
-    >
-
+      @click="cancelComInfo()"
+      alertdata="评价成功"
+    ></alert>
+    <alert v-if="isDel" @click="cancelDelInfo()" alertdata="删除成功"></alert>
     <div class="order">
       <v-card>
         <v-tabs
@@ -142,11 +125,13 @@
                   <button @click="del(item.pkOrderId)" class="pay-btn">
                     删除订单
                   </button>
-
                 </div>
               </div>
 
-              <div class="order-one no-order" v-if="isPush && inx == 2 ||allOrder.length == 0">
+              <div
+                class="order-one no-order"
+                v-if="(isPush && inx == 2) || allOrder.length == 0"
+              >
                 <span class="order-text"
                   >您还没有相关的订单 可以去看看有哪些想买的</span
                 >
@@ -165,7 +150,11 @@
 <script>
 import NavBar from "../../components/NavBar";
 const time = require("../../utils/time.js");
+import Alert from "@/components/Alert";
 const API = require("../../utils/request.js");
+import { commentAddComment } from "@/utils/request.js";
+import Vue from "vue";
+import { USER_ID } from "@/store/mutation-types";
 export default {
   name: "HomePage",
   data() {
@@ -191,7 +180,7 @@ export default {
   },
   created: function () {
     let params = new URLSearchParams();
-    let id = localStorage.getItem("userId");
+    let id = Vue.ls.get(USER_ID);
     params.append("pkUserId", id);
     this.axios
       .post(this.GLOBAL.contentUrl + "/order/findUserAllOrder", params)
@@ -220,7 +209,7 @@ export default {
 
   methods: {
     dlDialog() {
-      this.delDialog == true
+      this.delDialog == true;
     },
     noPushTab() {
       this.order = this.noOrder;
@@ -244,21 +233,20 @@ export default {
     pay(id) {
       let params = new URLSearchParams();
       params.append("orderId", id);
-      console.log(id)
+      console.log(id);
       this.axios
         .post(this.GLOBAL.contentUrl + "/order/payOrder", params)
         .then((res) => {
           if (res.data.code == 1) {
-           console.log(res)
+            console.log(res);
             this.isPay = true;
-            setTimeout(this.cancelInfo,3000)
+            setTimeout(this.cancelInfo, 3000);
             let arr = this.noOrder;
-            let arr1 = arr.filter((item) => item.pkOrderid == id);
-            this.noOrder = arr1;
-          }else if(res.data.code == 8004){
-            this.isYue = true
-            this.isPay = true
-             setTimeout(this.cancelInfo,3000)
+            this.noOrder = arr.filter((item) => item.pkOrderid == id);
+          } else if (res.data.code == 8004) {
+            this.isYue = true;
+            this.isPay = true;
+            setTimeout(this.cancelInfo, 3000);
           }
         });
     },
@@ -270,26 +258,25 @@ export default {
         this.noComTab();
       }
     },
-    async putComment(orderId, goodId, userId) {
+    putComment(orderId, goodId, userId) {
       if (this.value == "") {
         this.value == "该用户已发表默认评价";
       }
-      (this.url = this.GLOBAL.contentUrl + "/comment/addComment"),
-        (this.data = {
-          content: this.value,
-          pkGoodId: goodId,
-          pkUserEdId: userId,
-          pkUserIngId: localStorage.getItem("userId"),
-          type: this.rating,
-        }),
-        (this.result = await API.init(this.url, this.data, "post"));
-      if (this.result.code === 1) {
-        this.isComSuc = true;
-        setTimeout(this.cancelComInfo,3000)
-        let arr = this.noCom;
-        let arr1 = arr.filter((item) => item.pkOrderid == orderId);
-        this.noCom = arr1;
-      }
+      let data = {
+        content: this.value,
+        pkGoodId: goodId,
+        pkUserEdId: userId,
+        pkUserIngId: Vue.ls.get(USER_ID),
+        type: this.rating,
+      };
+      commentAddComment(data).then((res) => {
+        if (res.code === 1) {
+          this.isComSuc = true;
+          setTimeout(this.cancelComInfo, 3000);
+          let arr = this.noCom;
+          this.noCom = arr.filter((item) => item.pkOrderid == orderId);
+        }
+      });
     },
     cancelDelInfo() {
       this.isDel = false;
@@ -304,14 +291,13 @@ export default {
           console.log(res);
           if (res.data.code == 1) {
             this.isDel = true;
-            setTimeout(this.cancelDelInfo,3000)
+            setTimeout(this.cancelDelInfo, 3000);
             let arr = this.allOrder;
-            let arr1 = arr.filter((item) => item.pkOrderid == id);
-            this.allOrder = arr1;
+            this.allOrder = arr.filter((item) => item.pkOrderid == id);
           }
         });
     },
-    goGoods(goodId){
+    goGoods(goodId) {
       this.$router.push({ path: "/goods", query: { goodsId: goodId } });
     },
     allTab() {
@@ -321,6 +307,7 @@ export default {
   },
   components: {
     NavBar,
+    Alert,
   },
 };
 </script>

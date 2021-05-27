@@ -1,0 +1,183 @@
+2021-05-21 11:50:04.387  INFO 16320 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-05-21 11:50:05.083  INFO 16320 --- [main] c.soft.usercenter.UserCenterApplication  : No active profile set, falling back to default profiles: default
+2021-05-21 11:50:06.439  INFO 16320 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-05-21 11:50:06.439  INFO 16320 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2021-05-21 11:50:06.533  INFO 16320 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 85ms. Found 5 JPA repository interfaces.
+2021-05-21 11:50:06.548  INFO 16320 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-05-21 11:50:06.548  INFO 16320 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-05-21 11:50:06.564  INFO 16320 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbCommentRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-05-21 11:50:06.564  INFO 16320 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbGoodRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-05-21 11:50:06.564  INFO 16320 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbOrderRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-05-21 11:50:06.564  INFO 16320 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbStrategyRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-05-21 11:50:06.564  INFO 16320 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbUserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-05-21 11:50:06.564  INFO 16320 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10ms. Found 0 Redis repository interfaces.
+2021-05-21 11:50:06.767  INFO 16320 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=9913dd3c-5bfb-3d0c-b1ed-81b6501ad54b
+2021-05-21 11:50:06.877  INFO 16320 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-05-21 11:50:07.121  INFO 16320 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2021-05-21 11:50:07.124  INFO 16320 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-05-21 11:50:07.124  INFO 16320 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-05-21 11:50:07.344  INFO 16320 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-05-21 11:50:07.344  INFO 16320 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2245 ms
+2021-05-21 11:50:07.539  INFO 16320 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-21 11:50:07.617  INFO 16320 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-05-21 11:50:07.710  INFO 16320 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2021-05-21 11:50:07.820  INFO 16320 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-05-21 11:50:07.900  INFO 16320 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-05-21 11:50:08.291  INFO 16320 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-05-21 11:50:08.322  INFO 16320 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-05-21 11:50:09.142  INFO 16320 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-05-21 11:50:09.163  INFO 16320 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-05-21 11:50:09.858  WARN 16320 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-05-21 11:50:10.048  INFO 16320 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-05-21 11:50:10.095  WARN 16320 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-05-21 11:50:10.095  INFO 16320 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-05-21 11:50:10.095  WARN 16320 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-05-21 11:50:10.095  INFO 16320 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-05-21 11:50:10.832  INFO 16320 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'Nacso-Watch-Task-Scheduler'
+2021-05-21 11:50:12.240  INFO 16320 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2021-05-21 11:50:12.363  INFO 16320 --- [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP user-center 10.40.224.209:8082 register finished
+2021-05-21 11:50:12.781  INFO 16320 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-05-21 11:50:12.810  INFO 16320 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-05-21 11:50:12.860  INFO 16320 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-05-21 11:50:13.018  INFO 16320 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2021-05-21 11:50:13.086  INFO 16320 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2021-05-21 11:50:13.092  INFO 16320 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 9.858 seconds (JVM running for 11.414)
+2021-05-21 12:04:01.161  INFO 16320 --- [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-05-21 12:04:01.161  INFO 16320 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-05-21 12:04:01.169  INFO 16320 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2021-05-21 12:04:01.259  INFO 16320 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问login接口
+2021-05-21 12:04:01.259  INFO 16320 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-05-21 12:04:01.260  INFO 16320 --- [http-nio-8082-exec-4] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-05-21 12:04:01.573  INFO 16320 --- [http-nio-8082-exec-4] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-05-21 12:04:01.673  INFO 16320 --- [http-nio-8082-exec-4] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjI4NjU4NDEsInVzZXJuYW1lIjoibnR0In0.CMo5rwHtfoUlt1TtRoJUwlhpeBPO58mIcsOGcrdHdS4
+2021-05-21 12:48:32.079  INFO 16320 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 12:48:32.084  INFO 16320 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-05-21 12:48:32.985  INFO 16320 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 12:48:32.985  INFO 16320 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-05-21 12:48:37.196  WARN 16320 --- [http-nio-8082-exec-8] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@24e1df (Communications link failure
+
+The last packet successfully received from the server was 1,725,570 milliseconds ago.  The last packet sent successfully to the server was 5,029 milliseconds ago.). Possibly consider using a shorter maxLifetime value.
+2021-05-21 13:28:21.960  INFO 16320 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:28:21.960  INFO 16320 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:28:21.961  INFO 16320 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:28:21.961  INFO 16320 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:28:22.459  INFO 16320 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:28:22.460  INFO 16320 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:29:24.910  INFO 16320 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:29:24.910  INFO 16320 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:29:24.914  INFO 16320 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:29:24.914  INFO 16320 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:29:25.073  INFO 16320 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:29:25.074  INFO 16320 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:29:26.297  INFO 16320 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:29:26.298  INFO 16320 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:29:26.308  INFO 16320 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:29:26.308  INFO 16320 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:29:26.513  INFO 16320 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:29:26.513  INFO 16320 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:29:27.790  INFO 16320 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:29:27.790  INFO 16320 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:29:27.800  INFO 16320 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:29:27.800  INFO 16320 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:29:27.930  INFO 16320 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:29:27.931  INFO 16320 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:29:38.302  INFO 16320 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:29:38.303  INFO 16320 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:29:38.679  INFO 16320 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:29:38.680  INFO 16320 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:29:38.699  INFO 16320 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:29:38.699  INFO 16320 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:46:34.287  INFO 16320 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:46:34.287  INFO 16320 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:46:34.292  INFO 16320 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:46:34.293  INFO 16320 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:46:34.553  INFO 16320 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:46:34.554  INFO 16320 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:47:52.820  INFO 16320 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:47:52.820  INFO 16320 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:47:52.830  INFO 16320 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:47:52.831  INFO 16320 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:47:53.075  INFO 16320 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:47:53.075  INFO 16320 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:48:05.995  INFO 16320 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:48:05.995  INFO 16320 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:48:06.054  INFO 16320 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:48:06.055  INFO 16320 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:48:06.132  INFO 16320 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:48:06.133  INFO 16320 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:48:07.726  INFO 16320 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:48:07.726  INFO 16320 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:48:07.744  INFO 16320 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:48:07.745  INFO 16320 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:48:07.881  INFO 16320 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:48:07.881  INFO 16320 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:48:12.018  INFO 16320 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:48:12.018  INFO 16320 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:48:12.031  INFO 16320 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:48:12.032  INFO 16320 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:48:12.170  INFO 16320 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:48:12.171  INFO 16320 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:01.898  INFO 16320 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:01.898  INFO 16320 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:01.915  INFO 16320 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:01.915  INFO 16320 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:02.156  INFO 16320 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:02.156  INFO 16320 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:09.276  INFO 16320 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:09.276  INFO 16320 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:09.305  INFO 16320 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:09.306  INFO 16320 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:09.406  INFO 16320 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:09.406  INFO 16320 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:10.543  INFO 16320 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:10.544  INFO 16320 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:10.563  INFO 16320 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:10.563  INFO 16320 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:10.678  INFO 16320 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:10.678  INFO 16320 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:12.547  INFO 16320 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:12.547  INFO 16320 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:12.555  INFO 16320 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:12.556  INFO 16320 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:12.680  INFO 16320 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:12.681  INFO 16320 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:13.884  INFO 16320 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:13.884  INFO 16320 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:13.893  INFO 16320 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:13.893  INFO 16320 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:14.016  INFO 16320 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:14.016  INFO 16320 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:21.650  INFO 16320 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:21.651  INFO 16320 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:21.684  INFO 16320 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:21.684  INFO 16320 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:21.810  INFO 16320 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:21.810  INFO 16320 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:33.175  INFO 16320 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:33.175  INFO 16320 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:33.188  INFO 16320 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:33.188  INFO 16320 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:33.320  INFO 16320 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:33.321  INFO 16320 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:41.809  INFO 16320 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:41.809  INFO 16320 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:41.877  INFO 16320 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:41.877  INFO 16320 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:49:41.976  INFO 16320 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:49:41.976  INFO 16320 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:54:07.166  INFO 16320 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:54:07.166  INFO 16320 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:54:27.115  INFO 16320 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:54:27.115  INFO 16320 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:54:27.116  INFO 16320 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:54:27.116  INFO 16320 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-05-21 13:54:27.380  INFO 16320 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 13:54:27.380  INFO 16320 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-05-21 16:28:07.082  INFO 16320 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 16:28:07.085  INFO 16320 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-05-21 16:39:01.978  INFO 16320 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 16:39:01.978  INFO 16320 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-05-21 16:40:06.281  INFO 16320 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 16:40:06.282  INFO 16320 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-05-21 16:40:12.240  INFO 16320 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-21 16:40:12.241  INFO 16320 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1

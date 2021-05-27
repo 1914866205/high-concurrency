@@ -1,44 +1,11 @@
 <template>
   <v-app class="goods">
     <nav-bar></nav-bar>
-    <v-alert
-      dense
-      dismissible
-      type="info"
-      v-if="isCount"
-      class="infom"
-      @click="cancelSubmit()"
-      >购买数量必须大于0</v-alert
-    >
-    <v-alert
-      dense
-      dismissible
-      type="info"
-      v-if="isDel"
-      class="infom"
-      style="top: 50%"
-      @click="cancelDelInfo()"
-      >删除成功</v-alert
-    >
-
-    <v-alert
-      dense
-      dismissible
-      type="info"
+    <alert
       v-if="isXiangou"
-      class="infom"
       @click="cancelXiangou()"
-      >{{ isMiaosha ? "秒杀订单限购一个" : "不能购买更多了" }}</v-alert
-    >
-    <v-alert
-      @click="cancelSubmitInfo()"
-      dense
-      dismissible
-      type="success"
-      class="infom"
-      v-if="isSubmit"
-      >{{ isMiaosha ? "成功参与秒杀" : "下单成功" }}</v-alert
-    >
+      :alertdata="isMiaosha ? '秒杀订单限购一个' : '不能购买更多了'"
+    ></alert>
     <v-overlay :z-index="zIndex" :value="overlay">
       <div class="forms">
         <h2>请确认订单</h2>
@@ -82,26 +49,22 @@
           <span style="font-size: 1.5rem">{{ goodsInfo.goodName }}</span>
           <div style="display: flex; margin-left: -20px">
             <div class="border-left">
-              <div class="font" style="margin: 5px">类型</div>
-              <div class="font-s" style="margin: 5px">
+              <div class="font m-5">类型</div>
+              <div class="font-s m-5">
                 {{ goodsInfo.type }}
               </div>
             </div>
             <div class="border-left">
-              <div class="font" style="margin: 5px">秒杀商品</div>
-              <div class="font-s" style="margin: 5px">
-                秒杀成功后可在订单中查看
-              </div>
+              <div class="font m-5">秒杀商品</div>
+              <div class="font-s m-5">秒杀成功后可在订单中查看</div>
             </div>
             <div class="border-left">
-              <div class="font" style="margin: 5px">邮送</div>
-              <div class="font-s" style="margin: 5px">免费</div>
+              <div class="font m-5">邮送</div>
+              <div class="font-s m-5">免费</div>
             </div>
             <div class="border-left">
-              <div class="font" style="margin: 5px">其他商品</div>
-              <div class="font-s" style="margin: 5px">
-                更多商品请点击卖家主页
-              </div>
+              <div class="font m-5">其他商品</div>
+              <div class="font-s m-5">更多商品请点击卖家主页</div>
             </div>
           </div>
         </div>
@@ -303,8 +266,15 @@
 </template>
 
 <script>
-import NavBar from "../../components/NavBar";
-const API = require("../../utils/request.js");
+import NavBar from "@/components/NavBar";
+import Alert from "@/components/Alert";
+import {
+  orderFindSecKillUserOrder,
+  orderAddOrder,
+  orderSpikeOrder,
+} from "@/utils/request.js";
+import Vue from "vue";
+import { ACCESS_TOKEN, USER_PHONE, USER_ID } from "@/store/mutation-types";
 export default {
   data() {
     return {
@@ -319,25 +289,23 @@ export default {
       overlay: false,
       zIndex: 0,
       valid: true,
-      phone: localStorage.getItem("phone"),
+      phone: Vue.ls.get(USER_PHONE),
       phoneRules: [
         (v) => !!v || "手机号必须填写",
         (v) => (v && v.length <= 11) || "手机号不能小于十一位",
         (v) => /^1[34578]\d{9}$/.test(v) || "手机号填写不规范",
       ],
       checkbox: false,
-      isSubmit: false,
       day: "",
       isMiaosha: false,
       miaosha: [],
       isXiangou: false,
-      isDel: false,
     };
   },
   created: function () {
     //根据是否有秒杀时间来判定是否是秒杀订单
     this.day = this.$route.query.day;
-    console.log(this.day)
+    console.log(this.day);
     // if (this.day != null) {
     let params = new URLSearchParams();
     params.append("goodId", this.$route.query.goodsId);
@@ -364,7 +332,9 @@ export default {
   },
   methods: {
     daojishi(time) {
-      if (time >= 0) {
+      if (this.isShopping) {
+        return s + "秒";
+      } else if (time >= 0) {
         let d = Math.floor(time / 1000 / 60 / 60 / 24);
         let h = Math.floor((time / 1000 / 60 / 60) % 24);
         let m = Math.floor((time / 1000 / 60) % 60);
@@ -372,9 +342,8 @@ export default {
         return "还有" + d + "天" + h + "时" + m + "分" + s + "秒";
       }
     },
-    async getPreOrder() {
-      this.url = this.GLOBAL.contentUrl + "/order/findSecKillUserOrder";
-      this.data = {
+    getPreOrder() {
+      let data = {
         goodId: this.$route.query.goodsId,
         strategies: [
           {
@@ -390,15 +359,16 @@ export default {
         ],
         time: "2021-04-28 19:31:02",
       };
-      this.result = await API.init(this.url, this.data, "post");
-      for (let i = 0; i < this.result.data.length; i++) {
-        let phone = "" + this.result.data[i].phoneNumber;
-        this.result.data[i].phoneNumber = phone.replace(
-          phone.substring(3, 7),
-          "****"
-        );
-      }
-      this.preOrder = this.result.data;
+      orderFindSecKillUserOrder(data).then((res) => {
+        for (let i = 0; i < res.data.length; i++) {
+          let phone = "" + res.data[i].phoneNumber;
+          res.data[i].phoneNumber = phone.replace(
+            phone.substring(3, 7),
+            "****"
+          );
+        }
+        this.preOrder = res.data;
+      });
     },
     beginTimer() {
       //这个计时器是每秒减去数组中指定字段的时间
@@ -413,20 +383,21 @@ export default {
       this.$refs.form.reset();
     },
     goSubmit() {
+      console.log(Vue.ls.get(ACCESS_TOKEN));
       if (this.count == 0) {
-        this.isCount = true;
-        setTimeout(this.cancelSubmit, 3000);
+        this.$message({
+          message: "购买数量必须大于0",
+          type: "warning",
+        });
+      } else if (Vue.ls.get(ACCESS_TOKEN) == null) {
+        this.$router.push("/login");
       } else {
         this.overlay = true;
       }
     },
-    cancelSubmit() {
-      this.isCount = false;
-    },
     cancelXiangou() {
       this.isXiangou = false;
     },
-
     cancel() {
       this.overlay = false;
     },
@@ -454,7 +425,10 @@ export default {
     },
     btnMinute() {
       if (this.count <= 0) {
-        console.log("该宝贝不能减少了哟~");
+        this.$message({
+          message: "该宝贝不能减少了哦",
+          type: "warning",
+        });
       } else {
         this.count -= 1;
       }
@@ -466,16 +440,16 @@ export default {
       this.axios
         .post(this.GLOBAL.contentUrl + "/comment/delComment", params)
         .then((res) => {
-          this.isDel = true;
-          setTimeout(this.cancelDelInfo, 3000);
+          this.$message({
+          message: "删除成功",
+          type: "success",
+        });
+        this.getCommont();
         });
     },
-    cancelDelInfo() {
-      this.isDel = false;
-      this.getCommont();
-    },
-    async sumbitGoods() {
+    sumbitGoods() {
       //根据是否是秒杀订单来请求不同的接口
+<<<<<<< HEAD
       if (this.isMiaosha) {
         this.url = this.GLOBAL.contentUrl + "/order/spikeOrder";
       } else {
@@ -483,18 +457,39 @@ export default {
       }
       console.log(this.goods)
       this.data = {
+=======
+      let data = {
+>>>>>>> 4c4f1e17fa461b9607f3123fb8dba47d3c588ac3
         number: this.count,
         phone: this.phone,
         pkGoodId: this.goodsInfo.pkGoodId,
-        userId: localStorage.getItem("userId"),
+        userId: Vue.ls.get(USER_ID),
       };
-      await API.init(this.url, this.data, "post");
-      this.overlay = false;
-      this.isSubmit = true;
-      setTimeout(this.cancelSubmitInfo, 3000);
-    },
-    cancelSubmitInfo() {
-      this.isSubmit = false;
+      if (this.isMiaosha) {
+        orderSpikeOrder(data).then((res) => {
+          console.log(res);
+          this.overlay = false;
+          this.$message({
+            message: "成功参与秒杀",
+            type: "success",
+          });
+          if (this.isMiaosha) {
+            this.miaosha.day = 5000;
+          }
+        });
+      } else {
+        orderAddOrder(data).then((res) => {
+          console.log(res);
+          this.overlay = false;
+          this.$message({
+            message: "购买成功，可在我的订单中查看",
+            type: "success",
+          });
+          if (this.isMiaosha) {
+            this.miaosha.day = 5000;
+          }
+        });
+      }
     },
     getIndex() {
       let params = new URLSearchParams();
@@ -529,9 +524,7 @@ export default {
         .then((res) => {
           this.comments = res.data.data;
           for (let i = 0; i < this.comments.length; i++) {
-            if (
-              this.comments[i].pkUserIngId == localStorage.getItem("userId")
-            ) {
+            if (this.comments[i].pkUserIngId == Vue.ls.get(USER_ID)) {
               this.comments[i].createdTime = true;
             }
           }
@@ -540,6 +533,7 @@ export default {
   },
   components: {
     NavBar,
+    Alert,
   },
 };
 </script>
