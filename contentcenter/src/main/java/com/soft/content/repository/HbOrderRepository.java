@@ -2,6 +2,8 @@ package com.soft.content.repository;
 
 
 import com.soft.content.model.entity.HbOrder;
+import org.hibernate.annotations.SQLInsert;
+import org.hibernate.annotations.SQLUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

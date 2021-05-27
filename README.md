@@ -112,3 +112,6 @@
 
 * 消息队列设置
 * 高并发场景模拟
+
+
+项目启动顺序：user seckill content mq

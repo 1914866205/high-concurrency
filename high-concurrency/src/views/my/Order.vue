@@ -8,7 +8,7 @@
       class="infom"
       @click="cancelInfo()"
       v-if="isPay"
-      >支付成功</v-alert
+      >{{isYue ? '余额不足' : '支付成功'}}</v-alert
     >
     <v-alert
       dense
@@ -62,7 +62,7 @@
                     >订单编号:{{ item.pkOrderId }}</span
                   >
                 </div>
-                <div class="col">
+                <div class="col" @click="goGoods(item.pkGoodId)">
                   <img
                     style="margin-left: 30px; width: 100px; height: 100px"
                     :src="item.goodImage"
@@ -146,7 +146,7 @@
                 </div>
               </div>
 
-              <div class="order-one no-order" v-if="isPush && inx == 2">
+              <div class="order-one no-order" v-if="isPush && inx == 2 ||allOrder.length == 0">
                 <span class="order-text"
                   >您还没有相关的订单 可以去看看有哪些想买的</span
                 >
@@ -177,6 +177,7 @@ export default {
       inx: 0,
       isPush: false,
       isPay: false,
+      isYue: false,
       noCom: [],
       isCom: false,
       isDel: false,
@@ -191,7 +192,6 @@ export default {
   created: function () {
     let params = new URLSearchParams();
     let id = localStorage.getItem("userId");
-    console.log(id);
     params.append("pkUserId", id);
     this.axios
       .post(this.GLOBAL.contentUrl + "/order/findUserAllOrder", params)
@@ -203,7 +203,6 @@ export default {
         for (let j = 0, len = arr.length; j < len; j++) {
           //时间格式化
           let time1 = Date.parse(arr[j].createTime);
-          console.log(time1);
           arr[j].createTime = time.timeFmt(time1);
           if (arr[j].status == 0) {
             noArr.push(arr[j]);
@@ -215,13 +214,12 @@ export default {
         this.order = arr;
         this.allOrder = arr;
         this.noCom = noCom;
-        console.log(this.noCom);
+        console.log(this.allOrder);
       });
   },
 
   methods: {
     dlDialog() {
-      console.log("ssdfsdfds")
       this.delDialog == true
     },
     noPushTab() {
@@ -246,14 +244,21 @@ export default {
     pay(id) {
       let params = new URLSearchParams();
       params.append("orderId", id);
+      console.log(id)
       this.axios
         .post(this.GLOBAL.contentUrl + "/order/payOrder", params)
         .then((res) => {
           if (res.data.code == 1) {
+           console.log(res)
             this.isPay = true;
+            setTimeout(this.cancelInfo,3000)
             let arr = this.noOrder;
             let arr1 = arr.filter((item) => item.pkOrderid == id);
             this.noOrder = arr1;
+          }else if(res.data.code == 8004){
+            this.isYue = true
+            this.isPay = true
+             setTimeout(this.cancelInfo,3000)
           }
         });
     },
@@ -280,6 +285,7 @@ export default {
         (this.result = await API.init(this.url, this.data, "post"));
       if (this.result.code === 1) {
         this.isComSuc = true;
+        setTimeout(this.cancelComInfo,3000)
         let arr = this.noCom;
         let arr1 = arr.filter((item) => item.pkOrderid == orderId);
         this.noCom = arr1;
@@ -298,11 +304,15 @@ export default {
           console.log(res);
           if (res.data.code == 1) {
             this.isDel = true;
+            setTimeout(this.cancelDelInfo,3000)
             let arr = this.allOrder;
             let arr1 = arr.filter((item) => item.pkOrderid == id);
             this.allOrder = arr1;
           }
         });
+    },
+    goGoods(goodId){
+      this.$router.push({ path: "/goods", query: { goodsId: goodId } });
     },
     allTab() {
       this.order = this.allOrder;
@@ -350,7 +360,7 @@ export default {
 }
 .pay {
   float: right;
-  margin-right: 60px;
+  margin-right: 30px;
   margin-top: 30px;
 }
 .pay-btn {

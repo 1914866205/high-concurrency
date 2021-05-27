@@ -4,6 +4,7 @@ package com.soft.content.repository;
 import com.soft.content.common.ResponseResult;
 import com.soft.content.model.dto.RuleDto;
 import com.soft.content.model.dto.SearchDto;
+import com.soft.content.model.dto.RuleDto;
 import com.soft.content.model.dto.SecKillAddDto;
 import com.soft.content.model.dto.SecResultDto;
 import com.soft.content.model.entity.HbStrategy;
@@ -52,7 +53,7 @@ class HbGoodRepositoryTest {
         secResultDto.setStrategies(strategies);
 
         System.out.println(secResultDto);
-//        System.out.println(hbOrderService.findSecKillUserOrder(secResultDto));
 
+        System.out.println(hbOrderService.findSecKillUserOrder(secResultDto));
     }
 }

@@ -8,7 +8,7 @@
       class="infom"
       @click="cancelSuc()"
       v-show="publishSuc"
-      >支付成功</v-alert
+      >商品发布成功</v-alert
     >
     <div class="publish index index-border">
       <v-form ref="form" v-model="valid" lazy-validation>

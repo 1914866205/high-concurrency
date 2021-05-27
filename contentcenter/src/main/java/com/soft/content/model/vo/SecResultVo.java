@@ -19,6 +19,6 @@ import lombok.NoArgsConstructor;
 public class SecResultVo {
     private String userName;
     private String phoneNumber;
-    private int rank;
+    private int ranked;
     private Double discount;
 }
