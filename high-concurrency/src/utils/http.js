@@ -32,9 +32,6 @@ export function post(url, parameter) {
  * @param {String} url [请求的url地址]
  * @param {Object} params [请求时携带的参数]
  */
-//  export async function put(url, params) {
-//   return await content.put(url,params)
-// }
 export function put(url, parameter) {
   return axios({
     url: url,

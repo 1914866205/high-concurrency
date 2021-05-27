@@ -20,30 +20,3 @@
   orderSpikeOrder,
   commentAddComment
  }
-//  export const apiGetDetail = (url, data) => get(url, data);
-
-//  export const apiDeviceDetail = (url, data) => post(url, data);
-
-//  export const apiUpdeteDevice = (url, data) => put(url, data);
-
- 
-//  export async function init(url, data, method) {
-//    // 方法
-//    if (method == "get") {
-//      this.result = await apiGetDetail(url, data).then((res) => {
-//        return res;
-//      });
-//    }
-//    if (method == "post") {
-//      this.result = await apiDeviceDetail(url, data).then((res) => {
-//        return res;
-//      });
-//    }
-//    if (method == "put") {
-//      this.result = await apiUpdeteDevice(url, data).then((res) => {
-//        return res;
-//      });
-//    }
-  
-//    return this.result;
-//  }

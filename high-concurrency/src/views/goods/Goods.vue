@@ -1,11 +1,11 @@
 <template>
   <v-app class="goods">
     <nav-bar></nav-bar>
-    <alert v-if="isCount" @click="cancelSubmit()" alertdata="购买数量必须大于0"></alert>
-    <alert v-if="isDel" @click="cancelDelInfo()" alertdata="删除成功"></alert>
-    <alert v-if="isXiangou" @click="cancelXiangou()" :alertdata="isMiaosha ? '秒杀订单限购一个' : '不能购买更多了'"></alert>
-    <alert v-if="isSubmit" @click="cancelSubmitInfo()" :alertdata="isMiaosha ? '成功参与秒杀' : '下单成功'"></alert>
-
+    <alert
+      v-if="isXiangou"
+      @click="cancelXiangou()"
+      :alertdata="isMiaosha ? '秒杀订单限购一个' : '不能购买更多了'"
+    ></alert>
     <v-overlay :z-index="zIndex" :value="overlay">
       <div class="forms">
         <h2>请确认订单</h2>
@@ -49,16 +49,14 @@
           <span style="font-size: 1.5rem">{{ goodsInfo.goodName }}</span>
           <div style="display: flex; margin-left: -20px">
             <div class="border-left">
-              <div class="font m-5 ">类型</div>
+              <div class="font m-5">类型</div>
               <div class="font-s m-5">
                 {{ goodsInfo.type }}
               </div>
             </div>
             <div class="border-left">
               <div class="font m-5">秒杀商品</div>
-              <div class="font-s m-5">
-                秒杀成功后可在订单中查看
-              </div>
+              <div class="font-s m-5">秒杀成功后可在订单中查看</div>
             </div>
             <div class="border-left">
               <div class="font m-5">邮送</div>
@@ -66,9 +64,7 @@
             </div>
             <div class="border-left">
               <div class="font m-5">其他商品</div>
-              <div class="font-s m-5">
-                更多商品请点击卖家主页
-              </div>
+              <div class="font-s m-5">更多商品请点击卖家主页</div>
             </div>
           </div>
         </div>
@@ -272,12 +268,13 @@
 <script>
 import NavBar from "@/components/NavBar";
 import Alert from "@/components/Alert";
-import Vue from 'vue';
 import {
-    ACCESS_TOKEN,
-    USER_PHONE,
-    USER_ID
-  } from "@/store/mutation-types";
+  orderFindSecKillUserOrder,
+  orderAddOrder,
+  orderSpikeOrder,
+} from "@/utils/request.js";
+import Vue from "vue";
+import { ACCESS_TOKEN, USER_PHONE, USER_ID } from "@/store/mutation-types";
 export default {
   data() {
     return {
@@ -299,18 +296,16 @@ export default {
         (v) => /^1[34578]\d{9}$/.test(v) || "手机号填写不规范",
       ],
       checkbox: false,
-      isSubmit: false,
       day: "",
       isMiaosha: false,
       miaosha: [],
       isXiangou: false,
-      isDel: false
     };
   },
   created: function () {
     //根据是否有秒杀时间来判定是否是秒杀订单
     this.day = this.$route.query.day;
-    console.log(this.day)
+    console.log(this.day);
     // if (this.day != null) {
     let params = new URLSearchParams();
     params.append("goodId", this.$route.query.goodsId);
@@ -337,9 +332,9 @@ export default {
   },
   methods: {
     daojishi(time) {
-      if(this.isShopping){
+      if (this.isShopping) {
         return s + "秒";
-      }else if (time >= 0) {
+      } else if (time >= 0) {
         let d = Math.floor(time / 1000 / 60 / 60 / 24);
         let h = Math.floor((time / 1000 / 60 / 60) % 24);
         let m = Math.floor((time / 1000 / 60) % 60);
@@ -347,9 +342,8 @@ export default {
         return "还有" + d + "天" + h + "时" + m + "分" + s + "秒";
       }
     },
-    async getPreOrder() {
-      this.url = this.GLOBAL.contentUrl + "/order/findSecKillUserOrder";
-      this.data = {
+    getPreOrder() {
+      let data = {
         goodId: this.$route.query.goodsId,
         strategies: [
           {
@@ -365,15 +359,16 @@ export default {
         ],
         time: "2021-04-28 19:31:02",
       };
-      this.result = await API.init(this.url, this.data, "post");
-      for (let i = 0; i < this.result.data.length; i++) {
-        let phone = "" + this.result.data[i].phoneNumber;
-        this.result.data[i].phoneNumber = phone.replace(
-          phone.substring(3, 7),
-          "****"
-        );
-      }
-      this.preOrder = this.result.data;
+      orderFindSecKillUserOrder(data).then((res) => {
+        for (let i = 0; i < res.data.length; i++) {
+          let phone = "" + res.data[i].phoneNumber;
+          res.data[i].phoneNumber = phone.replace(
+            phone.substring(3, 7),
+            "****"
+          );
+        }
+        this.preOrder = res.data;
+      });
     },
     beginTimer() {
       //这个计时器是每秒减去数组中指定字段的时间
@@ -388,23 +383,21 @@ export default {
       this.$refs.form.reset();
     },
     goSubmit() {
-      console.log(Vue.ls.get(ACCESS_TOKEN))
+      console.log(Vue.ls.get(ACCESS_TOKEN));
       if (this.count == 0) {
-        this.isCount = true;
-        setTimeout(this.cancelSubmit, 3000);
-      } else if(Vue.ls.get(ACCESS_TOKEN) == null){
+        this.$message({
+          message: "购买数量必须大于0",
+          type: "warning",
+        });
+      } else if (Vue.ls.get(ACCESS_TOKEN) == null) {
         this.$router.push("/login");
       } else {
         this.overlay = true;
       }
     },
-    cancelSubmit() {
-      this.isCount = false;
-    },
     cancelXiangou() {
       this.isXiangou = false;
     },
-
     cancel() {
       this.overlay = false;
     },
@@ -432,7 +425,10 @@ export default {
     },
     btnMinute() {
       if (this.count <= 0) {
-        console.log("该宝贝不能减少了哟~");
+        this.$message({
+          message: "该宝贝不能减少了哦",
+          type: "warning",
+        });
       } else {
         this.count -= 1;
       }
@@ -444,38 +440,46 @@ export default {
       this.axios
         .post(this.GLOBAL.contentUrl + "/comment/delComment", params)
         .then((res) => {
-          this.isDel = true;
-          setTimeout(this.cancelDelInfo(), 3000);
+          this.$message({
+          message: "删除成功",
+          type: "success",
+        });
+        this.getCommont();
         });
     },
-    cancelDelInfo() {
-      this.isDel = false;
-      this.getCommont();
-    },
-    async sumbitGoods() {
+    sumbitGoods() {
       //根据是否是秒杀订单来请求不同的接口
-      if (this.isMiaosha) {
-        this.url = this.GLOBAL.contentUrl + "/order/spikeOrder";
-      } else {
-        this.url = this.GLOBAL.contentUrl + "/order/addOrder";
-      }
-
-      this.data = {
+      let data = {
         number: this.count,
         phone: this.phone,
         pkGoodId: this.goodsInfo.pkGoodId,
         userId: Vue.ls.get(USER_ID),
       };
-      await API.init(this.url, this.data, "post");
-      this.overlay = false;
-      this.isSubmit = true;
       if (this.isMiaosha) {
-        this.miaosha.day = 5000
+        orderSpikeOrder(data).then((res) => {
+          console.log(res);
+          this.overlay = false;
+          this.$message({
+            message: "成功参与秒杀",
+            type: "success",
+          });
+          if (this.isMiaosha) {
+            this.miaosha.day = 5000;
+          }
+        });
+      } else {
+        orderAddOrder(data).then((res) => {
+          console.log(res);
+          this.overlay = false;
+          this.$message({
+            message: "购买成功，可在我的订单中查看",
+            type: "success",
+          });
+          if (this.isMiaosha) {
+            this.miaosha.day = 5000;
+          }
+        });
       }
-      setTimeout(this.cancelSubmitInfo(), 3000);
-    },
-    cancelSubmitInfo() {
-      this.isSubmit = false;
     },
     getIndex() {
       let params = new URLSearchParams();
@@ -510,9 +514,7 @@ export default {
         .then((res) => {
           this.comments = res.data.data;
           for (let i = 0; i < this.comments.length; i++) {
-            if (
-              this.comments[i].pkUserIngId == Vue.ls.get(USER_ID)
-            ) {
+            if (this.comments[i].pkUserIngId == Vue.ls.get(USER_ID)) {
               this.comments[i].createdTime = true;
             }
           }
@@ -521,7 +523,7 @@ export default {
   },
   components: {
     NavBar,
-    Alert
+    Alert,
   },
 };
 </script>

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {login,phoneLogin} from '@/utils/http'
+import { login,phoneLogin,sendCode,userRegister } from '@/utils/http'
 const STORAGE = require("@/views/login/login");
 Vue.use(Vuex)
 
@@ -21,9 +21,9 @@ const store = new Vuex.Store({
     Login({ commit }, userInfo) {
       return new Promise((resolve, reject) => {
         login(userInfo).then(response => {
-          if (response.data.code === 1) {
+          if (response.code === 1) {
             //存入token
-            let data = response.data.data;
+            let data = response.data;
             console.log(data);
             STORAGE.storage(
               data.token,
@@ -39,7 +39,8 @@ const store = new Vuex.Store({
             reject(response)
           }
         }).catch(error => {
-          reject(error)
+          console.log(error)
+          this.$message.error('登录失败，请稍后重试');
         })
       })
     },
@@ -47,10 +48,9 @@ const store = new Vuex.Store({
     PhoneLogin({ commit }, userInfo) {
       return new Promise((resolve, reject) => {
         phoneLogin(userInfo).then(response => {
-          if (response.data.code === 1) {
+          if (response.code === 1) {
             //存入token
-            let data = response.data.data;
-            console.log(data);
+            let data = response.data;
             STORAGE.storage(
               data.token,
               data.user.phone,
@@ -63,9 +63,11 @@ const store = new Vuex.Store({
             resolve(response)
           }else{
             reject(response)
+            
           }
-        }).catch(error => {
-          reject(error)
+        }).catch((error) => {
+          console.log(error)
+          this.$message.error('登录失败，请稍后重试');
         })
       })
     },

@@ -203,7 +203,6 @@
 
 <script>
 import NavBar from "../../components/NavBar";
-const API = require("../../utils/request.js");
 import Alert from "@/components/Alert";
 import Vue from "vue";
 const clickoutside = {
@@ -309,7 +308,7 @@ export default {
     avatarClick() {
       this.$refs.file.click();
     },
-    async submit() {
+    submit() {
       const _this = this;
       let users = _this.user;
       if (_this.validate.sex === "男") {
@@ -343,10 +342,7 @@ export default {
       } else {
         var address = _this.validate.address;
       }
-
-      _this.url = _this.GLOBAL.baseUrl + "/user/edit";
-
-      _this.data = {
+      let data = {
         address: address,
         avatar: avatar,
         code: code,
@@ -359,12 +355,13 @@ export default {
         sex: sex,
         username: users.username,
       };
-      await API.init(_this.url, _this.data, "post");
-      this.isSuc = true;
-      this.refreshUser();
-      if ((avatar = _this.validate.avatar)) {
-        Vue.ls.set(USER_AVATAR, avatar);
-      }
+      this.axios.post(_this.GLOBAL.baseUrl + "/user/edit", data).then((res) => {
+        _this.isSuc = true;
+        _this.refreshUser();
+        if ((avatar = _this.validate.avatar)) {
+          Vue.ls.set(USER_AVATAR, avatar, 7 * 24 * 60 * 60 * 1000);
+        }
+      });
     },
     cancelSubmit() {
       this.isSuc = false;

@@ -6,24 +6,37 @@
         <v-form :model="validateForm" class="form">
           <h2 class="form__title">注 册</h2>
           <text-field
+            @valueChange="value1change"
             :rules="phoneRules"
             type="number"
             label="phone"
-            v-model="validateForm.phone"
+            :dValue="validateForm.phone"
           ></text-field>
           <text-field
+            @valueChange="value2change"
             :rules="codeRules"
-            type="number"
+            type="text"
             label="code"
-            v-model="validateForm.code"
+            :dValue="validateForm.code"
           ></text-field>
           <div>
-            <button class="link" v-if="!send" @click="sendCode()">
+            <span
+              class="link button-hand"
+              v-preventReClick
+              v-if="!send"
+              @click="sendCode()"
+            >
               发送验证码
-            </button>
+            </span>
             <p class="link" v-else>还剩{{ time }}s</p>
           </div>
-          <v-btn width="200" height="50" rounded @click="signUp" class="btn"
+          <v-btn
+            width="200"
+            height="50"
+            v-preventReClick
+            rounded
+            @click="signUp()"
+            class="btn"
             ><span style="color: #e9e9e9">Sign Up</span></v-btn
           >
         </v-form>
@@ -35,12 +48,14 @@
           <h2 class="form__title">登 录</h2>
           <div v-if="upLogin">
             <text-field
+              @valueChange="value3change"
               :rules="userRules"
               type="text"
               label="username"
               v-model="validateForm.username"
             ></text-field>
             <text-field
+            @valueChange="value4change"
               :rules="psdRules"
               type="password"
               label="password"
@@ -49,29 +64,42 @@
           </div>
           <div v-else>
             <text-field
+             @valueChange="value1change"
               :rules="phoneRules"
               type="number"
               label="phone"
-              v-model="validateForm.phone"
+              :dValue="validateForm.phone"
             ></text-field>
             <text-field
+             @valueChange="value2change"
               :rules="codeRules"
-              type="number"
+              type="text"
               label="code"
-              v-model="validateForm.code"
+              :dValue="validateForm.code"
             ></text-field>
-            <button class="link right" v-if="!send" @click="sendCode()">
+            <span
+              class="link right button-hand"
+              v-if="!send"
+              v-preventReClick
+              @click="sendCode()"
+            >
               发送验证码
-            </button>
+            </span>
             <p class="link right" v-else>还剩{{ time }}s</p>
           </div>
           <div @click="goUpLogin()">
-            <button class="link">
+            <span class="link button-hand">
               {{ upLogin ? "手机号登录" : "账号密码登录" }}
-            </button>
+            </span>
           </div>
           <div style="margin-top: 20px">
-            <v-btn width="200" height="50" rounded @click="submit" class="btn"
+            <v-btn
+              width="200"
+              height="50"
+              v-preventReClick
+              rounded
+              @click="submit()"
+              class="btn"
               ><span style="color: #e9e9e9">Sign In</span></v-btn
             >
           </div>
@@ -98,14 +126,13 @@
 </template>
 
 <script>
-const API = require("@/utils/request.js");
-import TextField from '../../components/TextField.vue';
+import TextField from "../../components/TextField.vue";
 import { mapActions } from "vuex";
 const STORAGE = require("./login");
 export default {
   name: "Login",
-  components:{
-    TextField
+  components: {
+    TextField,
   },
   data() {
     return {
@@ -116,13 +143,13 @@ export default {
       ],
       codeRules: [
         (v) => !!v || "必须填写验证码",
-        (v) => (v && v.length != 6) || "验证码必须为6位",
+        (v) => (v && v.length == 4) || "验证码必须为4位",
       ],
-      userRules:[
+      userRules: [
         (v) => !!v || "必须填写用户名",
         (v) => (v && v.length >= 3) || "用户名不小于3位",
       ],
-      psdRules:[
+      psdRules: [
         (v) => !!v || "必须填写密码",
         (v) => (v && v.length >= 3) || "密码不小于3位",
       ],
@@ -138,11 +165,23 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["Login", "PhoneLogin",]),
+    ...mapActions(["Login", "PhoneLogin", "SendCode"]),
     // 切换状态
     changeSingUp() {
       const container = document.querySelector(".container-login");
       container.classList.remove("right-panel-active");
+    },
+    value1change(value) {
+      this.validateForm.phone = value;
+    },
+    value2change(value) {
+      this.validateForm.code = value;
+    },
+    value3change(value) {
+      this.validateForm.username = value;
+    },
+    value4change(value) {
+      this.validateForm.password = value;
     },
     changeSingIn() {
       const container = document.querySelector(".container-login");
@@ -151,88 +190,112 @@ export default {
     goUpLogin() {
       this.upLogin = !this.upLogin;
     },
-    async submit() {
-      let that = this
+    submit() {
+      let that = this;
       if (that.upLogin == true) {
         //账密登录
         let data = {
-            username: that.validateForm.username,
-            password: that.validateForm.password,
+          username: that.validateForm.username,
+          password: that.validateForm.password,
+        };
+        that.Login(data).then((res) => {
+          this.loginSuc();
+          if(res.code != 1) {
+            this.$message.error('登录失败，请稍后重试');
           }
-          that.Login(data).then((res) => {
-            this.goIndex();
-          })
+        });
       } else {
         //手机号登录
-        // (this.url = this.GLOBAL.baseUrl + "/user/code/login"),
-          let phoneData = {
-            phoneNumber: that.validateForm.phone,
-            verifyCode: that.validateForm.code,
+        let phoneData = {
+          phoneNumber: that.validateForm.phone,
+          verifyCode: that.validateForm.code,
+        };
+        that.PhoneLogin(phoneData).then((res) => {
+          that.loginSuc();
+          if(res.code != 1) {
+            this.$message.error('验证码错误，请稍后重试');
           }
-          that.PhoneLogin(phoneData).then((res) => {
-            that.goIndex();
-          })
-        }
-    },
-    goIndex(){
-      this.$router.push("/");
-    },
-    async signUp() {
-      (this.url = this.GLOBAL.baseUrl + "/user/register"),
-        (this.data = {
-          address: "",
-          avatar: "",
-          birthday: "",
-          code: this.validateForm.code,
-          email: "",
-          nickname: "",
-          password: "",
-          phone: this.validateForm.phone,
-          sex: 0,
-          username: "",
-        }),
-        (this.result = await API.init(this.url, this.data, "post"));
-      alert("注册成功");
-      if (this.result.code === 1) {
-        //存入token
-        let data = this.result.data;
-        STORAGE.storage(
-          data.token,
-          data.user.phone,
-          data.user,
-          data.user.pkUserId,
-          data.user.avatar
-        );
-        this.$router.push("/");
+        });
       }
     },
+    loginSuc() {
+      this.$router.push("/");
+      this.$message({
+        message: "登录成功",
+        type: "success",
+      });
+    },
+    signUp() {
+      let that = this;
+      let data = {
+        address: "",
+        avatar: "",
+        birthday: "",
+        code: that.validateForm.code,
+        email: "",
+        nickname: "",
+        password: "",
+        phone: that.validateForm.phone,
+        sex: 0,
+        username: "",
+      };
+      console.log(that.validateForm.code);
+      that.axios
+        .post(that.GLOBAL.baseUrl + "/user/register", data)
+        .then((res) => {
+          if (res.code == 1) {
+            let data = res.data;
+            STORAGE.storage(
+              data.token,
+              data.user.phone,
+              data.user,
+              data.user.pkUserId,
+              data.user.avatar
+            );
+            that.$router.push("/");
+            that.$message({
+              message: "注册成功",
+              type: "success",
+            });
+          } else {
+            that.$message({
+              message: "注册失败",
+              type: "warning",
+            });
+          }
+        });
+    },
 
-    async sendCode() {
+    sendCode() {
       //手机号正则
       var mPattern = /^1[34578]\d{9}$/;
       if (!mPattern.test(this.validateForm.phone)) {
-        alert("手机号格式不正确");
+        this.$message({
+          message: "手机号格式不正确",
+          type: "warning",
+        });
       } else {
-        (this.url = this.GLOBAL.baseUrl + "/sendCode"),
-          (this.data = {
+        this.axios
+          .post(this.GLOBAL.baseUrl + "/sendCode", {
             phoneNumber: this.validateForm.phone,
-          }),
-          (this.result = await API.init(this.url, this.data, "post"));
-        this.send = true;
-        // 倒计时60s结束后 可再次发送验证码
-        let promise = new Promise((resolve, reject) => {
-          let setTimer = setInterval(() => {
-            this.time = this.time - 1;
-            if (this.time <= 0) {
-              this.send = false;
-              resolve(setTimer);
-              this.time = 60;
-            }
-          }, 1000);
-        });
-        promise.then((setTimer) => {
-          clearInterval(setTimer);
-        });
+          })
+          .then((res) => {
+            this.send = true;
+            // 倒计时60s结束后 可再次发送验证码
+            let promise = new Promise((resolve, reject) => {
+              let setTimer = setInterval(() => {
+                this.time = this.time - 1;
+                if (this.time <= 0) {
+                  this.send = false;
+                  resolve(setTimer);
+                  this.time = 60;
+                }
+              }, 1000);
+            });
+            promise.then((setTimer) => {
+              clearInterval(setTimer);
+            });
+          });
       }
     },
   },

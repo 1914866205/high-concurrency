@@ -15,7 +15,9 @@ import Element from 'element-ui';
 //统一样式
 import common from './common/common.css'
 import  { Component } from 'react'
-
+//防止用户在一定时间内重复频繁的触发事件
+import preventReClick from '@/utils/preventReClick.js';
+Vue.use(preventReClick);
 
 Vue.use(Element, { size: 'small', zIndex: 3000 });
 Vue.use(VueAxios, axios)
