@@ -79,7 +79,7 @@ public class HbOrderServiceImpl implements HbOrderService {
                 thread.start();
                 queue.clear();
             }
-        }, 0, 100, TimeUnit.MILLISECONDS);
+        }, 0, 10, TimeUnit.MILLISECONDS);
 
         //每分钟更新一次商品的秒杀标志
         sh.scheduleAtFixedRate(new Runnable() {

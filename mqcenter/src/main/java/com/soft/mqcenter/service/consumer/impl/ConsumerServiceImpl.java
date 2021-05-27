@@ -68,7 +68,7 @@ public class ConsumerServiceImpl implements ConsumerService {
                     redisTemplate.opsForValue().increment(Constants.REDIS_PRODUCT_STOCK_PREFIX + orderDto.getPkGoodId(), queue.size());
                 }
             }
-        }, 0, 1000, TimeUnit.MILLISECONDS);
+        }, 0, 10, TimeUnit.MILLISECONDS);
     }
 
 

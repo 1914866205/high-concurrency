@@ -15,11 +15,7 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
-<<<<<<< HEAD
     url: jdbc:mysql://localhost:3306/haibing?useUnide=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&allowPublicKeyRetrieval=true
-=======
-    url: jdbc:mysql://121.43.109.100:3306/haibing?useUnide=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&allowPublicKeyRetrieval=true
->>>>>>> 4c4f1e17fa461b9607f3123fb8dba47d3c588ac3
     username: root
     password: root
     hikari:
@@ -41,7 +37,7 @@ spring:
 
   jpa:
     database: mysql
-    show-sql: true
+    show-sql: false
     generate-ddl: true
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:

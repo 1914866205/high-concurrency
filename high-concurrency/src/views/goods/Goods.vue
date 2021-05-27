@@ -449,17 +449,7 @@ export default {
     },
     sumbitGoods() {
       //根据是否是秒杀订单来请求不同的接口
-<<<<<<< HEAD
-      if (this.isMiaosha) {
-        this.url = this.GLOBAL.contentUrl + "/order/spikeOrder";
-      } else {
-        this.url = this.GLOBAL.contentUrl + "/order/addOrder";
-      }
-      console.log(this.goods)
-      this.data = {
-=======
       let data = {
->>>>>>> 4c4f1e17fa461b9607f3123fb8dba47d3c588ac3
         number: this.count,
         phone: this.phone,
         pkGoodId: this.goodsInfo.pkGoodId,
