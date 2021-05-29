@@ -77,13 +77,6 @@
           </v-chip-group>
         </div>
         <div class="mt-100"></div>
-        <!-- <v-btn
-          :disabled="valid"
-          @click="publish()"
-          color="teal"
-          class="publish-btn"
-          >提交</v-btn
-        > -->
         <div style="margin-left: 45%">
           <v-btn
             color="teal"
@@ -161,7 +154,7 @@ export default {
     goodsValidate: {
       handler(val, oldVal) {
         console.log("currentForm", val, oldVal);
-        if (val.goodName != "") {
+        if (val.goodName != "" && val.image.length != 0 && val.count != 0) {
           this.valid = false;
         }
       },
@@ -287,6 +280,6 @@ export default {
 .del-icon {
   position: absolute;
   z-index: 999;
-  top: 50%;
+  margin-top:-160px;
 }
 </style>

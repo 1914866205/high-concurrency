@@ -355,7 +355,7 @@ export default {
         sex: sex,
         username: users.username,
       };
-      this.axios.post(_this.GLOBAL.baseUrl + "/user/edit", data).then((res) => {
+      _this.axios.post(_this.GLOBAL.baseUrl + "/user/edit", data).then((res) => {
         _this.isSuc = true;
         _this.refreshUser();
         if ((avatar = _this.validate.avatar)) {
@@ -372,49 +372,60 @@ export default {
       this.validate.avatar = url;
       this.user.avatar = url;
     },
-    async sendCode() {
+    sendCode() {
       //手机号正则
       let validate = this.validate;
       var mPattern = /^1[34578]\d{9}$/;
-      if (!mPattern.test(validate.phone)) {
-        alert("手机号格式不正确");
+      if (!mPattern.test(this.validateForm.phone)) {
+        this.$message({
+          message: "手机号格式不正确",
+          type: "warning",
+        });
       } else {
-        (this.url = this.GLOBAL.baseUrl + "/sendCode"),
-          (this.data = {
+        this.axios
+          .post(this.GLOBAL.baseUrl + "/sendCode", {
             phoneNumber: validate.phone,
-          }),
-          (this.result = await API.init(this.url, this.data, "post"));
-        this.send = true;
-        // 倒计时60s结束后 可再次发送验证码
-        let promise = new Promise((resolve, reject) => {
-          let setTimer = setInterval(() => {
-            this.time = this.time - 1;
-            if (this.time <= 0) {
-              this.send = false;
-              resolve(setTimer);
-              this.time = 60;
-            }
-          }, 1000);
-        });
-        promise.then((setTimer) => {
-          clearInterval(setTimer);
-        });
+          })
+          .then((res) => {
+            this.send = true;
+            // 倒计时60s结束后 可再次发送验证码
+            let promise = new Promise((resolve, reject) => {
+              let setTimer = setInterval(() => {
+                this.time = this.time - 1;
+                if (this.time <= 0) {
+                  this.send = false;
+                  resolve(setTimer);
+                  this.time = 60;
+                }
+              }, 1000);
+            });
+            promise.then((setTimer) => {
+              clearInterval(setTimer);
+            });
+          });
       }
     },
-    async verifyCode() {
+    verifyCode() {
       let validate = this.validate;
-      (this.url = this.GLOBAL.baseUrl + "/verifyCode"),
-        (this.data = {
+      this.axios
+        .post(this.GLOBAL.baseUrl + "/verifyCode", {
           phoneNumber: validate.phone,
           verifyCode: validate.code,
-        }),
-        (this.result = await API.init(this.url, this.data, "post"));
-      if (this.result.code === 1) {
-        alert("验证成功");
-      } else {
-        validate.code === "";
-        alert("验证失败");
-      }
+        })
+        .then((res) => {
+          if (res.code === 1) {
+            this.$message({
+              message: "验证成功",
+              type: "success",
+            });
+          } else {
+            this.validate.code === "";
+            this.$message({
+              message: "验证失败",
+              type: "warning",
+            });
+          }
+        });
     },
     uploadAvatar(event) {
       const OSS = require("ali-oss");

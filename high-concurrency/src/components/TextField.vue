@@ -1,13 +1,6 @@
 <template>
-  <v-text-field
-    solo
-    height="45"
-    :type="type"
-    :rules="rules"
-    :label="label"
-    class="input"
-    v-model="value"
-    @input="sendValue"
+  <v-text-field solo height="45" :type="type" :rules="rules" :label="label"
+    class="input" v-model="value" @input="sendValue"
   ></v-text-field>
 </template>
 

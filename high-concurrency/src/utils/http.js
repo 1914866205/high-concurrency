@@ -13,12 +13,6 @@ export function get(url, parameter) {
     data: parameter
   })
 }
-/**
- * post方法，对应post请求
- * @param {String} url [请求的url地址]
- * @param {Object} parameter [请求时携带的参数]
- */
-
 export function post(url, parameter) {
   return axios({
     url: url,
@@ -26,12 +20,6 @@ export function post(url, parameter) {
     data: parameter
   })
 }
-
-/**
- * put方法，对应put请求
- * @param {String} url [请求的url地址]
- * @param {Object} params [请求时携带的参数]
- */
 export function put(url, parameter) {
   return axios({
     url: url,

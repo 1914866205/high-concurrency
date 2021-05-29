@@ -8,10 +8,6 @@ export default {
            el.addEventListener('click', () => {
              if (!el.disabled) {
                el.disabled = true
-              //  this.$message({
-              //   message: "操作频繁，稍后请重试",
-              //   type: "warning",
-              // });
                setTimeout(() => {
                  el.disabled = false
                },binding.value || 5000)
