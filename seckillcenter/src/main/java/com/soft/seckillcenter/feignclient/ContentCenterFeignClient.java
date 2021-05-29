@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.concurrent.LinkedBlockingQueue;
-//import org.springframework.cloud.openfeign.FeignClient;
 
 
 /**

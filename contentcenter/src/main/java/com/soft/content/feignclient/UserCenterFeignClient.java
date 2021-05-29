@@ -23,7 +23,7 @@ public interface UserCenterFeignClient {
      * @return
      */
     @GetMapping("/user/getInfoById/{userId}")
-    ResponseResult findInfoById(@PathVariable String userId);
+    ResponseResult findInfoById(@PathVariable(value = "userId") String userId);
 
 
     @PostMapping("user/edit")

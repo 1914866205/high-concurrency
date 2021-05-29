@@ -1,6 +1,9 @@
 package com.soft.content.repository;
 
 
+import com.soft.content.common.ResponseResult;
+import com.soft.content.model.dto.RuleDto;
+import com.soft.content.model.dto.SearchDto;
 import com.soft.content.model.dto.RuleDto;
 import com.soft.content.model.dto.SecKillAddDto;
 import com.soft.content.model.dto.SecResultDto;
@@ -26,8 +29,11 @@ import java.util.List;
 class HbGoodRepositoryTest {
     @Resource
     private HbGoodService hbGoodService;
+    @Resource
     private HbStrategyService hbStrategyService;
+    @Resource
     private HbOrderService hbOrderService;
+
     @Test
     public void testRedisCluster() {
         SecResultDto secResultDto = new SecResultDto();
@@ -45,6 +51,8 @@ class HbGoodRepositoryTest {
             strategies.add(hbStrategy);
         }
         secResultDto.setStrategies(strategies);
+
+        System.out.println(secResultDto);
 
         System.out.println(hbOrderService.findSecKillUserOrder(secResultDto));
     }

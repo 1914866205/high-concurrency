@@ -33,7 +33,6 @@ public class RedisMQController {
     @PostMapping("/messageBatchToQueue")
     @ApiOperation(value = "批量上传消息到消息队列", notes = "批量上传消息到消息队列")
     public ResponseResult messageBatchToQueue(@RequestBody LinkedBlockingQueue<OrderDto> queue) {
-
         producerService.messageBatchToQueue(queue);
         return ResponseResult.success();
     }

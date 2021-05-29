@@ -79,7 +79,7 @@ public class HbOrderServiceImpl implements HbOrderService {
                 thread.start();
                 queue.clear();
             }
-        }, 0, 100, TimeUnit.MILLISECONDS);
+        }, 0, 10, TimeUnit.MILLISECONDS);
 
         //每分钟更新一次商品的秒杀标志
         sh.scheduleAtFixedRate(new Runnable() {
@@ -120,13 +120,13 @@ public class HbOrderServiceImpl implements HbOrderService {
         for (int i = 0; i < secKillUserOrder.size(); i++) {
             SecResultVo secResultVo = new SecResultVo();
             HbOrder hbOrder = secKillUserOrder.get(i);
-            hbOrder.setRank(i + 1);
+            hbOrder.setRanked(i + 1);
             HbUser hbUser = hbUserRepository.findById(hbOrder.getUserId()).get();
             //遍历所有该商品的策略，根据时间排位的排名，分别给予不同的折扣
             boolean flag = true;
             for (int j = 0; j < strategies.size(); j++) {
                 //如果订单的排名比最大的策略排名还大，就原价
-                if (hbOrder.getRank() > strategies.get(j).getRankEnd()) {
+                if (hbOrder.getRanked() > strategies.get(j).getRankEnd()) {
                     if (!flag) {
                         break;
                     } else if (secResultVo.getDiscount() == null) {
@@ -148,7 +148,7 @@ public class HbOrderServiceImpl implements HbOrderService {
 
         result.sort(Comparator.comparing(SecResultVo::getDiscount));
         for (int i = 0; i < result.size(); i++) {
-            result.get(i).setRank(i + 1);
+            result.get(i).setRanked(i + 1);
         }
         System.out.println(result);
         return ResponseResult.success(result);
@@ -176,10 +176,10 @@ public class HbOrderServiceImpl implements HbOrderService {
             if (!StringUtils.isEmpty(value)) {
                 int i = Integer.parseInt(value);
                 i++;
-                hbOrder.setRank(i);
+                hbOrder.setRanked(i);
                 redisTemplate.opsForValue().set("ORDER_" + hbOrderDto.getPkGoodId(), String.valueOf(i));
             } else {
-                hbOrder.setRank(1);
+                hbOrder.setRanked(1);
                 redisTemplate.opsForValue().set("ORDER_" + hbOrderDto.getPkGoodId(), "1");
             }
 //            System.out.println("----------------");
@@ -224,15 +224,18 @@ public class HbOrderServiceImpl implements HbOrderService {
         if (!StringUtils.isEmpty(value)) {
             int i = Integer.parseInt(value);
             i++;
-            hbOrder.setRank(i);
+            hbOrder.setRanked(i);
             redisTemplate.opsForValue().set("ORDER_" + hbOrderDto.getPkGoodId(), String.valueOf(i));
         } else {
-            hbOrder.setRank(1);
+            hbOrder.setRanked(1);
             redisTemplate.opsForValue().set("ORDER_" + hbOrderDto.getPkGoodId(), "1");
         }
-//        System.out.println("创建单个订单："+hbOrder);
-        log.info("成功存储订单数量" + 1);
+
+
+
+        System.out.println("创建单个订单："+hbOrder);
         hbOrderRepository.save(hbOrder);
+        log.info("成功存储订单数量" + 1);
         return ResponseResult.success();
     }
 
@@ -309,15 +312,15 @@ public class HbOrderServiceImpl implements HbOrderService {
 //                System.out.println("maxRank" + maxRank);
 //                System.out.println("hbOrder.getRank()" + hbOrder.getRank());
                     //如果当前订单的排名在策略范围内
-                    if (hbOrder.getRank() < maxRank) {
+                    if (hbOrder.getRanked() < maxRank) {
 //                    System.out.println("进循环");
                         //得到当前订单的排名
                         for (int i = 0; i < strategies.size(); i++) {
 //                        System.out.println("订单排名" + hbOrder.getRank());
 //                        System.out.println("当前策略起始"+strategies.get(i).getRankStart());
 //                        System.out.println("当前策略终点" + strategies.get(i).getRankEnd());
-                            System.out.println(strategies.get(i).getRankEnd() > hbOrder.getRank() && hbOrder.getRank() >= strategies.get(i).getRankStart());
-                            if (strategies.get(i).getRankEnd() > hbOrder.getRank() && hbOrder.getRank() >= strategies.get(i).getRankStart()) {
+                            System.out.println(strategies.get(i).getRankEnd() > hbOrder.getRanked() && hbOrder.getRanked() >= strategies.get(i).getRankStart());
+                            if (strategies.get(i).getRankEnd() > hbOrder.getRanked() && hbOrder.getRanked() >= strategies.get(i).getRankStart()) {
                                 payMoney = payMoney * strategies.get(i).getDiscount();
                                 break;
                             }

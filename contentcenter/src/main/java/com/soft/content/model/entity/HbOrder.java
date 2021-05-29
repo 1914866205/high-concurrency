@@ -36,7 +36,7 @@ public class HbOrder {
      * 订单排名
      */
     @Column(nullable = false, length = 8)
-    private int rank;
+    private int ranked;
 
     /**
      * 用户Id
