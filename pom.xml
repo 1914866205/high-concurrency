@@ -79,7 +79,7 @@
 
 
         </dependencies>
-    </dependencyManagement>
+    </dependencyManagement>`
 
     <build>
         <plugins>
