@@ -441,11 +441,15 @@ export default {
       var file = event.target.files[0]; //获取文件流
       var _this = this;
       client.multipartUpload(imgUrl, file).then(function (result) {
-        let index = result.res.requestUrls[0].indexOf("?");
-        let url = result.res.requestUrls[0].slice(0, index);
+         let index = result.res.requestUrls[0].indexOf("?");
+        let url ;
+        if(index == -1) {
+           url = result.res.requestUrls[0]
+        } else{
+           url = result.res.requestUrls[0].slice(0, index);
+        }
         _this.validate.avatar = url;
         _this.updateAdminInfo(_this.validate.avatar);
-        console.log(_this.validate.avatar);
       });
     },
   },

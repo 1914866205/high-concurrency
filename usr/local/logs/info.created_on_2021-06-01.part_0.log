@@ -42,3 +42,11 @@
 2021-06-01 19:12:13.775  INFO 11048 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
 2021-06-01 19:12:13.947  INFO 11048 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
 2021-06-01 19:12:13.961  INFO 11048 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 15.021 seconds (JVM running for 16.445)
+2021-06-01 19:14:15.066  INFO 11048 --- [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-06-01 19:14:15.066  INFO 11048 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-06-01 19:14:15.075  INFO 11048 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2021-06-01 19:14:15.182  INFO 11048 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问login接口
+2021-06-01 19:14:15.182  INFO 11048 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-06-01 19:14:15.182  INFO 11048 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-06-01 19:14:15.385  INFO 11048 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-06-01 19:14:15.449  INFO 11048 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjM4NDIwNTUsInVzZXJuYW1lIjoibnR0In0.saUlRndw1-M0VD4KvFTqQTB1d8Ln1j7jUHYfASZttls

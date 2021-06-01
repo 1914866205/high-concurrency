@@ -196,7 +196,12 @@ export default {
       var _this = this;
       client.multipartUpload(imgUrl, file).then(function (result) {
         let index = result.res.requestUrls[0].indexOf("?");
-        let url = result.res.requestUrls[0].slice(0, index);
+        let url ;
+        if(index == -1) {
+           url = result.res.requestUrls[0]
+        } else{
+           url = result.res.requestUrls[0].slice(0, index);
+        }
         _this.goodsValidate.image.push(url);
         console.log(result.res);
         console.log(_this.goodsValidate.image.length);
