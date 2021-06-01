@@ -17,7 +17,7 @@
                 type="date"
                 placeholder="选择日期"
                 v-model="form.date1"
-                style="width:100%;"
+                style="width: 100%"
               ></el-date-picker>
             </el-col>
             <el-col class="col" :span="1"></el-col>
@@ -25,7 +25,7 @@
               <el-time-picker
                 placeholder="选择时间"
                 v-model="form.date2"
-                style="width:100%;"
+                style="width: 100%"
               ></el-time-picker>
             </el-col>
           </el-form-item>
@@ -35,36 +35,54 @@
             type="warning"
           ></el-alert>
           <el-form-item
-            v-for="(domain,index) in dynamicValidateForm.domains"
+            v-for="(domain, index) in dynamicValidateForm.domains"
             :key="domain.key"
-            :label="'活动'+(index+1)"
+            :label="'活动' + (index + 1)"
             class="mt-2"
           >
-
-             第
-            <el-input v-model="domain.start" :rules="startRules" class="w-65" />名到第
-            <el-input v-model="domain.end" class="w-65"></el-input>名 打
-            <el-input v-model="domain.discount" class="w-40"></el-input
+            第
+            <el-input
+              v-model.number="domain.start"
+              type="number"
+              @input="changePaidAmount($event, index)"
+              class="w-65"
+            />名到第
+            <el-input
+              v-model.number="domain.end"
+              type="number"
+              @input="changePaidAmount1($event, index)"
+              class="w-65"
+            ></el-input
+            >名 打
+            <el-input
+              v-model="domain.discount"
+              type="number"
+              @input="changePaidAmount2($event, index)"
+              class="w-40"
+            ></el-input
             >折
             <el-button
               @click.prevent="removeDomain(domain)"
               class="btn-none border-no btn-hover ml-8"
-              style="background-color:#e64c4c;color:#fff;"
+              style="background-color: #e64c4c; color: #fff"
               >删除</el-button
             >
           </el-form-item>
           <el-form-item>
-            <el-button @click="addDomain"
-              >新增规则</el-button
-            >
+            <el-button @click="addDomain">新增规则</el-button>
           </el-form-item>
 
           <el-form-item label="活动介绍">
             <el-input type="textarea" v-model="form.desc"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" class="bg-color btn-none border-no btn-hover"
-              style="color:#fff;" @click="addSecKill">立即创建</el-button>
+            <el-button
+              type="primary"
+              class="bg-color btn-none border-no btn-hover"
+              style="color: #fff"
+              @click="addSecKill"
+              >立即创建</el-button
+            >
             <el-button @click="dialogControl">取消</el-button>
           </el-form-item>
         </el-form>
@@ -82,7 +100,10 @@
           <div class="put-price">￥ {{ item.price }}</div>
           <div class="mt-8">{{ item.description }}</div>
           <div class="put-btn mt-12">
-            <button  @click="dialogControl(item.pkGoodId)" class="overlay__btn overlay__btn--colors btn-none">
+            <button
+              @click="dialogControl(item.pkGoodId)"
+              class="overlay__btn overlay__btn--colors btn-none"
+            >
               <span>秒杀活动</span>
               <span class="overlay__btn-emoji">🎨</span>
             </button>
@@ -96,13 +117,14 @@
 
 <script>
 import NavBar from "../../components/NavBar";
-import { hbStrategyadd } from '@/utils/request.js'
+import { hbStrategyadd } from "@/utils/request.js";
 import { USER_ID } from "@/store/mutation-types";
-import Vue from 'vue'
+const limit = require("@/utils/limitInputNum.js");
+import Vue from "vue";
 export default {
   data() {
     return {
-      startRules:[{ required: true, message: "请输入开始排名",trigger: "blur" }],
+      // startRules:[{ required: true, message: "请输入开始排名",trigger: "blur" }],
       goodsInfo: [],
       updatecenterDialogVisible: false,
       form: {
@@ -126,6 +148,48 @@ export default {
     this.getAllGoodsByUser();
   },
   methods: {
+    changePaidAmount(e, index) {
+      this.dynamicValidateForm.domains[index].start = limit.limitInputNumber(
+        e,
+        1000,
+        0,
+        4
+      );
+      if (e > 1000) {
+        this.$message({
+          message: "请输入少于1000的值",
+          type: "warning",
+        });
+      }
+    },
+    changePaidAmount1(e, index) {
+      this.dynamicValidateForm.domains[index].end = limit.limitInputNumber(
+        e,
+        1000,
+        1,
+        4
+      );
+      if (e > 1000) {
+        this.$message({
+          message: "请输入少于1000的值",
+          type: "warning",
+        });
+      }
+    },
+    changePaidAmount2(e, index) {
+      this.dynamicValidateForm.domains[index].discount = limit.limitInputNumber(
+        e,
+        10,
+        0,
+        3
+      );
+      if (e > 10) {
+        this.$message({
+          message: "最多打10折（即原价）",
+          type: "warning",
+        });
+      }
+    },
     getAllGoodsByUser() {
       let params = new URLSearchParams();
       params.append("userId", Vue.ls.get(USER_ID));
@@ -146,8 +210,9 @@ export default {
       this.axios
         .post(this.GLOBAL.contentUrl + "/hbStrategy/get", params)
         .then((res) => {
-           console.log(res);
           let data = res.data.data;
+          //根据策略开始的名次对折扣进行排序
+          data.ruleDtoList.sort(this.compare("start"));
           this.goodId = data.goodId;
           this.form.date1 = data.day;
           this.form.date2 = data.detail;
@@ -160,9 +225,14 @@ export default {
             };
             this.dynamicValidateForm.domains[i] = domain;
           }
-
-         
         });
+    },
+    compare(property) {
+      return function (a, b) {
+        var value1 = a[property];
+        var value2 = b[property];
+        return value1 - value2;
+      };
     },
     removeDomain(item) {
       var index = this.dynamicValidateForm.domains.indexOf(item);
@@ -206,7 +276,7 @@ export default {
             d.getMinutes() +
             ":" +
             d.getSeconds();
-            console.log(date1,date2)
+          console.log(date1, date2);
           let params = {
             goodId: this.goodId,
             day: date1,
@@ -216,12 +286,13 @@ export default {
           };
           hbStrategyadd(params).then((res) => {
             this.$message({
-            message: "创建成功",
-            type: "success",
+              message: "创建成功",
+              type: "success",
+            });
+            this.updatecenterDialogVisible = !this.updatecenterDialogVisible;
           });
-          this.updatecenterDialogVisible = !this.updatecenterDialogVisible;
-          })
-        }).catch(() => {
+        })
+        .catch(() => {
           this.$message({
             type: "info",
             message: "已取消修改",
@@ -259,7 +330,6 @@ export default {
   text-align: center;
   width: 83%;
   height: 530px;
-  
 }
 .put-title {
   font-size: 3rem;

@@ -384,14 +384,15 @@ export default {
     },
     goSubmit() {
       console.log(Vue.ls.get(ACCESS_TOKEN));
-      if (this.count == 0) {
+      if (Vue.ls.get(ACCESS_TOKEN) == null) {
+        this.$router.push("/login");
+      }else if (this.count == 0) {
         this.$message({
           message: "购买数量必须大于0",
           type: "warning",
         });
-      } else if (Vue.ls.get(ACCESS_TOKEN) == null) {
-        this.$router.push("/login");
       } else {
+        
         this.overlay = true;
       }
     },
@@ -464,7 +465,7 @@ export default {
             type: "success",
           });
           if (this.isMiaosha) {
-            this.miaosha.day = 5000;
+            this.miaosha.day = 3000;
           }
         });
       } else {

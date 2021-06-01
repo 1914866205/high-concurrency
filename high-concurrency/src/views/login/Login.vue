@@ -55,7 +55,7 @@
               v-model="validateForm.username"
             ></text-field>
             <text-field
-            @valueChange="value4change"
+              @valueChange="value4change"
               :rules="psdRules"
               type="password"
               label="password"
@@ -64,14 +64,14 @@
           </div>
           <div v-else>
             <text-field
-             @valueChange="value1change"
+              @valueChange="value1change"
               :rules="phoneRules"
               type="number"
               label="phone"
               :dValue="validateForm.phone"
             ></text-field>
             <text-field
-             @valueChange="value2change"
+              @valueChange="value2change"
               :rules="codeRules"
               type="text"
               label="code"
@@ -134,6 +134,30 @@ export default {
   components: {
     TextField,
   },
+  // beforeRouteEnter(to, from, next) {
+  //   next(vm => {
+  //     vm.getData()
+  //   });
+  // },
+  // beforeRouteEnter(to, from, next) {
+  //   next((vm) => {
+  //     if (vm) {
+  //       
+  //     }
+  //     if (vm.profileCompleted) {
+  //       vm.nextReplace();
+  //     }
+  //   });
+  // },
+  created() {
+    console.log(location.href)
+    if(location.href) {
+      this.$message({
+          message: "请先登录",
+          type: "warning",
+        });
+    }
+  },
   data() {
     return {
       phoneRules: [
@@ -159,6 +183,7 @@ export default {
         phone: "",
         code: "",
       },
+      preUrl: "/",
       upLogin: true,
       send: false,
       time: 60,
@@ -199,9 +224,11 @@ export default {
           password: that.validateForm.password,
         };
         that.Login(data).then((res) => {
-          this.loginSuc();
-          if(res.code != 1) {
-            this.$message.error('登录失败，请稍后重试');
+          
+          if (res.code != 1) {
+            this.$message.error("登录失败，请稍后重试");
+          }else {
+            this.loginSuc();
           }
         });
       } else {
@@ -211,9 +238,11 @@ export default {
           verifyCode: that.validateForm.code,
         };
         that.PhoneLogin(phoneData).then((res) => {
-          that.loginSuc();
-          if(res.code != 1) {
-            this.$message.error('验证码错误，请稍后重试');
+          
+          if (res.code != 1) {
+            this.$message.error("验证码错误，请稍后重试");
+          }else{
+            that.loginSuc();
           }
         });
       }
@@ -243,8 +272,9 @@ export default {
       that.axios
         .post(that.GLOBAL.baseUrl + "/user/register", data)
         .then((res) => {
-          if (res.code == 1) {
-            let data = res.data;
+          // console.log(res)
+          if (res.data.code == 1) {
+            let data = res.data.data;
             STORAGE.storage(
               data.token,
               data.user.phone,
@@ -280,6 +310,7 @@ export default {
             phoneNumber: this.validateForm.phone,
           })
           .then((res) => {
+            console.log(res)
             this.send = true;
             // 倒计时60s结束后 可再次发送验证码
             let promise = new Promise((resolve, reject) => {

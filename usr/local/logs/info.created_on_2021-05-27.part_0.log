@@ -1,3 +1,371 @@
+<<<<<<< HEAD
+2021-05-27 11:05:52.149  INFO 13516 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-05-27 11:05:53.686  INFO 13516 --- [main] c.soft.usercenter.UserCenterApplication  : No active profile set, falling back to default profiles: default
+2021-05-27 11:05:59.923  INFO 13516 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-05-27 11:05:59.923  INFO 13516 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2021-05-27 11:06:00.433  INFO 13516 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 490ms. Found 5 JPA repository interfaces.
+2021-05-27 11:06:00.495  INFO 13516 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-05-27 11:06:00.511  INFO 13516 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-05-27 11:06:00.574  INFO 13516 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbCommentRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-05-27 11:06:00.574  INFO 13516 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbGoodRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-05-27 11:06:00.574  INFO 13516 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbOrderRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-05-27 11:06:00.574  INFO 13516 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbStrategyRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-05-27 11:06:00.574  INFO 13516 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbUserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-05-27 11:06:00.574  INFO 13516 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41ms. Found 0 Redis repository interfaces.
+2021-05-27 11:06:01.428  INFO 13516 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=9913dd3c-5bfb-3d0c-b1ed-81b6501ad54b
+2021-05-27 11:06:01.881  INFO 13516 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-05-27 11:06:02.756  INFO 13516 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2021-05-27 11:06:02.803  INFO 13516 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-05-27 11:06:02.803  INFO 13516 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-05-27 11:06:03.520  INFO 13516 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-05-27 11:06:03.520  INFO 13516 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 9756 ms
+2021-05-27 11:06:04.348  INFO 13516 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-27 11:06:04.676  INFO 13516 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-05-27 11:06:04.910  INFO 13516 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2021-05-27 11:06:05.270  INFO 13516 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-05-27 11:06:05.457  INFO 13516 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-05-27 11:06:05.817  INFO 13516 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-05-27 11:06:05.832  INFO 13516 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-05-27 11:06:06.879  INFO 13516 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-05-27 11:06:06.895  INFO 13516 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-05-27 11:06:08.035  WARN 13516 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-05-27 11:06:08.223  INFO 13516 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-05-27 11:06:08.254  WARN 13516 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-05-27 11:06:08.254  INFO 13516 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-05-27 11:06:08.270  WARN 13516 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-05-27 11:06:08.270  INFO 13516 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-05-27 11:06:09.410  INFO 13516 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'Nacso-Watch-Task-Scheduler'
+2021-05-27 11:06:12.900  INFO 13516 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2021-05-27 11:06:13.209  INFO 13516 --- [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP user-center 10.40.163.243:8082 register finished
+2021-05-27 11:06:14.138  INFO 13516 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-05-27 11:06:14.153  INFO 13516 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-05-27 11:06:14.231  INFO 13516 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-05-27 11:06:14.513  INFO 13516 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2021-05-27 11:06:14.606  INFO 13516 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2021-05-27 11:06:14.622  INFO 13516 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 24.825 seconds (JVM running for 28.974)
+2021-05-27 11:51:59.694  INFO 13516 --- [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-05-27 11:51:59.697  INFO 13516 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-05-27 11:51:59.758  INFO 13516 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 61 ms
+2021-05-27 11:52:00.012  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问login接口
+2021-05-27 11:52:00.012  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-05-27 11:52:00.013  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-05-27 11:52:00.308  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-05-27 11:52:00.814  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjMzODM1MjAsInVzZXJuYW1lIjoibnR0In0.jvxgcGcQpOpDFk5Alx3vEtr6RZmf-rnbp8oSrCFlKug
+2021-05-27 11:52:05.278  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问login接口
+2021-05-27 11:52:05.279  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-05-27 11:52:05.279  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-05-27 11:52:05.315  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-05-27 11:52:05.317  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjMzODM1MjUsInVzZXJuYW1lIjoibnR0In0.dQ-lHsZdOOoSsJrTSLat_7ANH6h-HQKYxnLaNCewA2U
+2021-05-27 11:55:00.802  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问login接口
+2021-05-27 11:55:00.803  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-05-27 11:55:00.803  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-05-27 11:55:00.845  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-05-27 11:55:00.845  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjMzODM3MDAsInVzZXJuYW1lIjoibnR0In0.lqhsXdHUxjjQpHk_AWqCB-iESoDBxfFBflKWshWJAds
+2021-05-27 11:55:43.705  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问login接口
+2021-05-27 11:55:43.705  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-05-27 11:55:43.705  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-05-27 11:55:43.741  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-05-27 11:55:43.741  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjMzODM3NDMsInVzZXJuYW1lIjoibnR0In0.IPaBbWLl7riDInuwe_OOZGHiDEflPjfagLTpTAN3JV8
+2021-05-27 11:57:07.655  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问login接口
+2021-05-27 11:57:07.655  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-05-27 11:57:07.655  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-05-27 11:57:07.689  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-05-27 11:57:07.690  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjMzODM4MjcsInVzZXJuYW1lIjoibnR0In0.6ncelKLNFEkxgqwLnmY33MC5RqZ2-sXPTbtDCbSpC2g
+2021-05-27 11:57:54.066  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问login接口
+2021-05-27 11:57:54.066  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-05-27 11:57:54.066  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-05-27 11:57:54.101  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-05-27 11:57:54.102  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjMzODM4NzQsInVzZXJuYW1lIjoibnR0In0.V8FaB5j18UKbwLDQIt232uJbc3BzM3vxVPeEyUDF7zo
+2021-05-27 11:58:18.890  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问login接口
+2021-05-27 11:58:18.890  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-05-27 11:58:18.890  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-05-27 11:58:18.925  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-05-27 11:58:18.926  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjMzODM4OTgsInVzZXJuYW1lIjoibnR0In0.nRKzNaUzDLt1g_N3lAkRuJDFVtZLhPXBD-7UkGWpRNY
+2021-05-27 12:27:14.310  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-05-27 12:27:14.312  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851699003)**1**
+2021-05-27 12:30:58.231  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-05-27 12:30:58.231  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851699003)**1**
+2021-05-27 12:37:25.272  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-05-27 12:37:25.272  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851699003)**1**
+2021-05-27 12:37:35.015  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问code/login接口
+2021-05-27 12:37:35.016  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : -----code/login-----请求参数：VerifyPhoneDto(phoneNumber=18851699003, verifyCode=123456)**1**
+2021-05-27 12:37:35.016  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.service.impl.HbUserServiceImpl     : verifyPhone:18851699003*********123456
+2021-05-27 12:37:35.078  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=123456)**1**
+2021-05-27 12:37:35.079  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,564f**1**
+2021-05-27 12:38:19.597  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-05-27 12:38:19.597  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851699003)**1**
+2021-05-27 12:45:50.533  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问login接口
+2021-05-27 12:45:50.534  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-05-27 12:45:50.534  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-05-27 12:45:50.596  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-05-27 12:45:50.598  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjMzODY3NTAsInVzZXJuYW1lIjoibnR0In0.qhYoA4dTa3YyeXwPGWd8BkLfU0ueMDA6TumjAu5Fnps
+2021-05-27 12:46:47.462  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:46:47.462  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:48:17.183  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:48:17.184  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:48:59.990  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:48:59.992  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:49:31.957  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:49:31.957  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:49:41.881  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:49:41.882  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:49:45.830  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:49:45.831  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:49:56.734  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:49:56.734  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:49:59.368  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:49:59.368  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:50:04.204  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:50:04.205  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:50:32.703  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:50:32.704  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:50:36.464  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:50:36.464  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:50:47.151  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:50:47.151  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:50:49.347  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:50:49.347  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:51:04.700  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:51:04.700  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:51:09.808  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:51:09.809  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:51:14.323  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:51:14.323  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:51:19.153  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:51:19.154  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:51:23.138  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:51:23.138  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:51:26.198  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:51:26.198  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:51:35.741  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:51:35.742  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:51:40.602  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:51:40.602  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:51:53.814  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:51:53.814  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:52:08.088  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:52:08.088  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-05-27 12:54:39.941  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-05-27 12:54:39.942  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851699003)**1**
+2021-05-27 12:54:51.053  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=123456)**1**
+2021-05-27 12:54:51.055  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,4784**1**
+2021-05-27 12:56:13.978  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=123456)**1**
+2021-05-27 12:56:13.980  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,4784**1**
+2021-05-27 12:57:42.161  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-05-27 12:57:42.161  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851699003)**1**
+2021-05-27 12:58:53.687  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-05-27 12:58:53.688  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851699003)**1**
+2021-05-27 12:59:34.325  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问login接口
+2021-05-27 12:59:34.326  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-05-27 12:59:34.326  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-05-27 12:59:34.368  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-05-27 12:59:34.368  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjMzODc1NzQsInVzZXJuYW1lIjoibnR0In0.d6S9_g-kv8c6DeIIdXlJ_6JJrAuVBtwxNuzLaaBMLqk
+2021-05-27 12:59:36.950  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 12:59:36.951  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:00:54.658  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:00:54.658  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:09:02.879  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-05-27 13:09:02.880  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851699003)**1**
+2021-05-27 13:09:13.539  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=123456)**1**
+2021-05-27 13:09:13.541  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,6d30**1**
+2021-05-27 13:09:21.004  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=123456)**1**
+2021-05-27 13:09:21.005  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,6d30**1**
+2021-05-27 13:09:33.801  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=123456)**1**
+2021-05-27 13:09:33.803  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,6d30**1**
+2021-05-27 13:09:49.608  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=123456)**1**
+2021-05-27 13:09:49.609  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,6d30**1**
+2021-05-27 13:12:46.577  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问login接口
+2021-05-27 13:12:46.577  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-05-27 13:12:46.577  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-05-27 13:12:46.616  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-05-27 13:12:46.618  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjMzODgzNjYsInVzZXJuYW1lIjoibnR0In0.oEp26efdDTP2NmBwaEMAjvowfWBat2S-hMS-lmoXbsQ
+2021-05-27 13:12:52.522  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:12:52.523  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:13:46.206  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:13:46.206  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:15:59.176  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:15:59.177  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:15:59.331  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:15:59.331  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:15:59.608  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:15:59.608  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:20:27.356  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:20:27.356  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:20:27.369  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:20:27.369  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:20:27.584  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:20:27.584  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:20:49.130  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:20:49.130  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:20:49.142  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:20:49.142  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:20:49.254  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:20:49.254  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:20:52.573  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:20:52.573  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:20:52.589  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:20:52.589  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:20:52.712  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:20:52.713  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:20:57.247  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:20:57.248  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:20:57.264  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:20:57.264  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:20:57.375  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:20:57.375  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:20:58.939  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:20:58.939  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:20:58.951  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:20:58.951  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:20:59.083  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:20:59.084  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:21:50.968  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:21:50.968  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:21:50.977  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:21:50.978  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:21:51.224  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:21:51.225  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:21:55.233  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:21:55.234  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:21:55.277  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:21:55.277  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:21:55.376  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:21:55.376  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:22:01.869  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:22:01.870  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:22:01.874  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:22:01.874  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:22:01.993  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:22:01.994  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:22:05.595  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:22:05.595  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:22:05.604  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:22:05.605  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:22:05.794  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:22:05.794  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:22:21.829  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:22:21.829  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId2
+2021-05-27 13:23:29.368  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:23:29.369  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:23:29.401  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:23:29.401  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:23:29.498  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:23:29.498  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:23:44.561  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:23:44.561  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:23:49.259  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:23:49.259  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:48:37.510  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:48:37.511  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId2
+2021-05-27 13:49:02.854  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 13:49:02.854  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-05-27 13:49:16.419  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-05-27 13:49:16.420  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851699003)**1**
+2021-05-27 13:49:27.636  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=123456)**1**
+2021-05-27 13:49:27.637  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,ee9d**1**
+2021-05-27 13:51:26.328  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问login接口
+2021-05-27 13:51:26.329  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-05-27 13:51:26.329  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-05-27 13:51:26.410  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-05-27 13:51:26.413  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjMzOTA2ODYsInVzZXJuYW1lIjoibnR0In0.hKrgB7FKcfciISdnECDeIT0FCYMdTGoovNAZbrqjOT0
+2021-05-27 13:53:39.700  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-05-27 13:53:39.700  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851699003)**1**
+2021-05-27 13:57:12.313  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=123456)**1**
+2021-05-27 13:57:12.315  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,null**1**
+2021-05-27 13:57:21.297  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=123456)**1**
+2021-05-27 13:57:21.298  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,null**1**
+2021-05-27 14:00:24.627  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=2311)**1**
+2021-05-27 14:00:24.629  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,null**1**
+2021-05-27 14:00:40.421  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=2311)**1**
+2021-05-27 14:00:40.422  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,null**1**
+2021-05-27 14:01:12.595  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=123456)**1**
+2021-05-27 14:01:12.597  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,null**1**
+2021-05-27 14:01:58.214  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=1231)**1**
+2021-05-27 14:01:58.218  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,null**1**
+2021-05-27 14:02:57.324  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=123456)**1**
+2021-05-27 14:02:57.325  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,null**1**
+2021-05-27 14:03:30.197  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=1234)**1**
+2021-05-27 14:03:30.198  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,null**1**
+2021-05-27 14:05:11.448  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=1233)**1**
+2021-05-27 14:05:11.451  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,null**1**
+2021-05-27 14:05:21.255  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-05-27 14:05:21.255  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851699003)**1**
+2021-05-27 14:05:32.359  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问code/login接口
+2021-05-27 14:05:32.359  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : -----code/login-----请求参数：VerifyPhoneDto(phoneNumber=18851699003, verifyCode=1233)**1**
+2021-05-27 14:05:32.359  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.service.impl.HbUserServiceImpl     : verifyPhone:18851699003*********1233
+2021-05-27 14:05:32.443  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=1233)**1**
+2021-05-27 14:05:32.446  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,1fcf**1**
+2021-05-27 14:25:20.604  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问login接口
+2021-05-27 14:25:20.605  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-05-27 14:25:20.605  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-05-27 14:25:20.651  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-05-27 14:25:20.654  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjMzOTI3MjAsInVzZXJuYW1lIjoibnR0In0.RkfGPAmVc2pOk1nOqysndXjZs0W8Qa31szUN-VJ2GCo
+2021-05-27 14:25:31.460  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-05-27 14:25:31.460  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851699003)**1**
+2021-05-27 14:25:40.903  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问code/login接口
+2021-05-27 14:25:40.903  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : -----code/login-----请求参数：VerifyPhoneDto(phoneNumber=18851699003, verifyCode=ffc5)**1**
+2021-05-27 14:25:40.903  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.service.impl.HbUserServiceImpl     : verifyPhone:18851699003*********ffc5
+2021-05-27 14:25:40.941  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=ffc5)**1**
+2021-05-27 14:25:40.942  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,ffc4**1**
+2021-05-27 14:25:45.980  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问code/login接口
+2021-05-27 14:25:45.980  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : -----code/login-----请求参数：VerifyPhoneDto(phoneNumber=18851699003, verifyCode=ffc4)**1**
+2021-05-27 14:25:45.980  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.service.impl.HbUserServiceImpl     : verifyPhone:18851699003*********ffc4
+2021-05-27 14:25:46.014  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=ffc4)**1**
+2021-05-27 14:25:46.015  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,ffc4**1**
+2021-05-27 14:25:46.016  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-05-27 14:25:46.017  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjMzOTI3NDYsInVzZXJuYW1lIjoiIn0.SX4ByqknvQn6_e7jXSLlT-O0deBgiHdAixOazkMVGEU
+2021-05-27 14:29:46.937  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问login接口
+2021-05-27 14:29:46.937  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-05-27 14:29:46.937  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-05-27 14:29:46.975  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-05-27 14:29:46.976  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjMzOTI5ODYsInVzZXJuYW1lIjoibnR0In0.pXdF-zNZ09Y5KJuB9c4JZy5Y3314bbBoyrR25O-3hMg
+2021-05-27 17:14:22.049  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:14:22.057  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:15:35.876  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:15:35.877  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:15:43.933  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:15:43.934  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:15:57.563  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:15:57.564  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:16:31.893  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:16:31.894  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:16:40.129  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:16:40.129  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:16:44.046  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:16:44.046  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:16:55.663  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:16:55.663  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:17:35.423  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:17:35.424  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:17:45.100  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:17:45.101  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:17:53.593  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:17:53.595  INFO 13516 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:18:01.587  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:18:01.588  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:18:02.964  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:18:02.965  INFO 13516 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:18:06.260  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:18:06.261  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:18:25.114  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:18:25.114  INFO 13516 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:18:35.834  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:18:35.835  INFO 13516 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:18:37.043  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:18:37.043  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:18:42.551  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:18:42.552  INFO 13516 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:18:50.085  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:18:50.086  INFO 13516 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:18:56.137  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:18:56.137  INFO 13516 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:18:59.081  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:18:59.081  INFO 13516 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:19:02.890  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:19:02.890  INFO 13516 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-05-27 17:19:19.023  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-05-27 17:19:19.024  INFO 13516 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+=======
 2021-05-27 10:40:57.079  INFO 14512 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
 2021-05-27 10:41:00.645  INFO 14512 --- [main] c.soft.usercenter.UserCenterApplication  : No active profile set, falling back to default profiles: default
 2021-05-27 10:41:01.577  INFO 14512 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
@@ -531,6 +899,7 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2021-05-27 18:14:42.978  INFO 3304 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
 2021-05-27 18:14:43.069  INFO 3304 --- [http-nio-8082-exec-3] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=, verifyCode=)**1**
 2021-05-27 18:14:49.295  INFO 3304 --- [http-nio-8082-exec-3] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,null**1**
+<<<<<<< HEAD
 2021-05-27 18:18:12.241  INFO 3304 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问login接口
 2021-05-27 18:18:12.241  INFO 3304 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
 2021-05-27 18:18:12.242  INFO 3304 --- [http-nio-8082-exec-5] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
@@ -4150,3 +4519,6 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2021-05-27 18:18:31.851  INFO 3304 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
 2021-05-27 18:18:31.858  INFO 3304 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
 2021-05-27 18:18:31.858  INFO 3304 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+=======
+>>>>>>> 489fb81e6258a8ef221e8f4f952c6cbe25725bcf
+>>>>>>> cd374e6ddba1ac4ec43a508cd4e079e23697778c

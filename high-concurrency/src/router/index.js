@@ -20,12 +20,14 @@ const routes = [
   {
     path: '/message',
     name: 'Message',
-    component: () => import('../views/my/Message.vue')
+    component: () => import('../views/my/Message.vue'),
+    meta:{requireAuth:true}
   },
   {
     path: '/order',
     name: 'Order',
-    component: () => import('../views/my/Order.vue')
+    component: () => import('../views/my/Order.vue'),
+    meta:{requireAuth:true}
   },
   {
     path: '/goods',
@@ -35,7 +37,8 @@ const routes = [
   {
     path: '/put',
     name: 'Put',
-    component: () => import('../views/my/Put.vue')
+    component: () => import('../views/my/Put.vue'),
+    meta:{requireAuth:true}
   },
   {
     path: '/router',
@@ -45,7 +48,8 @@ const routes = [
   {
     path: '/publish',
     name: 'Publish',
-    component: () => import('../views/put/Publish.vue')
+    component: () => import('../views/put/Publish.vue'),
+    meta:{requireAuth:true}
   },
 ]
 

@@ -135,3 +135,6 @@
 2021-06-01 21:03:33.155  INFO 8788 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
 2021-06-01 21:03:33.158  INFO 8788 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
 2021-06-01 21:03:33.158  INFO 8788 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-06-01 21:10:37.162  INFO 8788 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-01 21:10:37.163  INFO 8788 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-06-01 21:10:37.172  INFO 8788 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口

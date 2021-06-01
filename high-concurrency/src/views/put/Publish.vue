@@ -77,13 +77,6 @@
           </v-chip-group>
         </div>
         <div class="mt-100"></div>
-        <!-- <v-btn
-          :disabled="valid"
-          @click="publish()"
-          color="teal"
-          class="publish-btn"
-          >提交</v-btn
-        > -->
         <div style="margin-left: 45%">
           <v-btn
             color="teal"
@@ -93,6 +86,7 @@
             class="compon-btn btn-none border-no"
             :disabled="valid"
             @click="publish()"
+            v-preventReClick
             >提交</v-btn
           >
         </div>
@@ -161,7 +155,7 @@ export default {
     goodsValidate: {
       handler(val, oldVal) {
         console.log("currentForm", val, oldVal);
-        if (val.goodName != "") {
+        if (val.goodName != "" && val.image.length != 0 && val.count != 0) {
           this.valid = false;
         }
       },
@@ -202,7 +196,12 @@ export default {
       var _this = this;
       client.multipartUpload(imgUrl, file).then(function (result) {
         let index = result.res.requestUrls[0].indexOf("?");
-        let url = result.res.requestUrls[0].slice(0, index);
+        let url ;
+        if(index == -1) {
+           url = result.res.requestUrls[0]
+        } else{
+           url = result.res.requestUrls[0].slice(0, index);
+        }
         _this.goodsValidate.image.push(url);
         console.log(result.res);
         console.log(_this.goodsValidate.image.length);
@@ -287,6 +286,6 @@ export default {
 .del-icon {
   position: absolute;
   z-index: 999;
-  top: 50%;
+  margin-top:-160px;
 }
 </style>

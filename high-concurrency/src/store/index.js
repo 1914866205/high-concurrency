@@ -63,7 +63,6 @@ const store = new Vuex.Store({
             resolve(response)
           }else{
             reject(response)
-            
           }
         }).catch((error) => {
           console.log(error)
