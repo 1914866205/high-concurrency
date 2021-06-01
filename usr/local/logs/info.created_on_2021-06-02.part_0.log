@@ -1,0 +1,11 @@
+2021-06-02 00:05:42.554  INFO 12844 --- [http-nio-8082-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-06-02 00:05:42.558  INFO 12844 --- [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-06-02 00:05:42.620  INFO 12844 --- [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 61 ms
+2021-06-02 00:05:42.796  INFO 12844 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问login接口
+2021-06-02 00:05:42.798  INFO 12844 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-06-02 00:05:42.798  INFO 12844 --- [http-nio-8082-exec-1] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-06-02 00:05:47.637  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问login接口
+2021-06-02 00:05:47.637  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-06-02 00:05:47.637  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-06-02 00:06:13.004  WARN 12844 --- [http-nio-8082-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08001
+2021-06-02 00:06:17.647  WARN 12844 --- [http-nio-8082-exec-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08001

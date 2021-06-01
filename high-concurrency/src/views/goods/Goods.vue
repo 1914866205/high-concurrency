@@ -386,13 +386,17 @@ export default {
       console.log(Vue.ls.get(ACCESS_TOKEN));
       if (Vue.ls.get(ACCESS_TOKEN) == null) {
         this.$router.push("/login");
+      }else if(Vue.ls.get(USER_ID) == this.goodsInfo.userId){
+        this.$message({
+          message: "不能购买自己的商品",
+          type: "warning",
+        });
       }else if (this.count == 0) {
         this.$message({
           message: "购买数量必须大于0",
           type: "warning",
         });
       } else {
-        
         this.overlay = true;
       }
     },

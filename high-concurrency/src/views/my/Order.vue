@@ -1,17 +1,17 @@
 <template>
   <v-app>
     <nav-bar></nav-bar>
-    <alert
+    <!-- <alert
       v-if="isPay"
       @click="cancelInfo()"
       :alertdata="isYue ? '余额不足' : '支付成功'"
-    ></alert>
-    <alert
+    ></alert> -->
+    <!-- <alert
       v-if="isComSuc"
       @click="cancelComInfo()"
       alertdata="评价成功"
-    ></alert>
-    <alert v-if="isDel" @click="cancelDelInfo()" alertdata="删除成功"></alert>
+    ></alert> -->
+    <!-- <alert v-if="isDel" @click="cancelDelInfo()" alertdata="删除成功"></alert> -->
     <div class="order">
       <v-card>
         <v-tabs
@@ -60,7 +60,7 @@
                     支付订单
                   </button>
                 </div>
-                <div class="pay" v-if="item.status != 3">
+                <div class="pay" v-if="item.status == 2">
                   <v-dialog
                     transition="dialog-bottom-transition"
                     max-width="600"
@@ -151,7 +151,6 @@
 import NavBar from "../../components/NavBar";
 const time = require("../../utils/time.js");
 import Alert from "@/components/Alert";
-const API = require("../../utils/request.js");
 import { commentAddComment } from "@/utils/request.js";
 import Vue from "vue";
 import { USER_ID } from "@/store/mutation-types";
@@ -179,35 +178,40 @@ export default {
     };
   },
   created: function () {
-    let params = new URLSearchParams();
-    let id = Vue.ls.get(USER_ID);
-    params.append("pkUserId", id);
-    this.axios
-      .post(this.GLOBAL.contentUrl + "/order/findUserAllOrder", params)
-      .then((res) => {
-        this.order = res.data.data.data;
-        let arr = res.data.data.data;
-        let noArr = [];
-        let noCom = [];
-        for (let j = 0, len = arr.length; j < len; j++) {
-          //时间格式化
-          let time1 = Date.parse(arr[j].createTime);
-          arr[j].createTime = time.timeFmt(time1);
-          if (arr[j].status == 0) {
-            noArr.push(arr[j]);
-          } else if (arr[j].status != 3) {
-            noCom.push(arr[j]);
-          }
-        }
-        this.noOrder = noArr;
-        this.order = arr;
-        this.allOrder = arr;
-        this.noCom = noCom;
-        console.log(this.allOrder);
-      });
+    this.getOrder();
   },
 
   methods: {
+    getOrder() {
+      let params = new URLSearchParams();
+      let id = Vue.ls.get(USER_ID);
+      params.append("pkUserId", id);
+      this.axios
+        .post(this.GLOBAL.contentUrl + "/order/findUserAllOrder", params)
+        .then((res) => {
+          let arr = res.data.data.data;
+          console.log(arr);
+          let allArr = [];
+          let noArr = [];
+          let noCom = [];
+          for (let j = 0, len = arr.length; j < len; j++) {
+            //时间格式化
+            let time1 = Date.parse(arr[j].createTime);
+            arr[j].createTime = time.timeFmt(time1);
+            if (arr[j].status != 3) {
+              allArr.push(arr[j]);
+            }else if (arr[j].status == 0) {
+              noArr.push(arr[j]);
+            } else if (arr[j].status == 2) {
+              noCom.push(arr[j]);
+            }
+          }
+          this.order = allArr;
+          this.noOrder = noArr;
+          this.allOrder = allArr;
+          this.noCom = noCom;
+        });
+    },
     dlDialog() {
       this.delDialog == true;
     },
@@ -218,7 +222,6 @@ export default {
       }
     },
     cancelInfo() {
-      this.isPay = false;
       this.noPushTab();
       if (this.tab == "tab-2") {
         this.noPushTab;
@@ -238,15 +241,23 @@ export default {
         .post(this.GLOBAL.contentUrl + "/order/payOrder", params)
         .then((res) => {
           if (res.data.code == 1) {
-            console.log(res);
-            this.isPay = true;
-            setTimeout(this.cancelInfo, 3000);
-            let arr = this.noOrder;
-            this.noOrder = arr.filter((item) => item.pkOrderid == id);
+            this.getOrder();
           } else if (res.data.code == 8004) {
             this.isYue = true;
-            this.isPay = true;
-            setTimeout(this.cancelInfo, 3000);
+            if (this.tab == "tab-2") {
+              this.noPushTab();
+            }
+          }
+          if (this.isYue) {
+            this.$message({
+              message: "余额不足",
+              type: "warning",
+            });
+          } else {
+            this.$message({
+              message: "支付成功",
+              type: "success",
+            });
           }
         });
     },
@@ -271,16 +282,25 @@ export default {
       };
       commentAddComment(data).then((res) => {
         if (res.code === 1) {
-          this.isComSuc = true;
-          setTimeout(this.cancelComInfo, 3000);
-          let arr = this.noCom;
-          this.noCom = arr.filter((item) => item.pkOrderid == orderId);
+          this.$message({
+            message: "评价成功",
+            type: "success",
+          });
+          let params = new URLSearchParams();
+          params.append("hbOrderId", orderId);
+          params.append("state", 1);
+          this.axios
+            .post(this.GLOBAL.contentUrl + "/order/commentOrder", params)
+            .then((res) => {
+              console.log(res)
+              this.getOrder();
+              this.comDialog = false;
+              if (this.tab == "tab-3") {
+                this.noComTab();
+              }
+            });
         }
       });
-    },
-    cancelDelInfo() {
-      this.isDel = false;
-      this.allTab();
     },
     del(id) {
       let params = new URLSearchParams();
@@ -290,10 +310,11 @@ export default {
         .then((res) => {
           console.log(res);
           if (res.data.code == 1) {
-            this.isDel = true;
-            setTimeout(this.cancelDelInfo, 3000);
-            let arr = this.allOrder;
-            this.allOrder = arr.filter((item) => item.pkOrderid == id);
+            this.$message({
+              message: "删除成功",
+              type: "success",
+            });
+            this.getOrder();
           }
         });
     },

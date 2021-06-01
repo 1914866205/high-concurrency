@@ -290,6 +290,7 @@ export default {
           this.validate.sex = this.user.sex;
           Vue.ls.set(USER_INFO, this.user);
         });
+        
     },
     updateUser() {
       this.userInput = !this.userInput;
@@ -357,11 +358,18 @@ export default {
         username: users.username,
       };
       _this.axios.post(_this.GLOBAL.baseUrl + "/user/edit", data).then((res) => {
-        _this.isSuc = true;
+        // _this.isSuc = true;
+         this.$message({
+              message: "修改成功",
+              type: "success",
+            });
+           _this.isUpdate = false;
         _this.refreshUser();
+
         if ((avatar = _this.validate.avatar)) {
           Vue.ls.set(USER_AVATAR, avatar, 7 * 24 * 60 * 60 * 1000);
         }
+        this.$router.go(0);
       });
     },
     cancelSubmit() {
