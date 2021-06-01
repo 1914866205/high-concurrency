@@ -42,9 +42,9 @@
           >
 
              第
-            <el-input v-model="domain.start" :rules="startRules" class="w-65" />名到第
-            <el-input v-model="domain.end" class="w-65"></el-input>名 打
-            <el-input v-model="domain.discount" class="w-40"></el-input
+            <el-input v-model="domain.start" type="number" min="1" :rules="startRules" class="w-65" />名到第
+            <el-input v-model="domain.end" type="number" max="1000" class="w-65"></el-input>名 打
+            <el-input v-model="domain.discount" type="number" max="10" class="w-40"></el-input
             >折
             <el-button
               @click.prevent="removeDomain(domain)"
@@ -146,8 +146,9 @@ export default {
       this.axios
         .post(this.GLOBAL.contentUrl + "/hbStrategy/get", params)
         .then((res) => {
-           console.log(res);
           let data = res.data.data;
+          //根据策略开始的名次对折扣进行排序
+          data.ruleDtoList.sort(this.compare('start'))
           this.goodId = data.goodId;
           this.form.date1 = data.day;
           this.form.date2 = data.detail;
@@ -160,9 +161,14 @@ export default {
             };
             this.dynamicValidateForm.domains[i] = domain;
           }
-
-         
         });
+    },
+    compare(property) {
+      return function(a,b){
+        var value1 = a[property];
+        var value2 = b[property];
+        return value1 - value2;
+    }
     },
     removeDomain(item) {
       var index = this.dynamicValidateForm.domains.indexOf(item);

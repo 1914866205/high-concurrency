@@ -109,7 +109,7 @@
         <template v-slot:activator="{ attrs, on }"> -->
       <!-- <div v-if="isLogin" class="user" v-bind="attrs" v-on="on"> -->
       <div @click="goUser()" v-if="isLogin" class="user button-hand">
-        <img class="image" :src="avatar" />
+        <img class="image btn-none" :src="avatar" />
       </div>
       <div
         v-else

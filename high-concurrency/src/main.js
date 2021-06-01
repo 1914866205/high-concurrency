@@ -18,36 +18,41 @@ import  { Component } from 'react'
 //防止用户在一定时间内重复频繁的触发事件
 import preventReClick from '@/utils/preventReClick.js';
 Vue.use(preventReClick);
-
 Vue.use(Element, { size: 'small', zIndex: 3000 });
 Vue.use(VueAxios, axios)
 Vue.use(Storage, config.storageOptions)
 Vue.use(Vuetify,Component,common)
 Vue.prototype.GLOBAL = global_
-
+import { ACCESS_TOKEN } from "@/store/mutation-types";
 //导航守卫
-// router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
+   //to即将要进入的目标 
+   //from当前导航正要离开的路由
+   // next一定要调用这个方法来resolve这个钩子 执行效果依赖Next方法调用参数
 
-//   let token = localStorage.getItem('token')
-//   let isLogin
-//   if (!token) {
-//     isLogin = false
-//   } else {
-//     isLogin = true
-//   }
-//   if (!isLogin) {
-//     if (to.path !== '/login') {
-//       return next({ path: '/login' })
-//     } else {
-//       next()
-//     }
-//   } else {
-//     if (to.path === '/login') {
-//       return next({ path: '/' })
-//     }
-//     next()
-//   }
-// })
+  let token = Vue.ls.get(ACCESS_TOKEN);
+  if (to.meta.requireAuth) {//判断该路由是否需要登录全新
+    if (token) {//判断本地token是否存在
+      next()
+    } else {
+      if(to.path === '/login'){
+        next()
+      }else {
+        next({ path: '/login' })
+      }
+    } 
+  } else {
+    next();
+  }
+  //存在token则不跳转
+  if(to.fullPath == '/login') {
+    if(token) {
+      next({path:from.fullPath});
+    } else {
+      next();
+    }
+  }
+});
 
 //全局请求拦截
 // axios.interceptors.request.use((config) => {

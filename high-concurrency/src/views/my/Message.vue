@@ -41,6 +41,7 @@
             style="color: white"
             class="compon-btn btn-none border-no"
             @click="submit()"
+            v-preventReClick
             >提交</v-btn
           >
         </div>
@@ -276,7 +277,7 @@ export default {
   created: function () {
     this.refreshUser();
   },
-
+  //注册指令
   directives: { clickoutside },
   methods: {
     refreshUser() {

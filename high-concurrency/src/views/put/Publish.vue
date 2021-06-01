@@ -86,6 +86,7 @@
             class="compon-btn btn-none border-no"
             :disabled="valid"
             @click="publish()"
+            v-preventReClick
             >提交</v-btn
           >
         </div>
