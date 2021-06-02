@@ -34,7 +34,7 @@
         <v-list v-model="goods">
           <v-list-item v-for="(item, index) in goods" :key="index" link>
             <v-list-item-title
-              @click="goGoods(item.goodId)"
+              @click="goGoods(item.pkGoodId)"
               v-text="item.goodName"
             ></v-list-item-title>
           </v-list-item>
@@ -185,6 +185,7 @@ export default {
       this.$router.push("/login");
     },
     goGoods(id) {
+      console.log(id)
       this.$router.push({ path: "/goods", query: { goodsId: id } });
     },
     search() {
@@ -195,6 +196,7 @@ export default {
       };
       goodsSearch(data).then((res) => {
         this.goods = res.data.Goods.content;
+        console.log(this.goods)
       });
     },
   },

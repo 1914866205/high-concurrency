@@ -1,12 +1,9 @@
 package com.soft.content.service;
 
 import com.soft.content.common.ResponseResult;
-import com.soft.content.common.ResultCode;
 import com.soft.content.model.dto.OrderDto;
 import com.soft.content.model.dto.SecResultDto;
-import com.soft.content.model.entity.HbStrategy;
 
-import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
@@ -70,4 +67,8 @@ public interface HbOrderService {
 //     * @param orderDto
 //     */
 //    void secKill(OrderDto orderDto);
+    /**
+     * 修改订单状态
+     */
+    ResponseResult commentOrder(String hbOrderId, int state);
 }

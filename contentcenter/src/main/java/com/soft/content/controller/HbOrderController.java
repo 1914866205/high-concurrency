@@ -4,17 +4,14 @@ import com.soft.content.annotation.ControllerWebLog;
 import com.soft.content.common.Constants;
 import com.soft.content.common.ResponseResult;
 import com.soft.content.common.ResultCode;
-import com.soft.content.feignclient.SecKillCenterFeignClient;
 import com.soft.content.model.dto.OrderDto;
 import com.soft.content.model.dto.SecResultDto;
 import com.soft.content.model.entity.HbGood;
-import com.soft.content.model.entity.HbStrategy;
 import com.soft.content.service.HbGoodService;
 import com.soft.content.service.HbOrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -204,6 +201,17 @@ public class HbOrderController {
         return hbOrderService.findSecKillUserOrder(secResultDto);
     }
 
+    /**
+     * 根据订单Id修改订单状态
+     *
+     * @return
+     */
+    @ApiOperation(value = "根据订单Id修改订单状态", notes = "commentOrder")
+    @PostMapping("commentOrder")
+    @ControllerWebLog(name = "commentOrder", isSaved = true)
+    public ResponseResult commentOrder(String hbOrderId,int state) {
+        return hbOrderService.commentOrder(hbOrderId,state);
+    }
 
     class FollowThread extends Thread {
         private OrderDto orderDto;
