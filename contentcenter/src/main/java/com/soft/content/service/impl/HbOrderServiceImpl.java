@@ -192,6 +192,14 @@ public class HbOrderServiceImpl implements HbOrderService {
 
     }
 
+    @Override
+    public ResponseResult commentOrder(String hbOrderId, int state) {
+        HbOrder hbOrder = hbOrderRepository.getOne(hbOrderId);
+        hbOrder.setState(state);
+        hbOrderRepository.save(hbOrder);
+        return ResponseResult.success();
+    }
+
     /**
      * 添加订单
      *

@@ -59,6 +59,11 @@ public interface HbOrderService {
      * @param queue
      */
     void batchAddOrder(LinkedBlockingQueue<OrderDto> queue);
+
+    /**
+     * 修改订单状态
+     */
+    ResponseResult commentOrder(String hbOrderId, int state);
 //
 //    /**
 //     * 把成功的订单请求发送给消息队列
