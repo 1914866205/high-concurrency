@@ -149,6 +149,19 @@ public class HbOrderController {
         return ResponseResult.success(hbOrderService.celOrder(hBorderId));
     }
 
+
+    /**
+     * 根据订单Id修改订单状态
+     *
+     * @return
+     */
+    @ApiOperation(value = "根据订单Id修改订单状态", notes = "commentOrder")
+    @PostMapping("commentOrder")
+    @ControllerWebLog(name = "commentOrder", isSaved = true)
+    public ResponseResult commentOrder(String hbOrderId,int state) {
+        return hbOrderService.commentOrder(hbOrderId,state);
+    }
+
     /**
      * 支付订单
      *
