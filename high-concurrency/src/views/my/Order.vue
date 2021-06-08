@@ -200,9 +200,11 @@ export default {
             arr[j].createTime = time.timeFmt(time1);
             if (arr[j].status != 3) {
               allArr.push(arr[j]);
-            }else if (arr[j].status == 0) {
+            }
+             if (arr[j].status == 0) {
               noArr.push(arr[j]);
             } else if (arr[j].status == 2) {
+              
               noCom.push(arr[j]);
             }
           }
@@ -229,7 +231,7 @@ export default {
     },
     noComTab() {
       this.order = this.noCom;
-      if (this.noCom.length == 0) {
+      if (this.order.length == 0) {
         this.isCom = true;
       }
     },

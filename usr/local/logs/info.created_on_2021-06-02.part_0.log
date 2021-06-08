@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2021-06-02 02:45:25.648  WARN 26308 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h21s99ms691µs500ns).
 2021-06-02 09:50:02.888  WARN 26308 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7h4m50s247ms845µs200ns).
 2021-06-02 13:36:13.906  WARN 26308 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h6m9s421ms581µs200ns).
@@ -7,3 +8,428 @@
 2021-06-02 14:08:03.485  INFO 26308 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
 2021-06-02 14:08:06.738  INFO 26308 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
 2021-06-02 14:08:06.738  INFO 26308 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+=======
+2021-06-02 00:05:42.554  INFO 12844 --- [http-nio-8082-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-06-02 00:05:42.558  INFO 12844 --- [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-06-02 00:05:42.620  INFO 12844 --- [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 61 ms
+2021-06-02 00:05:42.796  INFO 12844 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问login接口
+2021-06-02 00:05:42.798  INFO 12844 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-06-02 00:05:42.798  INFO 12844 --- [http-nio-8082-exec-1] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-06-02 00:05:47.637  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问login接口
+2021-06-02 00:05:47.637  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-06-02 00:05:47.637  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-06-02 00:06:13.004  WARN 12844 --- [http-nio-8082-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08001
+2021-06-02 00:06:17.647  WARN 12844 --- [http-nio-8082-exec-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08001
+2021-06-02 00:07:49.337  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问login接口
+2021-06-02 00:07:49.338  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-06-02 00:07:49.338  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-06-02 00:07:49.499  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-06-02 00:07:49.575  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjM4NTk2NjksInVzZXJuYW1lIjoibnR0In0.wo3njgLgrRkJRv2pBqb7lZuXRFzo_WFZW-ORFku6nA4
+2021-06-02 00:08:38.827  INFO 12844 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:08:38.827  INFO 12844 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:08:39.936  INFO 12844 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:08:39.936  INFO 12844 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:08:40.548  INFO 12844 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:08:40.549  INFO 12844 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:08:41.174  INFO 12844 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:08:41.175  INFO 12844 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:10:10.402  INFO 12844 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:10:10.403  INFO 12844 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:10:11.276  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:10:11.276  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:10:11.994  INFO 12844 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:10:11.994  INFO 12844 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:10:12.713  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:10:12.714  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:10:24.795  INFO 12844 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:10:24.796  INFO 12844 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:10:25.614  INFO 12844 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:10:25.614  INFO 12844 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:10:26.331  INFO 12844 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:10:26.331  INFO 12844 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:10:27.045  INFO 12844 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:10:27.045  INFO 12844 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:11:04.627  INFO 12844 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:11:04.628  INFO 12844 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:11:05.455  INFO 12844 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:11:05.455  INFO 12844 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:11:06.164  INFO 12844 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:11:06.164  INFO 12844 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:11:06.885  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:11:06.886  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:11:08.430  INFO 12844 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:11:08.430  INFO 12844 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId2
+2021-06-02 00:11:08.522  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:11:08.523  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:11:09.581  INFO 12844 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:11:09.581  INFO 12844 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:11:10.203  INFO 12844 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:11:10.203  INFO 12844 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:11:10.874  INFO 12844 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:11:10.874  INFO 12844 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:11:11.490  INFO 12844 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:11:11.490  INFO 12844 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:16:23.765  INFO 12844 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:16:23.766  INFO 12844 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:16:24.537  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:16:24.538  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:16:25.144  INFO 12844 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:16:25.144  INFO 12844 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:16:28.835  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:16:28.836  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:16:29.549  INFO 12844 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:16:29.550  INFO 12844 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:16:31.598  INFO 12844 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:16:31.599  INFO 12844 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:16:34.460  INFO 12844 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:16:34.461  INFO 12844 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:16:35.284  INFO 12844 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:16:35.284  INFO 12844 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:16:35.998  INFO 12844 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:16:35.998  INFO 12844 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:16:36.713  INFO 12844 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:16:36.713  INFO 12844 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:17:51.672  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:17:51.672  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:17:52.493  INFO 12844 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:17:52.494  INFO 12844 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:17:53.207  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:17:53.207  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:17:53.925  INFO 12844 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:17:53.926  INFO 12844 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:21:02.341  INFO 12844 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:21:02.342  INFO 12844 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:21:03.161  INFO 12844 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:21:03.161  INFO 12844 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:21:03.877  INFO 12844 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:21:03.877  INFO 12844 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:21:04.597  INFO 12844 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:21:04.597  INFO 12844 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:24:21.145  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:24:21.146  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:24:22.023  INFO 12844 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:24:22.023  INFO 12844 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:24:22.742  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:24:22.743  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:24:23.456  INFO 12844 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:24:23.456  INFO 12844 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:24:26.369  INFO 12844 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:24:26.369  INFO 12844 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:24:27.245  INFO 12844 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:24:27.245  INFO 12844 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:24:27.966  INFO 12844 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:24:27.967  INFO 12844 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:24:28.680  INFO 12844 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:24:28.681  INFO 12844 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:24:51.352  INFO 12844 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:24:51.353  INFO 12844 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:24:52.234  INFO 12844 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:24:52.234  INFO 12844 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:24:52.957  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:24:52.957  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:24:53.972  INFO 12844 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:24:53.973  INFO 12844 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:26:19.010  INFO 12844 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:26:19.010  INFO 12844 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:26:19.889  INFO 12844 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:26:19.889  INFO 12844 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:26:20.603  INFO 12844 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:26:20.604  INFO 12844 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:26:21.321  INFO 12844 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:26:21.321  INFO 12844 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:27:29.977  INFO 12844 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:27:29.978  INFO 12844 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:27:30.850  INFO 12844 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:27:30.850  INFO 12844 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:27:31.569  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:27:31.569  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:27:32.285  INFO 12844 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:27:32.285  INFO 12844 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:28:08.129  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:28:08.129  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:28:08.947  INFO 12844 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:28:08.948  INFO 12844 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:28:09.662  INFO 12844 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:28:09.662  INFO 12844 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:28:10.377  INFO 12844 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:28:10.377  INFO 12844 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:29:27.590  INFO 12844 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:29:27.590  INFO 12844 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:29:28.409  INFO 12844 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:29:28.409  INFO 12844 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:29:29.125  INFO 12844 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:29:29.126  INFO 12844 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:29:29.841  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:29:29.841  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:29:33.527  INFO 12844 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:29:33.527  INFO 12844 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:29:34.457  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:29:34.457  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:29:35.165  INFO 12844 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:29:35.165  INFO 12844 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:29:35.881  INFO 12844 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:29:35.881  INFO 12844 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:29:37.054  INFO 12844 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:29:37.054  INFO 12844 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:29:37.932  INFO 12844 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:29:37.932  INFO 12844 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:29:38.648  INFO 12844 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:29:38.648  INFO 12844 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:29:39.364  INFO 12844 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:29:39.365  INFO 12844 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:32:03.345  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:32:03.345  INFO 12844 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:32:04.263  INFO 12844 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:32:04.263  INFO 12844 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:32:04.978  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:32:04.979  INFO 12844 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:32:05.694  INFO 12844 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:32:05.694  INFO 12844 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:32:15.675  INFO 12844 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:32:15.675  INFO 12844 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:32:16.550  INFO 12844 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:32:16.550  INFO 12844 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:32:17.266  INFO 12844 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:32:17.267  INFO 12844 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:32:17.983  INFO 12844 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:32:17.983  INFO 12844 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-06-02 00:40:22.355  INFO 12844 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 00:40:22.355  INFO 12844 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userIdb1fc3327-8bd9-4168-
+2021-06-02 10:52:05.107  INFO 900 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-06-02 10:52:05.729  INFO 900 --- [main] c.soft.usercenter.UserCenterApplication  : No active profile set, falling back to default profiles: default
+2021-06-02 10:52:07.188  INFO 900 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-06-02 10:52:07.188  INFO 900 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2021-06-02 10:52:07.296  INFO 900 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 100ms. Found 5 JPA repository interfaces.
+2021-06-02 10:52:07.307  INFO 900 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-06-02 10:52:07.315  INFO 900 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-06-02 10:52:07.336  INFO 900 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbCommentRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-06-02 10:52:07.336  INFO 900 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbGoodRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-06-02 10:52:07.336  INFO 900 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbOrderRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-06-02 10:52:07.336  INFO 900 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbStrategyRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-06-02 10:52:07.336  INFO 900 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.soft.usercenter.repository.HbUserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-06-02 10:52:07.336  INFO 900 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10ms. Found 0 Redis repository interfaces.
+2021-06-02 10:52:07.560  INFO 900 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=9913dd3c-5bfb-3d0c-b1ed-81b6501ad54b
+2021-06-02 10:52:07.675  INFO 900 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-06-02 10:52:07.927  INFO 900 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2021-06-02 10:52:07.942  INFO 900 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-06-02 10:52:07.942  INFO 900 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-06-02 10:52:08.136  INFO 900 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-06-02 10:52:08.136  INFO 900 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2385 ms
+2021-06-02 10:52:08.346  INFO 900 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-06-02 10:52:08.433  INFO 900 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-06-02 10:52:08.546  INFO 900 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2021-06-02 10:52:08.706  INFO 900 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-06-02 10:52:08.816  INFO 900 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-06-02 10:52:09.435  INFO 900 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-06-02 10:52:09.457  INFO 900 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-06-02 10:52:10.456  INFO 900 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-06-02 10:52:10.474  INFO 900 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-06-02 10:52:11.260  WARN 900 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-06-02 10:52:11.428  INFO 900 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-06-02 10:52:11.467  WARN 900 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-06-02 10:52:11.467  INFO 900 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-06-02 10:52:11.480  WARN 900 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-06-02 10:52:11.480  INFO 900 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-06-02 10:52:12.211  INFO 900 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'Nacso-Watch-Task-Scheduler'
+2021-06-02 10:52:13.505  INFO 900 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2021-06-02 10:52:14.247  INFO 900 --- [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP user-center 10.20.88.25:8082 register finished
+2021-06-02 10:52:14.629  INFO 900 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-06-02 10:52:14.647  INFO 900 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-06-02 10:52:14.694  INFO 900 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-06-02 10:52:14.957  INFO 900 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2021-06-02 10:52:15.030  INFO 900 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2021-06-02 10:52:15.036  INFO 900 --- [main] c.soft.usercenter.UserCenterApplication  : Started UserCenterApplication in 11.343 seconds (JVM running for 13.076)
+2021-06-02 11:01:57.273  INFO 900 --- [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-06-02 11:01:57.274  INFO 900 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-06-02 11:01:57.308  INFO 900 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 34 ms
+2021-06-02 11:01:57.482  INFO 900 --- [http-nio-8082-exec-3] c.s.u.controller.SmsApiController        : 访问 /sendCode 接口
+2021-06-02 11:01:57.482  INFO 900 --- [http-nio-8082-exec-3] c.s.u.controller.SmsApiController        : -----/sendCode-----请求参数：SmsPhoneDto(phoneNumber=18851699003)**1**
+2021-06-02 11:02:16.811  INFO 900 --- [http-nio-8082-exec-8] c.s.u.service.impl.SendSmsServiceImpl    : 传来的数据,verifyPhone,VerifyPhoneDto(phoneNumber=18851699003, verifyCode=c16b)**1**
+2021-06-02 11:02:16.813  INFO 900 --- [http-nio-8082-exec-8] c.s.u.service.impl.SendSmsServiceImpl    : 缓存的验证码,verifyCode,c16b**1**
+2021-06-02 11:02:17.147  INFO 900 --- [http-nio-8082-exec-8] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjM4OTg5MzcsInVzZXJuYW1lIjoiIn0.h0BZZ-cclntnC9Mbip-OEFAtRzY-8DnD_25hM-SozEQ
+2021-06-02 11:02:20.682  INFO 900 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:02:20.683  INFO 900 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:02:41.367  INFO 900 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-06-02 11:02:41.368  INFO 900 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=925d9eda-b33f-4710-, username=, password=123, phone=18851699003, code=, sex=0, avatar=http://nttbucket.oss-cn-beijing.aliyuncs.com/img/1622602946000.jpeg, address=, email=2631315464@qq.com, nickname=poi, money=0.0)
+2021-06-02 11:02:41.559  INFO 900 --- [http-nio-8082-exec-5] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjM4OTg5NjEsInVzZXJuYW1lIjoiIn0.q_0y9oVH0kRhop6gadCmKQDHaVorfhjajZQWYN10t54
+2021-06-02 11:02:41.609  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:02:41.609  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:02:43.347  INFO 900 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:02:43.348  INFO 900 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:04:59.427  INFO 900 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:04:59.429  INFO 900 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:05:11.938  INFO 900 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:05:11.939  INFO 900 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId2
+2021-06-02 11:05:12.145  INFO 900 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:05:12.145  INFO 900 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:05:19.488  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:05:19.489  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId2
+2021-06-02 11:05:29.628  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:05:29.629  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:05:41.195  INFO 900 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:05:41.196  INFO 900 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:05:41.340  INFO 900 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:05:41.340  INFO 900 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId2
+2021-06-02 11:05:47.620  INFO 900 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:05:47.621  INFO 900 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:07:32.699  INFO 900 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:07:32.699  INFO 900 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:07:59.623  INFO 900 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:07:59.623  INFO 900 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:08:05.116  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:08:05.117  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:08:27.748  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:08:27.749  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:08:46.949  INFO 900 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:08:46.949  INFO 900 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:08:53.269  INFO 900 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:08:53.269  INFO 900 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:09:33.908  INFO 900 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:09:33.909  INFO 900 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:09:35.699  INFO 900 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:09:35.699  INFO 900 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:09:38.958  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:09:38.959  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:09:48.444  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:09:48.444  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:10:06.946  INFO 900 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:10:06.946  INFO 900 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:10:50.736  INFO 900 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:10:50.736  INFO 900 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:10:56.774  INFO 900 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:10:56.774  INFO 900 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:11:01.452  INFO 900 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:11:01.453  INFO 900 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:11:14.524  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:11:14.524  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:11:28.872  INFO 900 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:11:28.873  INFO 900 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:11:56.813  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:11:56.814  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:11:58.554  INFO 900 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:11:58.554  INFO 900 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:12:46.982  INFO 900 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-06-02 11:12:46.982  INFO 900 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=925d9eda-b33f-4710-, username=, password=123, phone=18851699003, code=, sex=0, avatar=http://nttbucket.oss-cn-beijing.aliyuncs.com/img/1622602946000.jpeg, address=, email=2631315464@qq.com, nickname=poi, money=1000.0)
+2021-06-02 11:12:47.191  INFO 900 --- [http-nio-8082-exec-2] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjM4OTk1NjcsInVzZXJuYW1lIjoiIn0.fAoEuY4-bOwn9DojJQ24rrDbzlVZJmEUEeLUw30VCv4
+2021-06-02 11:12:47.247  INFO 900 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:12:47.247  INFO 900 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:12:48.926  INFO 900 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:12:48.927  INFO 900 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:12:52.081  INFO 900 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:12:52.081  INFO 900 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:12:53.268  INFO 900 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:12:53.269  INFO 900 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:12:53.392  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:12:53.393  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId2
+2021-06-02 11:12:53.563  INFO 900 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-06-02 11:12:53.564  INFO 900 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=925d9eda-b33f-4710-, username=, password=123, phone=18851699003, code=null, sex=0, avatar=http://nttbucket.oss-cn-beijing.aliyuncs.com/img/1622602946000.jpeg, address=, email=2631315464@qq.com, nickname=poi, money=984.5)
+2021-06-02 11:12:53.739  INFO 900 --- [http-nio-8082-exec-5] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjM4OTk1NzMsInVzZXJuYW1lIjoiIn0.5XyprCxJ_L2cbz0CakdhamwPBPTIqw9jRT0dfm6svA4
+2021-06-02 11:12:53.764  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 进入编辑接口
+2021-06-02 11:12:53.764  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : editUserDto,EditUserDto(pkUserId=2, username=crq, password=456, phone=18851855105, code=null, sex=2, avatar=https://avatars.githubusercontent.com/u/59445871?v=4, address=江苏省南京市, email=2631315464@qq.com, nickname=骸冰, money=139.82)
+2021-06-02 11:12:53.965  INFO 900 --- [http-nio-8082-exec-7] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjM4OTk1NzMsInVzZXJuYW1lIjoiY3JxIn0.uKG2UYLzRACqvZtY2D0Ss8RoRadTL_FeJj6QHO1FpiE
+2021-06-02 11:12:54.128  INFO 900 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:12:54.128  INFO 900 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:13:10.140  INFO 900 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:13:10.140  INFO 900 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:13:18.243  INFO 900 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:13:18.244  INFO 900 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId2
+2021-06-02 11:13:18.253  INFO 900 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:13:18.254  INFO 900 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId925d9eda-b33f-4710-
+2021-06-02 11:13:52.676  INFO 900 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:13:52.677  INFO 900 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId2
+2021-06-02 11:13:52.686  INFO 900 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:13:52.687  INFO 900 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:13:58.819  INFO 900 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:13:58.819  INFO 900 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId2
+2021-06-02 11:14:07.232  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:14:07.232  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:14:46.157  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:14:46.158  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId2
+2021-06-02 11:14:46.166  INFO 900 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:14:46.166  INFO 900 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:17:03.777  INFO 900 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问login接口
+2021-06-02 11:17:03.777  INFO 900 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : loginDtoLoginDto(username=ntt, password=123)
+2021-06-02 11:17:03.777  INFO 900 --- [http-nio-8082-exec-8] c.s.u.service.impl.HbUserServiceImpl     : loginDto:ntt*********123
+2021-06-02 11:17:03.970  INFO 900 --- [http-nio-8082-exec-8] c.s.u.service.impl.HbUserServiceImpl     : 登录成功
+2021-06-02 11:17:03.971  INFO 900 --- [http-nio-8082-exec-8] c.s.u.service.impl.HbUserServiceImpl     : 生成的tokeneyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjM4OTk4MjMsInVzZXJuYW1lIjoibnR0In0.YPu6lQWuWcGI__YUvESZCb8aMrpYMR8FqSWICHQ-gpg
+2021-06-02 11:17:06.774  INFO 900 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:17:06.775  INFO 900 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:17:06.956  INFO 900 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:17:06.958  INFO 900 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:17:07.103  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:17:07.104  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:17:07.251  INFO 900 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:17:07.251  INFO 900 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:18:37.664  INFO 900 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:18:37.664  INFO 900 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:18:37.805  INFO 900 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:18:37.805  INFO 900 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:18:37.929  INFO 900 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:18:37.929  INFO 900 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:18:38.053  INFO 900 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:18:38.053  INFO 900 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:20:04.329  INFO 900 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:20:04.329  INFO 900 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:20:04.631  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:20:04.632  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:20:04.737  INFO 900 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:20:04.737  INFO 900 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:20:04.916  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:20:04.916  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:20:05.138  INFO 900 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:20:05.139  INFO 900 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:20:05.331  INFO 900 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:20:05.331  INFO 900 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:20:05.617  INFO 900 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:20:05.617  INFO 900 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:20:05.848  INFO 900 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:20:05.848  INFO 900 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:21:25.492  INFO 900 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:21:25.492  INFO 900 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:21:25.739  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:21:25.739  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:21:26.108  INFO 900 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:21:26.109  INFO 900 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:21:26.356  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:21:26.357  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:21:29.199  INFO 900 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:21:29.200  INFO 900 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:21:29.504  INFO 900 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:21:29.504  INFO 900 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:21:29.735  INFO 900 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:21:29.736  INFO 900 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:21:30.031  INFO 900 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:21:30.031  INFO 900 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:21:40.872  INFO 900 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:21:40.873  INFO 900 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:21:41.175  INFO 900 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:21:41.176  INFO 900 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:21:41.408  INFO 900 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:21:41.409  INFO 900 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:21:41.688  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:21:41.688  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:21:59.310  INFO 900 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:21:59.311  INFO 900 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:21:59.616  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:21:59.617  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:21:59.897  INFO 900 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:21:59.897  INFO 900 --- [http-nio-8082-exec-3] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:22:00.120  INFO 900 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:22:00.121  INFO 900 --- [http-nio-8082-exec-1] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:22:00.431  INFO 900 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:22:00.431  INFO 900 --- [http-nio-8082-exec-2] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:22:00.717  INFO 900 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:22:00.717  INFO 900 --- [http-nio-8082-exec-6] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:22:00.954  INFO 900 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:22:00.955  INFO 900 --- [http-nio-8082-exec-8] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:22:01.231  INFO 900 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:22:01.231  INFO 900 --- [http-nio-8082-exec-10] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:22:28.513  INFO 900 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:22:28.513  INFO 900 --- [http-nio-8082-exec-4] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:22:28.990  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:22:28.991  INFO 900 --- [http-nio-8082-exec-9] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:22:29.410  INFO 900 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:22:29.411  INFO 900 --- [http-nio-8082-exec-5] c.s.u.controller.HbUserController        : userId1
+2021-06-02 11:22:29.715  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : 访问getInfoById接口
+2021-06-02 11:22:29.715  INFO 900 --- [http-nio-8082-exec-7] c.s.u.controller.HbUserController        : userId1
+>>>>>>> dd359df14bcad3226cf09b9a422b899cf40a9950

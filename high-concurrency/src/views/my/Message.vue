@@ -165,14 +165,20 @@
           <span style="display: flex; margin-top: 50px">
             <h4>余额</h4>
             <span class="label">
-              <p>
-                <span>{{ user.money }}</span>
+                <v-text-field
+                  v-if="chongInput"
+                  label="金额"
+                  type="number"
+                  placeholder="请输入金额.."
+                  v-model="validate.money"
+                ></v-text-field>
+                <span v-else>{{ validate.money }}</span>
                 <span
+                  @click="chongChange()"
                   class="button-hand"
                   style="color: #26a69a; margin-left: 20px"
                   >充值</span
                 >
-              </p>
             </span>
           </span>
           <div class="line"></div>
@@ -247,6 +253,7 @@ export default {
       phoneInput: false,
       overlay: false,
       isSuc: false,
+      chongInput: false,
       user: [],
       validate: {
         nickname: "",
@@ -257,6 +264,7 @@ export default {
         password: "",
         phone: "",
         code: "",
+        money: 0,
       },
     };
   },
@@ -290,10 +298,12 @@ export default {
           this.validate.sex = this.user.sex;
           Vue.ls.set(USER_INFO, this.user);
         });
-        
     },
     updateUser() {
       this.userInput = !this.userInput;
+    },
+    chongChange() {
+      this.chongInput = !this.chongInput;
     },
     updateEmail() {
       this.emailInput = !this.emailInput;
@@ -349,7 +359,7 @@ export default {
         avatar: avatar,
         code: code,
         email: users.email,
-        money: 0,
+        money: this.validate.money,
         nickname: users.nickname,
         password: pwd,
         phone: users.phone,
@@ -357,20 +367,22 @@ export default {
         sex: sex,
         username: users.username,
       };
-      _this.axios.post(_this.GLOBAL.baseUrl + "/user/edit", data).then((res) => {
-        // _this.isSuc = true;
-         this.$message({
-              message: "修改成功",
-              type: "success",
-            });
-           _this.isUpdate = false;
-        _this.refreshUser();
+      _this.axios
+        .post(_this.GLOBAL.baseUrl + "/user/edit", data)
+        .then((res) => {
+          // _this.isSuc = true;
+          this.$message({
+            message: "修改成功",
+            type: "success",
+          });
+          _this.isUpdate = false;
+          _this.refreshUser();
 
-        if ((avatar = _this.validate.avatar)) {
-          Vue.ls.set(USER_AVATAR, avatar, 7 * 24 * 60 * 60 * 1000);
-        }
-        this.$router.go(0);
-      });
+          if ((avatar = _this.validate.avatar)) {
+            Vue.ls.set(USER_AVATAR, avatar, 7 * 24 * 60 * 60 * 1000);
+          }
+          this.$router.go(0);
+        });
     },
     cancelSubmit() {
       this.isSuc = false;
@@ -449,12 +461,12 @@ export default {
       var file = event.target.files[0]; //获取文件流
       var _this = this;
       client.multipartUpload(imgUrl, file).then(function (result) {
-         let index = result.res.requestUrls[0].indexOf("?");
-        let url ;
-        if(index == -1) {
-           url = result.res.requestUrls[0]
-        } else{
-           url = result.res.requestUrls[0].slice(0, index);
+        let index = result.res.requestUrls[0].indexOf("?");
+        let url;
+        if (index == -1) {
+          url = result.res.requestUrls[0];
+        } else {
+          url = result.res.requestUrls[0].slice(0, index);
         }
         _this.validate.avatar = url;
         _this.updateAdminInfo(_this.validate.avatar);
