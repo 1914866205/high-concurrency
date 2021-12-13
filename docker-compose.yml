@@ -1,0 +1,40 @@
+version: '3'
+services:
+  usercenter:
+    image: boke/usercenter:0.0.1
+    build: ./usercenter
+    container_name: usercenter
+    ports:
+      - 8082:8082
+    volumes:
+      - /etc/localtime:/etc/localtime:ro #同步宿主机与容器时间
+    restart: always
+  contentcenter:
+    image: boke/contentcenter:0.0.1  #指定镜像名称
+    build: ./contentcenter  #指定Dockfile所在路径
+    container_name: contentcenter  #指定启动容器名称
+    ports:
+      - 8083:8083
+    volumes:
+      - /etc/localtime:/etc/localtime:ro  #同步宿主机与容器时间，ro代表readonly只读
+    external_links:  #访问不在同一个compose文件管理的服务需要用external_links，前提是这些服务都在同一个网络下才能正常访问 
+      - nacos:nacos  #可以用nacos这个域名访问nacos服务
+    restart: always
+  seckillcenter:
+    image: boke/seckillcenter:0.0.1
+    build: ./seckillcenter
+    container_name: seckillcenter
+    ports:
+      - 8013:8013
+    volumes:
+      - /etc/localtime:/etc/localtime:ro #同步宿主机与容器时间
+    restart: always
+  mqcenter:
+    image: boke/mqcenter:0.0.1
+    build: ./mqcenter
+    container_name: mqcenter
+    ports:
+      - 8012:8012
+    volumes:
+      - /etc/localtime:/etc/localtime:ro #同步宿主机与容器时间
+    restart: always
